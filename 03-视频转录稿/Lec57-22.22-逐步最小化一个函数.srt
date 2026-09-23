@@ -1,0 +1,2071 @@
+1
+00:00:01,620 --> 00:00:06,160
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,160 --> 00:00:10,680
+help MIT OpenCourseWare continue to offer
+high quality educational resources for
+
+25
+00:00:10,680 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:25,320
+courses, visit MIT OpenCourseWare at ocw
+.mit .edu. Well, OK. I'm happy to be back.
+
+54
+00:00:26,300 --> 00:00:33,100
+And I'm really happy about the project
+proposals that are coming in. This is like,
+
+69
+00:00:33,560 --> 00:00:41,220
+OK, this is really a good part of the
+course. And so keep them coming. And I'm
+
+86
+00:00:41,480 --> 00:00:47,300
+happy to give whatever feedback I can
+on those proposals. And do make a start.
+
+101
+00:00:48,400 --> 00:00:54,920
+They're really good. And if some are
+completed before the end of the semester
+
+115
+00:00:55,060 --> 00:01:02,240
+and we can produce a chance, offer you a
+chance to report on them, that's good too.
+
+132
+00:01:04,680 --> 00:01:13,820
+So well done with those proposals. So
+today, I'm jumping to part six. So part six
+
+148
+00:01:13,840 --> 00:01:18,760
+and part seven are optimization, which is
+the fundamental algorithm that goes into
+
+161
+00:01:18,760 --> 00:01:21,920
+deep learning. So we've
+got to start with optimization.
+
+170
+00:01:25,060 --> 00:01:33,240
+Picture. And then part seven will be the
+structure of CNN's convolutional neural
+
+183
+00:01:33,240 --> 00:01:42,080
+nets and all kinds of applications. And so
+can we start with optimization? So first,
+
+198
+00:01:42,200 --> 00:01:50,880
+could I get the basic facts about
+three terms of a Taylor series? So that's
+
+213
+00:01:50,880 --> 00:01:57,280
+typical. It's seldom that we would go
+up to third derivatives in optimization. So
+
+227
+00:01:57,280 --> 00:02:04,340
+that's the most useful approximation to a
+function. Everybody recognize it? Here, I'm
+
+240
+00:02:04,380 --> 00:02:13,840
+thinking of f as just one function and x as
+just one variable. But now, I really want
+
+258
+00:02:13,840 --> 00:02:25,000
+to go to more variables. So what do I
+have to change if f is a function of more
+
+277
+00:02:25,000 --> 00:02:33,440
+variables? So now, I'm thinking
+of x as, well, no, let me see.
+
+290
+00:02:37,180 --> 00:02:40,260
+Yeah, I want n variables here.
+
+296
+00:02:42,600 --> 00:02:45,540
+x is x1 up to xn.
+
+302
+00:02:49,060 --> 00:02:57,620
+So just to get the words straight so we can
+begin on optimization. So what will be the
+
+320
+00:02:58,120 --> 00:03:08,020
+similar step? So the function f at x.
+Remember, x is n variables. OK, now what do
+
+337
+00:03:08,020 --> 00:03:16,000
+I have? Delta x. So what's the point about
+delta x now? It's a vector. Delta x1 to
+
+355
+00:03:16,060 --> 00:03:23,700
+delta xn. The derivative of f. It's a
+vector, too. The derivative of f with
+
+370
+00:03:23,700 --> 00:03:29,180
+respect to x1, the derivative of f with
+respect to x2, and so on. So what do I have
+
+389
+00:03:29,660 --> 00:03:36,580
+to change about that? And now, those guys
+are vectors. So it's their dot product. So
+
+405
+00:03:36,580 --> 00:03:45,240
+it's delta x transpose,
+that vector, times this df dx.
+
+415
+00:03:48,520 --> 00:03:58,320
+So now, I'm replacing this by all the
+derivatives. And it's the gradient. So the
+
+430
+00:03:58,320 --> 00:04:03,700
+gradient of f at x
+is the derivatives.
+
+438
+00:04:07,600 --> 00:04:15,840
+Let's see. It's essential to get the
+notation straight here. Yeah. So it'll be
+
+452
+00:04:15,840 --> 00:04:26,360
+the partial derivatives of the function f.
+So grad f is the partial derivatives of f
+
+468
+00:04:26,420 --> 00:04:33,440
+with respect to x1 down to partial
+derivative with respect to xn. OK, good.
+
+482
+00:04:34,260 --> 00:04:40,940
+That's the linear term. And now, what's the
+quadratic term? 1 half. Now, delta x isn't
+
+498
+00:04:40,940 --> 00:04:42,780
+a scalar anymore. It's a vector.
+
+504
+00:04:46,260 --> 00:04:52,460
+So I've got a function of f transpose and
+a delta x. And what goes in between is the
+
+523
+00:04:52,460 --> 00:04:59,920
+second derivatives. But I've got a function
+of n variables. And so what does this
+
+538
+00:04:59,920 --> 00:05:05,720
+mean? So now, I have a matrix of second
+derivatives, right? And I'll call it h.
+
+554
+00:05:06,600 --> 00:05:09,000
+This is the matrix of
+second derivatives.
+
+561
+00:05:15,200 --> 00:05:26,220
+f with respect to x, j, and xk. And what's
+the name for this guy? The Hessian. Hessian
+
+579
+00:05:26,220 --> 00:05:26,680
+matrix.
+
+580
+00:05:30,380 --> 00:05:34,700
+How the Hessians got into this picture, I
+don't know. The only Hessians I know are
+
+596
+00:05:34,700 --> 00:05:41,180
+the ones who fought in the Revolutionary
+War for somebody. Which side were they on?
+
+611
+00:05:42,060 --> 00:05:48,660
+I think maybe the wrong side. The French
+were on our side. And yeah, anyway, Hessian
+
+627
+00:05:48,660 --> 00:05:54,240
+matrix. And what are the facts about that
+matrix? Well, the first fact is that it's
+
+643
+00:05:54,240 --> 00:05:56,320
+them. And the key
+fact is it's symmetric.
+
+651
+00:05:59,720 --> 00:06:12,100
+Yeah. OK. And again, it's an approximation.
+So and everybody recognizes that if n is
+
+666
+00:06:12,100 --> 00:06:18,220
+very large and we have a function of many
+variables, then we had n derivatives to
+
+682
+00:06:18,300 --> 00:06:23,960
+compute here. And about half n squared
+derivatives using the half comes from the
+
+696
+00:06:23,960 --> 00:06:31,060
+symmetry. But the key point is the n
+squared derivatives to compute there. So
+
+710
+00:06:31,060 --> 00:06:41,440
+computing the gradient is feasible if n
+is small or moderately large. Actually, by
+
+724
+00:06:41,440 --> 00:06:48,220
+using automatic differentiation, the key
+idea of back propagation, back prop, you
+
+736
+00:06:48,220 --> 00:06:48,780
+can get,
+
+738
+00:06:51,260 --> 00:06:56,620
+you can do, you can speed up the
+computation of derivatives quite amazingly.
+
+751
+00:06:57,060 --> 00:07:05,620
+But still, for the size of deep learning
+problems, that's out of reach. OK. So
+
+766
+00:07:05,620 --> 00:07:15,620
+that's the picture. And then I will want
+to solve, use this to solve equations. Let
+
+782
+00:07:15,620 --> 00:07:27,180
+me, there's a parallel picture for a vector
+f. So now this is a vector function. This
+
+799
+00:07:28,300 --> 00:07:39,340
+is f1 of x up to fn of
+x. And x is x1 to xn.
+
+814
+00:07:42,060 --> 00:07:48,280
+So I have n functions of n variables.
+n functions of n variables. Well, that's
+
+829
+00:07:48,360 --> 00:07:56,820
+exactly what I have in the gradient.
+That's, think of these two as parallel, the
+
+844
+00:07:56,860 --> 00:08:10,480
+parallel being f is, corresponds to the
+gradient of f. n functions of n variables.
+
+859
+00:08:13,360 --> 00:08:19,940
+OK. So now maybe what I'm after here is
+to solve f equals 0. So I'm going to think
+
+878
+00:08:19,940 --> 00:08:23,680
+about the f at x plus delta x.
+
+886
+00:08:25,800 --> 00:08:35,120
+So it starts with f of x. And then we have
+the correction times the matrix of first
+
+904
+00:08:35,120 --> 00:08:38,860
+derivatives. And
+what's the name for that
+
+911
+00:08:41,559 --> 00:08:43,360
+matrix of first derivatives?
+
+915
+00:08:45,980 --> 00:08:46,280
+Well,
+
+916
+00:08:48,860 --> 00:08:57,120
+if I'm just given n functions, and I,
+yeah, what am I, what am I after here? I'm
+
+934
+00:08:57,120 --> 00:08:58,180
+looking for,
+
+936
+00:09:30,770 --> 00:09:36,900
+and I'm stopping at first order there. OK.
+So that, these are the sort of like facts
+
+953
+00:09:36,900 --> 00:09:44,000
+of calculus. Facts of 1802, you could say.
+Multivariable calculus, that's the point.
+
+966
+00:09:44,260 --> 00:09:50,360
+Notice that we're doing just like the first
+half of 1802, just differential calculus,
+
+980
+00:09:50,840 --> 00:09:56,280
+derivatives, Taylor series. We're not doing
+multiple integrals. That's not part of our
+
+993
+00:09:56,280 --> 00:10:03,620
+world here. OK. So that's the background.
+Now I want to look at optimization.
+
+1007
+00:10:05,660 --> 00:10:06,780
+OK. So over here,
+
+1011
+00:10:10,120 --> 00:10:17,880
+I want to optimize, well, over
+here, let me try to minimize
+
+1023
+00:10:21,800 --> 00:10:22,260
+f of x.
+
+1026
+00:10:24,380 --> 00:10:28,210
+And I'll be in the vector
+case here. And over here,
+
+1037
+00:10:30,520 --> 00:10:45,900
+I want to solve f equals 0. And of course,
+that means, that means f of 1 equals 0 all
+
+1057
+00:10:45,900 --> 00:10:54,260
+the way along to fn equals 0. Here
+I have n equations and n unknowns.
+
+1072
+00:10:59,780 --> 00:11:05,740
+Let me start with that one. And I'll start
+with Newton's method. Newton's method to
+
+1087
+00:11:05,860 --> 00:11:11,080
+solve these n equations and
+n unknowns. OK. So Newton.
+
+1097
+00:11:16,420 --> 00:11:17,000
+Newton's method.
+
+1099
+00:11:21,820 --> 00:11:25,040
+Which is often not presented
+in 1802. That's a crime.
+
+1109
+00:11:27,540 --> 00:11:36,020
+Big application of gradients in Jacobians.
+So I'm trying to solve n equations and n
+
+1124
+00:11:36,020 --> 00:11:45,000
+unknowns. And so I want f at x plus delta
+x to be 0. Right? So I want f of x plus
+
+1146
+00:11:45,060 --> 00:11:52,460
+delta x to be 0. So f at x plus delta x is,
+I'm putting in as 0. I'm just copying that
+
+1168
+00:11:52,460 --> 00:12:03,380
+equation. Is f at where I am. Let me use
+k for the case iteration. So I'm at a point
+
+1188
+00:12:03,380 --> 00:12:14,680
+xk. I want to get to a point xk plus 1. And
+so I have 0 is f of x plus j at that point
+
+1213
+00:12:14,960 --> 00:12:19,660
+times delta x, which
+is xk plus 1 minus xk.
+
+1223
+00:12:22,060 --> 00:12:30,840
+Good. That's Newton's method. Of course, 0
+isn't quite true. Well, 0 will be true for
+
+1239
+00:12:30,840 --> 00:12:40,120
+the, I'm constructing xk plus 1 here. I'm
+constructing xk plus 1. OK. So let me just
+
+1256
+00:12:40,120 --> 00:12:46,120
+rewrite that. And we've got Newton's
+method. So we're looking for this change,
+
+1269
+00:12:47,260 --> 00:12:48,320
+xk plus 1
+
+1272
+00:12:51,800 --> 00:12:55,880
+minus xk. I'll put it
+on this side as plus xk.
+
+1283
+00:12:58,440 --> 00:13:03,120
+So that's this. Now, I have to invert
+that and put it on the other side of the
+
+1301
+00:13:03,120 --> 00:13:07,640
+equation. So that'll go with a
+minus. This guy will be inverted.
+
+1313
+00:13:10,700 --> 00:13:13,380
+And f at xk.
+
+1317
+00:13:15,700 --> 00:13:22,880
+So that's Newton's method. Natural. Let me
+just repeat that. You see where the xk plus
+
+1333
+00:13:22,920 --> 00:13:32,280
+1 minus xk is sitting. Right? And I moved f
+of xk to the other side with a minus sign.
+
+1353
+00:13:32,960 --> 00:13:38,760
+And then I multiplied through by j inverse.
+So I got that. So that's Newton's method
+
+1369
+00:13:39,320 --> 00:13:42,440
+for a system of equations.
+
+1374
+00:13:45,080 --> 00:13:48,880
+And over there, I'm going to write down
+Newton's method for minimizing a function.
+
+1388
+00:13:49,100 --> 00:13:56,280
+This is such basic stuff that we have to
+begin here. Let me even begin with an
+
+1405
+00:13:56,280 --> 00:14:03,760
+extremely straightforward example of
+Newton's method here. Suppose my function,
+
+1415
+00:14:04,780 --> 00:14:12,680
+ah, suppose I've only got one function,
+actually. Suppose I only have one function.
+
+1429
+00:14:14,680 --> 00:14:18,800
+So suppose my function
+is x squared minus 9.
+
+1438
+00:14:21,420 --> 00:14:30,520
+And I want to solve f of x equals 0. I want
+to find the square root of 9. So what is
+
+1460
+00:14:30,520 --> 00:14:36,200
+Newton's method for it? We just should
+see. My point is just to see how Newton's
+
+1476
+00:14:36,200 --> 00:14:42,120
+method is written. And then rewrite it a
+little bit so that we see the convergence.
+
+1492
+00:14:43,820 --> 00:14:51,840
+So of course, the Jacobian is 2x. So
+Newton's method says that xk plus 1. I'm
+
+1508
+00:14:51,840 --> 00:15:01,660
+just going to copy that Newton's
+method. Minus 1 over 2xk, right? That's the
+
+1522
+00:15:01,660 --> 00:15:08,840
+derivative. Times f at xk,
+which is xk squared minus 9.
+
+1533
+00:15:12,180 --> 00:15:21,080
+OK. Followed the formula. This determines
+xk plus 1. And let's simplify it. So here I
+
+1549
+00:15:21,080 --> 00:15:30,380
+have xk minus, that looks like a half
+of xk. So I think I have a half of xk. And
+
+1569
+00:15:30,380 --> 00:15:40,840
+then this times this is 9
+halves of 1 over xk. Is that right?
+
+1583
+00:15:43,660 --> 00:15:50,540
+Half of xk from this stuff. And
+plus 9 halves of 1 over xk. OK.
+
+1598
+00:15:54,100 --> 00:16:02,540
+Can I just, like, check that I know the
+answer is 3? Can I be sure that I get the
+
+1618
+00:16:02,540 --> 00:16:09,960
+right answer, 3? So this, that if xk was
+exactly 3, then of course I expect xk plus
+
+1636
+00:16:10,040 --> 00:16:18,240
+1 to stay at 3. So does that happen? So
+half of 3 and 9 halves of 1 third. What's
+
+1656
+00:16:18,240 --> 00:16:29,340
+that? Half of 3 and 9 halves of 1 third.
+OK. That's 3 halves and 3 halves. That's 6
+
+1675
+00:16:29,340 --> 00:16:33,560
+halves. And that's 3. OK. OK.
+
+1681
+00:16:35,820 --> 00:16:40,320
+So we've checked that the method is
+consistent, which just means we kept the
+
+1695
+00:16:40,320 --> 00:16:47,860
+algebra straight. But then the really
+important point about Newton's method is to
+
+1708
+00:16:47,860 --> 00:16:56,840
+discover how fast it converges. So now let
+me do xk plus 1 minus 3. So now I'm looking
+
+1727
+00:16:56,840 --> 00:17:04,800
+at the error, which is, I hope, approaching
+0. Is it approaching 0? How quickly is it
+
+1744
+00:17:04,800 --> 00:17:10,099
+approaching 0? These are the fundamental
+questions of optimization. So I'm going to
+
+1757
+00:17:10,099 --> 00:17:11,880
+subtract 3 from
+both sides. Somehow.
+
+1763
+00:17:15,160 --> 00:17:21,780
+OK. From here. I guess I'm going
+to subtract 3. Can I just? So I was just
+
+1780
+00:17:21,859 --> 00:17:31,380
+checking that it was correct. OK. Now, so
+xk plus 1 minus 3. I'm going to subtract 3
+
+1798
+00:17:31,380 --> 00:17:39,000
+from both sides. I'm going to subtract
+3 there. And then I hope that that box is
+
+1815
+00:17:39,060 --> 00:17:45,520
+what goes down here, right? Subtracted 3
+from both sides. So I'm looking at the, I'm
+
+1831
+00:17:45,520 --> 00:17:53,840
+hoping it go, now hoping things go to 0.
+OK. So what do I have there? Let me factor
+
+1850
+00:17:53,840 --> 00:17:55,580
+out the 1 over xk.
+
+1855
+00:17:59,040 --> 00:18:04,180
+So what do I have then left?
+1 over xk. So there's a 9 halves
+
+1870
+00:18:06,560 --> 00:18:11,580
+from there. 1 over xk. So I really have
+a half of xk. So I'm going to subtract xk
+
+1889
+00:18:11,580 --> 00:18:18,850
+squared, because I've divided by an xk.
+And this minus 3, I better put minus 3xk,
+
+1905
+00:18:21,260 --> 00:18:26,970
+because I'm dividing by the xk. I
+claim that that's, now I've got it.
+
+1919
+00:18:31,060 --> 00:18:39,380
+And let's see. Let me take out the 2.
+2, forget these 2's, and make that a 6.
+
+1937
+00:18:41,640 --> 00:18:48,440
+So I have 1 over 2xk times 9 plus xk
+squared minus 6. Anything good about that?
+
+1954
+00:18:51,100 --> 00:18:51,940
+We hope so.
+
+1957
+00:18:56,560 --> 00:19:03,440
+We hope that that is something attractive.
+So this is, again, this is the error at
+
+1973
+00:19:03,480 --> 00:19:13,640
+step k plus 1. And it's 1 over 2xk times
+this thing. In brackets, 9 plus xk squared
+
+1991
+00:19:13,640 --> 00:19:17,590
+minus 6xk. And we
+recognize that as
+
+1998
+00:19:21,320 --> 00:19:23,020
+xk minus 3 squared.
+
+2002
+00:19:25,460 --> 00:19:37,360
+xk squared minus 6 of them plus 9. That's
+xk minus 3 squared. OK. That was the goal,
+
+2020
+00:19:37,540 --> 00:19:38,040
+of course.
+
+2022
+00:19:41,180 --> 00:19:46,600
+The goal that shows why Newton's method
+is fantastic. If you can execute it, if you
+
+2038
+00:19:46,600 --> 00:19:53,640
+can start near enough, notice that, so
+that's, so how do I describe this great
+
+2053
+00:19:53,640 --> 00:20:01,100
+equation? It says that the error is squared
+at every step. Squared at every step. So
+
+2069
+00:20:01,100 --> 00:20:09,260
+if I'm converging to a limit,
+it will satisfy the, it will be 3.
+
+2083
+00:20:11,540 --> 00:20:18,260
+Or I guess minus 3. Is that possible?
+Yeah. Minus 3 is another solution here. So
+
+2099
+00:20:18,260 --> 00:20:23,220
+we're, so we've got two solutions. The
+Newton's method could converge to 3.
+
+2112
+00:20:25,720 --> 00:20:31,740
+Am I right? It could converge to minus
+3? So I could, I'd have a similar equation
+
+2129
+00:20:31,740 --> 00:20:37,980
+sort of centered at minus 3. Or
+what, does it always do one of those?
+
+2144
+00:20:40,800 --> 00:20:47,440
+It could blow up. It could, so that, so
+those are, there are sort of regions of
+
+2161
+00:20:47,440 --> 00:20:52,540
+attraction. They're all the starting points
+that approach 3. And the whole point of
+
+2175
+00:20:52,540 --> 00:20:59,060
+that equation is with quadratic
+convergence, the error being squared at
+
+2186
+00:20:59,060 --> 00:21:04,300
+every step, it zooms in on 3. Then there's
+a whole, all these starting points that
+
+2202
+00:21:04,300 --> 00:21:10,900
+would go to minus 3. And then there are
+the starting points that would blow up. So,
+
+2219
+00:21:11,100 --> 00:21:16,560
+and those, maybe for this very simple
+problem, that, the picture is not too
+
+2233
+00:21:16,560 --> 00:21:24,860
+difficult to sort out those three regions.
+But if we had, and this is allowing for a
+
+2250
+00:21:24,860 --> 00:21:25,060
+vector,
+
+2251
+00:21:27,900 --> 00:21:33,380
+two equations or n equations, then we're
+in n variables. And it's really, you get
+
+2266
+00:21:33,380 --> 00:21:34,100
+beautiful pictures.
+
+2268
+00:21:37,060 --> 00:21:42,820
+One of the type of pictures that gave rise
+to these books on fractals, picture books
+
+2284
+00:21:42,820 --> 00:21:49,300
+on fractals, to, for these basins of
+attraction. Does the, does the starting
+
+2297
+00:21:49,300 --> 00:21:55,940
+point lead you to one of the solutions?
+Or does it lead you to infinity? Here, that
+
+2314
+00:21:55,940 --> 00:22:02,660
+would be interesting to just draw it for
+this. OK. But the essential point is the
+
+2330
+00:22:02,660 --> 00:22:10,680
+quadratic convergence. If it's close
+enough. Close. If xk is, if x0 is pretty
+
+2344
+00:22:10,680 --> 00:22:19,800
+near 3, then this is about 1 sixth of
+that. And there'll be a good region of
+
+2361
+00:22:19,800 --> 00:22:29,840
+attraction in this case. OK. So that's,
+that's Newton's method for equations. And
+
+2374
+00:22:29,840 --> 00:22:34,600
+now I want to do Newton's method. I just
+want to convert all those words over to
+
+2391
+00:22:34,600 --> 00:22:43,080
+Newton's method for optimization. So
+remember, the, the, these boards were
+
+2402
+00:22:43,080 --> 00:22:49,720
+solving f equals 0. This board is
+minimizing capital F. And what's the
+
+2415
+00:22:49,720 --> 00:22:55,360
+connection between them? Well, of course,
+when we, this, this corresponds to solving
+
+2428
+00:22:55,360 --> 00:23:09,100
+the gradient equals 0. At a minimum, if I'm
+minimizing, I'm finding a point where all
+
+2444
+00:23:09,100 --> 00:23:15,540
+the first derivatives are 0. So, so that'll
+be the match between these. That, that
+
+2459
+00:23:15,540 --> 00:23:27,020
+this rad f in this picture is the small f
+in that picture. OK. Now, I guess here I
+
+2478
+00:23:27,020 --> 00:23:36,240
+have, and this is sort of the heart of
+our applications of learning. We have very
+
+2494
+00:23:36,240 --> 00:23:41,080
+complicated loss functions to minimize.
+Functions of thousands or hundreds of
+
+2505
+00:23:41,140 --> 00:23:47,880
+thousands of variables. OK. So that means
+that we would like to use Newton's method,
+
+2520
+00:23:47,880 --> 00:23:55,060
+but often we can't. Let, so let, so I need
+to, to put down here two methods. One that
+
+2539
+00:23:55,080 --> 00:24:01,120
+doesn't involve those high second
+derivatives. And one, a Newton's that does.
+
+2551
+00:24:01,900 --> 00:24:11,360
+So, so, so first, so, first I'll write down
+a method that does not involve. So, so
+
+2568
+00:24:11,360 --> 00:24:11,940
+method one.
+
+2570
+00:24:14,120 --> 00:24:16,560
+And this will be
+steepest descent.
+
+2576
+00:24:25,180 --> 00:24:36,200
+And what is that? That says that xk plus
+1, the new x, is the old x minus, Steepest
+
+2595
+00:24:36,200 --> 00:24:41,960
+descent means that I move in the steepest
+direction, which is the direction of the
+
+2610
+00:24:41,960 --> 00:24:50,400
+gradient of f. I move some distance, and
+I better have freedom to decide what that
+
+2626
+00:24:50,420 --> 00:24:55,000
+distance should be.
+So this is a step size s,
+
+2636
+00:24:59,140 --> 00:25:05,460
+or in the language of deep learning, it's
+often called the learning rate. So if you
+
+2652
+00:25:05,740 --> 00:25:06,140
+see learning rate.
+
+2655
+00:25:12,740 --> 00:25:12,740
+OK.
+
+2656
+00:25:18,020 --> 00:25:25,500
+So is that, that, so, and it's natural to
+choose sk. We're going along, do you see
+
+2673
+00:25:25,500 --> 00:25:29,580
+where, what this right hand side
+looks like? I'm at a point in n dimensions.
+
+2688
+00:25:31,760 --> 00:25:38,360
+We're all, all, we're in n dimensions here.
+We have functions of n variables. There is
+
+2704
+00:25:38,360 --> 00:25:45,600
+a vector. There is a direction to move down
+the steepest slope of the, of the graph.
+
+2721
+00:25:46,540 --> 00:25:55,240
+And here is a distance to move. And we
+will stop. We'll have to get off this step
+
+2739
+00:25:55,240 --> 00:25:55,840
+normally.
+
+2740
+00:25:59,540 --> 00:26:04,740
+If we, if we stay on it, it'll sway, it'll
+swing back, it'll, you know, take us off to
+
+2759
+00:26:04,740 --> 00:26:13,280
+infinity. We, the, the, you would like to
+choose sk so that you minimize capital F.
+
+2775
+00:26:13,820 --> 00:26:19,560
+You, you take the point on this line. So
+this is, I'm, I'm, this is a line in, in,
+
+2794
+00:26:19,860 --> 00:26:34,140
+in Rn. A direction in Rn. And for all the
+points on that line, in that direction, F
+
+2812
+00:26:34,200 --> 00:26:41,000
+has some value. And what you expect is that
+initially, because this, because you chose
+
+2827
+00:26:41,220 --> 00:26:48,760
+it sensibly, the value of F will drop. But
+then at a certain point, it'll, it'll turn,
+
+2844
+00:26:48,760 --> 00:26:54,240
+turn back on you and, and increase. So that
+would be the natural stopping point. That
+
+2860
+00:26:54,240 --> 00:26:59,600
+would, I would call that an exact line
+search. So exact line search would be,
+
+2875
+00:27:02,820 --> 00:27:04,840
+exact line search
+
+2878
+00:27:08,300 --> 00:27:09,260
+is the best S.
+
+2882
+00:27:12,020 --> 00:27:19,000
+Of course, that would take time to,
+to compute. And you probably, in deep
+
+2896
+00:27:19,000 --> 00:27:26,280
+learning, that's time you can't afford.
+So you fix the learning rate S. Maybe you
+
+2911
+00:27:26,280 --> 00:27:33,980
+choose 0 .01 to be pretty safe. OK. So
+that's method 1, Steve. Now, method 2 will
+
+2928
+00:27:33,980 --> 00:27:35,040
+be Newton's method.
+
+2931
+00:27:43,540 --> 00:27:50,420
+So now we have xk
+plus 1 equal to xk minus
+
+2942
+00:27:52,740 --> 00:27:54,260
+something times delta F.
+
+2946
+00:27:59,620 --> 00:28:05,560
+And now I'm going to do the right thing.
+I'm going to live right here. And the right
+
+2964
+00:28:05,640 --> 00:28:10,160
+thing is the Hessian, the second
+derivative. That's what, this, this was
+
+2976
+00:28:10,160 --> 00:28:16,320
+cheap. We just took the direction and, and
+went along it. Now we're getting really the
+
+2992
+00:28:16,320 --> 00:28:22,040
+right direction by using the
+second derivative. So that's H inverse.
+
+3003
+00:28:24,120 --> 00:28:34,140
+OK. And what I've done is to, is
+to set that to 0. So that would be,
+
+3020
+00:28:37,460 --> 00:28:45,940
+do you see that's Newton's method? It's
+totally parallel to this guy. Actually, I'm
+
+3034
+00:28:45,940 --> 00:28:51,460
+really happy to have these two on the board
+parallel to each other. Because you have
+
+3050
+00:28:51,480 --> 00:28:55,850
+to kind of keep straight. Are you solving
+equations? Or are you minimizing functions?
+
+3064
+00:28:56,880 --> 00:29:01,960
+And you're using different letters in the
+two problems. But now you see how they
+
+3079
+00:29:01,960 --> 00:29:04,080
+match. The Jacobian of,
+
+3083
+00:29:06,420 --> 00:29:13,940
+so, so again, the match is F. Think of F as
+the gradient of F. That's, that's the way
+
+3102
+00:29:13,940 --> 00:29:25,020
+you should think of it. So the Jacobian
+for, of the gradient is the Hessian. The
+
+3118
+00:29:25,020 --> 00:29:29,540
+Jacobian of the gradient is the Hessian.
+And that makes sense because we're taking,
+
+3132
+00:29:29,560 --> 00:29:33,760
+the first derivative of the first
+derivative is the second derivative. Only
+
+3144
+00:29:33,760 --> 00:29:40,280
+we're doing matrix -wise. So that's, so
+the Jacobian of the gradient, we're doing a
+
+3159
+00:29:40,520 --> 00:29:46,680
+vector matrix sentence instead of a scalar
+sentence. The Jacobian of the gradient is a
+
+3174
+00:29:46,680 --> 00:29:54,680
+Hessian. Yeah. Right. OK. So that's what
+I wanted to start with. Just to get those
+
+3190
+00:29:54,760 --> 00:30:01,980
+basic facts down. And so the basic
+facts were the, were the three -term Taylor
+
+3205
+00:30:01,980 --> 00:30:11,000
+series. And then the basic algorithms
+followed naturally from it by setting the
+
+3218
+00:30:11,000 --> 00:30:16,540
+F, F at the new point to 0, if that's what
+you were solving. Or by assuming you had
+
+3237
+00:30:16,560 --> 00:30:24,000
+the minimum. Right. Good. Good, good, good.
+OK. Now what? Now we have to think about
+
+3253
+00:30:24,160 --> 00:30:31,300
+solving these problems, studying do they
+converge? What rate do they converge? Well,
+
+3266
+00:30:31,500 --> 00:30:38,240
+that's, the rate of convergence is like
+what I, why I took this, separated off this
+
+3282
+00:30:38,240 --> 00:30:44,120
+example. So the convergence rate for
+Newton's method will be quadratic. The
+
+3294
+00:30:44,120 --> 00:30:45,260
+error gets squared.
+
+3297
+00:30:47,300 --> 00:30:53,380
+And of course, that means super fast
+convergence if you start close enough. The
+
+3311
+00:30:53,380 --> 00:30:58,600
+rate of convergence for a steepest descent
+is, of course, not. You're not squaring
+
+3325
+00:30:58,600 --> 00:31:03,580
+errors here because you're, you're just
+taking some number instead of the inverse
+
+3338
+00:31:03,580 --> 00:31:07,940
+of the correct matrix. So
+you, you, you can't expect
+
+3348
+00:31:10,660 --> 00:31:17,680
+super speed. So a linear rate of
+convergence would be right. You expect that
+
+3362
+00:31:17,680 --> 00:31:23,260
+the error to, you would like to know that
+the error is multiplied by, at every step,
+
+3379
+00:31:23,820 --> 00:31:31,200
+by some constant below 1. That, that
+would be a linear rate compared to being
+
+3394
+00:31:31,200 --> 00:31:39,760
+multiplied by, being squared at every step.
+OK. And so this will be our, our basic,
+
+3410
+00:31:40,180 --> 00:31:43,530
+this is the basic formula
+that, that we build
+
+3419
+00:31:45,560 --> 00:31:52,100
+on for, for, for large scale, for really
+large scale problems. And there are
+
+3433
+00:31:52,100 --> 00:31:58,000
+methods, of course, people are going to
+come up with methods that, they're sort of
+
+3448
+00:31:58,120 --> 00:32:05,520
+a cheap Newton's method. Levenberg
+-Marquardt, and it's in the notes at the
+
+3461
+00:32:05,520 --> 00:32:12,800
+end of this section, at the end of the 6 .4
+that we'll get to. So Levenberg -Marquardt
+
+3479
+00:32:13,100 --> 00:32:17,980
+is a sort of cheap man's Newton, Newton's
+method. It does not compute the Hessian,
+
+3494
+00:32:18,700 --> 00:32:26,260
+but it, but it says, OK, I, I, from the
+gradient, I can see a sort of one term in
+
+3514
+00:32:26,260 --> 00:32:36,680
+the Hessian. So it grabs that term. But
+it's not fully, fully second order. OK. So
+
+3530
+00:32:37,160 --> 00:32:43,040
+now we, now we have to think about
+problems. And I guess the whole, the, the
+
+3546
+00:32:43,040 --> 00:32:51,260
+message here is, and our starting point has
+to be convexity. Convexity is the key word
+
+3562
+00:32:51,580 --> 00:32:57,360
+for this, for these, for these problems.
+For the, the function that we want to
+
+3577
+00:32:57,360 --> 00:33:03,820
+minimize, if that's a convex function,
+well, first of all, the convex function is
+
+3591
+00:33:04,860 --> 00:33:14,040
+likely to have one minimum. And the picture
+that's in our mind steepest descent, this
+
+3606
+00:33:14,340 --> 00:33:20,380
+picture of a bowl. A bowl is the graph of
+a convex function. So that, so I'm turning
+
+3624
+00:33:20,380 --> 00:33:25,560
+to convexity now. I'll leave that board
+there, because that's pretty crucial.
+
+3636
+00:33:28,340 --> 00:33:30,200
+And speak about
+the idea of convexity.
+
+3643
+00:33:32,560 --> 00:33:35,240
+Convex function, convex set.
+
+3647
+00:33:38,570 --> 00:33:47,300
+So let's call the function f of x. And the
+typical convex set will be, I'll call it k.
+
+3666
+00:33:48,260 --> 00:33:48,260
+OK.
+
+3667
+00:33:50,740 --> 00:33:56,120
+So we just want to remember what does that
+word convex mean? And how do you know if
+
+3685
+00:33:56,200 --> 00:34:02,460
+you have a convex function or a convex set?
+OK. Let me start with convex set. So it's,
+
+3703
+00:34:02,720 --> 00:34:07,450
+because here's my general
+problem. My convex minimization.
+
+3711
+00:34:43,179 --> 00:34:49,219
+Convex. And so let me draw a convex
+function, the graph. OK. So I'll draw a
+
+3727
+00:34:49,260 --> 00:34:59,080
+convex function, say a bowl. So that's a
+graph of f of x. And then, so here are the
+
+3746
+00:34:59,080 --> 00:35:11,740
+x's. Let me, maybe put x1 and x2 in the
+base. And the graph of f of x1, x2 up here.
+
+3767
+00:35:15,990 --> 00:35:23,100
+OK. Actually, I'm over there. I should
+be calling this function f, I think. Is
+
+3782
+00:35:25,400 --> 00:35:25,800
+that right?
+
+3784
+00:35:29,240 --> 00:35:35,080
+Yeah. Little f would be the gradient
+of this guy. Yeah, I think so. I won't.
+
+3800
+00:35:38,600 --> 00:35:39,120
+OK.
+
+3801
+00:35:42,820 --> 00:35:49,860
+But now I'm minimizing over x in,
+over certain x's, not all x's. I might be
+
+3817
+00:35:49,860 --> 00:35:51,450
+minimizing, for example,
+
+3820
+00:35:55,940 --> 00:36:00,680
+k might be the set
+where Ax equals b.
+
+3829
+00:36:03,820 --> 00:36:11,180
+k might be, in that case, a subspace. Or a
+shifted subspace, when I said subspace, but
+
+3846
+00:36:11,180 --> 00:36:18,080
+then 1806, is reminding me in my mind that
+I only have a subspace when b is 0. But I
+
+3866
+00:36:18,080 --> 00:36:25,480
+have a, you know the word for a subspace
+that's sort of moved over? Affine. So I'll
+
+3883
+00:36:25,480 --> 00:36:27,000
+just put that word down.
+
+3888
+00:36:30,340 --> 00:36:39,900
+Bunch of words to learn for this topic. But
+they're worth learning. OK. So it's like a
+
+3905
+00:36:39,900 --> 00:36:44,640
+plane, but not necessarily through the
+origin. If b is 0, it doesn't go through.
+
+3920
+00:36:44,740 --> 00:36:49,340
+If b is not 0, it doesn't go through the
+origin. OK. Anyway, or I have some other
+
+3938
+00:36:49,500 --> 00:36:54,960
+convex set. Let me just put this
+convex set k in the base. And did
+
+3953
+00:36:58,120 --> 00:37:09,240
+I make it convex? I think pretty luckily I
+did. So now what's the, well, the convex
+
+3970
+00:37:09,240 --> 00:37:14,560
+set, the constraint. So this is
+the constraint. The set constraint
+
+3981
+00:37:16,980 --> 00:37:28,820
+is that x must be x is in the set k. OK.
+And I drew it as a convex blob. Here was an
+
+4004
+00:37:28,820 --> 00:37:38,240
+example where it's a flat, not a blob, but
+a flat plane. But what does, let me come
+
+4022
+00:37:38,240 --> 00:37:44,790
+back to what does convex mean. What's
+a convex set? Well, we have to do that.
+
+4038
+00:37:46,420 --> 00:37:47,620
+Should have done that before.
+
+4043
+00:37:55,440 --> 00:38:02,560
+In the notes, I had the fun of figuring
+out if I took two, if I took a triangle, is
+
+4063
+00:38:02,560 --> 00:38:06,360
+that a convex set?
+Let's just be sure.
+
+4071
+00:38:09,800 --> 00:38:15,760
+So what's a convex set? That is a convex
+set because if I take any two points in the
+
+4090
+00:38:15,760 --> 00:38:24,460
+set and draw the line between them, it
+stays in the set. So that's convexity. Any
+
+4106
+00:38:27,040 --> 00:38:38,680
+edge line from x1 to x2
+stays in the set. OK. Good.
+
+4118
+00:38:41,600 --> 00:38:47,400
+So I've exercised to myself. What if I took
+the union of two triangles? All I wanted
+
+4135
+00:38:47,400 --> 00:38:54,180
+to get you to do is to sort of visualize
+convex and not convex possibilities.
+
+4150
+00:38:54,760 --> 00:39:00,290
+Suppose I have one
+triangle. Even if it was obtuse,
+
+4160
+00:39:02,620 --> 00:39:08,640
+that's still convex, right? No problem.
+But now what if I put those two triangles
+
+4175
+00:39:08,640 --> 00:39:16,180
+together, take their union? Well, if I take
+them sitting with a big gap between, like
+
+4191
+00:39:16,180 --> 00:39:22,600
+I've lost. I mean, I've never had a chance
+that way. Because if I took one of my, if
+
+4210
+00:39:22,680 --> 00:39:26,620
+it was the union of these two, well, you
+know what I'm going to say. If I took that
+
+4229
+00:39:26,620 --> 00:39:34,300
+point and that point, of course, it goes
+outside and stupid. All right. But what if
+
+4245
+00:39:34,300 --> 00:39:42,320
+the triangles, what if that triangle, that
+lower triangle kind of overlaps the upper
+
+4259
+00:39:42,320 --> 00:39:44,300
+triangle? Is that a convex set?
+
+4265
+00:39:47,540 --> 00:39:53,600
+Everybody's right, saying no. How do I say
+that the union of those two triangles is
+
+4281
+00:39:53,680 --> 00:40:00,680
+not a convex set? Because you tell me where
+to pick two points where the line goes
+
+4298
+00:40:00,680 --> 00:40:06,080
+out. Well, I take one from that corner and
+one from that corner and the line between
+
+4315
+00:40:06,080 --> 00:40:17,780
+them went outside. So
+union is usually not convex.
+
+4324
+00:40:21,740 --> 00:40:27,360
+Well, if I think of the union of two sets,
+my mind actually automatically goes to the
+
+4341
+00:40:27,360 --> 00:40:37,040
+other corresponding possibility, which is
+the intersection of the two sets. So if I
+
+4355
+00:40:37,120 --> 00:40:47,840
+take the intersection of the two sets. Now,
+what's the deal with that? When I had two
+
+4372
+00:40:47,840 --> 00:40:54,680
+triangles, two separated triangles, what
+can we say about the intersection of those
+
+4385
+00:40:54,680 --> 00:41:02,780
+two triangles? It's empty. So should we
+regard the empty set as a convex set? Yes.
+
+4401
+00:41:04,060 --> 00:41:11,880
+Isn't it? Yes, it's vacuum. It's vacuous.
+So it hasn't got any problems, right? OK.
+
+4416
+00:41:12,600 --> 00:41:20,840
+But now, is the intersection is always
+convex? I'm assuming the two sets that we
+
+4431
+00:41:20,940 --> 00:41:27,040
+start with are. Now, that's an important
+fact, that the intersection of convex sets.
+
+4445
+00:41:27,200 --> 00:41:30,680
+Let's just draw a picture
+that shows an example.
+
+4454
+00:41:33,000 --> 00:41:40,940
+So what's the intersection? Just this part,
+and it's convex. OK. Can you give me a
+
+4470
+00:41:40,940 --> 00:41:50,100
+little proof that the intersection is
+convex? So I take two points in the
+
+4484
+00:41:50,100 --> 00:41:52,360
+intersection. Let
+me start the proof.
+
+4490
+00:41:54,480 --> 00:42:00,320
+To test if something's convex, how do you
+test it? You take two points in the set, in
+
+4508
+00:42:00,320 --> 00:42:05,920
+the intersection, and you want to
+show that the line between them is in the
+
+4523
+00:42:05,920 --> 00:42:13,940
+intersection. OK. Why is that? So take
+two points. Take x1 in the intersection of,
+
+4538
+00:42:14,440 --> 00:42:20,180
+we've got two sets here, and that's the
+symbol for intersection. And we've got
+
+4552
+00:42:20,180 --> 00:42:21,760
+another point in
+the intersection.
+
+4557
+00:42:24,720 --> 00:42:33,620
+And now we want to look at the line between
+them, the line from x1 to x2. What's the
+
+4576
+00:42:33,620 --> 00:42:34,840
+deal with that one?
+
+4580
+00:42:38,160 --> 00:42:40,600
+Is that fully in x1, in k1?
+
+4587
+00:42:43,040 --> 00:42:50,180
+Why is it fully in k1? I took two points in
+the intersection. I'm looking at the line
+
+4605
+00:42:50,180 --> 00:42:56,580
+between them. And I'm asking, is it in
+the first set, k1? And the answer is yes,
+
+4622
+00:42:57,060 --> 00:43:04,080
+because those points were in k1, and k1's
+convex. And is that line between them in
+
+4638
+00:43:04,080 --> 00:43:13,240
+k2? Yes, same reason. The two endpoints
+were in k2, so the line between them is in
+
+4655
+00:43:13,240 --> 00:43:20,600
+k2. So the intersection of convex sets is
+always convex. The intersection of convex
+
+4669
+00:43:21,840 --> 00:43:23,560
+sets is convex. Good.
+
+4673
+00:43:26,580 --> 00:43:31,620
+So you'll see in the notes these
+possibilities with two triangles. There's
+
+4685
+00:43:31,640 --> 00:43:38,620
+sometimes you can take the union, but
+not very often. Now what's the next thing I
+
+4701
+00:43:38,620 --> 00:43:39,320
+have to do?
+
+4704
+00:43:41,580 --> 00:43:47,770
+Convex functions. We've got convex sets.
+What are convex functions? Then we're good.
+
+4717
+00:43:48,140 --> 00:43:55,800
+Right, because this is our prototype of a
+problem. And I now know what it means to be
+
+4735
+00:43:55,800 --> 00:44:02,260
+for that f to be a conv. No, I'm sorry. I
+now know what it means for the set k to be
+
+4757
+00:44:02,260 --> 00:44:07,940
+convex set. But now I have to look at
+the other, often more important part of the
+
+4774
+00:44:07,940 --> 00:44:12,560
+problem. What's the function I'm
+minimizing? And I'm looking for functions
+
+4785
+00:44:12,600 --> 00:44:22,040
+with this kind of a picture. OK. The
+coolest way is to connect the definition of
+
+4801
+00:44:22,040 --> 00:44:31,540
+a convex function to the definition of a
+convex set. This is really the nicest way.
+
+4817
+00:44:32,020 --> 00:44:37,440
+It's a little quick. It just switches by
+you. But tell me, do you see a convex set
+
+4835
+00:44:37,460 --> 00:44:38,040
+in that picture?
+
+4838
+00:44:40,200 --> 00:44:45,840
+Do you see a convex set in that picture?
+That's the picture of a graph of a convex
+
+4856
+00:44:45,840 --> 00:44:51,540
+function. It's a picture of a bowl. Are the
+points on that surface, is that a convex
+
+4873
+00:44:51,540 --> 00:44:54,580
+set? No, certainly not.
+
+4877
+00:44:56,640 --> 00:45:01,600
+But where is a convex set to
+be found here in that picture?
+
+4890
+00:45:04,300 --> 00:45:09,580
+Yes? The set of y, the set of y is greater
+than the set of y. Yes, the points on and
+
+4911
+00:45:09,580 --> 00:45:14,320
+above the bowl, inside the
+bowl, we could say. These points.
+
+4922
+00:45:16,800 --> 00:45:34,480
+So convex function, yes, functions convex
+when the points are on and above the graph
+
+4937
+00:45:34,760 --> 00:45:37,340
+are a convex set.
+
+4941
+00:45:46,800 --> 00:45:53,380
+This is, you could say, OK, mathematicians
+are just being lazy, having got one
+
+4955
+00:45:53,380 --> 00:45:59,780
+definition straight for a convex set.
+Using that to give an easy definition of a
+
+4970
+00:45:59,780 --> 00:46:05,620
+convex function. Actually, it's quite
+useful for functions that could maybe equal
+
+4982
+00:46:05,620 --> 00:46:12,740
+infinity, sort of generalized functions.
+But it's not the quickest way to tell if
+
+4996
+00:46:12,740 --> 00:46:20,000
+the function is convex. It's not our usual
+test for convex functions. So now I want to
+
+5013
+00:46:20,000 --> 00:46:22,340
+give such a test. OK.
+
+5018
+00:46:24,860 --> 00:46:30,200
+So now I, definition.
+Of convex function.
+
+5025
+00:46:33,080 --> 00:46:45,000
+Of a smooth convex function. Yeah, this
+fact, I shouldn't rush off away from it.
+
+5040
+00:46:45,180 --> 00:46:55,740
+From the definition of a convex function
+as having a convex set above its graph, the
+
+5056
+00:46:55,740 --> 00:47:01,800
+really official French name for the set
+above the graph is the epic graph. But I
+
+5072
+00:47:01,800 --> 00:47:08,700
+won't even write that word down. OK. Why do
+I come back to that for a minute? Because
+
+5090
+00:47:08,700 --> 00:47:10,610
+I would like to think about
+
+5096
+00:47:13,620 --> 00:47:20,020
+two functions, f1 and f2. Out of two
+functions, I can always create the minimum
+
+5111
+00:47:20,860 --> 00:47:21,400
+or the maximum.
+
+5114
+00:47:26,400 --> 00:47:30,480
+So I could choose two functions,
+convex functions f1 and f2.
+
+5125
+00:47:34,740 --> 00:47:42,160
+OK. Then I could choose the minimum. I
+could choose my new function. Shall I call
+
+5141
+00:47:42,160 --> 00:47:49,300
+it little m for minimum? m of
+x is the minimum of f1 and f2.
+
+5156
+00:47:51,480 --> 00:48:00,260
+And I could choose a maximum function,
+which is the maximum of f1 of x and f2 of x
+
+5175
+00:48:00,740 --> 00:48:08,180
+at the same point x. It's just a natural
+thing. OK. I have two functions. I've got a
+
+5193
+00:48:08,180 --> 00:48:09,200
+bowl and I've got another bowl.
+
+5199
+00:48:11,460 --> 00:48:12,820
+And suppose they're both convex.
+
+5204
+00:48:18,200 --> 00:48:25,920
+So I'm just stretching the thing here. I've
+got the graphs of two convex functions. I
+
+5220
+00:48:25,920 --> 00:48:31,140
+would like to consider the minimum of
+those two functions and also the maximum of
+
+5235
+00:48:31,140 --> 00:48:37,000
+those two functions. I believe life is
+good. One of these will be convex and the
+
+5251
+00:48:37,000 --> 00:48:43,960
+other won't. And can you identify which
+one is convex and which one is not convex?
+
+5267
+00:48:46,400 --> 00:48:52,600
+What about the minimum? Is that a convex
+function? So just look at the graph. What
+
+5283
+00:48:52,600 --> 00:48:54,080
+does the minimum look like?
+
+5288
+00:48:59,840 --> 00:49:18,320
+The minimum is an
+independent periodic function,
+
+5295
+00:49:21,480 --> 00:49:30,220
+There's no proof. There is the maximum
+function. That was the minimum function. It
+
+5309
+00:49:30,220 --> 00:49:39,280
+had a kink. The maximum function is like
+that, and it is convex. So maximum, yes.
+
+5325
+00:49:40,780 --> 00:49:41,420
+Minimum, no.
+
+5327
+00:49:45,640 --> 00:49:52,800
+And we could have a maximum of 1 ,500
+functions. If the 1 ,500 functions are all
+
+5344
+00:49:52,800 --> 00:50:01,060
+convex, the maximum will be, because it's
+the part way above everybody's graph. And
+
+5358
+00:50:01,060 --> 00:50:10,600
+that would be the graph of the maximum. OK,
+good. And now, finally, let me just say,
+
+5375
+00:50:10,620 --> 00:50:16,600
+how do you know whether a function
+is convex? How to test. How to test.
+
+5390
+00:50:19,910 --> 00:50:26,600
+OK, so let me take just a function of
+one variable. What's the test you learn in
+
+5407
+00:50:26,600 --> 00:50:31,740
+calculus, freshman calculus,
+actually, to show that this
+
+5415
+00:50:34,280 --> 00:50:38,220
+is a convex function?
+What's the test for that?
+
+5424
+00:50:40,400 --> 00:50:47,060
+Second derivative should be positive,
+or possibly 0. So second derivative
+
+5435
+00:50:49,230 --> 00:50:50,680
+greater or equal 0.
+
+5439
+00:50:53,900 --> 00:50:54,640
+That's convex.
+
+5441
+00:50:57,620 --> 00:51:07,600
+OK, final question. Suppose f is a vector.
+So this is a vector. And so I have n
+
+5459
+00:51:07,600 --> 00:51:14,220
+functions of n variables. No, I don't. I
+have one. Sorry, I've got one function. But
+
+5475
+00:51:14,220 --> 00:51:15,140
+I'm in n variables.
+
+5479
+00:51:19,920 --> 00:51:23,470
+So this was just one.
+What's the test for convexity?
+
+5489
+00:51:27,520 --> 00:51:36,380
+So it would be passed, for example, by x1
+squared plus x2 squared. Would it be passed
+
+5506
+00:51:36,380 --> 00:51:43,860
+by? So here would be the question. Would
+it be passed by x transpose some symmetric
+
+5522
+00:51:43,860 --> 00:51:49,000
+matrix S? That would be a
+quadratic, a pure quadratic.
+
+5532
+00:51:51,100 --> 00:51:54,740
+Would it be convex?
+What would be the test?
+
+5541
+00:51:57,300 --> 00:52:02,760
+I'm looking for an n -dimensional
+equivalent of positive second derivative.
+
+5552
+00:52:03,760 --> 00:52:09,700
+The n -dimensional equivalent of positive
+second derivative is convexity. So I'm
+
+5564
+00:52:09,700 --> 00:52:14,550
+going to have to figure out what's the
+test. So I could apply it to this function,
+
+5581
+00:52:15,160 --> 00:52:20,180
+or I could apply it to any
+function of n variables.
+
+5592
+00:52:23,880 --> 00:52:25,120
+And I maybe should be OK.
+
+5598
+00:52:28,100 --> 00:52:36,020
+What's the test here? Here I have a
+matrix instead of a number. So what's the
+
+5614
+00:52:36,280 --> 00:52:41,840
+requirement going to be? Hessian is
+supposed to be definite? Positive definite,
+
+5626
+00:52:42,180 --> 00:52:50,200
+or semi -definite. Or semi -definite just
+as here. Yeah. So the test is positive semi
+
+5642
+00:52:50,200 --> 00:52:51,740
+-definite Hessian.
+
+5644
+00:52:54,600 --> 00:52:59,360
+And here the Hessian is actually that
+S, because the second derivatives will
+
+5657
+00:52:59,360 --> 00:53:05,880
+produce. I'll put a half in there. The
+second derivatives will produce S equal the
+
+5672
+00:53:05,880 --> 00:53:14,480
+Hessian H. So this here, the S. So positive
+semi -definite Hessian in general, second
+
+5687
+00:53:14,480 --> 00:53:25,780
+derivative matrix for a quadratic. So it's
+convex problems where we're going to get
+
+5701
+00:53:26,160 --> 00:53:34,720
+farther with. We run into no saddle points.
+We run into no local minimum. Once we
+
+5717
+00:53:34,720 --> 00:53:40,000
+found the minimum, it's the global minimum.
+These are the good problems. OK. Again,
+
+5731
+00:53:40,140 --> 00:53:42,440
+happy to see you today. And
+I look forward to Wednesday.
+

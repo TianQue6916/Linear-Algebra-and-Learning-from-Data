@@ -1,0 +1,1996 @@
+1
+00:00:01,620 --> 00:00:06,140
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,140 --> 00:00:10,680
+help MIT OpenCourseWare continue to offer
+high quality educational resources for
+
+25
+00:00:10,680 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:27,720
+courses, visit MIT OpenCourseWare at ocw
+.mit .edu. OK. So I'm going to talk about
+
+54
+00:00:27,720 --> 00:00:36,340
+Gradient Scent today, to get to that
+central algorithm of neural nets, deep
+
+67
+00:00:36,340 --> 00:00:41,920
+learning, machine learning, and
+optimization in general. So I'm trying to
+
+78
+00:00:41,920 --> 00:00:50,400
+minimize a function. And that's the way you
+do it. If there are many, many variables,
+
+94
+00:00:50,400 --> 00:00:55,440
+too many to take second derivatives,
+then we settle for first derivatives of the
+
+108
+00:00:55,440 --> 00:01:02,120
+function. OK. So I introduce, and you've
+already met the idea of gradient. But let
+
+123
+00:01:02,120 --> 00:01:09,160
+me just be sure to make some comments about
+the gradient and the Hessian and the role
+
+140
+00:01:09,160 --> 00:01:17,820
+of convexity before we see the big crucial
+example. So I've kind of prepared over here
+
+156
+00:01:18,220 --> 00:01:27,420
+for this crucial example. The function is
+a pure quadratic. Two unknowns, x and y.
+
+171
+00:01:28,960 --> 00:01:36,780
+Pure quadratic. So every pure quadratic I
+can write in terms of a symmetric matrix S.
+
+187
+00:01:37,300 --> 00:01:46,200
+And in this case, x1 squared was bx2
+squared. The matrix is just 2 by 2. It's
+
+204
+00:01:46,200 --> 00:01:53,600
+diagonal. It's got eigenvalues 1 and b
+sitting on the diagonal. I'm thinking of b
+
+219
+00:01:53,600 --> 00:02:03,080
+as being the smaller one. So the condition
+number, which we'll see is all important in
+
+235
+00:02:03,080 --> 00:02:05,280
+the question of the
+speed of convergence,
+
+242
+00:02:07,340 --> 00:02:15,200
+is the ratio of the largest to the
+smallest. In this case, the largest is 1.
+
+258
+00:02:15,340 --> 00:02:24,300
+The smallest is b. So that's 1 over b. And
+when 1 over b is a big number, when b is a
+
+280
+00:02:24,300 --> 00:02:29,600
+very small number, then that's when
+we're in trouble. The condition number of a
+
+294
+00:02:29,600 --> 00:02:36,340
+matrix, when the matrix is symmetric, that
+condition number is lambda max over lambda
+
+308
+00:02:36,340 --> 00:02:43,340
+min. If I had an unsymmetric matrix, I
+would probably use sigma max over sigma
+
+323
+00:02:43,340 --> 00:02:51,280
+min, of course. But here, matrices are
+symmetric. OK. We're going to see something
+
+337
+00:02:51,280 --> 00:02:59,260
+neat, is that we can actually take the
+steps of steepest descent, write down what
+
+352
+00:02:59,260 --> 00:03:05,880
+each step gives us, and see how quickly
+they converge to the answer. And what is
+
+368
+00:03:05,900 --> 00:03:13,740
+the answer? So I haven't put in any linear
+term here. So I just have a bowl sitting on
+
+387
+00:03:13,740 --> 00:03:19,760
+the origin. So of course, the minimum point
+is x equals 0, y equals 0. So the minimum
+
+405
+00:03:19,760 --> 00:03:28,820
+point x star is 0, 0, of course. So the
+question will be, how quickly do we get to
+
+424
+00:03:28,820 --> 00:03:34,640
+that one? And you'll see a pretty small
+example, not typical. But the terrific
+
+438
+00:03:34,640 --> 00:03:42,060
+thing is that we see everything for this
+example. We can see the actual steps of
+
+454
+00:03:42,080 --> 00:03:48,540
+steepest descent. We can see how quickly
+they converge to the x star, the answer,
+
+469
+00:03:49,270 --> 00:03:59,660
+the place where this thing is a minimum.
+And we can begin to think what to do if
+
+487
+00:03:59,660 --> 00:04:06,520
+it's too slow. So I'll come back. I'll
+come to that example after some general
+
+502
+00:04:06,520 --> 00:04:13,320
+thoughts about gradients, Hessians. So what
+does the gradient tell us? So let me just
+
+517
+00:04:13,320 --> 00:04:14,820
+take an example of the gradient.
+
+523
+00:04:17,760 --> 00:04:24,360
+Let me take a linear function.
+f of x, y equals, say, 2x plus 5y.
+
+538
+00:04:26,640 --> 00:04:30,000
+I just think we ought to
+get totally familiar with these.
+
+549
+00:04:32,140 --> 00:04:39,540
+We're doing something. You know, we're
+jumping into an important topic. When I ask
+
+563
+00:04:39,540 --> 00:04:46,500
+you, what's the gradient, that's a freshman
+question. But let's just be sure we know
+
+578
+00:04:46,500 --> 00:04:52,840
+how to interpret the gradient, how to
+compute it, what it means, how to see it
+
+594
+00:04:52,840 --> 00:04:57,780
+geometrically. So what's the gradient
+of that function? It's a function of two
+
+607
+00:04:57,780 --> 00:05:07,900
+variables. So the gradient is a vector
+with two components. And they are the
+
+621
+00:05:07,920 --> 00:05:12,440
+derivative with respect to x, which is 2,
+and the derivative with respect to y, which
+
+637
+00:05:12,460 --> 00:05:16,470
+is 5. So in this case,
+the gradient is constant.
+
+647
+00:05:19,540 --> 00:05:26,720
+Which I often call h after Hessian. Or del
+squared f would tell us we're taking second
+
+664
+00:05:26,720 --> 00:05:33,440
+derivatives. That will be the second
+derivatives, obviously 0 in this case. So
+
+677
+00:05:33,440 --> 00:05:42,620
+what shape is h here? It's 2 by 2, right?
+Everybody recognizes it. 2 by 2. This h
+
+695
+00:05:42,720 --> 00:05:50,180
+would have the, I take the second
+derivative of that. Oh, sorry. The first
+
+709
+00:05:50,180 --> 00:05:54,520
+derivative of that with respect to x,
+obviously 0. The first derivative with
+
+722
+00:05:54,520 --> 00:06:03,440
+respect to y. The first derivative of that
+with respect to x, y. Anyway. Hessian 0 for
+
+739
+00:06:03,440 --> 00:06:12,500
+sure. OK. So let me draw the surface. So
+x, y, and the surface. If I graph f in this
+
+759
+00:06:12,500 --> 00:06:20,060
+direction, then obviously I have a plane.
+And I'm at a typical point on the plane,
+
+775
+00:06:20,060 --> 00:06:25,920
+let's say. Yeah. Yeah. So I'm at a point x,
+y, I should say. I'm at a point x, y. And
+
+796
+00:06:25,920 --> 00:06:30,680
+let me put the plane through it. OK.
+So how do I interpret the gradient at that
+
+813
+00:06:30,700 --> 00:06:32,240
+particular point x, y?
+
+817
+00:06:35,760 --> 00:06:47,240
+What does 2x plus 5y tell me? Or rather,
+what does grad f tell me about movement at
+
+835
+00:06:47,240 --> 00:06:53,780
+that point x, y? Of course, the gradient is
+constant. So it really didn't matter what
+
+851
+00:06:54,020 --> 00:07:00,240
+point I'm moving from. But I'm taking a
+point here. So what's the deal? If I move,
+
+868
+00:07:00,340 --> 00:07:06,760
+what's the fastest way to go up the
+surface? If I took the plane that went
+
+884
+00:07:06,840 --> 00:07:12,280
+through that point x, y, what's the fastest
+way to climb the plane? What direction
+
+899
+00:07:12,280 --> 00:07:17,840
+goes up fastest? The gradient direction,
+right? The gradient direction is the way
+
+912
+00:07:17,840 --> 00:07:24,560
+up. How am I going to put that in this
+picture? I guess I'm thinking of this plane
+
+930
+00:07:24,560 --> 00:07:31,600
+as, so what plane, you could well ask, what
+plane have I drawn? Suppose I've drawn the
+
+947
+00:07:31,640 --> 00:07:36,980
+plane 2x plus 5y equals 0 even.
+
+954
+00:07:39,520 --> 00:07:43,480
+So I'll make it go through the area.
+OK. And I've taken a typical point on that
+
+971
+00:07:43,480 --> 00:07:52,920
+plane. OK. So if I decrease that function,
+I go perpendicular to the plane, right? If
+
+987
+00:07:52,920 --> 00:07:58,500
+I want to stay level with the function,
+if I want it to stay at 0, I stay in the
+
+1007
+00:07:58,500 --> 00:08:02,760
+plane. So there are two key directions.
+Everybody knows this. I'm just repeating.
+
+1020
+00:08:03,360 --> 00:08:10,800
+This is the direction of the gradient of f
+out of the plane, steepest upwards. This is
+
+1037
+00:08:10,960 --> 00:08:17,260
+the downwards direction minus gradient of
+f, perpendicular to the plane, upwards. And
+
+1050
+00:08:17,260 --> 00:08:25,660
+this is, that line is in the plane. That's
+part of a level set. 2x plus 5y equals 0
+
+1069
+00:08:25,660 --> 00:08:34,900
+would be a level set. OK. That's my
+pretty amateur picture. Just all I want to
+
+1085
+00:08:34,900 --> 00:08:47,380
+remember is these words.
+Level and steepest up or down.
+
+1095
+00:08:49,500 --> 00:08:58,720
+Down with the minus sign that we see
+in steepest descent. So we're in steepest
+
+1110
+00:08:58,720 --> 00:08:59,180
+descent. OK.
+
+1112
+00:09:03,080 --> 00:09:06,560
+And what's the Hessian
+telling me about the surface?
+
+1121
+00:09:08,740 --> 00:09:15,280
+If I take the matrix of second derivatives,
+so I have this surface. So I have a
+
+1138
+00:09:15,280 --> 00:09:18,390
+surface, f equal constant.
+
+1142
+00:09:22,450 --> 00:09:29,280
+That's the sort of level surface. So if I
+stay in that surface, the gradient of f is
+
+1160
+00:09:29,280 --> 00:09:40,160
+0. Gradient of f
+is 0 on the surface.
+
+1169
+00:09:43,580 --> 00:09:56,420
+The gradient of f points perpendicular.
+But what about the Hessian? The second
+
+1182
+00:09:56,420 --> 00:10:00,010
+derivative? What is
+that telling me about
+
+1189
+00:10:02,680 --> 00:10:08,660
+that surface in particular, when the
+Hessian is 0, or other surfaces? What does
+
+1203
+00:10:08,800 --> 00:10:18,640
+the Hessian tell me about? I'm thinking of
+the Hessian at a particular point. So I'm
+
+1219
+00:10:18,640 --> 00:10:23,420
+getting 0 for the Hessian
+because the surface is flat.
+
+1229
+00:10:25,680 --> 00:10:26,510
+If the surface
+
+1232
+00:10:29,160 --> 00:10:42,080
+was convex upwards from, if it was a
+convex graph of f, the Hessian would be?
+
+1248
+00:10:45,040 --> 00:10:51,320
+So I just want to make that connection now.
+What's the connection between the Hessian
+
+1263
+00:10:51,780 --> 00:11:00,120
+and convexity of the function? The Hessian
+of the function and convexity of the
+
+1277
+00:11:00,120 --> 00:11:09,200
+function. So the point is that convexity,
+the Hessian tells me whether or not the
+
+1292
+00:11:09,200 --> 00:11:12,760
+surface is convex. And what is the test?
+Positive definiteness. GILBERT STRANGER -
+
+1305
+00:11:13,140 --> 00:11:18,620
+Positive definiteness or semi
+-definiteness. I'm just looking for an
+
+1315
+00:11:18,800 --> 00:11:21,060
+excuse to write down convexity.
+
+1320
+00:11:25,740 --> 00:11:31,300
+Strong or strict. Do I say strict or
+strong convexity? I've forgotten. Strict, I
+
+1334
+00:11:31,300 --> 00:11:33,140
+think. Strictly convex.
+
+1337
+00:11:38,000 --> 00:11:48,120
+OK. So convexity, the Hessian is positive
+semi -definite or which includes, which I
+
+1351
+00:11:48,480 --> 00:11:51,460
+better say that right here,
+includes positive definite.
+
+1359
+00:11:57,260 --> 00:12:03,900
+And if I'm looking for a strict convexity,
+then I must require positive definite. H is
+
+1375
+00:12:03,920 --> 00:12:05,280
+positive definite.
+
+1377
+00:12:10,120 --> 00:12:18,560
+Semi -definite won't do. So semi -definite
+for convex. So in fact, the linear function
+
+1392
+00:12:18,560 --> 00:12:26,020
+is convex, but not strictly convex.
+Strictly means it really bends upwards. H
+
+1405
+00:12:26,020 --> 00:12:32,920
+is positive definite. The curvatures
+are positive. So this would include linear
+
+1417
+00:12:32,920 --> 00:12:38,440
+functions. And that would not include
+linear functions. They're not strictly
+
+1428
+00:12:38,440 --> 00:12:46,280
+convex. OK. Good, good, good. Some
+examples. OK. The number one example, of
+
+1441
+00:12:46,280 --> 00:12:50,360
+course, is the one we're talking
+about over here. So examples.
+
+1452
+00:12:56,660 --> 00:12:59,940
+X equal 1 half x transpose Sx.
+
+1459
+00:13:03,100 --> 00:13:10,660
+And of course, I could have linear terms
+minus A transpose x, a linear term, and I
+
+1476
+00:13:10,740 --> 00:13:14,140
+could have a constant term. OK.
+
+1482
+00:13:16,800 --> 00:13:30,620
+So this function is strictly convex when
+S is positive definite. H is now S for that
+
+1499
+00:13:30,620 --> 00:13:38,520
+function. For that function, H. Usually
+H, the Hessian, is varying from point to
+
+1513
+00:13:38,520 --> 00:13:43,800
+point. The nice thing about the pure
+quadratic is it's constant. It's the same S
+
+1528
+00:13:43,800 --> 00:13:51,360
+at all points. OK. Let me just ask
+you, so that's a convex function.
+
+1542
+00:13:53,620 --> 00:13:54,680
+And what's its minimum?
+
+1546
+00:13:56,720 --> 00:13:59,160
+What's the gradient, first of
+all? What's the gradient of that?
+
+1557
+00:14:03,920 --> 00:14:12,940
+I'm asking really for differentiating,
+thinking in vector, doing all n derivatives
+
+1569
+00:14:12,940 --> 00:14:20,240
+at once here. I'm asking for the whole
+vector of first derivatives. And because
+
+1583
+00:14:20,240 --> 00:14:29,500
+here, I'm giving you the whole function
+with x for a vector x. Of course, we could
+
+1600
+00:14:29,560 --> 00:14:36,920
+take n to be 1. And then we would see that
+if n was 1, this would just be Sx squared,
+
+1621
+00:14:37,620 --> 00:14:45,540
+half Sx squared. And the derivative of a
+half Sx squared, let me just put that over
+
+1638
+00:14:45,540 --> 00:14:50,600
+here so we're sure to get it right, half of
+Sx squared. This is in the n equal 1 case.
+
+1658
+00:14:51,600 --> 00:14:55,840
+And the derivative is obviously
+Sx. And that's what it is here, Sx.
+
+1671
+00:15:01,620 --> 00:15:02,800
+It really just,
+
+1674
+00:15:05,540 --> 00:15:14,300
+you know, it's obviously simple. But if
+you haven't thought about that line, it's
+
+1688
+00:15:14,540 --> 00:15:23,320
+asking for all the first derivatives of
+that quadratic function. Oh, it's not. What
+
+1702
+00:15:23,320 --> 00:15:31,340
+do I have to include now here? That's not
+right as it stands for the function that's
+
+1719
+00:15:31,440 --> 00:15:36,240
+written above it. What's the right
+gradient? Minus a. Minus a, thanks.
+
+1731
+00:15:38,300 --> 00:15:42,480
+Because it's a linear function. It's
+partial derivatives. They're obviously just
+
+1742
+00:15:42,480 --> 00:15:56,480
+the components of a. OK. And the Hessian
+H is S, the derivatives of that guy. OK.
+
+1759
+00:15:56,860 --> 00:16:02,900
+Good, good, good, good. And the minimum
+value, we might as well, oh, yeah. What's
+
+1774
+00:16:02,940 --> 00:16:05,440
+the right words for
+a minimum value?
+
+1781
+00:16:07,500 --> 00:16:15,960
+No, I'm sorry. The right word is minimum
+value, like f min. So I want to compute f
+
+1799
+00:16:15,960 --> 00:16:21,900
+min. Well, first, I have to figure
+out where is that minimum reached?
+
+1812
+00:16:24,080 --> 00:16:29,560
+And what's the answer to that? So we're
+putting everything on the board for this
+
+1827
+00:16:29,940 --> 00:16:41,200
+simple case. The minimum of f of f
+of f of x, remember, it's x's. We're in n
+
+1845
+00:16:41,200 --> 00:16:47,500
+dimensions. Is at x equal what?
+
+1851
+00:16:49,860 --> 00:16:52,380
+Well, the minimum is
+where the gradient is 0.
+
+1860
+00:16:55,640 --> 00:16:57,600
+So what's the minimizing x?
+
+1865
+00:16:59,840 --> 00:17:05,540
+S inverse a. Thanks.
+And what's the?
+
+1872
+00:17:08,020 --> 00:17:10,240
+Sorry. That's not right.
+
+1876
+00:17:12,680 --> 00:17:14,220
+It's here that I
+meant to write it.
+
+1884
+00:17:16,720 --> 00:17:22,579
+Really, my whole point for this little
+moment is to be sure that we keep straight
+
+1900
+00:17:22,579 --> 00:17:29,660
+what I mean by the place where the minimum
+is reached and the minimum value. Those are
+
+1917
+00:17:29,660 --> 00:17:38,000
+two different things. OK. So the minimum
+is reached at S inverse a, because that's
+
+1932
+00:17:38,000 --> 00:17:44,580
+obviously where the gradient is 0. It's
+the solution to Sx equal a. And what I was
+
+1949
+00:17:44,580 --> 00:17:55,240
+going to ask you is, what's the right word?
+Well, sort of word, made up word for this
+
+1967
+00:17:55,240 --> 00:18:00,600
+point x star where the minimum is reached?
+So it's not the minimum value. It's the
+
+1983
+00:18:00,640 --> 00:18:05,500
+point where it's reached. And that's
+called, the notation for that point is?
+
+1996
+00:18:08,120 --> 00:18:09,040
+Argmin. Argin. Thanks.
+
+1999
+00:18:12,440 --> 00:18:24,780
+Argmin of my function. And that means
+the place, the point where f equals fmin.
+
+2014
+00:18:27,780 --> 00:18:32,300
+I haven't said yet what the minimum value
+is. This tells us the point. And that's
+
+2030
+00:18:32,300 --> 00:18:37,540
+usually what we're interested in. We're,
+to tell the truth, not that interested in a
+
+2045
+00:18:37,540 --> 00:18:44,780
+typical example of what the minimum value
+is as much as, where is it? Where do we
+
+2062
+00:18:44,780 --> 00:18:52,780
+reach that thing? And of
+course, so this is xmin. This is then
+
+2075
+00:18:54,800 --> 00:18:57,620
+argmin of my function, f.
+
+2080
+00:18:59,840 --> 00:19:06,300
+That's the point. And it happens to be, in
+this case, the minimum value is actually 0.
+
+2097
+00:19:07,260 --> 00:19:07,760
+So it goes,
+
+2100
+00:19:10,740 --> 00:19:23,280
+because there's no linear term, a transpose
+x. I guess I feel, why am I talking about
+
+2117
+00:19:23,280 --> 00:19:29,860
+argmin when you've all seen it? I guess I
+think that somebody could just be reading
+
+2133
+00:19:30,460 --> 00:19:40,320
+this stuff, for example, learning about
+neural nets, and run into this expression
+
+2146
+00:19:40,320 --> 00:19:47,980
+argmin and think, what's that? So it's
+maybe a right time to say what it is. It's
+
+2163
+00:19:47,980 --> 00:19:54,820
+the point where the minimum is reached. And
+that's, it's the, why those words, by the
+
+2179
+00:19:54,820 --> 00:19:57,340
+way? Well, arg isn't
+much of a word.
+
+2187
+00:19:59,620 --> 00:20:07,520
+Strangled. But it's sort of short. I assume
+it's short. Nobody ever told me this. I
+
+2203
+00:20:07,520 --> 00:20:13,460
+assume it's short for argument. The word
+argument is a kind of long word for the
+
+2219
+00:20:13,460 --> 00:20:22,440
+value of x. If I have a function f of x, f
+I call a function, and x is the argument of
+
+2241
+00:20:22,440 --> 00:20:29,220
+the function. You might often, more often,
+see the word variable. But argument, and
+
+2255
+00:20:29,220 --> 00:20:34,100
+I'm assuming that's what that refers
+to. It's the argument that minimizes the
+
+2268
+00:20:34,100 --> 00:20:42,480
+function. OK, good. And here it is, s
+inverse a. Now, but just by the way, what
+
+2285
+00:20:42,480 --> 00:20:47,250
+is f min? Do you know the minimum of a
+quadratic? I mean, this is the fundamental
+
+2302
+00:20:47,960 --> 00:20:50,960
+minimization question,
+to minimize a quadratic.
+
+2308
+00:20:53,140 --> 00:20:57,760
+Electrical engineering, the quadratic
+regulator problem is the simplest problem
+
+2318
+00:20:57,760 --> 00:21:03,320
+there. There could be constraints. And
+we'll see it with constraints included. But
+
+2331
+00:21:03,420 --> 00:21:09,880
+right now, no constraints at all. We're
+just looking at the function f of x. And
+
+2347
+00:21:09,880 --> 00:21:19,540
+we, let me remove the b, because that just
+shifts the function by b. If I erase that,
+
+2365
+00:21:19,860 --> 00:21:25,860
+that's just to say it didn't matter. It's
+really that function. So that function
+
+2379
+00:21:25,860 --> 00:21:32,900
+actually goes through 0, right? As it is,
+when x is 0, we obviously get 0. But it's
+
+2397
+00:21:32,940 --> 00:21:40,140
+still on its way down, so to speak. It's
+on its way down to this point, s inverse a.
+
+2416
+00:21:40,440 --> 00:21:47,200
+That's where it bottoms out. And when it
+bottoms out, what do you get for f? One
+
+2433
+00:21:47,200 --> 00:21:51,780
+thing I know, it's going to be negative,
+because it passed through 0, and it was on
+
+2450
+00:21:51,880 --> 00:22:00,240
+its way below 0. So let's just figure out
+what that f min is. So I have a half. I'm
+
+2470
+00:22:00,260 --> 00:22:07,120
+just going to plug in s inverse a, the
+bottom point, into the function and see
+
+2486
+00:22:07,120 --> 00:22:17,960
+where the surface bottoms out and at what
+level it bottoms out. So I have a half. So
+
+2504
+00:22:18,480 --> 00:22:25,220
+that's s inverse a is a transpose s
+inverse. s is symmetric, so I'll just write
+
+2520
+00:22:25,220 --> 00:22:38,380
+s inverse transpose. s, s inverse a from
+the quadratic term minus a transpose. And x
+
+2536
+00:22:38,680 --> 00:22:44,040
+is s inverse a. Have you done this
+calculation? It just doesn't hurt to repeat
+
+2551
+00:22:44,040 --> 00:22:44,790
+it.
+
+2552
+00:22:47,300 --> 00:22:56,240
+Write in s inverse a. There, there, and
+there. OK, what have I got? Well, s inverse
+
+2569
+00:22:56,340 --> 00:23:03,880
+cancels s. So I have a half of a transpose
+s inverse a minus 1 of a transpose inverse
+
+2588
+00:23:03,880 --> 00:23:13,840
+a. So I get, finally, negative 1 half.
+Half of it minus 1 of it of a transpose s
+
+2607
+00:23:13,880 --> 00:23:20,560
+inverse a. Sorry, that's not. Brilliant
+use of the blackboard to squeeze that in
+
+2621
+00:23:20,560 --> 00:23:32,620
+there, but that's easily repeatable. OK,
+good. So that's what a quadratic bowl, a
+
+2635
+00:23:32,720 --> 00:23:41,820
+perfect quadratic problem minimizes to
+where that's its lowest level. OK, I wanted
+
+2648
+00:23:41,820 --> 00:23:48,320
+to mention one other function, because I'm
+going to speak mostly about quadratic but,
+
+2662
+00:23:48,700 --> 00:23:55,180
+obviously, the whole point is that it's
+the convexity that's really making things
+
+2675
+00:23:55,180 --> 00:24:00,510
+work. So here, let me
+just put here a remarkable
+
+2685
+00:24:06,260 --> 00:24:07,500
+convex function.
+
+2687
+00:24:11,920 --> 00:24:14,150
+And the notes tell
+
+2691
+00:24:17,300 --> 00:24:22,740
+what is the gradient of this function. They
+don't actually go as far as the Hessian.
+
+2707
+00:24:23,180 --> 00:24:30,160
+Proving this is a convex. Proving that this
+function I'm going to write down is convex
+
+2723
+00:24:33,020 --> 00:24:39,860
+takes a little thinking, but it's a
+fantastic function. You would never sort of
+
+2737
+00:24:39,980 --> 00:24:45,960
+imagine it if you didn't see it there
+sometime. So it's going to be a function of
+
+2754
+00:24:45,960 --> 00:24:50,560
+a matrix. It's a function of,
+those are n squared variables,
+
+2765
+00:24:55,160 --> 00:24:55,520
+xij.
+
+2766
+00:24:58,340 --> 00:25:04,600
+So it's a function of many variables.
+And here is this function. You take the
+
+2781
+00:25:04,680 --> 00:25:10,320
+determinant of the matrix. That's clearly
+a function of all the n squared variables.
+
+2795
+00:25:11,340 --> 00:25:17,440
+Then you take the log of the determinant
+and put in a minus. And you put in a minus
+
+2814
+00:25:17,440 --> 00:25:25,520
+sign, because we want convex. That turns
+out to be a convex function. And even to
+
+2830
+00:25:25,520 --> 00:25:31,400
+just check that for 2 by 2. Well, for 2 by
+2, you have four variables, because it's a
+
+2849
+00:25:31,400 --> 00:25:36,340
+2 by 2 matrix. We could maybe check it for
+a symmetric matrix and move down to three
+
+2867
+00:25:36,340 --> 00:25:47,100
+variables. But I'd be glad anybody who's
+ambitious to see why that log determinant
+
+2881
+00:25:47,680 --> 00:25:57,700
+is a remarkable function. And let me see.
+I think it has, so the gradient of that
+
+2898
+00:25:57,700 --> 00:26:07,980
+thing is also amazing. The gradient of
+that function, I'm going to peek so I don't
+
+2914
+00:26:07,980 --> 00:26:11,660
+write the wrong fact here.
+
+2919
+00:26:13,720 --> 00:26:23,840
+Yeah. So the partial derivatives of that
+function are the entries of, these are the
+
+2934
+00:26:23,840 --> 00:26:27,840
+entries of a inverse.
+That's the, of x inverse.
+
+2943
+00:26:38,120 --> 00:26:44,140
+That's like, wow. Where did that come from?
+OK. And it might be minus the entries, of
+
+2960
+00:26:44,140 --> 00:26:53,040
+course, because, yeah. Yeah. Yeah. So we've
+got n squared function. So think of the,
+
+2975
+00:26:53,340 --> 00:27:00,140
+what is a typical entry in x
+inverse? What is a typical x inverse ij?
+
+2990
+00:27:02,200 --> 00:27:10,380
+Just to remember that bit of pretty old
+-fashioned linear algebra. The entries of
+
+3004
+00:27:10,380 --> 00:27:16,100
+the inverse matrix, I'm sure to divide by
+what? Determinant. The determinant. That's
+
+3017
+00:27:16,120 --> 00:27:17,280
+the one thing we know.
+
+3022
+00:27:21,800 --> 00:27:27,060
+And that's the reason we take the log.
+Because when you take derivatives of a log,
+
+3038
+00:27:27,820 --> 00:27:33,240
+that will put determinant of x in the
+denominator. And then the numerator will be
+
+3053
+00:27:33,240 --> 00:27:38,720
+the derivatives of the determinant of
+x. Oh, can we get any idea what are the
+
+3069
+00:27:38,720 --> 00:27:47,880
+derivatives of the determinant? Oh, my god.
+How did I ever get into this? So are you
+
+3086
+00:27:47,880 --> 00:27:55,060
+with me so far? This is going to be
+derivatives of determinant with respect to
+
+3101
+00:27:55,060 --> 00:28:01,160
+all these variables divided by the
+determinant. Because that's what the log
+
+3113
+00:28:01,160 --> 00:28:04,820
+achieved, right? So when I take the
+derivative of the log of something, the
+
+3127
+00:28:04,880 --> 00:28:11,760
+chain rule says take the derivative of
+that something, divide by determinant of x,
+
+3141
+00:28:12,220 --> 00:28:18,440
+divide by the function determinant
+of x. OK. So what's the derivative of the
+
+3155
+00:28:18,440 --> 00:28:25,260
+determinant of a matrix with respect to its
+1, 1 entry? Yeah, sure. This is crazy to
+
+3172
+00:28:25,500 --> 00:28:36,640
+be doing this, but it's healthy. OK. So I
+have a matrix x. Da, da, da. x, x, 1, 1. x,
+
+3193
+00:28:36,700 --> 00:28:37,560
+1, n.
+
+3195
+00:28:39,800 --> 00:28:50,320
+1, x, n, n. OK. And what am I looking
+for? I'm looking for the derivatives of the
+
+3213
+00:28:50,320 --> 00:28:58,740
+detr. Do I want the derivatives of the
+determinant? Yes. So what's the derivative
+
+3227
+00:28:58,740 --> 00:29:02,400
+of x of the determinant
+
+3232
+00:29:04,980 --> 00:29:09,920
+with respect to the
+first equals what?
+
+3239
+00:29:14,140 --> 00:29:18,500
+How could I figure out? If I change, so
+what's this asking me to do? It's asking me
+
+3257
+00:29:18,500 --> 00:29:24,420
+to change x, 1, 1 by delta x and see what's
+the change in the determinant, right?
+
+3274
+00:29:25,680 --> 00:29:32,380
+That's what derivatives are. Change x, 1, 1
+a little bit. How much did the determinant
+
+3290
+00:29:32,380 --> 00:29:32,880
+change?
+
+3291
+00:29:35,560 --> 00:29:40,920
+I, what has the determinant of the
+whole matrix got to do with x, 1, 1?
+
+3307
+00:29:43,080 --> 00:29:49,380
+You remember that there's a formula
+for determinants. So I need that fact. The
+
+3321
+00:29:49,540 --> 00:29:56,860
+determinant of x is x, 1, 1 times
+something. And it's that something that I
+
+3336
+00:29:56,860 --> 00:30:03,180
+really want to know, plus x, 1, 2 times
+other something, plus, say, along the first
+
+3352
+00:30:03,180 --> 00:30:05,540
+row, times another something.
+
+3356
+00:30:09,460 --> 00:30:10,140
+What are these
+
+3359
+00:30:12,320 --> 00:30:21,840
+factors that multiply the x's to give
+the determinant? What, that gives a linear
+
+3373
+00:30:22,240 --> 00:30:28,100
+combination of the first row times certain
+factors gives the determinant. And how do I
+
+3388
+00:30:28,100 --> 00:30:32,680
+know that there will be such factors?
+Because the fundamental property of the
+
+3401
+00:30:32,680 --> 00:30:39,740
+determinant is that it's linear in row
+1. If I don't mess with other rows, it's a
+
+3418
+00:30:39,740 --> 00:30:47,300
+linear function of row 1. So it has the
+form x, 1, 1 times something. And what is
+
+3436
+00:30:47,340 --> 00:30:52,780
+that something? Determinant of the same
+length. The determinant of this. So what
+
+3449
+00:30:52,780 --> 00:30:58,440
+does x, 1, 1 multiply when you compute
+determinants? x, 1, 1 will not multiply any
+
+3465
+00:30:58,440 --> 00:31:05,280
+other guys in its row, because you're never
+multiplying two x's in the same row or the
+
+3482
+00:31:05,300 --> 00:31:11,920
+same column. What x, 1, 1 is multiplying
+are all these guys. In fact, it turns out
+
+3499
+00:31:11,960 --> 00:31:19,380
+to be it's the determinant. And what is
+this called? That one smaller determinant
+
+3513
+00:31:19,380 --> 00:31:27,820
+that I get by throwing away the first row
+and first column. It's called a? 1, 1, 1.
+
+3531
+00:31:28,040 --> 00:31:36,140
+Minor is good. Yes. Minor is good. There
+are two words that can be used. Minor and
+
+3548
+00:31:36,140 --> 00:31:36,480
+cofactor.
+
+3549
+00:31:41,960 --> 00:31:47,980
+Yeah. And what is it? I mean, how do I
+compute it? What is the number? This is a
+
+3568
+00:31:47,980 --> 00:31:59,880
+number. And it's this number. But maybe
+I think of the minor as this determinant.
+
+3583
+00:32:01,260 --> 00:32:07,920
+Cancel that. Maybe I think of the minor
+as this smaller matrix. And the cofactor,
+
+3598
+00:32:08,420 --> 00:32:10,760
+which is the
+determinant of the minor.
+
+3605
+00:32:15,300 --> 00:32:22,020
+And there's a plus or minus. Everything
+about determinants, there's a plus or minus
+
+3619
+00:32:22,020 --> 00:32:29,520
+choice to be made. And we're not
+going to worry about that. But so anyway,
+
+3634
+00:32:32,080 --> 00:32:35,540
+so it's the cofactor. Let
+me sort of call it C, 1, 1.
+
+3647
+00:32:37,740 --> 00:32:44,820
+And so that's the formula for the
+determinant. That's the cofactor expansion
+
+3659
+00:32:45,620 --> 00:32:46,320
+of a determinant.
+
+3662
+00:32:54,540 --> 00:33:01,580
+OK. And that will connect back to
+this amazing fact that the gradient is the
+
+3677
+00:33:01,580 --> 00:33:08,820
+entries of x inverse. And the inverse is
+the ratio of cofactor to determinant. So x
+
+3693
+00:33:08,820 --> 00:33:15,420
+inverse, 1, 1, is that cofactor
+over the determinant.
+
+3702
+00:33:19,160 --> 00:33:30,220
+Yeah. So that's where this all comes from.
+Anyway, I'm just mentioning that as a very
+
+3718
+00:33:30,220 --> 00:33:39,760
+interesting example of convex function.
+OK. I'll leave that. That's just for like
+
+3731
+00:33:39,760 --> 00:33:49,720
+education. OK. Now I'm ready to go to work
+on gradient descent. So actually, the rest
+
+3747
+00:33:49,720 --> 00:33:55,500
+of this class and Friday's class about
+gradient descent are very fundamental parts
+
+3760
+00:33:55,500 --> 00:34:04,180
+of this, of 18 .065. And that will be one
+of our examples. And then the general case
+
+3778
+00:34:04,180 --> 00:34:12,580
+here. OK. So I'm using this. I'm not going
+to. It would be interesting to minimize
+
+3794
+00:34:12,580 --> 00:34:21,100
+that thing. But we're not going there.
+Let's hide it so we don't see it again. And
+
+3811
+00:34:21,100 --> 00:34:22,980
+I'll work with that example.
+
+3816
+00:34:26,540 --> 00:34:28,260
+So here is gradient descent.
+
+3821
+00:35:01,760 --> 00:35:04,190
+OK. So we can
+take it as constant.
+
+3829
+00:35:06,640 --> 00:35:11,460
+If we take too big a learning rate, the
+thing will oscillate all over the place.
+
+3845
+00:35:12,380 --> 00:35:20,120
+And it's a disaster. If we take too small a
+learning rate, too small steps, what's the
+
+3862
+00:35:20,120 --> 00:35:28,040
+matter with that? Takes too long. Takes
+too long. So the problem is to get it just
+
+3879
+00:35:28,040 --> 00:35:28,460
+right.
+
+3880
+00:35:30,520 --> 00:35:37,640
+And one way that you could say get it right
+would be to think of optimize. Choose the
+
+3898
+00:35:37,640 --> 00:35:44,580
+optimal SK. Of course, that takes longer
+than just deciding an SK in advance, which
+
+3913
+00:35:44,580 --> 00:35:52,420
+is what people do. So I think what people
+do is, on really big problems, is take an
+
+3931
+00:35:52,420 --> 00:35:58,960
+SK, estimate a suitable SK, and then go
+with it for a while, and then look back to
+
+3949
+00:35:58,960 --> 00:36:05,740
+see, was it, if it was too big, they'll
+see oscillations in the, you know, it'll be
+
+3966
+00:36:05,780 --> 00:36:07,100
+bouncing all over the place.
+
+3971
+00:36:09,460 --> 00:36:13,620
+Or, of course, an
+exact line search.
+
+3978
+00:36:16,900 --> 00:36:20,420
+So you see that this expression
+often, an exact line search.
+
+3989
+00:36:23,020 --> 00:36:28,100
+Choose SK to make
+
+3993
+00:36:30,160 --> 00:36:43,880
+my function f at xk plus 1 a minimum on the
+line, on the search line, in the search, a
+
+4013
+00:36:43,880 --> 00:36:47,700
+minimum in the search direction.
+
+4018
+00:36:54,660 --> 00:36:59,100
+The search direction is given by
+the gradient. That's the direction we're
+
+4030
+00:36:59,100 --> 00:37:04,880
+moving. This is the distance we're moving,
+or a measure of the distance we're moving.
+
+4045
+00:37:05,580 --> 00:37:12,660
+And an exact search would be to go along
+there. If I have a convex function, then as
+
+4063
+00:37:12,660 --> 00:37:20,060
+I move along this line, as I increase SK,
+I'll see the function start down, because
+
+4079
+00:37:20,640 --> 00:37:28,340
+the gradient negative gradient means down.
+But at some point, it'll turn up again. And
+
+4094
+00:37:28,340 --> 00:37:37,400
+an exact line search would find that point
+and stop there. OK. That doesn't mean we
+
+4110
+00:37:37,400 --> 00:37:42,240
+would, you know, we will see in this
+example where we will do exact line
+
+4125
+00:37:42,240 --> 00:37:43,560
+searches that
+
+4127
+00:37:45,580 --> 00:37:51,800
+for a small value of b, it's extremely
+slow. That the condition number controls
+
+4141
+00:37:51,800 --> 00:37:58,560
+the speed. That's really what my message
+will be just in these last minutes and next
+
+4157
+00:37:58,560 --> 00:38:04,920
+time, the sort of key lecture on gradient
+descent. OK. So an exact line search would
+
+4173
+00:38:05,020 --> 00:38:09,220
+be that. So what a
+backtracking line search.
+
+4181
+00:38:16,200 --> 00:38:30,840
+Backtracking would be take a fixed s. Like
+1. And then be prepared to come backwards.
+
+4197
+00:38:32,480 --> 00:38:38,460
+Cut back by half. See what you get at
+that point. Cut back by half of that to a
+
+4216
+00:38:38,460 --> 00:38:45,920
+quarter of the original step. See what that
+is. And when you, if you're, so the full
+
+4233
+00:38:45,920 --> 00:38:54,120
+step might have taken you back to the
+upward sweep. Halfway forward might still
+
+4247
+00:38:54,120 --> 00:39:01,100
+be on the upward sweep. Might be too
+much. So backtracking cuts the step size in
+
+4263
+00:39:01,440 --> 00:39:04,640
+pieces and checks until it,
+
+4268
+00:39:07,960 --> 00:39:17,440
+so s0, half of s0, quarter of s0, or
+obviously a different parameter, a s0, a
+
+4284
+00:39:17,680 --> 00:39:19,740
+squared s0, and
+so on until you're
+
+4291
+00:39:22,000 --> 00:39:28,320
+satisfied with that step. And there are,
+of course, many, many refinements. We're
+
+4304
+00:39:28,380 --> 00:39:39,820
+talking about a big algorithm here that
+everybody finds has, depending on their
+
+4317
+00:39:39,820 --> 00:39:46,240
+function, has different experiences with.
+OK. OK. So here's my fundamental question.
+
+4329
+00:39:48,240 --> 00:39:55,720
+What, if I do, let's think of an exact.
+Like how much does that reduce the
+
+4345
+00:39:55,720 --> 00:40:03,720
+function? How much does that reduce the
+function? So that's really what the bounds
+
+4359
+00:40:03,780 --> 00:40:12,360
+that I want are. How much does that reduce
+the function? And it will, we'll see that
+
+4376
+00:40:12,420 --> 00:40:16,000
+the reduction involves
+
+4379
+00:40:22,680 --> 00:40:25,080
+the condition number, m over m.
+
+4385
+00:40:29,000 --> 00:40:37,560
+So why don't I turn to the example first,
+and then where we know exact answers. That
+
+4402
+00:40:37,560 --> 00:40:48,880
+gives us a basis for comparison. And then
+the math goal is prove, get bounds on the
+
+4419
+00:40:48,920 --> 00:40:55,840
+size of f that match. So we can match what
+we see exactly in that example, where we
+
+4437
+00:40:55,880 --> 00:41:04,500
+know everything. We know the gradient. We
+know the Hessian. It's that matrix. We know
+
+4452
+00:41:04,500 --> 00:41:09,770
+the condition number. So what
+happens if I start at a point x0, y0?
+
+4466
+00:41:13,560 --> 00:41:15,380
+That's on my surface.
+
+4470
+00:41:18,500 --> 00:41:25,690
+Sorry. What do I want to do here?
+That, yeah. I take a point, x0, y0.
+
+4486
+00:41:28,360 --> 00:41:30,320
+And I iterate.
+
+4489
+00:41:32,400 --> 00:41:51,840
+OK. So here's the new x, y, k
+plus 1 is x, y, k minus the s, times,
+
+4507
+00:41:54,140 --> 00:41:58,700
+which I can compute, times the gradient
+of f. So I'm going to put in gradient of f.
+
+4525
+00:41:58,860 --> 00:42:00,080
+What is the gradient here?
+
+4530
+00:42:02,500 --> 00:42:12,720
+The gradient, the derivative is with
+respect to x. So I have a 2x, k, and 2by,
+
+4547
+00:42:13,940 --> 00:42:19,540
+k. Right? That's my, and
+this is the step size. OK.
+
+4558
+00:42:22,220 --> 00:42:28,280
+And for this small problem, where we're
+going to get such a revealing answer, I'm
+
+4573
+00:42:28,280 --> 00:42:34,340
+going to choose exact line search. I'm
+going to choose the best x, k. OK. And
+
+4589
+00:42:34,560 --> 00:42:39,740
+what's the answer? So let me, I just want
+to tell you what the iterations are for
+
+4606
+00:42:39,740 --> 00:42:47,970
+that particular function, starting at
+x0, y0. Start. So let me put start x0,
+
+4620
+00:42:51,340 --> 00:42:51,600
+y0.
+
+4621
+00:43:21,850 --> 00:43:25,400
+And I'll tell you about that in a month,
+in two or three weeks. And I'll tell you
+
+4639
+00:43:25,400 --> 00:43:35,100
+about that. So OK. So here are the x, k's
+and the y, k's and the f and the function
+
+4659
+00:43:35,100 --> 00:43:37,260
+values. OK. So x, k.
+
+4664
+00:43:40,360 --> 00:43:41,620
+So where am I going to start?
+
+4671
+00:43:44,920 --> 00:43:51,920
+Yeah. So I'm starting from the point x0, y0
+equal b, 1. Turns out that'll make it. Our
+
+4689
+00:43:52,060 --> 00:44:04,080
+formula is very convenient. x0, y0 equals
+b, 1. Good. So OK. So x, k is b times the
+
+4708
+00:44:04,080 --> 00:44:17,790
+key ratio, b minus 1 over b plus 1 to
+the k -th power. And y, k happens to be 1.
+
+4729
+00:44:22,120 --> 00:44:27,320
+Ratio. And my function
+f has the same ratio, too.
+
+4739
+00:44:29,700 --> 00:44:38,120
+This is f, k. Has that same ratio, 1 minus
+b over 1 plus b to the k -th times f, 0.
+
+4761
+00:44:39,360 --> 00:44:46,700
+That's my, that's the beautiful
+formula that we're going to.
+
+4771
+00:44:51,920 --> 00:44:58,720
+Take as the best example possible. Let's
+just see. At k equals 0, I have x, k equal
+
+4789
+00:44:58,720 --> 00:45:07,940
+b, y, k equal 1, b starting at b, 1. And
+that tells me the rate of decrease of the
+
+4809
+00:45:07,940 --> 00:45:15,540
+function. It's the same ratio. So what am I
+learning from this example? What's jumping
+
+4824
+00:45:15,540 --> 00:45:26,520
+out is that this ratio, 1 minus b over 1
+plus b is crucial. That that's the, if b is
+
+4844
+00:45:26,540 --> 00:45:33,580
+near 1, that ratio is small. If b is near
+1, that's near 0 over 2. And I converge
+
+4863
+00:45:33,580 --> 00:45:42,800
+quickly. No problem at all. But if b is
+near 0, if my condition number is bad, so
+
+4881
+00:45:43,520 --> 00:45:51,440
+the bad case, the
+hard case, is small b.
+
+4890
+00:46:21,740 --> 00:46:28,200
+So I'm going to change that picture to a
+picture in the xy plane of the level sets.
+
+4908
+00:46:29,080 --> 00:46:36,240
+Yeah. So the picture really to see is
+in the xy plane. The level sets f equal
+
+4925
+00:46:36,240 --> 00:46:42,140
+constant. That's what a level set is. It's
+a set of points x and y where f has the
+
+4944
+00:46:42,140 --> 00:46:45,220
+same value. And what
+do those look like?
+
+4952
+00:46:47,240 --> 00:46:47,980
+Let's see.
+
+4954
+00:46:52,640 --> 00:46:57,420
+What do you think? What do you think?
+What do the level sets look like for this
+
+4971
+00:46:57,620 --> 00:47:05,040
+particular function? If I look at the curve
+x squared plus b y squared equal constant,
+
+4987
+00:47:05,360 --> 00:47:12,100
+that's what a level set is. This is x
+squared plus b y squared equal a constant.
+
+5004
+00:47:13,680 --> 00:47:15,080
+What kind of a curve is that?
+
+5011
+00:47:17,620 --> 00:47:24,940
+That's an ellipse. And what's up with that
+ellipse? What's the shape of it? So it's
+
+5027
+00:47:25,000 --> 00:47:34,460
+because there's no xy term, that ellipse
+is well lined up with the axes. The major
+
+5043
+00:47:34,460 --> 00:47:39,960
+axes of the ellipse are in the x and y
+directions because there is no cross term
+
+5060
+00:47:39,960 --> 00:47:48,180
+here. And we could always have diagonalized
+our matrix if it wasn't diagonal. And that
+
+5075
+00:47:48,200 --> 00:47:53,900
+wouldn't have changed anything. So this
+is just rotating the space. And we've done
+
+5089
+00:47:53,900 --> 00:48:02,380
+that. OK. So what do the level sets look
+like? They're ellipses. And suppose b is a
+
+5106
+00:48:02,460 --> 00:48:11,740
+small number. Then what's with the
+ellipses? If b is small, I have to take a
+
+5122
+00:48:11,760 --> 00:48:18,500
+pretty large y to match a change in x. I
+think maybe they're ellipses of that sort.
+
+5139
+00:48:18,500 --> 00:48:18,900
+Are they?
+
+5141
+00:48:49,480 --> 00:48:55,980
+It comes down steeply in the y direction.
+But in the x direction, I'm crossing the
+
+5157
+00:48:55,980 --> 00:49:05,580
+valley slow. Is that right? So what happens
+if I take a point there? Oh, yeah. Ah, I
+
+5175
+00:49:05,580 --> 00:49:14,840
+remember what to do. So let's start at that
+point on that ellipse. OK. And those were
+
+5192
+00:49:14,840 --> 00:49:16,840
+the level sets, f
+equal constant.
+
+5198
+00:49:19,480 --> 00:49:23,920
+Search direction. What
+direction do I move from x0, y0?
+
+5208
+00:49:28,600 --> 00:49:34,440
+Do I move along the ellipse? Absolutely
+not, because along the ellipse, f is
+
+5222
+00:49:34,440 --> 00:49:40,100
+constant. The gradient direction is
+perpendicular to the ellipse. So I move
+
+5234
+00:49:40,100 --> 00:49:43,420
+perpendicular to the
+ellipse. And when do I stop?
+
+5243
+00:49:45,540 --> 00:49:57,000
+Pretty soon. Because very soon, I'm going
+back up again. So I start some, well, I
+
+5259
+00:49:57,000 --> 00:49:57,840
+don't know whether you will.
+
+5264
+00:49:59,920 --> 00:50:06,940
+Yeah. I haven't practiced with this curve,
+but I know. And time's up, thank God. But
+
+5280
+00:50:07,020 --> 00:50:18,260
+what do I know is going to happen? And by
+Friday, we'll make it happen. So what do we
+
+5299
+00:50:18,340 --> 00:50:28,340
+see for the curve, the track of the,
+say it? Zigzag. It's a zigzag. Yeah. So we
+
+5316
+00:50:28,340 --> 00:50:33,900
+would like to get here, but we're not aimed
+here at all. So we zig, zig, zigzag, and
+
+5334
+00:50:33,900 --> 00:50:36,980
+very slowly approach that point.
+
+5339
+00:50:39,320 --> 00:50:47,800
+And how slowly? With that? With that
+multiplier, 1 minus b over 1 plus b. So
+
+5355
+00:50:47,800 --> 00:50:54,420
+that's what I'm learning from this example,
+that that's a key number. And then you
+
+5370
+00:50:54,420 --> 00:50:59,360
+could ask, well, what about general
+examples? This was one specially chosen
+
+5382
+00:50:59,360 --> 00:51:04,220
+example with the exact solution. Well,
+we'll see at the beginning of next time
+
+5396
+00:51:04,680 --> 00:51:11,720
+that for a convex function, this
+is typical. It's this 1 minus b is the
+
+5411
+00:51:11,800 --> 00:51:19,280
+critical quantity, or 1 over b, or how
+small is b compared to 1. So that will be
+
+5429
+00:51:19,280 --> 00:51:24,860
+the critical quantity. And we see it in
+this ratio, 1 minus b over 1 plus b. So if
+
+5448
+00:51:24,860 --> 00:51:35,220
+b is 1 hundredth, this is 0 .99 over 1 .01.
+It's virtually 1. OK. So next time is sort
+
+5468
+00:51:35,220 --> 00:51:45,160
+of a key lecture to see what I've just
+said, that this controls convergence of
+
+5483
+00:51:45,220 --> 00:51:52,740
+steepest descent, and then to see an
+idea that speeds it up. That idea is called
+
+5499
+00:51:52,740 --> 00:52:02,530
+momentum, or heavy ball. So the physical
+idea is if you had a heavy ball right there
+
+5516
+00:52:02,920 --> 00:52:08,740
+and wanted to get it down the valley toward
+the bottom, you wouldn't go perpendicular
+
+5531
+00:52:08,740 --> 00:52:14,020
+to the level sets. Not at all. You'd let
+the momentum of the ball take over and let
+
+5549
+00:52:14,020 --> 00:52:22,380
+it roll down. So the idea of momentum
+is to model the possibility of letting that
+
+5565
+00:52:22,380 --> 00:52:30,900
+heavy ball roll instead of directing it by
+steepest descent at every point. So there's
+
+5580
+00:52:30,900 --> 00:52:37,220
+an extra term in steepest descent, the
+momentum term that accelerates it. OK. So
+
+5594
+00:52:37,220 --> 00:52:40,900
+Friday is the day. See you then.
+

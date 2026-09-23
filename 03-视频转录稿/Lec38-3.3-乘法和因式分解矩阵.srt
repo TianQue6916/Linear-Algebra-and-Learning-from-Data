@@ -1,0 +1,3136 @@
+﻿1
+00:00:01,620 --> 00:00:04,800
+The following content is
+provided under a Creative Commons license.
+
+2
+00:00:05,360 --> 00:00:10,940
+Your support will help MIT OpenCourseWare continue to
+offer high -quality educational resources for free.
+
+3
+00:00:11,620 --> 00:00:15,740
+To make a donation or to view additional
+materials from hundreds of MIT courses,
+
+4
+00:00:16,640 --> 00:00:20,520
+visit MIT
+OpenCourseWare at ocw .mit .edu.
+
+5
+00:00:22,300 --> 00:00:27,800
+So, are we ready
+to go? Any questions on 1806 -5?
+
+6
+00:00:28,740 --> 00:00:32,460
+So it will be, as
+I said before, a mixture
+
+7
+00:00:33,660 --> 00:00:39,960
+of linear algebra and math questions, along
+with online
+
+8
+00:00:40,930 --> 00:00:41,600
+using the material.
+
+9
+00:00:42,860 --> 00:00:42,860
+OK,
+
+10
+00:00:43,380 --> 00:00:45,060
+so I'm, in this first
+
+11
+00:00:45,780 --> 00:00:46,900
+week or two,
+
+12
+00:00:47,800 --> 00:00:50,980
+reviewing
+the highlights of linear algebra.
+
+13
+00:00:52,020 --> 00:00:58,680
+And I've reached
+this point to remember,
+
+14
+00:00:59,360 --> 00:01:01,240
+well, so we, I just
+
+15
+00:01:02,600 --> 00:01:05,360
+said two
+words about multiplying matrices
+
+16
+00:01:07,560 --> 00:01:10,420
+by using column times row
+
+17
+00:01:11,200 --> 00:01:12,920
+as a way to do it. And
+
+18
+00:01:13,560 --> 00:01:20,440
+I want to illustrate that by the
+five key factorizations
+
+19
+00:01:21,300 --> 00:01:22,800
+of matrices.
+
+20
+00:01:23,680 --> 00:01:23,900
+OK,
+
+21
+00:01:24,480 --> 00:01:27,140
+so what are they? And
+do you recognize them?
+
+22
+00:01:28,220 --> 00:01:30,320
+Everybody uses those letters. In
+fact,
+
+23
+00:01:31,220 --> 00:01:41,680
+some of those letters, like LU or QR, would be the most used
+MATLAB commands in linear algebra. So A equal LU, I'll maybe
+
+24
+00:01:42,200 --> 00:01:46,140
+say something I'll
+develop today, but it's about elimination.
+
+25
+00:01:54,820 --> 00:01:56,040
+Solving linear systems.
+
+26
+00:01:57,360 --> 00:02:02,540
+So that's always the start of a linear
+algebra course, but it will go fast here.
+
+27
+00:02:03,320 --> 00:02:10,720
+I just want to show you a different way to get to
+L times U, lower triangular times upper triangular.
+
+28
+00:02:11,600 --> 00:02:12,700
+Probably you've seen that,
+
+29
+00:02:14,080 --> 00:02:14,340
+those
+
+30
+00:02:14,880 --> 00:02:15,500
+triangular matrices.
+
+31
+00:02:16,780 --> 00:02:19,380
+So do you
+know what QR is? What's QR about?
+
+32
+00:02:23,460 --> 00:02:25,150
+Least squares. LEAST SQUARES
+is the big application.
+
+33
+00:02:26,940 --> 00:02:30,940
+The factorization. So what kind of a matrix
+gets that letter Q?
+
+34
+00:02:32,580 --> 00:02:34,480
+Orthogonal.
+The columns are orthogonal.
+
+35
+00:02:35,080 --> 00:02:36,350
+Often orthonormal.
+
+36
+00:02:38,780 --> 00:02:40,060
+They're perpendicular
+to each other.
+
+37
+00:02:40,620 --> 00:02:42,980
+And orthonormal means
+they're unit vectors.
+
+38
+00:02:47,120 --> 00:02:50,240
+So Q often represents
+
+39
+00:02:52,160 --> 00:02:52,760
+a matrix
+
+40
+00:02:53,720 --> 00:02:54,840
+with orthonormal columns.
+
+41
+00:02:56,660 --> 00:03:06,480
+So we could say Graham -Schmidt, if you
+want to remember a couple of old timers who
+
+42
+00:03:08,840 --> 00:03:11,040
+whose algorithm produces
+Q and R.
+
+43
+00:03:13,340 --> 00:03:15,780
+How about
+this one? This is really
+
+44
+00:03:16,380 --> 00:03:17,720
+a central one in math.
+
+45
+00:03:18,560 --> 00:03:20,940
+Pure math, applied math,
+everywhere. Applications.
+
+46
+00:03:22,140 --> 00:03:33,060
+So S stands for symmetric. So this is a special factorization for
+symmetric matrices. And you can see that it's symmetric. This lambda is the
+
+47
+00:03:33,060 --> 00:03:34,920
+diagonal eigenvalue matrix.
+
+48
+00:03:35,580 --> 00:03:36,380
+Always lambda
+
+49
+00:03:37,100 --> 00:03:38,000
+for eigenvalues.
+
+50
+00:03:39,040 --> 00:03:42,220
+Q is like that Q.
+Different Q, of course.
+
+51
+00:03:43,540 --> 00:03:44,560
+That Q you can
+
+52
+00:03:45,120 --> 00:03:51,260
+find sort of just straightforward from
+Graham -Schmidt. This Q has the eigenvectors.
+
+53
+00:03:52,240 --> 00:03:55,180
+So you don't
+find eigenvectors without some extra work.
+
+54
+00:03:56,240 --> 00:03:57,590
+OK, so that's eigenvectors.
+
+55
+00:03:58,640 --> 00:04:00,300
+Yeah, so that would be
+
+56
+00:04:01,240 --> 00:04:03,640
+worth expanding.
+
+57
+00:04:04,540 --> 00:04:07,720
+So
+here are the eigenvectors of the matrix S.
+
+58
+00:04:08,800 --> 00:04:10,820
+N of them normalized.
+
+59
+00:04:11,480 --> 00:04:17,190
+Here are the eigenvalues, lambda 1
+to lambda n. And here are the eigenvectors
+
+60
+00:04:17,779 --> 00:04:18,970
+now transposed.
+
+61
+00:04:23,180 --> 00:04:23,320
+OK,
+
+62
+00:04:25,720 --> 00:04:28,610
+so remind me
+of the great fact about,
+
+63
+00:04:29,340 --> 00:04:33,980
+two facts, I guess, one fact about the
+eigenvalues and one fact about the eigenvectors.
+
+64
+00:04:34,660 --> 00:04:37,760
+This is like
+an important fact and
+
+65
+00:04:39,820 --> 00:04:40,700
+statement in linear algebra.
+
+66
+00:04:41,760 --> 00:04:45,980
+What do we know about the eigenvectors? Oh,
+well, I guess I'm giving it away.
+
+67
+00:04:46,940 --> 00:04:48,400
+The eigenvectors are?
+
+68
+00:04:49,760 --> 00:04:52,980
+Orthogonal.
+That's very important. Makes the matrices,
+
+69
+00:04:53,760 --> 00:04:54,940
+well, they're beautiful
+matrices.
+
+70
+00:04:55,440 --> 00:04:57,400
+They're the
+kings of linear algebra.
+
+71
+00:04:59,020 --> 00:05:06,320
+Q's are the queens, in my opinion. Orthogonal matrices
+are the queens of symmetric matrices are the kings.
+
+72
+00:05:07,080 --> 00:05:15,440
+So these are orthonormal eigenvectors. And
+the key point, an important point
+
+73
+00:05:16,300 --> 00:05:22,950
+that's implicit here is there are n of them. There
+is a complete set. The matrix can be diagonalized.
+
+74
+00:05:23,580 --> 00:05:23,960
+And those,
+
+75
+00:05:24,740 --> 00:05:27,380
+well, what's special
+about the eigenvalues?
+
+76
+00:05:28,160 --> 00:05:34,540
+Other matrices could be Q lambda Q transpose.
+But symmetric matrices are something
+
+77
+00:05:35,050 --> 00:05:36,420
+additional about lambdas.
+
+78
+00:05:37,000 --> 00:05:38,260
+They're all
+real? They're all real.
+
+79
+00:05:39,520 --> 00:05:41,020
+So eigenvalues are real.
+
+80
+00:05:41,700 --> 00:05:44,640
+And eigenvectors
+are orthonormal,
+
+81
+00:05:45,520 --> 00:05:55,700
+can be chosen orthonormal, can be chosen, I guess I have to say. OK,
+good, good, good. Oh, now maybe I'll use that as an example of matrix
+
+82
+00:05:55,700 --> 00:05:55,960
+multiplication.
+
+83
+00:05:57,070 --> 00:05:58,720
+So let me just do that here.
+
+84
+00:05:59,360 --> 00:06:02,700
+Simple matrix multiplication, but it makes
+the point.
+
+85
+00:06:04,670 --> 00:06:07,820
+Q lambda Q transpose.
+
+86
+00:06:10,460 --> 00:06:14,650
+OK, well, what was my
+point about matrix multiplication?
+
+87
+00:06:15,880 --> 00:06:16,160
+Let me,
+
+88
+00:06:17,980 --> 00:06:25,800
+it really involved two matrices. Here I unfortunately have three.
+So I'm going to have to squeeze lambda in with one of the Q's to
+
+89
+00:06:26,440 --> 00:06:27,900
+see it nicely as two matrices.
+
+90
+00:06:28,940 --> 00:06:33,340
+Shall I just do
+that? Yeah, now I've made it two matrices.
+
+91
+00:06:34,020 --> 00:06:34,920
+That was easy.
+
+92
+00:06:35,580 --> 00:06:35,680
+OK,
+
+93
+00:06:36,320 --> 00:06:37,360
+now what's the rule?
+
+94
+00:06:38,480 --> 00:06:42,520
+In
+the first notes, this was A and this was B.
+
+95
+00:06:43,200 --> 00:06:44,660
+And when you
+multiply two matrices,
+
+96
+00:06:45,240 --> 00:06:46,080
+the rule is,
+
+97
+00:06:46,800 --> 00:06:48,740
+this is columns
+
+98
+00:06:50,120 --> 00:06:50,620
+of
+
+99
+00:06:51,160 --> 00:06:51,880
+Q lambda
+
+100
+00:06:52,980 --> 00:06:53,620
+times
+
+101
+00:06:54,520 --> 00:06:56,980
+rows of
+
+102
+00:06:57,560 --> 00:06:57,920
+Q transpose.
+
+103
+00:07:00,120 --> 00:07:04,320
+I'm multiplying columns
+by rows. And so it's a column vector
+
+104
+00:07:05,160 --> 00:07:06,440
+times a row vector.
+
+105
+00:07:07,420 --> 00:07:08,580
+And that gives us a matrix.
+
+106
+00:07:10,120 --> 00:07:10,380
+So each,
+
+107
+00:07:11,180 --> 00:07:15,580
+and it's a special
+matrix. So this is a column. This is a row.
+
+108
+00:07:16,460 --> 00:07:21,820
+And when I multiply n
+by 1 times 1 by n, I get an n by n matrix.
+
+109
+00:07:22,620 --> 00:07:23,780
+And it's pretty special.
+
+110
+00:07:24,540 --> 00:07:29,060
+And what is the special fact about,
+I'm sort of recalling from last time,
+
+111
+00:07:29,680 --> 00:07:32,000
+what's special about
+a column times a row?
+
+112
+00:07:33,300 --> 00:07:34,320
+It's rank is special.
+
+113
+00:07:34,900 --> 00:07:35,920
+Its rank is 1.
+
+114
+00:07:37,260 --> 00:07:39,040
+Its column space,
+
+115
+00:07:39,640 --> 00:07:42,240
+well, the only column
+around is this 1.
+
+116
+00:07:43,100 --> 00:07:46,000
+So all columns are
+multiples of this guy.
+
+117
+00:07:46,800 --> 00:07:49,100
+All rows are
+multiples of this guy,
+
+118
+00:07:49,980 --> 00:07:49,980
+as
+
+119
+00:07:50,520 --> 00:07:53,750
+we could see from an example. Shall I just
+do an example?
+
+120
+00:07:54,360 --> 00:07:59,720
+1, 2 times 3, 4 to
+take a random example.
+
+121
+00:08:00,580 --> 00:08:02,380
+So that would give us 3, 4,
+
+122
+00:08:03,120 --> 00:08:03,640
+6, 8.
+
+123
+00:08:05,200 --> 00:08:05,790
+And sure enough,
+
+124
+00:08:06,900 --> 00:08:14,560
+the columns are multiples of 1, 2. The rows
+are multiples of 3, 4. And the rank is 1.
+
+125
+00:08:16,820 --> 00:08:18,620
+OK, so those
+are the building blocks.
+
+126
+00:08:19,480 --> 00:08:20,680
+Now I want to build something.
+
+127
+00:08:22,040 --> 00:08:22,780
+So here we go.
+
+128
+00:08:25,360 --> 00:08:28,020
+So this is a sum of rank 1. Sum
+
+129
+00:08:29,180 --> 00:08:29,500
+of
+
+130
+00:08:30,460 --> 00:08:31,220
+rank 1.
+
+131
+00:08:33,299 --> 00:08:34,780
+Sum of
+
+132
+00:08:35,520 --> 00:08:39,400
+column
+times row. So I take column 1 times row 1.
+
+133
+00:08:40,380 --> 00:08:48,780
+That's my first thing in the sum. So column 1 of that.
+So you see I had to sneak the lambda in to have just two
+
+134
+00:08:49,500 --> 00:08:49,640
+factors.
+
+135
+00:08:50,700 --> 00:08:53,810
+So what's column
+1 of q lambda? Oh, that's a good question.
+
+136
+00:08:55,140 --> 00:09:00,140
+So
+column 1 of q is q1, the first eigenvector.
+
+137
+00:09:01,280 --> 00:09:04,720
+But now I'm multiplying
+by this diagonal matrix.
+
+138
+00:09:05,340 --> 00:09:09,540
+Do you see in your mind
+what's the first column of q lambda?
+
+139
+00:09:12,360 --> 00:09:12,800
+Just
+
+140
+00:09:13,520 --> 00:09:14,590
+think about that a second.
+
+141
+00:09:15,380 --> 00:09:16,020
+So here's,
+
+142
+00:09:18,700 --> 00:09:22,200
+we can steal any
+little corner for a matrix.
+
+143
+00:09:22,780 --> 00:09:24,640
+OK, so here's q1.
+
+144
+00:09:25,700 --> 00:09:27,400
+And the rest of the columns.
+
+145
+00:09:27,900 --> 00:09:39,420
+And then here is lambda 1. And that's q lambda. So I'm putting those together.
+And I'm asking, what's the first column of the answer? Can you see how
+
+146
+00:09:39,420 --> 00:09:40,260
+that works?
+
+147
+00:09:41,740 --> 00:09:42,140
+q1 lambda 1?
+
+148
+00:09:42,860 --> 00:09:46,380
+Yes, sorry? q1 lambda
+1. q1 lambda 1, exactly.
+
+149
+00:09:47,040 --> 00:09:49,280
+That lambda 1 will multiply q1.
+
+150
+00:09:49,800 --> 00:09:54,920
+These other lambdas multiply later columns. So
+the first column is lambda 1 times q1. Right.
+
+151
+00:09:55,660 --> 00:09:58,980
+So it's the
+first guy, lambda 1 q1.
+
+152
+00:10:00,320 --> 00:10:05,020
+And then
+the first row of this will be q1 transpose.
+
+153
+00:10:06,940 --> 00:10:08,100
+That's the first guy
+
+154
+00:10:08,720 --> 00:10:14,290
+in our sum of n things. And let me put the
+next one and the last one.
+
+155
+00:10:14,820 --> 00:10:19,200
+Lambda 2 q2 q2 transpose.
+
+156
+00:10:20,320 --> 00:10:25,700
+And lambda n qn qn transpose.
+
+157
+00:10:30,000 --> 00:10:31,940
+That's really a nice way
+to write,
+
+158
+00:10:33,640 --> 00:10:34,860
+to break up
+
+159
+00:10:35,800 --> 00:10:36,340
+the
+
+160
+00:10:36,960 --> 00:10:49,840
+product q lambda q transpose. This is called the spectral theorem. So
+that's the symmetry. That's s. That's s there, is that. So we've broken up s
+
+161
+00:10:50,400 --> 00:10:52,680
+into rank 1 pieces.
+
+162
+00:10:53,560 --> 00:10:57,120
+That's like a constant theme.
+
+163
+00:10:57,840 --> 00:11:00,300
+And these
+rank 1 pieces are quite special,
+
+164
+00:11:00,800 --> 00:11:01,820
+because they're symmetric.
+
+165
+00:11:02,940 --> 00:11:04,960
+q1 q1 transpose will be
+symmetric.
+
+166
+00:11:06,640 --> 00:11:08,840
+And oh, so can we?
+
+167
+00:11:10,420 --> 00:11:13,660
+So that's just,
+I follow the rule for multiplying matrices.
+
+168
+00:11:14,400 --> 00:11:16,620
+But maybe I
+could just check that.
+
+169
+00:11:18,260 --> 00:11:20,720
+It's the right thing,
+that it came out right.
+
+170
+00:11:22,480 --> 00:11:33,260
+So what do I mean by checking? I guess I'll
+just check about s times q1. So look at s,
+
+171
+00:11:33,940 --> 00:11:37,260
+this thing, times the
+first eigenvector. And what do I get?
+
+172
+00:11:39,240 --> 00:11:39,240
+OK.
+
+173
+00:11:40,040 --> 00:11:41,980
+So you'll like this.
+
+174
+00:11:42,720 --> 00:11:47,240
+So there's, I've split
+up s into a sum of rank 1 pieces.
+
+175
+00:11:47,780 --> 00:11:48,480
+And that splitting is,
+
+176
+00:11:48,980 --> 00:11:49,980
+you see it all over.
+
+177
+00:11:52,230 --> 00:12:02,200
+It's really showing you what the pieces of the symmetric matrix are.
+And now I'm just going to check that that's a correct formula for s.
+
+178
+00:12:02,700 --> 00:12:06,380
+So I'll multiply it by
+q1. And I'm hoping to get the right thing.
+
+179
+00:12:06,880 --> 00:12:08,260
+And what do I actually get?
+
+180
+00:12:08,900 --> 00:12:13,060
+If I multiply this
+whole business times q1,
+
+181
+00:12:14,260 --> 00:12:16,200
+I get lambda 1.
+
+182
+00:12:19,300 --> 00:12:22,960
+q1 transpose, that's the
+first guy, times my q1.
+
+183
+00:12:23,600 --> 00:12:23,960
+Plus,
+
+184
+00:12:24,860 --> 00:12:25,160
+right?
+
+185
+00:12:26,860 --> 00:12:30,420
+I'm multiplying
+s by q1. And this first term gave me that.
+
+186
+00:12:31,360 --> 00:12:34,980
+And what does the next
+term give me? Put me out of my misery here.
+
+187
+00:12:36,510 --> 00:12:39,960
+I'm looking for this thing to simplify like
+mad.
+
+188
+00:12:40,660 --> 00:12:44,040
+OK. So what's the
+second term? When I multiply this guy
+
+189
+00:12:44,560 --> 00:12:44,860
+by q1,
+
+190
+00:12:46,740 --> 00:12:47,880
+what do I get? 0.
+
+191
+00:12:49,640 --> 00:12:50,240
+That's right.
+
+192
+00:12:50,880 --> 00:12:55,260
+That's what we want. And
+when I multiply the last guy by q1,
+
+193
+00:12:55,960 --> 00:13:00,080
+I get 0, because
+the q's are orthogonal.
+
+194
+00:13:01,120 --> 00:13:02,200
+So this is all I get.
+
+195
+00:13:03,180 --> 00:13:05,420
+And then,
+so I don't need this plus anymore.
+
+196
+00:13:05,980 --> 00:13:06,200
+That's it.
+
+197
+00:13:07,140 --> 00:13:10,120
+And then
+what can I do to improve
+
+198
+00:13:11,360 --> 00:13:15,220
+that little somewhat repetitive
+
+199
+00:13:15,900 --> 00:13:24,220
+formula for the answer? What do I want to do finally? I want
+to remember that the q's are normalized. They're unit vectors.
+
+200
+00:13:25,200 --> 00:13:26,480
+So what does that tell me here?
+
+201
+00:13:27,020 --> 00:13:33,740
+q1 transpose. q1
+transpose times q1. This is just 1.
+
+202
+00:13:34,900 --> 00:13:40,380
+That's what normalized means, that
+the length squared is the length
+
+203
+00:13:41,620 --> 00:13:42,980
+of the vector squared.
+
+204
+00:13:44,980 --> 00:13:45,500
+And it's 1.
+
+205
+00:13:46,060 --> 00:13:48,260
+So I can cancel that term.
+
+206
+00:13:48,860 --> 00:13:51,100
+And I'm getting the right
+answer. That's all I'm,
+
+207
+00:13:51,820 --> 00:13:53,080
+that's all this was about.
+
+208
+00:13:53,920 --> 00:13:54,940
+I was just checking
+
+209
+00:13:56,560 --> 00:14:00,980
+and wanted to see how
+it would fall out. And it falls right out,
+
+210
+00:14:01,740 --> 00:14:04,120
+that this formula
+
+211
+00:14:05,260 --> 00:14:09,520
+is the correct matrix
+S, because it's got the right eigenvectors.
+
+212
+00:14:10,820 --> 00:14:16,680
+q's. And it's got the right eigenvalues
+lambda. So it's got to be the right matrix S.
+
+213
+00:14:17,700 --> 00:14:25,320
+Is that OK?
+That's like a first example to see how this
+
+214
+00:14:28,580 --> 00:14:37,940
+splitting into rank 1's gives you back what you expect
+easily enough. It gives you the information you expect.
+
+215
+00:14:42,040 --> 00:14:47,260
+It's a symmetric eigenvalue picture for
+symmetric matrices. And we'll see it again.
+
+216
+00:14:50,320 --> 00:14:52,920
+Well, all five of these are big,
+
+217
+00:14:53,440 --> 00:14:53,640
+are important.
+
+218
+00:14:54,460 --> 00:14:57,060
+I don't know
+if you know this one, but
+
+219
+00:14:58,340 --> 00:15:00,940
+it's going
+to be a foundational factorization
+
+220
+00:15:01,960 --> 00:15:04,680
+for this
+course and for all of data science.
+
+221
+00:15:05,360 --> 00:15:06,680
+Do you know its name?
+
+222
+00:15:07,300 --> 00:15:09,600
+So what does
+it mean, first of all?
+
+223
+00:15:11,000 --> 00:15:14,620
+I'm going to comment on this. And
+then we'll save it for a couple of weeks.
+
+224
+00:15:15,520 --> 00:15:18,140
+So this u is actually
+an orthogonal matrix.
+
+225
+00:15:19,240 --> 00:15:20,060
+And so is v.
+
+226
+00:15:20,720 --> 00:15:22,820
+So it has
+two orthogonal matrices.
+
+227
+00:15:24,080 --> 00:15:24,960
+So that's why
+
+228
+00:15:25,560 --> 00:15:27,580
+people called them u and
+v rather
+
+229
+00:15:28,460 --> 00:15:33,200
+than q1 and q2, which
+was too much to get subscripts.
+
+230
+00:15:33,720 --> 00:15:36,760
+So
+orthogonal times diagonal times orthogonal.
+
+231
+00:15:37,720 --> 00:15:39,120
+Let me say orthogonal,
+
+232
+00:15:40,580 --> 00:15:41,520
+diagonal,
+
+233
+00:15:44,220 --> 00:15:44,740
+orthogonal.
+
+234
+00:15:46,060 --> 00:15:54,160
+And 1806 would, as of now, reach this
+topic, because it's jumped up in importance.
+
+235
+00:15:54,860 --> 00:15:55,680
+And it's called?
+
+236
+00:15:56,480 --> 00:15:58,440
+Singular value. GILBERT STRANGER
+WANSELL III. Singular value decomposition.
+
+237
+00:16:00,360 --> 00:16:03,820
+Well, those are
+long words, so everybody calls it the SVD,
+
+238
+00:16:04,940 --> 00:16:06,940
+the singular
+value decomposition.
+
+239
+00:16:07,640 --> 00:16:08,300
+The point is,
+
+240
+00:16:11,300 --> 00:16:13,840
+it works for every matrix,
+
+241
+00:16:15,560 --> 00:16:16,120
+rectangular matrices.
+
+242
+00:16:16,800 --> 00:16:19,690
+There's no
+issue of, does it have enough eigenvectors
+
+243
+00:16:20,420 --> 00:16:20,760
+or not?
+
+244
+00:16:21,780 --> 00:16:22,580
+That's an issue here.
+
+245
+00:16:23,860 --> 00:16:24,840
+Well, it's an issue here.
+
+246
+00:16:25,460 --> 00:16:29,580
+Not every matrix has
+got enough eigenvectors to make that work.
+
+247
+00:16:30,080 --> 00:16:30,540
+Every matrix,
+
+248
+00:16:31,480 --> 00:16:33,540
+that one works, because
+
+249
+00:16:35,760 --> 00:16:37,360
+instead of one set of
+eigenvectors
+
+250
+00:16:37,860 --> 00:16:44,400
+it's got two matrices,
+two different sets of singular vectors.
+
+251
+00:16:45,440 --> 00:16:47,340
+Oh, we'll see that.
+
+252
+00:16:48,000 --> 00:16:49,360
+That's important.
+
+253
+00:16:51,380 --> 00:16:55,150
+OK, so that's
+really a quick overview
+
+254
+00:16:56,960 --> 00:16:58,660
+of fundamental factorizations.
+
+255
+00:16:59,680 --> 00:17:06,280
+And I'd like to say just another word about
+elimination, a equal lu. And then we'll leave
+
+256
+00:17:06,839 --> 00:17:07,460
+it alone.
+
+257
+00:17:09,720 --> 00:17:10,780
+So elimination.
+
+258
+00:17:11,920 --> 00:17:15,480
+Yeah, do you remember that first
+
+259
+00:17:18,420 --> 00:17:24,079
+beginning of linear algebra when you're solving
+Ax equal b, you do these row operations?
+
+260
+00:17:24,619 --> 00:17:25,140
+Can I just?
+
+261
+00:17:25,800 --> 00:17:28,200
+What I want to say is
+all those row operations
+
+262
+00:17:29,140 --> 00:17:30,400
+that you do
+
+263
+00:17:31,660 --> 00:17:34,320
+are perfectly
+expressed by l times u.
+
+264
+00:17:35,460 --> 00:17:42,020
+And so that's a key point in 18 .06, but I
+have a different way to look at it.
+
+265
+00:17:42,680 --> 00:17:44,240
+So that's what
+I wanted to show you.
+
+266
+00:17:45,780 --> 00:17:52,480
+I want to show you a sum of rank 1s, a row
+times column. It fits in today.
+
+267
+00:17:53,380 --> 00:17:55,260
+So I'd just like to
+
+268
+00:17:56,500 --> 00:17:58,000
+see why does
+
+269
+00:17:59,360 --> 00:17:59,940
+a matrix,
+
+270
+00:18:01,280 --> 00:18:04,990
+invertible,
+this is a square matrix now, an invertible.
+
+271
+00:18:05,880 --> 00:18:12,920
+And it factors, if all goes well with
+elimination and the pivots are non -zero,
+
+272
+00:18:13,500 --> 00:18:16,820
+it factors into lower
+triangular times upper triangular.
+
+273
+00:18:17,360 --> 00:18:25,060
+So that's a key step that MATLAB would do
+with lu of a, would produce those two factors.
+
+274
+00:18:55,300 --> 00:18:58,560
+3 by 3, somebody not convinced totally by 2
+by 2.
+
+275
+00:18:59,340 --> 00:19:03,100
+Let me do a 2
+by 2. And then if you really want a 3 by 3,
+
+276
+00:19:03,740 --> 00:19:04,760
+I'll do it.
+
+277
+00:19:05,480 --> 00:19:07,220
+OK, here's 2 by 2. 2,
+
+278
+00:19:08,360 --> 00:19:09,140
+4,
+
+279
+00:19:10,040 --> 00:19:12,840
+3, 7. How's that?
+
+280
+00:19:15,020 --> 00:19:15,020
+OK.
+
+281
+00:19:17,320 --> 00:19:18,980
+So what is, yeah, so
+
+282
+00:19:19,600 --> 00:19:21,460
+let's remember
+what elimination does.
+
+283
+00:19:24,000 --> 00:19:24,220
+It.
+
+284
+00:19:57,020 --> 00:19:58,560
+And then the question is,
+
+285
+00:20:01,300 --> 00:20:01,540
+express
+
+286
+00:20:02,040 --> 00:20:03,140
+that step
+
+287
+00:20:03,780 --> 00:20:05,060
+in matrix language.
+
+288
+00:20:06,020 --> 00:20:08,600
+And the right answer is
+l times u.
+
+289
+00:20:09,220 --> 00:20:12,800
+So the right answer is that this
+a is,
+
+290
+00:20:14,540 --> 00:20:16,540
+so I'll just erase that
+
+291
+00:20:17,300 --> 00:20:18,020
+letter u,
+
+292
+00:20:18,800 --> 00:20:19,920
+is l times u.
+
+293
+00:20:21,000 --> 00:20:21,820
+So what is l?
+
+294
+00:20:23,040 --> 00:20:25,440
+l is the lower triangular guy.
+
+295
+00:20:26,260 --> 00:20:30,040
+And
+it has there the number that you used here.
+
+296
+00:20:31,090 --> 00:20:37,120
+And what was that? I subtracted 2
+of that row from this. So I want a 2 there.
+
+297
+00:20:44,460 --> 00:20:50,720
+So that would be, I would call
+that a multiplier. I multiplied row 1 by 2,
+
+298
+00:20:51,380 --> 00:20:56,790
+subtracted to get that 0. And for a 2 by 2
+example, I was finished.
+
+299
+00:20:57,960 --> 00:20:59,320
+OK, now I want to see this.
+
+300
+00:21:00,960 --> 00:21:02,660
+So there is
+l times u. It happened.
+
+301
+00:21:04,860 --> 00:21:11,380
+I would like to see how l times
+u comes out of this row, column times row.
+
+302
+00:21:12,780 --> 00:21:13,840
+So let me start.
+
+303
+00:21:14,360 --> 00:21:15,960
+Let me think again.
+
+304
+00:21:20,160 --> 00:21:22,260
+So really, the
+point of elimination,
+
+305
+00:21:22,780 --> 00:21:25,810
+what
+was, why did we do this in the first place?
+
+306
+00:21:26,360 --> 00:21:28,800
+Because here we had
+two coupled equations.
+
+307
+00:21:29,700 --> 00:21:33,000
+They were coupled
+together. We couldn't solve them instantly.
+
+308
+00:21:33,840 --> 00:21:36,960
+That step of elimination reduced
+me to,
+
+309
+00:21:38,440 --> 00:21:40,420
+down here in this
+corner, one equation.
+
+310
+00:21:41,700 --> 00:21:44,440
+I've eliminated the first unknown
+x
+
+311
+00:21:45,000 --> 00:21:46,840
+from the second equation.
+
+312
+00:21:48,200 --> 00:21:52,520
+The equation
+is 0x plus 1y equal right -hand side. And I
+
+313
+00:21:53,100 --> 00:21:53,930
+solve it immediately.
+
+314
+00:21:55,200 --> 00:21:55,200
+OK,
+
+315
+00:21:55,960 --> 00:21:56,200
+so
+
+316
+00:21:57,300 --> 00:22:03,000
+how did I get to that
+1 by 1 problem with these guys removed?
+
+317
+00:22:03,900 --> 00:22:03,900
+Well,
+
+318
+00:22:06,000 --> 00:22:06,220
+yeah,
+
+319
+00:22:07,340 --> 00:22:09,480
+just write, can I write here my
+
+320
+00:22:11,400 --> 00:22:16,240
+parallel way to think of it? And 2 by 2 is
+pretty small, I admit. OK,
+
+321
+00:22:16,780 --> 00:22:19,300
+so I start with 2, 3, 4, 7.
+
+322
+00:22:22,200 --> 00:22:27,080
+I want to split it into, I want to get the
+first row and column
+
+323
+00:22:27,940 --> 00:22:28,540
+in one piece.
+
+324
+00:22:30,960 --> 00:22:32,080
+Something goes there.
+
+325
+00:22:32,920 --> 00:22:37,220
+And the other piece is
+something there.
+
+326
+00:22:38,820 --> 00:22:39,000
+OK,
+
+327
+00:22:40,480 --> 00:22:44,200
+that's what elimination
+has done. It's taken the original matrix.
+
+328
+00:22:46,260 --> 00:22:47,500
+These are both rank 1.
+
+329
+00:22:54,220 --> 00:23:01,840
+So let's just, first of all, you could tell me what
+goes in that blank space in the first rank 1 matrix.
+
+330
+00:23:02,900 --> 00:23:04,100
+Can I say this in words?
+
+331
+00:23:05,020 --> 00:23:07,120
+The first stage of elimination
+
+332
+00:23:08,020 --> 00:23:08,840
+pulls off
+
+333
+00:23:09,420 --> 00:23:09,840
+from A.
+
+334
+00:23:11,380 --> 00:23:13,320
+So A is some big matrix.
+
+335
+00:23:14,240 --> 00:23:15,940
+It pulls off from A.
+
+336
+00:23:16,460 --> 00:23:19,760
+It
+takes account of the first column and row.
+
+337
+00:23:20,740 --> 00:23:23,320
+So it writes
+
+338
+00:23:24,480 --> 00:23:30,480
+A as, here we
+go, as a first column,
+
+339
+00:23:32,100 --> 00:23:35,400
+say column 1, row 1,
+
+340
+00:23:37,660 --> 00:23:38,040
+plus
+
+341
+00:23:38,800 --> 00:23:39,640
+the easy part.
+
+342
+00:23:40,220 --> 00:23:50,320
+The easy part will be a matrix with all 0s there,
+all 0s there. And here I have A2. Can I call it A2?
+
+343
+00:23:51,900 --> 00:23:52,890
+This is my
+
+344
+00:23:54,700 --> 00:23:58,080
+way now to think about what elimination is
+really doing.
+
+345
+00:23:58,580 --> 00:24:00,560
+It's starting
+with an n by n matrix.
+
+346
+00:24:01,380 --> 00:24:03,260
+It's pulling off
+a rank 1 matrix,
+
+347
+00:24:04,720 --> 00:24:08,440
+which gets that column
+and that row correct.
+
+348
+00:24:10,220 --> 00:24:14,620
+Whatever it has in here.
+And then the rest of what's in there is A2.
+
+349
+00:24:16,780 --> 00:24:18,240
+Do you see that
+we've done that here?
+
+350
+00:24:19,340 --> 00:24:25,400
+The first step got the first row and column
+correct. And if it's rank 1, what number goes there?
+
+351
+00:24:26,640 --> 00:24:26,760
+6.
+
+352
+00:24:27,760 --> 00:24:28,480
+6 for that.
+
+353
+00:24:29,400 --> 00:24:39,620
+And then this is the rest. This is what we have one size
+smaller to work on. And it looks like it was 7. 6 has been used.
+
+354
+00:24:40,220 --> 00:24:40,320
+1.
+
+355
+00:24:43,740 --> 00:24:44,280
+That's really,
+
+356
+00:24:45,020 --> 00:24:45,700
+I
+
+357
+00:24:49,180 --> 00:24:57,200
+want to think of this rank 1 matrix as the
+first column of L times the first row of U.
+
+358
+00:24:58,720 --> 00:25:02,300
+And then
+this guy is the second column of L
+
+359
+00:25:03,000 --> 00:25:05,160
+times the second row of U.
+
+360
+00:25:10,220 --> 00:25:10,320
+OK.
+
+361
+00:25:12,500 --> 00:25:14,080
+I haven't
+
+362
+00:25:16,220 --> 00:25:18,250
+presented this
+proof in a class before.
+
+363
+00:25:20,460 --> 00:25:31,700
+And for 2 by 2, it's looking like overkill to me. I mean, like, why you
+don't have to do all that deep thinking to get the pieces? But my idea is
+
+364
+00:25:31,780 --> 00:25:34,560
+that it gives the breakdown.
+
+365
+00:25:35,320 --> 00:25:40,980
+And this, of course,
+is by our column times row rule, that's LU.
+
+366
+00:25:43,300 --> 00:25:45,380
+So we're starting with A.
+
+367
+00:25:46,320 --> 00:25:48,500
+And we're breaking it
+up into LU,
+
+368
+00:25:49,240 --> 00:25:50,640
+where LU, the first
+
+369
+00:25:51,320 --> 00:25:53,760
+piece of LU is the first
+
+370
+00:25:54,260 --> 00:25:55,200
+column times row.
+
+371
+00:25:56,060 --> 00:26:00,240
+And then
+the next pieces are the rest of the matrix.
+
+372
+00:26:01,860 --> 00:26:04,810
+And those get broken down the next
+stage
+
+373
+00:26:05,320 --> 00:26:06,400
+of elimination would break.
+
+374
+00:26:07,160 --> 00:26:08,250
+If I had a 3 by 3,
+
+375
+00:26:09,160 --> 00:26:12,020
+this
+stage peeled off the first column and row.
+
+376
+00:26:12,640 --> 00:26:21,680
+Then the next stage would peel off the second, the new second column
+and row. And the third stage would have the third column and row, just
+
+377
+00:26:22,240 --> 00:26:26,920
+the last pivot. Does this make any sense to
+you? You could email me and say
+
+378
+00:26:27,760 --> 00:26:28,780
+it's not that great.
+
+379
+00:26:30,160 --> 00:26:31,920
+But I think
+
+380
+00:26:32,520 --> 00:26:34,140
+it's to see that
+
+381
+00:26:35,320 --> 00:26:36,580
+the final result of
+
+382
+00:26:37,140 --> 00:26:38,640
+elimination is L times U.
+
+383
+00:26:39,520 --> 00:26:43,340
+It's a little magic in
+
+384
+00:26:44,640 --> 00:26:50,040
+seeing what you're doing. And I think this is
+a way to see what you're doing, that you're
+
+385
+00:26:51,040 --> 00:26:52,620
+peeling off a first part
+
+386
+00:26:53,140 --> 00:26:55,170
+to leave
+a second part like that.
+
+387
+00:26:55,900 --> 00:27:00,920
+Then the second part, you would peel
+off the second column times the second row,
+
+388
+00:27:02,140 --> 00:27:13,320
+maybe divide by the pivot to make it correct. And that would put something
+in the rest of the box. And then A3 would be the rest of that box.
+
+389
+00:27:15,060 --> 00:27:17,020
+OK, I'm stopping here.
+
+390
+00:27:17,640 --> 00:27:19,480
+I'm glad you let me do 2 by 2,
+
+391
+00:27:20,060 --> 00:27:24,100
+since I
+see that 3 by 3 would have ruined the day.
+
+392
+00:27:25,180 --> 00:27:25,660
+Yeah, OK.
+
+393
+00:27:26,660 --> 00:27:29,340
+A question or let
+me pause for a minute.
+
+394
+00:27:30,580 --> 00:27:33,500
+So I've talked about
+these factorizations.
+
+395
+00:27:36,120 --> 00:27:40,280
+This one we won't see
+again. This one we will see big time.
+
+396
+00:27:41,640 --> 00:27:50,850
+And this one we will. And this one we will. Yeah, yeah. 2,
+3, and 5 are the ones that we're really going to see a lot of
+
+397
+00:27:51,960 --> 00:27:53,120
+questions or thoughts.
+
+398
+00:27:54,200 --> 00:28:00,060
+OK, I guess
+I want to tell you now to complete today's
+
+399
+00:28:01,040 --> 00:28:02,570
+and moving forward in
+this subject,
+
+400
+00:28:03,280 --> 00:28:04,920
+the fundamental theorem
+of linear algebra.
+
+401
+00:28:06,240 --> 00:28:07,840
+The fundamental theorem
+of linear algebra.
+
+402
+00:28:08,920 --> 00:28:09,680
+OK, ready for that?
+
+403
+00:28:10,900 --> 00:28:12,920
+Or you may have seen it
+already, because
+
+404
+00:28:13,680 --> 00:28:14,980
+it's like the highlight of
+
+405
+00:28:16,440 --> 00:28:16,820
+this subject,
+
+406
+00:28:18,080 --> 00:28:20,790
+of the basic
+ideas in this subject.
+
+407
+00:28:21,860 --> 00:28:24,860
+And then
+maybe I can, after I tell you that theorem,
+
+408
+00:28:28,300 --> 00:28:32,010
+people around the world
+have given me homework problems to do.
+
+409
+00:28:32,700 --> 00:28:38,540
+Now, you would think any sensible professor would never
+do those problems. Like, he would say, it's your problem.
+
+410
+00:28:39,360 --> 00:28:42,820
+But I get carried
+away, and I solve them sometimes.
+
+411
+00:28:44,180 --> 00:28:53,360
+So one came from India last week, and it involved the fundamental theorem
+of linear algebra. Whoever teaching it there really was on the ball.
+
+412
+00:28:54,380 --> 00:28:57,080
+And well,
+I'll tell you that problem after
+
+413
+00:28:57,900 --> 00:28:58,900
+the fundamental theorem.
+
+414
+00:29:00,490 --> 00:29:01,420
+OK, fundamental theorem.
+
+415
+00:29:06,300 --> 00:29:07,760
+It's about four subspaces.
+
+416
+00:29:09,220 --> 00:29:12,520
+So I invented the name
+for fundamental subspaces.
+
+417
+00:29:13,840 --> 00:29:15,580
+So can I
+list the four subspaces?
+
+418
+00:29:16,720 --> 00:29:19,560
+Fundamental subspaces.
+
+419
+00:29:20,500 --> 00:29:22,560
+Well, we
+know one of them already,
+
+420
+00:29:24,060 --> 00:29:25,080
+the column space.
+
+421
+00:29:27,440 --> 00:29:27,840
+So
+
+422
+00:29:28,920 --> 00:29:31,500
+for a matrix.
+We're given a matrix A
+
+423
+00:29:32,580 --> 00:29:35,040
+that's m by n of rank R.
+
+424
+00:29:35,740 --> 00:29:40,360
+That's our
+normal starting point.
+
+425
+00:29:43,520 --> 00:29:47,650
+So what are those four subspaces? And how
+are they related? And what's their dimension?
+
+426
+00:29:48,480 --> 00:29:49,190
+And what those
+
+427
+00:29:50,600 --> 00:29:51,010
+are key facts.
+
+428
+00:29:52,200 --> 00:29:53,880
+OK, we already
+know the column space.
+
+429
+00:30:00,340 --> 00:30:01,620
+Column space of a matrix.
+
+430
+00:30:02,860 --> 00:30:06,100
+And actually,
+we already know the row space of a matrix.
+
+431
+00:30:07,920 --> 00:30:11,680
+And we have the notation
+for that column space of A transpose.
+
+432
+00:30:13,600 --> 00:30:15,440
+And what is the dimension?
+
+433
+00:30:16,180 --> 00:30:27,010
+So that was the key point in the first lecture. Anybody who missed
+the first lecture should go back to the notes of 1 .1 for the
+
+434
+00:30:30,280 --> 00:30:34,620
+for the thinking that
+goes into the dimension equals what?
+
+435
+00:30:36,900 --> 00:30:39,200
+Which of
+those three numbers do I want to?
+
+436
+00:30:39,720 --> 00:30:40,900
+Is the dimension of
+
+437
+00:30:41,860 --> 00:30:42,820
+the column space R?
+
+438
+00:30:44,080 --> 00:30:48,320
+R. And what can I
+say about R right away compared to m and n?
+
+439
+00:30:50,420 --> 00:30:51,060
+Yeah, less or equal.
+
+440
+00:30:52,540 --> 00:30:56,340
+I
+couldn't have more independent columns than
+
+441
+00:30:57,100 --> 00:30:57,740
+I have columns.
+
+442
+00:31:00,020 --> 00:31:00,380
+N columns.
+
+443
+00:31:02,140 --> 00:31:03,760
+So R of them are independent.
+
+444
+00:31:04,900 --> 00:31:08,680
+So R is somewhere less or equal, hopefully
+equal to n.
+
+445
+00:31:09,220 --> 00:31:11,080
+What about the dimension
+of the row space?
+
+446
+00:31:11,600 --> 00:31:20,760
+How many independent rows has the matrix
+got? R. R, thank you. That's a great fact
+
+447
+00:31:22,120 --> 00:31:25,600
+with a new proof last
+time in section 1 .1,
+
+448
+00:31:26,610 --> 00:31:28,640
+that those
+have the same dimension.
+
+449
+00:31:29,760 --> 00:31:30,080
+Same dimension,
+
+450
+00:31:30,780 --> 00:31:31,160
+which is,
+
+451
+00:31:31,840 --> 00:31:32,960
+you think,
+
+452
+00:31:33,540 --> 00:31:40,660
+OK, you look at a simple example, it's true.
+But if you're given a matrix that's 50 by 100,
+
+453
+00:31:42,840 --> 00:31:44,890
+really the fact that those
+
+454
+00:31:45,640 --> 00:31:53,180
+100 columns have the same number of independent
+ones as those 50 rows, that's great.
+
+455
+00:31:54,360 --> 00:31:56,640
+OK, now the
+other spaces are the null space.
+
+456
+00:31:59,820 --> 00:32:00,640
+Of the matrix,
+
+457
+00:32:01,680 --> 00:32:02,940
+n of a.
+
+458
+00:32:03,880 --> 00:32:06,840
+And just to
+make everything naturally symmetric,
+
+459
+00:32:07,360 --> 00:32:09,860
+the null space of
+
+460
+00:32:10,900 --> 00:32:11,420
+a transpose.
+
+461
+00:32:14,340 --> 00:32:15,760
+Those are the last two.
+
+462
+00:32:16,920 --> 00:32:19,050
+Those are the four
+fundamental subspaces,
+
+463
+00:32:20,160 --> 00:32:24,760
+which you've seen. And they're even on the
+cover of the linear algebra textbook.
+
+464
+00:32:25,320 --> 00:32:25,580
+OK,
+
+465
+00:32:26,860 --> 00:32:27,980
+so what's the null space?
+
+466
+00:32:29,640 --> 00:32:33,940
+The set of vectors that solve A equals 0.
+It's a set of solutions to AX equals 0. Right.
+
+467
+00:32:34,780 --> 00:32:35,340
+Null space
+
+468
+00:32:36,200 --> 00:32:36,580
+is
+
+469
+00:32:38,420 --> 00:32:39,940
+all solutions
+
+470
+00:32:44,260 --> 00:32:46,200
+to AX equals 0.
+
+471
+00:32:48,280 --> 00:32:52,020
+So the null space has these vectors in it,
+the x's.
+
+472
+00:32:54,440 --> 00:32:56,340
+The null
+space isn't taken from the matrix.
+
+473
+00:32:57,940 --> 00:32:59,360
+The row space
+and the column space,
+
+474
+00:33:00,440 --> 00:33:02,280
+those numbers are
+sitting in the matrix.
+
+475
+00:33:03,260 --> 00:33:06,560
+The null space and the
+null space of A transpose
+
+476
+00:33:07,180 --> 00:33:09,080
+are solutions to
+
+477
+00:33:10,140 --> 00:33:13,500
+the word null is
+reflecting the fact that that's a 0.
+
+478
+00:33:14,440 --> 00:33:16,360
+And that's what makes
+it a space.
+
+479
+00:33:17,080 --> 00:33:17,860
+Now, let
+
+480
+00:33:18,480 --> 00:33:20,520
+me just ask you to think again.
+
+481
+00:33:21,020 --> 00:33:26,780
+What's implied when I use the word space, a
+space of vectors?
+
+482
+00:33:27,720 --> 00:33:30,440
+Closed under addition. GILBERT
+STRANGSKIY ANDERSON III I can add, yeah.
+
+483
+00:33:31,380 --> 00:33:40,700
+So I can do the most important operations of linear
+algebra in that space. I can add two vectors.
+
+484
+00:33:41,260 --> 00:33:44,940
+Here, let me just add
+them. So here, I'll have a vector x.
+
+485
+00:33:45,640 --> 00:33:47,440
+And let me say another one,
+
+486
+00:33:47,980 --> 00:33:48,700
+a vector y.
+
+487
+00:33:50,080 --> 00:33:50,340
+Then
+
+488
+00:33:51,720 --> 00:33:54,500
+I
+do addition. I follow the rules.
+
+489
+00:33:55,060 --> 00:33:56,200
+I see that this
+
+490
+00:33:56,960 --> 00:33:59,880
+can be written as
+AX plus y is 0 plus 0.
+
+491
+00:34:00,880 --> 00:34:01,700
+So what have I learned?
+
+492
+00:34:03,460 --> 00:34:05,000
+I've learned that if
+
+493
+00:34:05,800 --> 00:34:09,620
+x is in the null space
+and y is in the null space, then x plus y.
+
+494
+00:34:10,940 --> 00:34:14,199
+So the
+null space is, as you said, closed, meaning
+
+495
+00:34:14,820 --> 00:34:25,480
+I don't go outside it. If x is in it and y is in it, then the sum
+is in it. And similarly, from AX equals 0, I get to A times C. BX
+
+496
+00:34:25,980 --> 00:34:26,719
+equals 0.
+
+497
+00:34:27,290 --> 00:34:29,960
+Just multiply by C, by
+a number C.
+
+498
+00:34:31,580 --> 00:34:32,920
+So those two facts,
+
+499
+00:34:34,560 --> 00:34:36,320
+that means I
+can do linear algebra.
+
+500
+00:34:37,300 --> 00:34:39,260
+I can multiply by numbers,
+
+501
+00:34:39,880 --> 00:34:40,540
+and I can add.
+
+502
+00:34:41,060 --> 00:34:45,380
+In other words, I can take linear
+combinations. That's what you do with vectors.
+
+503
+00:34:46,639 --> 00:34:49,719
+And the point is,
+if I take combinations
+
+504
+00:34:50,620 --> 00:34:52,100
+of two null space guys,
+
+505
+00:34:52,820 --> 00:34:54,409
+I'm still in the null space.
+
+506
+00:34:56,280 --> 00:34:58,840
+So that's the point of
+
+507
+00:34:59,740 --> 00:35:00,140
+the null space.
+
+508
+00:35:02,200 --> 00:35:08,940
+And so now part of the fundamental theorem
+is to figure out how many
+
+509
+00:35:10,380 --> 00:35:12,380
+independent vectors
+are in the null space.
+
+510
+00:35:12,900 --> 00:35:20,520
+How many independent solutions does that system
+of equations have? So that will be the dimension.
+
+511
+00:35:21,520 --> 00:35:26,580
+And I have to ask you what it is.
+Let me draw a picture while you're
+
+512
+00:35:27,440 --> 00:35:29,380
+thinking about those spaces.
+
+513
+00:35:31,400 --> 00:35:35,220
+It's fantastic to
+have these beautiful, clean boards.
+
+514
+00:35:35,980 --> 00:35:40,120
+OK, so here is my
+picture of the row space.
+
+515
+00:35:43,700 --> 00:35:47,000
+Rows, that's the column
+space of A transpose.
+
+516
+00:35:48,800 --> 00:35:51,320
+And here is my picture of
+
+517
+00:35:53,340 --> 00:35:54,680
+the null space,
+
+518
+00:35:55,900 --> 00:35:56,500
+N of A.
+
+519
+00:35:58,000 --> 00:36:01,320
+And that's the
+solutions to AX equals 0.
+
+520
+00:36:03,760 --> 00:36:07,000
+And why have I put
+these two together and
+
+521
+00:36:07,960 --> 00:36:13,560
+these two together?
+So the other pair will be the column space,
+
+522
+00:36:14,700 --> 00:36:15,980
+C of A.
+
+523
+00:36:16,660 --> 00:36:17,410
+And
+
+524
+00:36:20,620 --> 00:36:23,280
+null space of A transpose.
+
+525
+00:36:26,400 --> 00:36:27,440
+So there are the four spaces.
+
+526
+00:36:29,320 --> 00:36:32,680
+Their relationship is
+the fundamental theorem
+
+527
+00:36:33,480 --> 00:36:34,120
+of linear algebra.
+
+528
+00:36:35,880 --> 00:36:37,000
+So first of all,
+
+529
+00:36:39,480 --> 00:36:39,820
+what?
+
+530
+00:36:40,800 --> 00:36:42,600
+So I have an m by n matrix.
+
+531
+00:36:45,940 --> 00:36:56,020
+So that tells me that my rows, a typical row, has n components,
+right? I look at an m by n matrix. Let's do a 2 by 3 matrix.
+
+532
+00:36:59,660 --> 00:37:02,500
+So if I look at the row space,
+
+533
+00:37:03,780 --> 00:37:05,880
+this is m and this is n.
+
+534
+00:37:06,560 --> 00:37:08,280
+So I see 3.
+
+535
+00:37:09,260 --> 00:37:10,220
+The rows have length 3.
+
+536
+00:37:12,440 --> 00:37:14,460
+And of course,
+they multiply the x's,
+
+537
+00:37:15,120 --> 00:37:17,900
+which also have
+length 3. x1, x2, x3.
+
+538
+00:37:19,360 --> 00:37:20,400
+That's why these are together,
+
+539
+00:37:20,920 --> 00:37:23,360
+because they're both in
+n -dimensional space.
+
+540
+00:37:29,300 --> 00:37:30,480
+Then why are these together?
+
+541
+00:37:31,540 --> 00:37:32,580
+Because the columns
+
+542
+00:37:34,820 --> 00:37:37,600
+are in two -dimensional
+space, for this example.
+
+543
+00:37:38,460 --> 00:37:48,540
+And the null space of A transpose would be
+just two components, like y1, y2, to give 0's.
+
+544
+00:37:49,520 --> 00:37:52,940
+So do you see that
+this is R? These guys are in Rm.
+
+545
+00:37:54,880 --> 00:37:55,600
+So that's the first.
+
+546
+00:37:56,980 --> 00:37:58,000
+Like, get things straight.
+
+547
+00:37:59,120 --> 00:38:00,720
+Two spaces in Rn,
+
+548
+00:38:01,320 --> 00:38:02,860
+two spaces in Rm.
+
+549
+00:38:08,120 --> 00:38:11,820
+Now,
+what am I going to ask about these spaces?
+
+550
+00:38:12,500 --> 00:38:16,260
+I guess I already started asking and didn't
+wait for an answer.
+
+551
+00:38:16,820 --> 00:38:17,700
+They're dimension.
+
+552
+00:38:18,440 --> 00:38:20,200
+So this has dimension R.
+
+553
+00:38:23,240 --> 00:38:25,520
+And what's
+the dimension? How many?
+
+554
+00:38:26,440 --> 00:38:29,340
+This is really such a key fact.
+
+555
+00:38:31,560 --> 00:38:32,440
+If I have
+
+556
+00:38:34,060 --> 00:38:36,300
+m equations, Ax equals 0.
+
+557
+00:38:38,120 --> 00:38:40,440
+And if R of
+those equations are independent,
+
+558
+00:38:41,780 --> 00:38:42,920
+how many solutions?
+
+559
+00:38:43,480 --> 00:38:50,100
+So the dimension of this space is going to
+tell me how many solutions to
+
+560
+00:38:51,660 --> 00:38:54,660
+m equations, but really only R,
+
+561
+00:38:55,320 --> 00:38:57,960
+genuine, independent equations,
+
+562
+00:38:58,640 --> 00:38:59,520
+in
+
+563
+00:39:00,260 --> 00:39:01,580
+this
+
+564
+00:39:02,220 --> 00:39:03,420
+system Ax equals 0.
+
+565
+00:39:04,020 --> 00:39:04,380
+How many?
+
+566
+00:39:04,880 --> 00:39:06,640
+So can I ask the question again?
+
+567
+00:39:08,120 --> 00:39:10,840
+In terms of m and n and R.
+
+568
+00:39:11,960 --> 00:39:13,900
+So I really have R equations.
+
+569
+00:39:15,740 --> 00:39:19,500
+If I look at Ax equals 0, it looks like m,
+separate equations.
+
+570
+00:39:20,700 --> 00:39:29,040
+But m minus R of those are just copies or combinations
+of others. So there are R independent equations.
+
+571
+00:39:30,500 --> 00:39:32,160
+So how many have I got?
+
+572
+00:39:33,040 --> 00:39:35,680
+And
+
+573
+00:39:36,240 --> 00:39:38,220
+that's what I'm going
+to write in here. Yeah.
+
+574
+00:39:41,100 --> 00:39:41,840
+So yes.
+
+575
+00:39:42,480 --> 00:39:44,860
+So x has n components.
+
+576
+00:39:46,080 --> 00:39:48,160
+And there are real
+
+577
+00:39:48,760 --> 00:39:53,260
+active equations that
+they have to satisfy.
+
+578
+00:39:53,780 --> 00:39:55,720
+And that leaves n minus R.
+
+579
+00:39:56,520 --> 00:39:57,560
+That's the key point.
+
+580
+00:39:58,820 --> 00:40:00,070
+That's the key point.
+
+581
+00:40:01,200 --> 00:40:04,160
+That there
+are n components of x,
+
+582
+00:40:04,920 --> 00:40:06,320
+n unknowns, n unknowns.
+
+583
+00:40:07,740 --> 00:40:09,550
+And there are R constraints,
+
+584
+00:40:11,140 --> 00:40:12,220
+independent constraints.
+
+585
+00:40:13,580 --> 00:40:23,940
+So those n get, if I want to satisfy those constraints, that knocks
+out dimension R and leaves n minus R. So that's the dimension here.
+
+586
+00:40:26,400 --> 00:40:27,820
+And the beauty of
+
+587
+00:40:28,860 --> 00:40:29,420
+the count
+
+588
+00:40:30,360 --> 00:40:32,480
+is that those two numbers add up
+to n.
+
+589
+00:40:33,160 --> 00:40:34,700
+Everybody's accounted for.
+
+590
+00:40:38,880 --> 00:40:43,680
+So you have a row space and a piece in the
+null space. And those two pieces
+
+591
+00:40:45,240 --> 00:40:46,060
+give you back the vector.
+
+592
+00:40:47,560 --> 00:40:53,300
+Do you see that? That's just nice that the numbers come
+out right. And of course, they come out right here too.
+
+593
+00:40:54,640 --> 00:41:01,780
+You could say, just transpose the matrix and write the
+same thing again. What's the dimension of the column space?
+
+594
+00:41:05,570 --> 00:41:10,280
+Equals the other column space of the
+matrix. The matrix has dimension R, right?
+
+595
+00:41:11,560 --> 00:41:12,330
+And the row,
+
+596
+00:41:13,460 --> 00:41:18,740
+this guy is left out of some linear algebra
+books, as if it doesn't belong.
+
+597
+00:41:19,340 --> 00:41:19,340
+But
+
+598
+00:41:20,320 --> 00:41:22,280
+isn't it clear that without it,
+
+599
+00:41:23,100 --> 00:41:23,540
+everything
+
+600
+00:41:24,680 --> 00:41:27,320
+is only 3 quarters done?
+
+601
+00:41:28,120 --> 00:41:36,240
+We have to have this
+guy. And its dimension is m minus R. Yeah.
+
+602
+00:41:37,740 --> 00:41:43,460
+That count is just
+for A transpose what this count was for A.
+
+603
+00:41:44,240 --> 00:41:48,240
+Yeah. So we've got those dimensions, R and
+n minus R,
+
+604
+00:41:48,820 --> 00:41:51,580
+R and m minus R.
+
+605
+00:41:52,120 --> 00:41:52,120
+Yeah.
+
+606
+00:41:54,660 --> 00:41:58,260
+You'll have
+known this, but we need to
+
+607
+00:41:58,960 --> 00:42:04,060
+see it once again
+in 2018 before we start using it.
+
+608
+00:42:05,120 --> 00:42:07,020
+Now,
+is that the fundamental theorem?
+
+609
+00:42:07,860 --> 00:42:09,000
+All to a . No.
+
+610
+00:42:12,440 --> 00:42:16,840
+There is another piece to the fundamental
+theorem, which is sort of, you could say,
+
+611
+00:42:17,740 --> 00:42:18,340
+the geometry.
+
+612
+00:42:19,320 --> 00:42:22,060
+Here I have a subspace.
+Here I have a subspace
+
+613
+00:42:23,940 --> 00:42:26,040
+of this big
+n -dimensional space.
+
+614
+00:42:26,780 --> 00:42:32,720
+So I visualize those subspaces as some kind
+of a plane, an R -dimensional plane,
+
+615
+00:42:33,680 --> 00:42:36,080
+and an n minus
+R -dimensional plane.
+
+616
+00:42:36,960 --> 00:42:39,830
+And I want
+to see, how are those two planes connected?
+
+617
+00:42:41,480 --> 00:42:41,480
+How
+
+618
+00:42:42,220 --> 00:42:43,860
+are those two planes connected?
+
+619
+00:42:45,640 --> 00:42:49,000
+And let me get a
+
+620
+00:42:49,540 --> 00:42:51,880
+blank piece of the
+board to remember the final step.
+
+621
+00:42:53,200 --> 00:42:55,860
+So we've got dimensions
+
+622
+00:42:57,660 --> 00:43:00,040
+R and n minus R,
+
+623
+00:43:00,800 --> 00:43:04,800
+and then over
+here, R and m minus R.
+
+624
+00:43:05,920 --> 00:43:06,360
+OK.
+
+625
+00:43:07,080 --> 00:43:07,280
+This is for
+
+626
+00:43:07,820 --> 00:43:08,170
+the rows.
+
+627
+00:43:08,930 --> 00:43:11,000
+This is for the null space.
+
+628
+00:43:12,520 --> 00:43:13,620
+So this has
+
+629
+00:43:14,440 --> 00:43:18,820
+the rows in it. This
+has the null, the solutions to Ax equals 0.
+
+630
+00:43:19,400 --> 00:43:19,860
+What is
+
+631
+00:43:20,940 --> 00:43:21,880
+the beautiful geometry?
+
+632
+00:43:25,100 --> 00:43:25,360
+How
+
+633
+00:43:26,360 --> 00:43:29,200
+do you visualize those
+two spaces?
+
+634
+00:43:30,120 --> 00:43:31,760
+How do you visualize?
+Let me take an example.
+
+635
+00:43:32,800 --> 00:43:36,580
+Let A be 1, 2, 4,
+
+636
+00:43:37,420 --> 00:43:44,100
+2, 4, 8. Sorry about that. It's kind of
+a hoax. You see it's a hoaxed up example.
+
+637
+00:43:45,560 --> 00:43:48,740
+So this is 2 by 3.
+
+638
+00:43:49,360 --> 00:43:51,000
+So there, n is 3.
+
+639
+00:43:52,360 --> 00:43:54,400
+What's in the null
+space of this matrix?
+
+640
+00:44:24,920 --> 00:44:25,340
+The rows
+
+641
+00:44:27,040 --> 00:44:31,940
+are dependent. There's only one
+independent row. The columns are dependent.
+
+642
+00:44:33,380 --> 00:44:37,340
+Every column is a multiple of 1, 2. It's a
+rank 1 matrix.
+
+643
+00:44:38,640 --> 00:44:43,700
+OK. What about its row space has dimension
+1,
+
+644
+00:44:46,480 --> 00:44:51,070
+and its null
+space has dimension 2.
+
+645
+00:44:54,420 --> 00:44:56,860
+So because n minus R will be 2.
+
+646
+00:44:57,520 --> 00:44:59,500
+So I'm looking
+for a couple of vectors
+
+647
+00:45:00,060 --> 00:45:01,260
+that both give 0.
+
+648
+00:45:02,160 --> 00:45:05,140
+I believe there
+are, I think I've only got one independent
+
+649
+00:45:06,460 --> 00:45:11,260
+row there. So I should
+be able to find two different vectors that
+
+650
+00:45:12,200 --> 00:45:15,090
+solve Ax equals 0.
+
+651
+00:45:17,360 --> 00:45:20,120
+So what's the
+solution to Ax equals 0?
+
+652
+00:45:20,820 --> 00:45:23,040
+0 minus 2, 1. 0
+
+653
+00:45:23,820 --> 00:45:25,080
+minus 2, 1.
+
+654
+00:45:27,000 --> 00:45:27,940
+Yeah, that works.
+
+655
+00:45:29,280 --> 00:45:30,880
+And what's an
+independent solution?
+
+656
+00:45:31,600 --> 00:45:31,980
+4, 0.
+
+657
+00:45:32,720 --> 00:45:34,160
+4, 0.
+
+658
+00:45:35,140 --> 00:45:38,020
+Don't throw me off. 4, 0 and?
+
+659
+00:45:38,560 --> 00:45:40,840
+Minus 1. Minus 1.
+Yeah, that looks good.
+
+660
+00:45:42,100 --> 00:45:42,780
+That looks good.
+
+661
+00:45:44,340 --> 00:45:48,720
+And then the claim is that every solution
+would be a combination of those two.
+
+662
+00:45:49,400 --> 00:45:51,440
+And that this
+is how many there are.
+
+663
+00:45:52,000 --> 00:46:00,100
+And now it's the geometry I'm completing. So we have like
+two minutes left in this lecture. You just have to tell
+
+664
+00:46:00,720 --> 00:46:07,990
+me what's the relation between these guys in
+the row space and that guy in the null space?
+
+665
+00:46:08,900 --> 00:46:14,760
+What's the relation between the
+rows of A and the solutions to Ax equals 0?
+
+666
+00:46:15,620 --> 00:46:19,120
+If
+you saw that vector and that vector, well,
+
+667
+00:46:20,960 --> 00:46:25,740
+A times x is 0. Now, so
+what does that tell us? What do we see for
+
+668
+00:46:26,860 --> 00:46:27,860
+the relation
+
+669
+00:46:28,400 --> 00:46:33,060
+between 1, 2, 4 and 0 minus 2, 1? They're
+orthogonal. They are orthogonal. Terrific.
+
+670
+00:46:34,040 --> 00:46:34,040
+Yes.
+
+671
+00:46:34,980 --> 00:46:39,660
+Orthogonal, I test by
+the dot product 0 minus 4, 4 add to 0.
+
+672
+00:46:40,420 --> 00:46:40,420
+Yes.
+
+673
+00:46:41,620 --> 00:46:42,420
+So the,
+
+674
+00:46:44,380 --> 00:46:52,360
+and that's a completely general fact. When I look at Ax
+equals 0, it's telling me that x is orthogonal to the rows.
+
+675
+00:46:53,360 --> 00:46:54,220
+Do you see that?
+
+676
+00:46:54,820 --> 00:46:54,960
+Just to
+
+677
+00:46:55,560 --> 00:46:56,600
+put it in again here.
+
+678
+00:46:57,480 --> 00:46:58,700
+If I look at Ax,
+
+679
+00:47:00,320 --> 00:47:02,040
+A has a bunch of rows.
+
+680
+00:47:03,280 --> 00:47:04,600
+x has one column.
+
+681
+00:47:05,580 --> 00:47:08,080
+And I
+get 0. That's the point of the null space.
+
+682
+00:47:11,460 --> 00:47:14,100
+And that equation is just saying
+
+683
+00:47:14,840 --> 00:47:16,820
+that row 1 is orthogonal,
+
+684
+00:47:17,500 --> 00:47:20,080
+because that's the dot
+product of row 1 with x.
+
+685
+00:47:20,680 --> 00:47:23,960
+So here's row 1. Row 2,
+row 3, and row 4 with x.
+
+686
+00:47:24,800 --> 00:47:25,800
+The rows with x.
+
+687
+00:47:26,460 --> 00:47:27,200
+And I get 0s.
+
+688
+00:47:28,060 --> 00:47:28,340
+So
+
+689
+00:47:29,560 --> 00:47:34,580
+the point is then these
+two spaces are at 90 degree angles.
+
+690
+00:47:36,420 --> 00:47:37,740
+That's really a neat
+
+691
+00:47:38,380 --> 00:47:40,160
+picture of the four subspaces.
+
+692
+00:47:41,480 --> 00:47:46,220
+And these two are for
+the same reason at 90 degree angles, often
+
+693
+00:47:46,800 --> 00:47:48,080
+m dimensional space.
+
+694
+00:47:52,000 --> 00:47:52,740
+So that's
+the fundamental theorem
+
+695
+00:47:53,400 --> 00:47:57,240
+of linear algebra, to
+see that the dimensions come out right
+
+696
+00:47:57,780 --> 00:48:02,600
+and the geometry comes out right. Yeah. And
+then now, next time,
+
+697
+00:48:03,120 --> 00:48:09,820
+following the notes, and I
+have a few more copies of the one handout,
+
+698
+00:48:11,320 --> 00:48:19,820
+we'll move on quickly next week to
+eigenvalues and positive definite matrices.
+
+699
+00:48:22,940 --> 00:48:24,320
+But
+really linear algebra, moving on.
+

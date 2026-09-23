@@ -1,0 +1,3155 @@
+﻿1
+00:00:01,640 --> 00:00:04,820
+The following content is
+provided under a Creative Commons license.
+
+2
+00:00:05,360 --> 00:00:10,940
+Your support will help MIT OpenCourseWare continue
+to offer high quality educational resources for free.
+
+3
+00:00:11,620 --> 00:00:15,760
+To make a donation or to view additional
+materials from hundreds of MIT courses,
+
+4
+00:00:16,580 --> 00:00:20,920
+visit MIT
+OpenCourseWare at ocw .mit .edu.
+
+5
+00:00:22,700 --> 00:00:25,060
+So last time
+was orthogonal matrices,
+
+6
+00:00:26,660 --> 00:00:27,660
+Q.
+
+7
+00:00:30,160 --> 00:00:37,060
+And this time is symmetric matrices, S. So we're
+really talking about the best matrices of all.
+
+8
+00:00:37,680 --> 00:00:40,850
+Well, I'll start
+with any square matrix
+
+9
+00:00:41,880 --> 00:00:45,640
+and about eigenvectors. But you've heard of
+eigenvectors more
+
+10
+00:00:46,360 --> 00:00:48,060
+than once, more than twice,
+
+11
+00:00:48,680 --> 00:00:50,200
+more than 10 times probably.
+
+12
+00:00:51,880 --> 00:00:53,120
+So eigenvectors.
+
+13
+00:00:54,480 --> 00:00:57,140
+And then let's be sure we know why they're
+useful.
+
+14
+00:00:59,520 --> 00:01:01,840
+And maybe compute one or two.
+
+15
+00:01:02,960 --> 00:01:05,260
+But then
+we'll move to symmetric matrices
+
+16
+00:01:05,760 --> 00:01:14,400
+and what is special about those. And then even more
+special and more important will be positive definite
+
+17
+00:01:15,100 --> 00:01:15,940
+symmetric matrices.
+
+18
+00:01:16,580 --> 00:01:21,820
+So when I say positive definite,
+I mean symmetric. So start with A.
+
+19
+00:01:22,340 --> 00:01:23,280
+Next comes S.
+
+20
+00:01:23,780 --> 00:01:32,020
+Then come the special symmetric matrices that
+have this extra positive definite property.
+
+21
+00:01:33,460 --> 00:01:33,640
+So
+
+22
+00:01:34,240 --> 00:01:35,140
+start with A.
+
+23
+00:01:36,160 --> 00:01:37,570
+So an eigenvector.
+
+24
+00:01:39,460 --> 00:01:42,480
+If I multiply A by
+x, I get some vector.
+
+25
+00:01:44,640 --> 00:01:45,220
+And sometimes,
+
+26
+00:01:46,380 --> 00:01:50,560
+if x is especially chosen well,
+
+27
+00:01:51,380 --> 00:01:54,800
+Ax comes out in the same direction
+as x.
+
+28
+00:01:56,120 --> 00:01:58,900
+Ax comes out some number
+
+29
+00:01:59,680 --> 00:02:00,220
+times x.
+
+30
+00:02:02,140 --> 00:02:11,060
+So normally, there would be for an n by
+n matrix. So let's say A is n by n today.
+
+31
+00:02:13,220 --> 00:02:15,760
+Normally, if we live right,
+
+32
+00:02:16,940 --> 00:02:18,730
+there will be n different
+
+33
+00:02:19,440 --> 00:02:20,640
+independent vectors
+
+34
+00:02:21,820 --> 00:02:22,680
+x eigenvectors
+
+35
+00:02:23,380 --> 00:02:24,840
+that have this special property.
+
+36
+00:02:26,860 --> 00:02:32,060
+And
+we can compute them by hand if n is 2 or 3,
+
+37
+00:02:32,840 --> 00:02:33,440
+2 mostly.
+
+38
+00:02:34,400 --> 00:02:37,120
+But the computation of
+
+39
+00:02:37,680 --> 00:02:41,860
+the x's and the lambdas. So this
+is for
+
+40
+00:02:44,020 --> 00:02:49,360
+i equal 1 up
+to n, if I use this sort of math shorthand,
+
+41
+00:02:50,060 --> 00:02:51,280
+that I have n of these.
+
+42
+00:03:09,880 --> 00:03:13,780
+So let's think
+about an sometimes what
+
+43
+00:03:17,560 --> 00:03:19,240
+So that's another n by n matrix.
+
+44
+00:03:20,820 --> 00:03:23,680
+And we would
+ask, suppose we know these guys.
+
+45
+00:03:24,420 --> 00:03:26,480
+Suppose we found those somehow.
+
+46
+00:03:28,040 --> 00:03:29,320
+What about a squared?
+
+47
+00:03:30,520 --> 00:03:32,000
+Is x an
+
+48
+00:03:32,520 --> 00:03:33,820
+eigenvector of a squared also?
+
+49
+00:03:35,140 --> 00:03:40,180
+Well, the way to find out is to multiply a
+squared by x and see what happens.
+
+50
+00:03:41,480 --> 00:03:45,860
+Do you see what's going
+to happen here? This is a times ax,
+
+51
+00:03:48,600 --> 00:03:50,220
+which is a times
+
+52
+00:03:51,220 --> 00:03:52,920
+ax is lambda x.
+
+53
+00:03:55,600 --> 00:03:57,320
+And now what do I do now?
+
+54
+00:03:58,300 --> 00:04:00,280
+Because
+I'm shooting for the answer yes.
+
+55
+00:04:01,260 --> 00:04:03,620
+x is an eigenvector of a squared
+also.
+
+56
+00:04:04,460 --> 00:04:07,720
+So what do I do?
+That number, that lambda is just a number.
+
+57
+00:04:09,080 --> 00:04:12,460
+I can put it
+anywhere I like. So I can put it out front.
+
+58
+00:04:13,360 --> 00:04:15,080
+And then I have ax, which
+
+59
+00:04:17,279 --> 00:04:22,019
+is lambda x. Thanks. So I have another lambda
+x. So that's lambda squared x. So I learn
+
+60
+00:04:22,620 --> 00:04:24,380
+the crucial thing here,
+
+61
+00:04:25,000 --> 00:04:27,720
+that x is
+also an eigenvector of a squared.
+
+62
+00:04:28,380 --> 00:04:30,660
+And the eigenvalue is
+
+63
+00:04:31,360 --> 00:04:32,060
+lambda squared.
+
+64
+00:04:33,800 --> 00:04:35,840
+And of course, I can keep going.
+
+65
+00:04:36,800 --> 00:04:38,060
+So a to the nth
+
+66
+00:04:39,100 --> 00:04:41,520
+x is lambda to the nth x.
+
+67
+00:04:42,680 --> 00:04:48,320
+We have found the right vectors for that
+particular matrix A. What about A inverse x?
+
+68
+00:04:50,220 --> 00:04:52,940
+That will be,
+if everything is good,
+
+69
+00:04:53,460 --> 00:04:54,300
+1 over lambda x.
+
+70
+00:04:57,440 --> 00:04:57,440
+Well,
+
+71
+00:04:58,280 --> 00:04:58,440
+yeah.
+
+72
+00:04:58,980 --> 00:05:01,780
+So any time
+I write 1 over lambda, my
+
+73
+00:05:02,680 --> 00:05:03,540
+mind says,
+
+74
+00:05:04,040 --> 00:05:05,000
+you've got
+
+75
+00:05:06,380 --> 00:05:11,620
+to make some comment on the special
+case where it doesn't work, which is?
+
+76
+00:05:12,800 --> 00:05:13,520
+Yeah.
+
+77
+00:05:14,280 --> 00:05:15,460
+If lambda is not 0,
+
+78
+00:05:16,180 --> 00:05:16,780
+I'm golden.
+
+79
+00:05:17,940 --> 00:05:19,280
+If lambda is 0,
+
+80
+00:05:20,500 --> 00:05:21,300
+it doesn't look good.
+
+81
+00:05:22,760 --> 00:05:25,440
+But what's happening if
+lambda is 0?
+
+82
+00:05:26,840 --> 00:05:28,340
+A doesn't even have an inverse.
+
+83
+00:05:29,180 --> 00:05:30,580
+If lambda was 0,
+
+84
+00:05:32,260 --> 00:05:32,940
+which it could be,
+
+85
+00:05:33,780 --> 00:05:36,120
+no rule against it.
+
+86
+00:05:36,900 --> 00:05:42,320
+If lambda was 0, this would say A times
+the eigenvector is 0 times the eigenvector.
+
+87
+00:05:43,020 --> 00:05:46,660
+So that would tell me
+that the eigenvector is in the null space.
+
+88
+00:05:47,840 --> 00:05:50,340
+It would
+tell me that the matrix A isn't invertible.
+
+89
+00:05:50,920 --> 00:05:53,460
+It's taking some vector x to 0.
+
+90
+00:05:54,840 --> 00:05:57,890
+And so everything clicks.
+
+91
+00:05:58,680 --> 00:06:00,020
+This works when it should work.
+
+92
+00:06:01,780 --> 00:06:10,220
+And if we have any function of the matrix, we could
+define the exponential of a matrix. 18 .03 would do that.
+
+93
+00:06:11,360 --> 00:06:14,040
+Let's just
+write it down as if we know what it means.
+
+94
+00:06:15,600 --> 00:06:16,900
+Does it have
+the same eigenvector?
+
+95
+00:06:17,800 --> 00:06:18,440
+Well, sure.
+
+96
+00:06:18,980 --> 00:06:20,260
+Because e to the at,
+
+97
+00:06:20,780 --> 00:06:22,020
+the exponential of a matrix,
+
+98
+00:06:23,040 --> 00:06:24,480
+if I see e to the something,
+
+99
+00:06:25,220 --> 00:06:28,600
+I think of that long
+infinite series that gives the exponential.
+
+100
+00:06:30,160 --> 00:06:33,980
+All
+the terms in that series have powers of A.
+
+101
+00:06:34,860 --> 00:06:38,160
+So everything is
+working. Every term in that series,
+
+102
+00:06:38,780 --> 00:06:39,320
+x is an eigenvector.
+
+103
+00:06:39,820 --> 00:06:41,220
+And when I put it all together,
+
+104
+00:06:41,720 --> 00:06:44,180
+I learn that the eigenvalue is
+
+105
+00:06:44,860 --> 00:06:45,920
+e to the lambda t.
+
+106
+00:06:47,540 --> 00:06:54,140
+That's just a typical
+and successful use.
+
+107
+00:06:55,160 --> 00:06:55,160
+OK.
+
+108
+00:06:55,800 --> 00:07:02,840
+So that's eigenvectors and eigenvalues. And
+we'll find some in a minute.
+
+109
+00:07:06,280 --> 00:07:08,600
+Now,
+so I'm claiming that this is the
+
+110
+00:07:10,560 --> 00:07:11,340
+that from
+
+111
+00:07:12,900 --> 00:07:17,200
+this first thing, which was just like about
+certain vectors are special,
+
+112
+00:07:18,100 --> 00:07:20,780
+now
+we're beginning to see why they're useful.
+
+113
+00:07:21,680 --> 00:07:24,560
+So special is good.
+Useful is even better.
+
+114
+00:07:25,260 --> 00:07:28,120
+So let me take any vector,
+
+115
+00:07:31,940 --> 00:07:32,480
+say v.
+
+116
+00:07:34,180 --> 00:07:36,840
+And OK.
+
+117
+00:07:38,000 --> 00:07:38,800
+What do I want to do?
+
+118
+00:07:40,000 --> 00:07:40,880
+I want to use eigenvectors.
+
+119
+00:07:42,300 --> 00:07:44,900
+This
+v is probably not an eigenvector.
+
+120
+00:07:45,440 --> 00:07:48,020
+But I'm supposing
+that I've got n of them.
+
+121
+00:07:49,760 --> 00:07:56,320
+You and I are agreed that there are some matrices
+for which there are not a full set of eigenvectors.
+
+122
+00:07:57,320 --> 00:08:04,840
+That's really the main sort of annoying
+point in the whole subject of linear algebra,
+
+123
+00:08:05,560 --> 00:08:08,860
+is some matrices don't
+have enough eigenvectors.
+
+124
+00:08:11,380 --> 00:08:17,080
+So almost all do. And let's
+go forward assuming our matrix has. OK.
+
+125
+00:08:17,980 --> 00:08:19,400
+So if I've got n
+
+126
+00:08:20,080 --> 00:08:25,380
+independent eigenvectors, that's a basis. I
+can write any vector v as a combination
+
+127
+00:08:26,500 --> 00:08:26,760
+of
+
+128
+00:08:27,860 --> 00:08:28,440
+those eigenvectors.
+
+129
+00:08:30,700 --> 00:08:31,000
+Right.
+
+130
+00:08:33,360 --> 00:08:35,559
+And then I can find out
+
+131
+00:08:36,140 --> 00:08:38,280
+what a to any power.
+
+132
+00:08:40,260 --> 00:08:41,549
+So that's the point.
+
+133
+00:08:42,340 --> 00:08:51,800
+This is going to be the simple reason why we
+like to have, we like to know the eigenvectors.
+
+134
+00:08:53,000 --> 00:08:56,000
+Because if I
+choose those as my basis vectors,
+
+135
+00:08:56,640 --> 00:08:58,340
+v is a combination of them.
+
+136
+00:08:58,840 --> 00:09:03,280
+Now, if I multiply by
+a or a squared or a to the k power,
+
+137
+00:09:04,140 --> 00:09:05,300
+then it's linear.
+
+138
+00:09:06,040 --> 00:09:11,460
+So I can multiply each one by a to the
+k. And what do I get if I multiply that guy
+
+139
+00:09:11,960 --> 00:09:14,040
+by a to the k -th power?
+
+140
+00:09:15,740 --> 00:09:15,740
+OK.
+
+141
+00:09:16,440 --> 00:09:20,340
+Well, I'm just going
+to use, or here I said n, but let me say k.
+
+142
+00:09:21,420 --> 00:09:21,920
+Because n,
+
+143
+00:09:23,020 --> 00:09:25,680
+I'm sorry, I'm using n for the size of the
+matrix.
+
+144
+00:09:26,220 --> 00:09:28,820
+So I better
+use k for the matrix.
+
+145
+00:09:29,420 --> 00:09:29,800
+The typical
+
+146
+00:09:30,440 --> 00:09:31,060
+case here.
+
+147
+00:09:32,280 --> 00:09:33,400
+So what do I get?
+
+148
+00:09:34,680 --> 00:09:37,700
+Just help
+me through this and we're happy.
+
+149
+00:09:38,880 --> 00:09:42,100
+So what
+happens when I multiply that by a to the k?
+
+150
+00:09:44,600 --> 00:09:46,020
+It's an eigenvector, remember.
+
+151
+00:09:46,980 --> 00:09:49,640
+So when I multiply
+by a to the k, I get?
+
+152
+00:09:50,480 --> 00:09:51,080
+C1.
+
+153
+00:09:51,620 --> 00:09:52,740
+That's just a number.
+
+154
+00:09:53,740 --> 00:09:56,740
+And a to
+the k times that eigenvector gives?
+
+155
+00:09:57,880 --> 00:10:03,480
+Lambda 1. To the
+k times the eigenvector.
+
+156
+00:10:04,320 --> 00:10:07,680
+That's the whole point. And
+
+157
+00:10:08,240 --> 00:10:10,620
+linearity says, keep going.
+
+158
+00:10:11,720 --> 00:10:15,840
+Cn lambda n
+to the k -th power xn.
+
+159
+00:10:18,340 --> 00:10:28,170
+In other words, I can apply any power of a matrix. I
+can apply the exponential of a matrix. I can do anything
+
+160
+00:10:29,480 --> 00:10:37,700
+quickly because I've got the eigenvectors.
+So really, so I'm saying the first
+
+161
+00:10:38,320 --> 00:10:43,140
+use for eigenvectors, maybe the principal
+use for which they were invented, is
+
+162
+00:10:43,900 --> 00:10:46,700
+to be able to solve
+difference equations.
+
+163
+00:10:47,800 --> 00:10:51,680
+So if I call that vk,
+
+164
+00:10:52,480 --> 00:10:53,320
+the k -th power, then
+
+165
+00:10:54,060 --> 00:10:55,940
+the equation I'm
+solving here is?
+
+166
+00:10:58,740 --> 00:11:00,900
+A one -step difference equation.
+
+167
+00:11:01,660 --> 00:11:02,920
+This is my difference equation.
+
+168
+00:11:03,780 --> 00:11:05,220
+And if I wanted to use
+exponentials,
+
+169
+00:11:06,260 --> 00:11:13,260
+the equation I
+would be solving would be dv dt equal a v.
+
+170
+00:11:17,240 --> 00:11:18,900
+Solution to
+
+171
+00:11:19,500 --> 00:11:20,780
+discrete
+
+172
+00:11:22,300 --> 00:11:25,400
+steps or continuous time.
+
+173
+00:11:28,560 --> 00:11:31,860
+Evolution is trivial if
+I know the eigenvectors.
+
+174
+00:11:32,640 --> 00:11:32,840
+Because
+
+175
+00:11:33,340 --> 00:11:35,200
+here is the
+solution to this one.
+
+176
+00:11:35,700 --> 00:11:39,600
+And the
+solution to this one is the same thing. C1
+
+177
+00:11:40,160 --> 00:11:48,370
+e to the lambda 1 t x1. Is that what
+you were expecting for the solution here?
+
+178
+00:11:49,100 --> 00:11:52,120
+Because if I take the derivative, it brings
+down a lambda.
+
+179
+00:11:52,940 --> 00:11:55,960
+If I multiply by a, it
+brings down a lambda.
+
+180
+00:11:57,240 --> 00:12:00,410
+Plus the other guys.
+
+181
+00:12:09,700 --> 00:12:10,400
+Not news.
+
+182
+00:12:11,520 --> 00:12:11,900
+But
+
+183
+00:12:12,540 --> 00:12:14,420
+important to remember
+what eigenvectors
+
+184
+00:12:14,960 --> 00:12:16,960
+are for in the first place.
+
+185
+00:12:19,880 --> 00:12:24,520
+Yeah. Let me move ahead. Oh.
+
+186
+00:12:27,420 --> 00:12:30,220
+One matrix fact
+
+187
+00:12:33,560 --> 00:12:37,520
+is about something called
+similar matrices. So I have on my matrix A.
+
+188
+00:12:38,280 --> 00:12:41,580
+Then I have the idea of what it means to be
+similar to A.
+
+189
+00:12:42,180 --> 00:12:42,940
+So B
+
+190
+00:12:44,560 --> 00:12:50,760
+is similar to A.
+
+191
+00:12:52,240 --> 00:12:53,370
+Or yeah.
+
+192
+00:12:55,260 --> 00:12:55,940
+What does that mean?
+
+193
+00:12:56,900 --> 00:13:00,540
+So here's what it
+means, first of all. It means that B
+
+194
+00:13:01,500 --> 00:13:04,190
+can be found from A by,
+
+195
+00:13:04,720 --> 00:13:10,360
+this is the key operation here,
+multiplying by a matrix M and its inverse.
+
+196
+00:13:11,100 --> 00:13:12,140
+M inverse AM.
+
+197
+00:13:13,040 --> 00:13:16,680
+When I see
+two matrices, B and A,
+
+198
+00:13:18,660 --> 00:13:19,980
+that are connected by
+
+199
+00:13:20,520 --> 00:13:20,960
+that
+
+200
+00:13:21,660 --> 00:13:22,320
+kind of a change,
+
+201
+00:13:26,680 --> 00:13:27,340
+convertible matrix,
+
+202
+00:13:28,240 --> 00:13:30,560
+then I would
+say B was similar to A.
+
+203
+00:13:31,960 --> 00:13:32,300
+And
+
+204
+00:13:33,380 --> 00:13:34,320
+that change,
+
+205
+00:13:35,000 --> 00:13:38,200
+that
+appearance of M is pretty natural.
+
+206
+00:13:39,080 --> 00:13:45,980
+If I change variables here by M, then I get
+that similar matrix will show up.
+
+207
+00:13:48,040 --> 00:13:52,920
+So what's the key fact? Do you remember the
+key fact about similar matrices?
+
+208
+00:13:56,840 --> 00:13:57,340
+Like that?
+
+209
+00:13:58,800 --> 00:14:00,220
+They have the same eigenvalues.
+
+210
+00:14:01,460 --> 00:14:03,660
+So this is
+just a useful point to remember.
+
+211
+00:14:04,480 --> 00:14:05,400
+So this
+
+212
+00:14:07,280 --> 00:14:07,860
+is like one
+
+213
+00:14:08,720 --> 00:14:10,400
+fact in
+
+214
+00:14:10,920 --> 00:14:12,430
+the discussion
+
+215
+00:14:13,620 --> 00:14:14,840
+of eigenvalues and eigenvectors.
+
+216
+00:14:16,840 --> 00:14:18,480
+So similar matrices,
+
+217
+00:14:25,100 --> 00:14:27,900
+same eigenvalues.
+
+218
+00:14:34,280 --> 00:14:37,640
+Yeah.
+
+219
+00:14:38,260 --> 00:14:41,820
+So in some
+way, in the eigenvalue, eigenvector world,
+
+220
+00:14:42,320 --> 00:14:43,280
+they're in this,
+
+221
+00:14:44,120 --> 00:14:45,000
+they belong together.
+
+222
+00:14:48,340 --> 00:14:51,440
+They are connected by this
+
+223
+00:14:52,650 --> 00:14:55,340
+relation
+that just turns out to be the right thing.
+
+224
+00:14:58,620 --> 00:15:00,060
+Actually, that gives
+
+225
+00:15:01,680 --> 00:15:04,940
+us a clue of how
+eigenvalues are actually computed.
+
+226
+00:15:05,800 --> 00:15:09,600
+Well, they're actually
+computed by typing eig of A
+
+227
+00:15:10,700 --> 00:15:12,160
+with parentheses around A.
+
+228
+00:15:12,900 --> 00:15:13,280
+That's how
+
+229
+00:15:14,140 --> 00:15:15,360
+they're in real life.
+
+230
+00:15:18,040 --> 00:15:20,160
+But what happens
+when you type eig of A?
+
+231
+00:15:21,660 --> 00:15:24,690
+Well, you could
+say the eigenvalue shows up on the screen.
+
+232
+00:15:25,670 --> 00:15:28,040
+But something
+had to happen in there.
+
+233
+00:15:28,800 --> 00:15:31,140
+And what happened was
+
+234
+00:15:31,740 --> 00:15:33,880
+that Matlab or whoever
+
+235
+00:15:35,040 --> 00:15:37,220
+took that matrix A
+
+236
+00:15:37,820 --> 00:15:43,000
+started using good choices of M,
+
+237
+00:15:44,000 --> 00:15:44,920
+better and better,
+
+238
+00:15:47,380 --> 00:15:54,680
+took a bunch of steps with different M's. Because if I
+do another M, I still have a similar matrix, right? If
+
+239
+00:15:55,320 --> 00:15:58,270
+I take B and do a different M2
+
+240
+00:15:58,980 --> 00:15:59,620
+to B,
+
+241
+00:16:00,460 --> 00:16:09,740
+so I get something similar to B, then that's also similar to A. I've
+got a whole family of similar things there. And what does Matlab do
+
+242
+00:16:10,440 --> 00:16:14,100
+with
+all these M's, M1 and M2 and M3 and so on?
+
+243
+00:16:14,700 --> 00:16:14,960
+It
+
+244
+00:16:16,100 --> 00:16:17,420
+brings the matrix
+
+245
+00:16:19,180 --> 00:16:21,020
+to a triangular matrix.
+
+246
+00:16:22,380 --> 00:16:25,040
+It gets
+the eigenvalues showing up on the diagonal.
+
+247
+00:16:27,420 --> 00:16:31,050
+It's just tremendously,
+it was an inspiration
+
+248
+00:16:32,640 --> 00:16:35,540
+when the good
+choice of M appeared.
+
+249
+00:16:36,140 --> 00:16:37,420
+And let me just say,
+
+250
+00:16:38,200 --> 00:16:40,080
+because I'm going
+on to symmetric matrices,
+
+251
+00:16:41,280 --> 00:16:45,340
+that for symmetric matrices, everything is
+sort of clean.
+
+252
+00:16:47,520 --> 00:16:49,840
+You not only go to a
+
+253
+00:16:50,520 --> 00:16:53,640
+triangular matrix, you go toward a diagonal
+matrix.
+
+254
+00:16:55,580 --> 00:17:00,380
+You choose M's that make the off -diagonal
+stuff smaller and smaller and smaller.
+
+255
+00:17:01,680 --> 00:17:02,780
+Eigenvalues are not changing.
+
+256
+00:17:03,380 --> 00:17:05,280
+So they're shooting up
+on the diagonal
+
+257
+00:17:05,800 --> 00:17:06,500
+are the eigenvalues.
+
+258
+00:17:08,960 --> 00:17:12,339
+So I guess I should verify
+
+259
+00:17:12,920 --> 00:17:15,859
+that fact, that
+similar matrices have the same eigenvalues.
+
+260
+00:17:17,300 --> 00:17:20,740
+There can't be much
+to show. There can't be much in the proof,
+
+261
+00:17:21,660 --> 00:17:23,440
+because that's all I know.
+
+262
+00:17:24,819 --> 00:17:31,030
+And I want to know its eigenvalues and
+eigenvectors. So let me say, suppose M inverse A M.
+
+263
+00:17:31,780 --> 00:17:35,400
+Has the eigenvector y
+and the eigenvalue lambda.
+
+264
+00:17:41,480 --> 00:17:42,800
+And I want to show,
+
+265
+00:17:44,680 --> 00:17:48,080
+do I want to show
+that y is an eigenvector also of A itself?
+
+266
+00:17:48,960 --> 00:17:49,220
+No.
+
+267
+00:17:50,220 --> 00:17:51,420
+Eigenvectors are changing.
+
+268
+00:17:52,240 --> 00:17:55,660
+Do I want to show that
+lambda is an eigenvalue of A itself?
+
+269
+00:17:56,820 --> 00:17:58,000
+Yes. That's my point.
+
+270
+00:17:58,760 --> 00:18:00,360
+So can we see that? Ha.
+
+271
+00:18:01,680 --> 00:18:04,000
+Can I see that lambda
+is an eigenvalue?
+
+272
+00:18:05,400 --> 00:18:06,720
+There's not a lot to do here.
+
+273
+00:18:07,580 --> 00:18:10,500
+I mean, if I
+can't do it soon, I'm never going to do it.
+
+274
+00:18:12,440 --> 00:18:15,360
+So what am I
+going to do? Define the vector x equals my.
+
+275
+00:18:17,880 --> 00:18:17,960
+Yeah.
+
+276
+00:18:20,280 --> 00:18:23,500
+My is
+going to be a key. And I can see my coming.
+
+277
+00:18:24,260 --> 00:18:24,500
+Just
+
+278
+00:18:25,100 --> 00:18:28,380
+when I see M inverse over there,
+what am I going to do with the darn thing?
+
+279
+00:18:29,400 --> 00:18:29,760
+I'm going to
+
+280
+00:18:30,300 --> 00:18:33,540
+put it on the other side.
+I'm going to multiply that equation by M.
+
+281
+00:18:34,340 --> 00:18:35,120
+So I'll have,
+
+282
+00:18:35,960 --> 00:18:44,640
+that will put the M over here. And
+I'll have A M y equals lambda M y. Right?
+
+283
+00:18:48,760 --> 00:18:50,840
+And is that telling me what I want to know?
+Yes.
+
+284
+00:18:52,020 --> 00:18:53,680
+That's saying that M y,
+
+285
+00:18:54,700 --> 00:18:57,920
+that you wisely suggested to give a name x
+to,
+
+286
+00:18:58,440 --> 00:19:00,080
+is lambda times M y.
+
+287
+00:19:01,560 --> 00:19:02,120
+You see that?
+
+288
+00:19:02,700 --> 00:19:05,960
+That the
+eigenvalue lambda didn't change.
+
+289
+00:19:06,780 --> 00:19:07,660
+The eigenvector
+
+290
+00:19:08,480 --> 00:19:12,300
+did change. It changed
+from y to M y. That's the x.
+
+291
+00:19:13,700 --> 00:19:17,260
+The eigenvector of x.
+This is lambda x.
+
+292
+00:19:18,620 --> 00:19:18,800
+Yeah.
+
+293
+00:19:20,080 --> 00:19:24,700
+So that's the role of M. It just gives you
+a different basis for eigenvectors.
+
+294
+00:19:25,800 --> 00:19:27,470
+But it does
+not change eigenvalues.
+
+295
+00:19:28,120 --> 00:19:28,340
+Right.
+
+296
+00:19:29,080 --> 00:19:29,240
+Yeah.
+
+297
+00:19:30,380 --> 00:19:30,480
+OK.
+
+298
+00:19:31,700 --> 00:19:32,840
+So those are similar matrices.
+
+299
+00:19:34,870 --> 00:19:39,460
+Yeah, some other good things happened.
+A lot of people don't know. In fact, I
+
+300
+00:19:40,080 --> 00:19:42,200
+wasn't very
+conscious of the fact
+
+301
+00:19:42,740 --> 00:19:46,720
+that A times B has the same eigenvalues as
+B times A.
+
+302
+00:19:47,400 --> 00:19:50,540
+Well, I should
+maybe write that down.
+
+303
+00:19:51,220 --> 00:19:52,000
+AB
+
+304
+00:19:53,380 --> 00:19:56,960
+has the same eigenvalues,
+
+305
+00:19:58,200 --> 00:19:59,840
+the same non -zero ones.
+
+306
+00:20:00,580 --> 00:20:04,820
+You'll see. I have to, as BA.
+
+307
+00:20:07,120 --> 00:20:08,660
+This is any
+
+308
+00:20:09,180 --> 00:20:15,080
+A and B same size. I'm not talking similar
+matrices here. I'm talking any two A and B.
+
+309
+00:20:15,820 --> 00:20:16,420
+Yeah.
+
+310
+00:20:19,440 --> 00:20:20,280
+So that's a
+
+311
+00:20:20,780 --> 00:20:22,100
+good thing that happens.
+
+312
+00:20:24,580 --> 00:20:24,580
+Now,
+
+313
+00:20:26,000 --> 00:20:28,900
+could we see why?
+
+314
+00:20:30,000 --> 00:20:36,560
+And then I'm going to be really pretty
+happy with basic facts about eigenvalues.
+
+315
+00:20:38,200 --> 00:20:38,460
+So
+
+316
+00:20:39,340 --> 00:20:42,920
+if I want to show that
+two things have the same eigenvalues, what
+
+317
+00:20:43,540 --> 00:20:44,240
+do you propose?
+
+318
+00:20:45,940 --> 00:20:48,380
+Show that they are similar.
+
+319
+00:20:49,900 --> 00:20:52,540
+I already
+said if they're similar. So is there an M?
+
+320
+00:20:53,640 --> 00:20:55,420
+Is there an M that will connect
+
+321
+00:20:56,120 --> 00:20:57,140
+this matrix?
+
+322
+00:20:58,520 --> 00:21:02,400
+So is there an M that
+will multiply this matrix
+
+323
+00:21:04,420 --> 00:21:05,000
+that way?
+
+324
+00:21:05,860 --> 00:21:10,000
+So that would be similar
+to AB. And can I produce BA then?
+
+325
+00:21:16,940 --> 00:21:19,730
+So I'll just put
+the word want up here.
+
+326
+00:21:23,080 --> 00:21:23,580
+I want.
+
+327
+00:21:24,840 --> 00:21:26,500
+If I have that,
+
+328
+00:21:27,840 --> 00:21:28,400
+then I'm done.
+
+329
+00:21:28,900 --> 00:21:32,460
+Because that's saying that
+those two matrices, AB and BA, are similar.
+
+330
+00:21:33,260 --> 00:21:36,320
+And I know that then they
+have the same eigenvalues.
+
+331
+00:21:37,020 --> 00:21:39,400
+So what should M be?
+
+332
+00:21:41,680 --> 00:21:42,700
+M should be?
+
+333
+00:21:46,250 --> 00:21:48,080
+So what is M here?
+
+334
+00:21:49,720 --> 00:21:53,780
+I want that to be true.
+
+335
+00:21:55,100 --> 00:21:56,060
+Should M be B?
+
+336
+00:21:58,020 --> 00:22:00,120
+Yeah. M equal B. Boy.
+
+337
+00:22:01,160 --> 00:22:05,340
+Not the most hidden fact here.
+
+338
+00:22:05,900 --> 00:22:07,440
+Take M equal B.
+
+339
+00:22:11,360 --> 00:22:17,680
+So then I have B times A times B B inverse,
+which is the identity. So I have B times A. Yes.
+
+340
+00:22:19,960 --> 00:22:20,420
+So
+
+341
+00:22:20,940 --> 00:22:23,140
+AB and BA are fine.
+
+342
+00:22:23,660 --> 00:22:23,860
+Now,
+
+343
+00:22:25,940 --> 00:22:27,290
+what
+do you think about this question?
+
+344
+00:22:28,400 --> 00:22:36,220
+Are the eigenvalues? I now know that AB and BA have
+the same eigenvalues. And the reason I had to be
+
+345
+00:22:37,300 --> 00:22:38,620
+careful about
+
+346
+00:22:39,400 --> 00:22:42,380
+non -zero is that if I
+had zero eigenvalues,
+
+347
+00:22:43,220 --> 00:22:49,420
+then yeah,
+I can't count on those inverses.
+
+348
+00:22:50,000 --> 00:22:50,000
+Right.
+
+349
+00:22:50,540 --> 00:22:50,620
+Right.
+
+350
+00:22:51,780 --> 00:22:55,560
+So
+that's why I put in that little qualifier.
+
+351
+00:22:56,240 --> 00:22:57,940
+But now I want
+to ask this question.
+
+352
+00:22:58,640 --> 00:23:02,420
+If I know
+the eigenvalues of A separately,
+
+353
+00:23:02,920 --> 00:23:03,640
+by itself, A,
+
+354
+00:23:04,540 --> 00:23:08,540
+and of B, now I'm talking
+about any two matrices, A and B.
+
+355
+00:23:10,330 --> 00:23:12,120
+If I have two matrices A,
+
+356
+00:23:12,680 --> 00:23:15,160
+I have a matrix A and
+a matrix B,
+
+357
+00:23:15,680 --> 00:23:17,920
+and I know those are eigenvalues
+and they're eigenvalues,
+
+358
+00:23:19,320 --> 00:23:20,360
+what about AB?
+
+359
+00:23:21,920 --> 00:23:22,400
+A times B.
+
+360
+00:23:23,300 --> 00:23:26,840
+Can I multiply the eigenvalues
+of A times the eigenvalues of B?
+
+361
+00:23:27,780 --> 00:23:28,400
+Don't do it.
+
+362
+00:23:28,960 --> 00:23:28,960
+Right.
+
+363
+00:23:29,460 --> 00:23:29,480
+Yes.
+
+364
+00:23:30,200 --> 00:23:30,200
+Right.
+
+365
+00:23:30,920 --> 00:23:34,840
+The eigenvalues of A times the eigenvalues
+of B could be damn near anything.
+
+366
+00:23:35,780 --> 00:23:40,380
+Right. They're not connected
+to the eigenvalues of AB. Especially.
+
+367
+00:23:41,300 --> 00:23:45,270
+And maybe something
+could be discovered, but not much.
+
+368
+00:23:45,940 --> 00:23:47,660
+And similarly for A plus B.
+
+369
+00:23:49,760 --> 00:23:50,520
+So yeah.
+
+370
+00:23:51,980 --> 00:24:00,760
+So let me just write down this point. Eigenvalues
+of A plus B are generally not eigenvalues
+
+371
+00:24:01,320 --> 00:24:05,860
+of A plus eigenvalues of B.
+
+372
+00:24:08,980 --> 00:24:09,320
+Generally not.
+
+373
+00:24:10,280 --> 00:24:15,000
+There is
+no reason. And the reason that I
+
+374
+00:24:15,880 --> 00:24:17,600
+get that no answer is
+
+375
+00:24:18,720 --> 00:24:27,980
+that the eigenvectors can be all different. If the eigenvectors for A are
+totally different from the eigenvectors for B, then A plus B will have
+
+376
+00:24:28,040 --> 00:24:28,320
+probably
+
+377
+00:24:28,880 --> 00:24:31,260
+some other totally different eigenvectors.
+And
+
+378
+00:24:32,680 --> 00:24:34,660
+there's nothing happening there.
+
+379
+00:25:04,680 --> 00:25:08,740
+Having talked about any matrix A, I'm
+going to specialize to symmetric matrices,
+
+380
+00:25:09,900 --> 00:25:17,120
+see what's special about the eigenvalues there, what's special about
+the eigenvectors there. And I think we've already said it in class.
+
+381
+00:25:17,940 --> 00:25:21,100
+So let me ask
+you to tell me again.
+
+382
+00:25:21,720 --> 00:25:23,740
+So I'll call that matrix S now,
+
+383
+00:25:24,830 --> 00:25:29,200
+as a reminder always that
+I'm talking here about symmetric matrices.
+
+384
+00:25:30,160 --> 00:25:32,900
+So what are the key facts to
+
+385
+00:25:33,720 --> 00:25:38,940
+know
+eigenvalues? Eigenvalues are real
+
+386
+00:25:41,600 --> 00:25:46,800
+numbers if the matrix is.
+I'm thinking of real symmetric matrices.
+
+387
+00:25:48,900 --> 00:25:54,180
+Of course, other real
+matrices could have imaginary eigenvalues.
+
+388
+00:25:55,560 --> 00:25:56,880
+Other real matri - so just
+
+389
+00:25:57,740 --> 00:25:59,240
+let's just think for a moment.
+
+390
+00:26:00,900 --> 00:26:09,660
+Yeah, maybe I'll just put it here. Can I back
+up before I keep going with symmetric matrices?
+
+391
+00:26:10,660 --> 00:26:15,620
+So take a matrix like that.
+
+392
+00:26:20,200 --> 00:26:23,660
+Q, yeah, that
+would be a Q, but it's not especially a Q.
+
+393
+00:26:24,280 --> 00:26:30,560
+Maybe the most remarkable thing about that
+matrix is that it's anti -symmetric.
+
+394
+00:26:31,260 --> 00:26:32,200
+So I'll call it A.
+
+395
+00:26:33,280 --> 00:26:35,380
+Right? If I
+transpose that matrix,
+
+396
+00:26:36,440 --> 00:26:36,920
+what do I get?
+
+397
+00:26:38,840 --> 00:26:39,100
+Negative.
+
+398
+00:26:39,960 --> 00:26:41,880
+So that's like anti -symmetric.
+
+399
+00:26:42,500 --> 00:26:45,060
+And I claim that
+an anti -symmetric matrix
+
+400
+00:26:45,560 --> 00:26:47,260
+has imaginary eigenvalues.
+
+401
+00:26:48,000 --> 00:26:51,140
+So that's a 90 degree rotation.
+
+402
+00:26:54,440 --> 00:26:59,840
+And you might say, well, it could be simpler than
+that. A 90 degree rotation, that's not a weird matrix.
+
+403
+00:27:01,180 --> 00:27:02,840
+But from the point of
+view of eigenvectors,
+
+404
+00:27:04,000 --> 00:27:06,780
+something a
+little odd has to happen.
+
+405
+00:27:07,460 --> 00:27:13,720
+Right? Because if I have a 90 degree
+rotation, if I take a vector x, any vector x,
+
+406
+00:27:14,700 --> 00:27:16,360
+could it possibly be an
+eigenvector?
+
+407
+00:27:18,380 --> 00:27:19,820
+Well, apply A to it.
+
+408
+00:27:21,040 --> 00:27:22,940
+You'd be off
+in this direction, AX.
+
+409
+00:27:24,640 --> 00:27:26,020
+And there is no way
+
+410
+00:27:27,100 --> 00:27:29,260
+that AX can be a multiple of x.
+
+411
+00:27:31,140 --> 00:27:36,780
+No real eigenvector for that anti -symmetric
+matrix or any anti -symmetric matrix.
+
+412
+00:27:37,680 --> 00:27:37,880
+Yeah.
+
+413
+00:27:38,880 --> 00:27:40,420
+So you see that
+
+414
+00:27:41,380 --> 00:27:52,380
+when we say that the eigenvalues of a symmetric matrix are real, we're
+saying that this couldn't happen if A were symmetric. And here, it's the very
+
+415
+00:27:52,380 --> 00:27:54,040
+opposite. It's anti -symmetric.
+
+416
+00:27:56,680 --> 00:27:59,840
+Well, while that's
+on the board, you might say, wait a minute.
+
+417
+00:28:05,490 --> 00:28:08,700
+So what is
+an eigenvector of that matrix A?
+
+418
+00:28:09,200 --> 00:28:11,400
+How do you find the eigenvectors
+of A?
+
+419
+00:28:13,220 --> 00:28:14,170
+When they're 2 by 2,
+
+420
+00:28:14,830 --> 00:28:17,520
+that's
+a calculation we know how to do.
+
+421
+00:28:19,980 --> 00:28:24,420
+You remember the steps
+there? I'm looking for AX equal lambda x.
+
+422
+00:28:26,900 --> 00:28:33,420
+So right now, I'm looking for both lambda and x.
+I've got 2 that's not linear. But I'm going to
+
+423
+00:28:34,360 --> 00:28:39,680
+bring this over to this side and
+write it as A minus lambda i x equals 0.
+
+424
+00:28:43,420 --> 00:28:53,200
+And then I'm going to look at that and say, wow, A minus lambda i must
+be not invertible, because it's got this x in its null space. So the
+
+425
+00:28:53,360 --> 00:28:56,920
+determinant
+of this matrix must be 0.
+
+426
+00:29:01,060 --> 00:29:04,060
+I have a null space unless
+
+427
+00:29:04,660 --> 00:29:05,700
+the determinant is 0.
+
+428
+00:29:06,480 --> 00:29:09,160
+And then
+when I look at A minus lambda i,
+
+429
+00:29:11,520 --> 00:29:12,180
+for this A,
+
+430
+00:29:12,720 --> 00:29:14,780
+I've got minus lambdas
+
+431
+00:29:16,400 --> 00:29:21,840
+minus A. Oh, A is just a 1.
+
+432
+00:29:22,460 --> 00:29:23,740
+And that's minus 1.
+
+433
+00:29:24,240 --> 00:29:28,170
+I'm going to take the determinant. And
+what am I going to get for the determinant?
+
+434
+00:29:34,260 --> 00:29:34,260
+And
+
+435
+00:29:36,760 --> 00:29:37,920
+I set that to 0.
+
+436
+00:29:44,360 --> 00:29:45,820
+So I'm just
+following all the rules.
+
+437
+00:29:48,180 --> 00:29:50,580
+But it's showing me that
+the lambda,
+
+438
+00:29:51,780 --> 00:29:53,660
+the 2
+lambdas, there are 2 lambdas here.
+
+439
+00:29:55,340 --> 00:29:59,780
+But they're not real, because
+that equation, the roots are i and minus i.
+
+440
+00:30:02,580 --> 00:30:04,300
+So those are the eigenvalues.
+
+441
+00:30:07,240 --> 00:30:09,660
+And they
+have the nice, they have all the,
+
+442
+00:30:10,180 --> 00:30:12,520
+well, they are
+the eigenvalues, no doubt about it.
+
+443
+00:30:15,180 --> 00:30:18,200
+With
+2 by 2, there are 2 quick checks
+
+444
+00:30:19,040 --> 00:30:21,920
+that tell you, yeah, you
+did the calculation right.
+
+445
+00:30:22,900 --> 00:30:25,170
+If I add up the 2 eigenvalues,
+
+446
+00:30:30,960 --> 00:30:31,280
+in this,
+
+447
+00:30:32,120 --> 00:30:39,120
+if I add up the 2 eigenvalues for any matrix, and I'm
+going to do it for this one, I get what answer? Trace.
+
+448
+00:30:39,620 --> 00:30:44,760
+GILBERT STRANGER. I get the same
+answer from the adding, add the lambdas
+
+449
+00:30:47,180 --> 00:30:51,700
+gives me
+the same answer as add the diagonal
+
+450
+00:30:53,860 --> 00:30:54,360
+of the matrix,
+
+451
+00:30:56,160 --> 00:30:57,700
+which I'm calling A.
+
+452
+00:31:28,400 --> 00:31:29,340
+Sum of the eigenvalues,
+
+453
+00:31:29,900 --> 00:31:30,900
+sum of the lambdas.
+
+454
+00:31:32,800 --> 00:31:33,740
+Doesn't tell you
+
+455
+00:31:34,420 --> 00:31:37,320
+each lambda separately,
+but it tells you the sum.
+
+456
+00:31:38,080 --> 00:31:40,240
+So it tells
+you one fact by doing one thing.
+
+457
+00:31:41,620 --> 00:31:41,620
+Yeah.
+
+458
+00:31:42,120 --> 00:31:43,540
+That's pretty handy.
+
+459
+00:31:45,380 --> 00:31:47,240
+Gives you a
+quick check if you've,
+
+460
+00:31:48,120 --> 00:31:52,400
+you know, when you compute this determinant
+and solve for lambda,
+
+461
+00:31:54,320 --> 00:31:55,560
+the thing you
+
+462
+00:31:59,540 --> 00:32:01,860
+do is you, this is
+a way to compute eigenvalues by hand.
+
+463
+00:32:03,020 --> 00:32:07,600
+You could make a mistake, because
+it's a quadratic formula for 2 by 2.
+
+464
+00:32:08,100 --> 00:32:08,440
+But
+
+465
+00:32:10,460 --> 00:32:17,780
+you can check by adding the two roots,
+do you get the same as the trace, 0 plus 0?
+
+466
+00:32:20,160 --> 00:32:28,200
+Well, there's one other check equally quick for
+2 by 2. So 2 by 2s, you really get them right.
+
+467
+00:32:29,060 --> 00:32:30,540
+What's the other check to,
+
+468
+00:32:31,220 --> 00:32:33,680
+we add the eigenvalues,
+we get the trace.
+
+469
+00:32:35,360 --> 00:32:37,800
+We multiply the eigenvalues, so we
+take,
+
+470
+00:32:38,600 --> 00:32:38,680
+so
+
+471
+00:32:39,260 --> 00:32:40,690
+now I'll multiply
+
+472
+00:32:44,060 --> 00:32:44,720
+the lambdas.
+
+473
+00:32:45,860 --> 00:32:48,780
+So then I get I times minus I.
+
+474
+00:32:50,300 --> 00:32:53,540
+And that should equal,
+let's don't look yet.
+
+475
+00:32:54,980 --> 00:33:01,880
+What should it equal? If I multiply the
+eigenvalues, I should get the determinant, right,
+
+476
+00:33:02,900 --> 00:33:03,520
+of A.
+
+477
+00:33:09,780 --> 00:33:11,160
+So that's two handy checks.
+
+478
+00:33:12,760 --> 00:33:17,500
+Add the eigenvalues for any size, 3 by 3, 4
+by 4. But it's only two checks.
+
+479
+00:33:18,400 --> 00:33:20,580
+So for
+2 by 2, it's kind of, you got it.
+
+480
+00:33:21,260 --> 00:33:27,340
+3 by 3, 4 by 4, you could still have made an
+error, and the two checks could potentially
+
+481
+00:33:28,020 --> 00:33:28,380
+still work.
+
+482
+00:33:29,660 --> 00:33:32,380
+Let's just
+check it out here. What's I times minus I?
+
+483
+00:33:36,040 --> 00:33:43,060
+1. Because it's minus I squared, and that's
+plus 1. And the determinant of that matrix is
+
+484
+00:33:44,040 --> 00:33:46,280
+0 minus, is 1. Yeah.
+
+485
+00:33:47,300 --> 00:33:48,880
+OK. So we got 1.
+
+486
+00:33:49,500 --> 00:33:49,700
+Good.
+
+487
+00:33:53,720 --> 00:33:55,880
+Those
+are really the key facts about eigenvalues.
+
+488
+00:33:59,140 --> 00:33:59,740
+But of course,
+
+489
+00:34:01,890 --> 00:34:05,260
+it's not as
+simple as solving AX equal B to find them.
+
+490
+00:34:06,520 --> 00:34:13,000
+But if you follow through
+on this idea of similar matrices
+
+491
+00:34:14,360 --> 00:34:21,210
+and sort of chop down the off -diagonal part,
+then sure enough, the eigenvalues got to show up.
+
+492
+00:34:23,020 --> 00:34:23,199
+OK.
+
+493
+00:34:25,020 --> 00:34:25,360
+Symmetric.
+
+494
+00:34:28,440 --> 00:34:29,100
+GILBERT STRANGER.
+Symmetric matrices.
+
+495
+00:34:29,880 --> 00:34:29,960
+OK.
+
+496
+00:34:33,880 --> 00:34:35,600
+So now we're
+going to have symmetric.
+
+497
+00:34:38,960 --> 00:34:44,560
+And then we'll have the special, even better
+than symmetric, is symmetric positive definite.
+
+498
+00:34:46,020 --> 00:34:48,659
+OK. Symmetric, you
+told me the main facts,
+
+499
+00:34:49,500 --> 00:34:53,060
+are the eigenvalues real,
+
+500
+00:34:56,400 --> 00:34:57,320
+the eigenvectors
+
+501
+00:34:58,400 --> 00:35:02,120
+orthogonal.
+
+502
+00:35:08,340 --> 00:35:09,460
+And I guess, actually,
+
+503
+00:35:10,380 --> 00:35:10,660
+yeah.
+
+504
+00:35:11,540 --> 00:35:14,620
+So I want to put those
+
+505
+00:35:15,120 --> 00:35:17,420
+into math
+symbols instead of words.
+
+506
+00:35:22,660 --> 00:35:23,020
+So yeah.
+
+507
+00:35:25,560 --> 00:35:26,980
+Yeah. I guess.
+
+508
+00:35:28,180 --> 00:35:29,900
+Yeah. Shall I just jump in?
+
+509
+00:35:31,580 --> 00:35:35,960
+And the other
+thing hidden there, but very important, is
+
+510
+00:35:37,140 --> 00:35:38,960
+there's a full set of
+eigenvectors.
+
+511
+00:35:39,900 --> 00:35:43,520
+Even if some eigenvalues happen to
+be repeated, like the identity matrix,
+
+512
+00:35:44,420 --> 00:35:46,220
+it's still got plenty
+of eigenvectors.
+
+513
+00:35:48,120 --> 00:35:50,180
+So that's an
+added point that I've not
+
+514
+00:35:50,780 --> 00:35:58,380
+made there. And I could prove those two
+statements, but why don't I ask you to accept them
+
+515
+00:35:58,960 --> 00:35:59,760
+and go onward.
+
+516
+00:36:02,800 --> 00:36:04,060
+What are we
+going to do with them?
+
+517
+00:36:05,800 --> 00:36:05,800
+OK.
+
+518
+00:36:07,380 --> 00:36:07,870
+And yeah.
+
+519
+00:36:11,400 --> 00:36:13,360
+Can you just like,
+let's have an example.
+
+520
+00:36:15,120 --> 00:36:15,120
+Just
+
+521
+00:36:16,380 --> 00:36:18,080
+let me put an example here.
+
+522
+00:36:19,260 --> 00:36:21,380
+Suppose S, now I'm calling it S,
+
+523
+00:36:22,040 --> 00:36:24,500
+is 0s, 1s, and 1s.
+
+524
+00:36:26,660 --> 00:36:27,720
+So that's symmetric.
+
+525
+00:36:30,100 --> 00:36:31,200
+What are its eigenvalues?
+
+526
+00:36:33,180 --> 00:36:36,320
+What are
+the eigenvalues of that symmetric matrix S?
+
+527
+00:36:38,620 --> 00:36:40,200
+Plus and minus 1.
+
+528
+00:36:41,620 --> 00:36:44,580
+Well, if you propose two eigenvalues, I'll
+write them down,
+
+529
+00:36:45,120 --> 00:36:46,120
+1 and minus 1.
+
+530
+00:36:46,720 --> 00:36:48,780
+And then what will I do to check
+them?
+
+531
+00:36:50,340 --> 00:36:52,140
+Trace and determine it.
+
+532
+00:36:53,900 --> 00:36:54,000
+OK.
+
+533
+00:36:54,560 --> 00:36:59,460
+So is it true that
+the eigenvalues are 1 and minus 1?
+
+534
+00:37:01,600 --> 00:37:01,980
+OK.
+
+535
+00:37:02,520 --> 00:37:05,680
+How do I check the trace? What is the trace
+of that matrix?
+
+536
+00:37:08,020 --> 00:37:08,020
+0.
+
+537
+00:37:08,540 --> 00:37:10,460
+And what's the sum of
+the eigenvalues?
+
+538
+00:37:11,120 --> 00:37:11,660
+0. Good.
+
+539
+00:37:12,720 --> 00:37:15,400
+What about determinant?
+What's the determinant of S?
+
+540
+00:37:16,440 --> 00:37:21,000
+Minus 1. The product of the eigenvalues is
+minus 1. So we've got it. OK.
+
+541
+00:37:21,620 --> 00:37:22,520
+What are the eigenvectors?
+
+542
+00:37:24,940 --> 00:37:25,430
+Minus 1. What vector
+
+543
+00:37:27,140 --> 00:37:35,040
+can you multiply by and it doesn't change direction? In fact, it doesn't
+change at all. I'm looking for the eigenvector that's a steady state.
+
+544
+00:37:36,000 --> 00:37:38,780
+0, 1. GILBERT
+STRANGER. 0, 1? 1, 1.
+
+545
+00:37:39,760 --> 00:37:42,120
+GILBERT STRANGER. I think it's 1,
+1.
+
+546
+00:37:43,160 --> 00:37:44,880
+Yeah. So here is the lambdas.
+
+547
+00:37:45,480 --> 00:37:48,760
+And then the eigenvectors are, I think, 1,
+1.
+
+548
+00:37:49,380 --> 00:37:50,280
+Is
+
+549
+00:37:51,900 --> 00:37:52,340
+that right?
+
+550
+00:37:53,160 --> 00:37:53,580
+Yeah, sure.
+
+551
+00:37:54,280 --> 00:37:56,140
+S is just a permutation here.
+
+552
+00:37:56,760 --> 00:38:01,240
+It's just exchanging the two entries. So 1
+and 1 won't change.
+
+553
+00:38:01,920 --> 00:38:03,880
+And what's
+the other eigenvector?
+
+554
+00:38:06,300 --> 00:38:07,440
+1 and minus 1.
+
+555
+00:38:15,320 --> 00:38:15,760
+And then
+
+556
+00:38:16,800 --> 00:38:19,540
+I'm thinking, remembering
+about this similar stuff,
+
+557
+00:38:20,240 --> 00:38:22,020
+I'm thinking that S
+
+558
+00:38:23,080 --> 00:38:23,880
+is similar to 1.
+
+559
+00:38:27,050 --> 00:38:29,010
+So S is similar to a matrix that just shows
+the eigenvalues.
+
+560
+00:38:30,040 --> 00:38:33,840
+So
+S is similar to, I'm going to put in an M.
+
+561
+00:38:34,340 --> 00:38:36,020
+Well, I'm going to connect S,
+
+562
+00:38:36,700 --> 00:38:37,140
+that matrix,
+
+563
+00:38:38,460 --> 00:38:38,460
+with
+
+564
+00:38:39,300 --> 00:38:39,960
+the
+
+565
+00:38:40,520 --> 00:38:41,900
+eigenvalue matrix,
+
+566
+00:38:43,680 --> 00:38:44,790
+which has the eigenvalues.
+
+567
+00:38:45,400 --> 00:38:45,400
+So
+
+568
+00:38:47,900 --> 00:38:48,760
+here is my,
+
+569
+00:38:50,620 --> 00:38:53,040
+everybody
+calls that matrix capital lambda.
+
+570
+00:38:54,060 --> 00:38:57,180
+Because everybody
+calls the eigenvalues little lambda.
+
+571
+00:38:57,740 --> 00:38:58,260
+So the matrix
+
+572
+00:38:59,140 --> 00:39:01,680
+that has them is
+called capital lambda.
+
+573
+00:39:02,440 --> 00:39:04,680
+And my claim is that
+these guys are similar.
+
+574
+00:39:06,980 --> 00:39:09,200
+That
+this matrix S that you're seeing up there,
+
+575
+00:39:09,740 --> 00:39:11,340
+I believe there is an M.
+
+576
+00:39:12,500 --> 00:39:13,520
+I believe there is an M.
+
+577
+00:39:14,740 --> 00:39:21,180
+So that S, what did I put in here? So I'm following
+this pattern. I believe that there would be an M
+
+578
+00:39:22,160 --> 00:39:23,300
+and an M inverse.
+
+579
+00:39:24,460 --> 00:39:26,180
+So that this would mean that.
+
+580
+00:39:27,700 --> 00:39:28,800
+And that's nice.
+
+581
+00:39:30,060 --> 00:39:37,120
+First of all, it would confirm that the eigenvalues
+stay the same, which was certain to happen.
+
+582
+00:39:38,320 --> 00:39:47,130
+And then it would also mean that I had got a diagonal matrix.
+And of course, that's a natural goal, to get a diagonal matrix.
+
+583
+00:39:49,700 --> 00:39:53,720
+So we might
+hope that the M that gets us there is like
+
+584
+00:39:55,520 --> 00:39:56,280
+an important matrix.
+
+585
+00:39:57,440 --> 00:40:03,360
+So do you see what I'm doing here? It comes
+under the heading of diagonalizing a matrix.
+
+586
+00:40:04,020 --> 00:40:05,920
+I start with a matrix S.
+
+587
+00:40:07,320 --> 00:40:10,520
+I find its eigenvalues.
+They go on into lambda.
+
+588
+00:40:11,520 --> 00:40:14,010
+And I believe I can find an M
+
+589
+00:40:14,680 --> 00:40:15,620
+so that
+
+590
+00:40:18,420 --> 00:40:23,040
+I see there's similar. They have the same
+eigenvalues, 1 and minus 1, both sides.
+
+591
+00:40:23,880 --> 00:40:26,800
+So only remaining
+question is, what's M?
+
+592
+00:40:28,020 --> 00:40:31,260
+What's the matrix that
+diagonalizes S?
+
+593
+00:40:33,280 --> 00:40:33,780
+What
+
+594
+00:40:34,460 --> 00:40:35,800
+have we got left to use?
+
+595
+00:40:37,000 --> 00:40:37,640
+The eigenvectors.
+
+596
+00:40:39,260 --> 00:40:43,020
+The
+matrix that. So can I put the M over there?
+
+597
+00:40:45,680 --> 00:40:45,860
+Yeah.
+
+598
+00:40:47,320 --> 00:40:49,320
+That M inverse is going
+to go over.
+
+599
+00:40:49,960 --> 00:40:51,000
+To the other side.
+
+600
+00:40:52,210 --> 00:40:57,600
+Oh, it goes here, doesn't it? I was worried
+there. It didn't look good.
+
+601
+00:40:58,140 --> 00:40:58,840
+But yeah.
+
+602
+00:40:59,360 --> 00:41:02,080
+So this is all
+going to be right if.
+
+603
+00:41:08,100 --> 00:41:11,060
+This is
+what I'd like to have. S M equal M lambda.
+
+604
+00:41:12,040 --> 00:41:13,240
+S M equal M lambda.
+
+605
+00:41:15,260 --> 00:41:15,360
+That's
+
+606
+00:41:16,320 --> 00:41:16,820
+diagonalizing a matrix.
+
+607
+00:41:17,420 --> 00:41:18,580
+That's finding the M
+
+608
+00:41:20,120 --> 00:41:21,020
+using the eigenvectors.
+
+609
+00:41:22,520 --> 00:41:26,980
+That produces a similar
+matrix lambda, which has the eigenvalues.
+
+610
+00:41:27,480 --> 00:41:33,960
+That's the great
+fact about diagonalizing.
+
+611
+00:41:35,980 --> 00:41:41,840
+That's how you use it. That's another way to say this
+is how the eigenvectors pay off. You put them into M.
+
+612
+00:41:42,420 --> 00:41:45,160
+You take the
+similar matrix, and it's nice and diagonal.
+
+613
+00:41:48,820 --> 00:41:52,320
+So M has the first eigenvector and
+the second eigenvector.
+
+614
+00:41:54,060 --> 00:41:59,600
+And I believe that the
+first eigenvector times the second.
+
+615
+00:42:00,120 --> 00:42:03,240
+And the second eigenvector. That's M again
+on this side.
+
+616
+00:42:03,780 --> 00:42:05,530
+Now let me just write in 1,
+
+617
+00:42:06,300 --> 00:42:08,400
+0, 0, minus 1.
+
+618
+00:42:38,420 --> 00:42:43,000
+I see that. How do I do this? So what's the
+left side and what's the right side?
+
+619
+00:42:47,980 --> 00:42:51,620
+So if I multiply
+S by a couple of columns,
+
+620
+00:42:53,040 --> 00:42:53,560
+what's the answer?
+
+621
+00:42:54,420 --> 00:42:58,600
+Sx1, Sx2. Sx1 and Sx2.
+That's the beauty of matrix multiplication.
+
+622
+00:42:59,300 --> 00:43:03,640
+If I multiply a matrix by another matrix, I
+can do it a column at a time.
+
+623
+00:43:04,980 --> 00:43:08,740
+There are four great ways to
+multiply matrices. So this is another one.
+
+624
+00:43:10,640 --> 00:43:14,980
+A column
+at a time. So this left -hand side is Sx1,
+
+625
+00:43:15,800 --> 00:43:17,280
+Sx2. I just
+
+626
+00:43:18,500 --> 00:43:19,420
+do each column.
+
+627
+00:43:19,920 --> 00:43:21,400
+And what about
+the right -hand side?
+
+628
+00:43:22,680 --> 00:43:23,920
+I can do that multiplication.
+
+629
+00:43:26,820 --> 00:43:29,420
+x1 minus x2, did somebody say?
+
+630
+00:43:30,020 --> 00:43:30,220
+Death.
+
+631
+00:43:31,790 --> 00:43:34,800
+No, I don't want.
+Oh, x1. Sorry, you said it right.
+
+632
+00:43:35,600 --> 00:43:35,780
+OK.
+
+633
+00:43:36,440 --> 00:43:45,200
+When you said x1 minus x2, I was subtracting. But you meant that
+the first column is x1 and the second column is minus x2. Correct.
+
+634
+00:43:46,320 --> 00:43:47,330
+Sorry about that.
+
+635
+00:43:50,820 --> 00:43:52,100
+And did we come out right?
+
+636
+00:43:53,340 --> 00:43:53,440
+Yes.
+
+637
+00:43:54,440 --> 00:43:55,080
+Because now I compare.
+
+638
+00:43:56,420 --> 00:43:59,320
+Sx1 is lambda 1x1.
+
+639
+00:44:00,000 --> 00:44:03,480
+Sx2 is lambda 2x2. And
+I'm golden.
+
+640
+00:44:08,160 --> 00:44:11,920
+So what was
+the point of this board?
+
+641
+00:44:12,440 --> 00:44:14,140
+What did we learn?
+
+642
+00:44:15,960 --> 00:44:19,720
+We learned, well, we kind of expected that
+the original S
+
+643
+00:44:20,900 --> 00:44:23,220
+would be similar to the lambdas
+
+644
+00:44:23,980 --> 00:44:26,120
+because the eigenvalues match.
+
+645
+00:44:26,960 --> 00:44:32,940
+S has eigenvalues lambda. And this diagonal
+matrix certainly has eigenvalues 1 and minus 1.
+
+646
+00:44:33,580 --> 00:44:36,100
+A diagonal matrix,
+the eigenvalues are right in front of you.
+
+647
+00:44:37,240 --> 00:44:39,880
+So they're similar. S
+is similar to the lambda.
+
+648
+00:44:40,700 --> 00:44:41,840
+And there should be an M.
+
+649
+00:44:42,360 --> 00:44:43,470
+And then somebody suggested,
+
+650
+00:44:44,140 --> 00:44:47,820
+maybe the M is the
+eigenvectors. And that's the right answer.
+
+651
+00:44:49,040 --> 00:44:54,060
+So
+finally, let me write that conclusion here,
+
+652
+00:44:55,840 --> 00:44:58,000
+which isn't just
+for symmetric matrices.
+
+653
+00:44:59,860 --> 00:45:02,200
+So maybe I should put
+it for matrix A.
+
+654
+00:45:04,860 --> 00:45:05,940
+So if it has
+
+655
+00:45:06,980 --> 00:45:07,400
+lambdas
+
+656
+00:45:08,980 --> 00:45:11,000
+and eigenvectors,
+
+657
+00:45:12,560 --> 00:45:15,160
+and the claim is that A
+
+658
+00:45:16,440 --> 00:45:19,340
+times the eigenvector matrix
+
+659
+00:45:22,400 --> 00:45:24,720
+is the eigenvector matrix
+
+660
+00:45:26,600 --> 00:45:28,060
+times the eigenvalues.
+
+661
+00:45:34,320 --> 00:45:39,640
+And I
+would shorten that to A. X equals x lambda.
+
+662
+00:45:42,400 --> 00:45:49,340
+And I could rewrite that. And then I'll
+slow down as A equal x lambda x inverse.
+
+663
+00:45:57,740 --> 00:46:06,280
+Really, this is bringing it all together in a simple,
+small formula. It's telling us that A is similar to lambda.
+
+664
+00:46:07,060 --> 00:46:11,700
+It's telling us the matrix M that does the
+job. It's the matrix of eigenvectors.
+
+665
+00:46:13,700 --> 00:46:15,220
+And so
+
+666
+00:46:15,860 --> 00:46:18,840
+it's like a
+shorthand way to write
+
+667
+00:46:19,920 --> 00:46:23,360
+the main facts about eigenvalues
+and eigenvectors.
+
+668
+00:46:24,560 --> 00:46:28,320
+What about A squared? Can I go back to the
+very first?
+
+669
+00:46:28,840 --> 00:46:31,020
+I see time is
+close to the end here.
+
+670
+00:46:31,660 --> 00:46:32,900
+What about A squared?
+
+671
+00:46:34,000 --> 00:46:35,980
+What
+are the eigenvectors of A squared?
+
+672
+00:46:36,920 --> 00:46:41,660
+What are the eigenvalues of A squared?
+That's like the whole point of eigenvalues.
+
+673
+00:46:42,900 --> 00:46:49,200
+Well, or I could just square that stupid
+thing. X lambda x inverse x lambda x inverse.
+
+674
+00:46:50,420 --> 00:46:51,320
+And what have I got?
+
+675
+00:46:52,920 --> 00:46:55,520
+X inverse x
+in the middle is identity.
+
+676
+00:46:58,260 --> 00:46:59,380
+So I have x
+
+677
+00:47:00,340 --> 00:47:02,300
+lambda squared x inverse.
+
+678
+00:47:03,180 --> 00:47:05,560
+And to me, and to you, that says
+
+679
+00:47:06,240 --> 00:47:09,940
+the eigenvalues have been
+squared. The eigenvectors didn't change.
+
+680
+00:47:11,120 --> 00:47:11,120
+Yeah.
+
+681
+00:47:12,220 --> 00:47:14,660
+OK. And now
+finally, last breath is,
+
+682
+00:47:15,160 --> 00:47:16,820
+what if the matrix is symmetric?
+
+683
+00:47:18,420 --> 00:47:19,600
+Then we have different letters.
+
+684
+00:47:21,530 --> 00:47:22,850
+That's the
+only significant change.
+
+685
+00:47:24,000 --> 00:47:28,940
+The eigenvector matrix is now an orthogonal
+matrix.
+
+686
+00:47:30,680 --> 00:47:34,100
+I'm coming back to the
+key facts of what makes symmetric.
+
+687
+00:47:36,500 --> 00:47:40,200
+What do I see symmetric helping
+me in the eigenvector and eigenvalue world?
+
+688
+00:47:41,300 --> 00:47:43,260
+Well, it tells me
+that the eigenvectors
+
+689
+00:47:45,220 --> 00:47:45,940
+are orthogonal.
+
+690
+00:47:47,120 --> 00:47:48,480
+So the x is q.
+
+691
+00:47:50,300 --> 00:47:52,280
+The eigenvalues are real.
+
+692
+00:47:53,280 --> 00:47:55,580
+And the eigenvectors is
+x inverse.
+
+693
+00:47:57,100 --> 00:48:07,200
+But now I'm going to make those eigenvectors unit vectors. I'm going to
+normalize it. So I'm really allowing, I have an orthogonal matrix q. So I
+
+694
+00:48:07,200 --> 00:48:11,740
+have a different way to write
+this. And this is the end of today's class.
+
+695
+00:48:12,620 --> 00:48:13,660
+q lambda.
+
+696
+00:48:15,480 --> 00:48:18,280
+And what
+can you tell me about q inverse?
+
+697
+00:48:19,740 --> 00:48:20,420
+It's q transpose.
+
+698
+00:48:21,040 --> 00:48:22,660
+Thanks. So that
+was the last lecture.
+
+699
+00:48:23,300 --> 00:48:23,960
+So now
+
+700
+00:48:24,560 --> 00:48:26,260
+the orthogonal lecture is
+
+701
+00:48:27,140 --> 00:48:34,400
+coming up at the last second of the symmetric matrices
+lecture. And this has the name spectral theorem,
+
+702
+00:48:35,620 --> 00:48:36,520
+which I'll just put this there.
+
+703
+00:48:40,780 --> 00:48:41,240
+And the
+
+704
+00:48:42,520 --> 00:48:43,440
+whole point is
+
+705
+00:48:44,020 --> 00:48:49,570
+that it tells
+you what every symmetric matrix looks like.
+
+706
+00:48:50,720 --> 00:48:52,460
+Orthogonal eigenvectors,
+
+707
+00:48:52,980 --> 00:48:53,820
+real eigenvalues.
+

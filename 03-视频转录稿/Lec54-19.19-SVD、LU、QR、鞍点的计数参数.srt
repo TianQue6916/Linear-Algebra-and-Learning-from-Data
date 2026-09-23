@@ -1,0 +1,1917 @@
+1
+00:00:01,620 --> 00:00:06,140
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,140 --> 00:00:10,680
+help MIT OpenCourseWare continue to offer
+high -quality educational resources for
+
+25
+00:00:10,680 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:20,900
+courses, visit MIT OpenCourseWare
+at ocw .mit .edu. OK.
+
+48
+00:00:23,860 --> 00:00:30,400
+So I thought I'd begin today with, as we're
+coming to the end of the focus on linear
+
+66
+00:00:30,400 --> 00:00:37,160
+algebra and moving on to a little
+probability, a little more optimization,
+
+78
+00:00:37,980 --> 00:00:47,760
+and a lot of deep learning. So this was
+my way of review to write down the big
+
+96
+00:00:47,800 --> 00:00:49,340
+factorizations of a matrix.
+
+100
+00:00:51,560 --> 00:00:58,240
+And so my idea, and I kind of enjoyed
+it, is checking that the number of free
+
+117
+00:00:58,240 --> 00:01:07,040
+parameters, say, in l and u or in q and r
+or each of those, that the number of free
+
+137
+00:01:07,040 --> 00:01:12,760
+parameters agrees with the number
+of parameters in a itself, like n squared
+
+150
+00:01:12,760 --> 00:01:21,120
+usually. So a usually has n squared. And
+then can we replace a? After we've computed
+
+166
+00:01:21,120 --> 00:01:28,740
+l and u, can we throw away a? Yes, because
+all the information is in l and u. And it
+
+186
+00:01:28,820 --> 00:01:37,900
+fills that same n by n matrix. Well, that's
+kind of obvious, because l is a lower
+
+203
+00:01:37,900 --> 00:01:46,560
+triangular. And the diagonal, all 1s
+are not free parameters. And u is upper
+
+217
+00:01:46,560 --> 00:01:53,540
+triangular. And it's diagonal. The pivots,
+those are free parameters. But can I just
+
+231
+00:01:53,560 --> 00:02:01,080
+write down the count? So I'll go through
+each of these just quickly after I've
+
+246
+00:02:01,400 --> 00:02:08,919
+figured out how these are the building
+blocks. So how many free parameters are
+
+260
+00:02:08,919 --> 00:02:16,380
+there in these two triangular matrices?
+Well, I think the answer is 1 half n, n
+
+276
+00:02:16,380 --> 00:02:26,020
+minus 1, and 1 half n, n plus 1. That's
+a familiar number. That's the sum of,
+
+293
+00:02:28,380 --> 00:02:36,460
+you recognize that as the sum of 1 plus
+2 up to n. And you have one free, in the
+
+313
+00:02:36,460 --> 00:02:42,200
+upper triangular u, you've got one free
+parameter up in the corner, two in the next
+
+329
+00:02:42,200 --> 00:02:47,480
+one. And as you're coming down, you end up
+with n on the main diagonal. And they add
+
+347
+00:02:47,480 --> 00:02:55,240
+up to that. And you see that those two are
+different by n, which is what we want. OK,
+
+366
+00:02:55,720 --> 00:02:58,400
+diagonal, the
+answer is obviously n.
+
+372
+00:03:01,080 --> 00:03:09,300
+How about the eigenvector matrix? So this
+whole exercise is like something I've never
+
+386
+00:03:09,300 --> 00:03:18,420
+seen in a textbook. And it's just, but for
+me, it brings back all these key, really
+
+403
+00:03:18,420 --> 00:03:24,720
+the condensed course in linear algebra
+is on that top line. So how many free
+
+418
+00:03:24,720 --> 00:03:31,480
+parameters in an eigenvector matrix?
+OK, and of course, you're sort of thinking,
+
+431
+00:03:31,480 --> 00:03:40,260
+what's the rule for free parameters? So
+my answer is going to be for the number of
+
+448
+00:03:40,300 --> 00:03:46,960
+free parameters. This is an n by n matrix
+with the n eigenvectors in it. But there's
+
+465
+00:03:46,960 --> 00:03:53,800
+a certain freedom there. And what is that?
+What freedom do we have in choosing the
+
+481
+00:03:53,880 --> 00:04:02,660
+eigenvector matrix? Every eigenvector
+can be multiplied by a scalar. If x is an
+
+495
+00:04:02,660 --> 00:04:09,320
+eigenvector, so is 2x, so is 3x. So we
+could make a convention that the first
+
+511
+00:04:09,380 --> 00:04:15,440
+component was always 1. Maybe that wouldn't
+be the most intelligent convention in the
+
+525
+00:04:15,440 --> 00:04:22,360
+world. But it would show that that top row
+of 1s were not to be counted. So I get n
+
+545
+00:04:22,360 --> 00:04:30,840
+squared minus n for that. Oh, yeah, well,
+having done those two, let me look at this
+
+562
+00:04:30,840 --> 00:04:38,840
+one. Does that come out a total of n
+squared? Yes, because the eigenvector x has
+
+578
+00:04:38,860 --> 00:04:44,640
+n squared minus n by this reasoning.
+A little hokey reasoning that I just gave.
+
+593
+00:04:45,200 --> 00:04:51,880
+And then there are n more for the
+eigenvalue matrix. And there's nothing left
+
+607
+00:04:52,060 --> 00:04:58,740
+for the inverse, because it's determined by
+x. So do you see the count adding up to n
+
+625
+00:04:58,940 --> 00:05:04,680
+squared for those? Now, I left open the
+orthogonal one. I think we kind of talked
+
+641
+00:05:04,840 --> 00:05:11,960
+about that when we met it. And it's a
+little less obvious. But do you remember?
+
+657
+00:05:12,320 --> 00:05:19,300
+So I'm talking about an n by n orthogonal
+matrix, Q. So how many free parameters in
+
+674
+00:05:19,340 --> 00:05:26,600
+column 1? That column is what we always
+call Q1. Does it have n free parameters? Or
+
+691
+00:05:26,600 --> 00:05:34,640
+is there a condition that cuts that back?
+There is a condition, right? And what's the
+
+707
+00:05:34,940 --> 00:05:42,960
+condition on the first column that removes
+one parameter? It's normalized. Its length
+
+720
+00:05:43,040 --> 00:05:51,460
+is 1. So I only get n minus 1 from the
+first column. And now, if I move over to
+
+740
+00:05:51,460 --> 00:05:57,600
+the second column, how many free parameters
+there? Again, it's a unit vector. But
+
+754
+00:05:57,600 --> 00:06:07,940
+also, it is orthogonal to the first. So two
+rules got imposed, and two parameters got
+
+770
+00:06:07,940 --> 00:06:14,820
+removed. So this is n minus 2. And then
+finally, whatever. So I think that that sum
+
+787
+00:06:14,820 --> 00:06:22,100
+of these guys is exactly the same that we
+had up here. I think it's also 1 half n, n
+
+807
+00:06:22,100 --> 00:06:28,880
+minus 1, or 1 half n squared minus n. Yeah.
+Yeah. So not as many as you might think,
+
+826
+00:06:29,160 --> 00:06:37,580
+because the matrix is size n squared. Now,
+can I use those? Because these are like the
+
+843
+00:06:37,580 --> 00:06:42,600
+building blocks. Can I just check these?
+Let's see. I'll just go along the list. L
+
+859
+00:06:42,600 --> 00:06:50,020
+times U. So L had this, and U had that. And
+when I add those, it adds up to n squared,
+
+880
+00:06:50,440 --> 00:06:57,260
+right? The minus cancels the plus. And the
+half n squared twice gives me n squared. So
+
+897
+00:06:57,480 --> 00:07:07,880
+good for that one. What about QR? Well,
+R is upper triangular, like so. And then Q,
+
+914
+00:07:07,880 --> 00:07:14,260
+oh yeah. We just got it right there. So
+for Q times R, it's that plus that, again,
+
+932
+00:07:14,780 --> 00:07:22,240
+adding to n squared. Good for that one. n
+squared for that one. This one we just did.
+
+950
+00:07:24,000 --> 00:07:30,360
+n squared minus n in x. n on the diagonal,
+total n squared. What about this guy?
+
+967
+00:07:33,580 --> 00:07:39,320
+What about the bigger, really fundamental
+one that I would normally write the matrix
+
+981
+00:07:39,400 --> 00:07:48,680
+as S instead of A to remind us that
+the matrix here is symmetric. So I'm not
+
+998
+00:07:48,680 --> 00:07:54,600
+expecting n squared for a symmetric matrix.
+Oh, I should have put that on my list.
+
+1014
+00:07:55,260 --> 00:07:57,270
+What's the count for
+a symmetric matrix?
+
+1021
+00:07:59,840 --> 00:08:06,420
+So because this is an S here. So I'm
+not expecting to get n squared. I'm only
+
+1038
+00:08:06,420 --> 00:08:07,980
+expecting to get the number of,
+
+1044
+00:08:11,260 --> 00:08:17,500
+symmetric S. What's the number of free
+parameters that I start with that I hope
+
+1059
+00:08:17,560 --> 00:08:20,260
+will reappear in Q and lambda?
+
+1065
+00:08:24,630 --> 00:08:26,870
+What's the deal for
+a symmetric matrix?
+
+1072
+00:08:29,260 --> 00:08:36,520
+Let's see. I'm free to choose. Is it the
+same count as this? Yeah, because I'm free
+
+1089
+00:08:36,520 --> 00:08:41,880
+to choose the upper triangular part and the
+diagonal, but I'm not free to choose the
+
+1105
+00:08:41,880 --> 00:08:51,400
+lower. So I'd say that's 1 half n times n
+minus 1. And plus 1, sorry. The diagonal's
+
+1123
+00:08:51,440 --> 00:09:00,560
+in there. OK. So do I get that total, 1
+half of n squared plus n, from these guys?
+
+1142
+00:09:02,240 --> 00:09:11,860
+Well, I probably do. The diagonal guy gives
+me n. And that's a Q, which is my other
+
+1160
+00:09:12,660 --> 00:09:21,820
+favorite number there. And when I add that
+to that, that becomes a plus sign. And I'm
+
+1177
+00:09:21,820 --> 00:09:28,080
+good. Yeah. You see how I enjoyed doing
+this. Right. But I'm near the end. But the
+
+1194
+00:09:28,080 --> 00:09:36,560
+last one is kind of not well known.
+OK. Q times S. Do you remember that
+
+1210
+00:09:36,560 --> 00:09:36,910
+factorization?
+
+1211
+00:09:39,260 --> 00:09:47,100
+Polar decomposition. It's an orthogonal
+times a symmetric. And it is often used in
+
+1225
+00:09:47,100 --> 00:09:58,060
+engineering as a way to decompose a
+displacement or strain matrix. Anyway, Q
+
+1238
+00:09:58,060 --> 00:10:04,460
+times S. And it actually is very, very
+close to the SVD. And I have friends who
+
+1255
+00:10:04,460 --> 00:10:11,740
+say, better to compute QS than the SVD, and
+then just move along. Anyway, Q times S.
+
+1272
+00:10:12,040 --> 00:10:14,320
+So Q is this guy.
+
+1277
+00:10:16,460 --> 00:10:21,320
+And S, what's S?
+Symmetric. That's this guy.
+
+1285
+00:10:23,980 --> 00:10:31,480
+So that's Q. Let me write that letter Q and
+S so I don't lose it. What do those add up
+
+1306
+00:10:31,480 --> 00:10:44,080
+to? And squared. Happy. So finally, the
+SVD. Finally, the SVD. What's the count?
+
+1320
+00:10:44,200 --> 00:10:52,760
+Well, now I've got rectangular stuff in
+there. So I'm ready for this one. And I
+
+1336
+00:10:52,760 --> 00:10:54,160
+have to think a little bit.
+
+1342
+00:10:57,560 --> 00:11:07,640
+And we may have done this. So let's suppose
+that M is less or equal M. Suppose that.
+
+1360
+00:11:09,760 --> 00:11:16,480
+Yeah. Otherwise, we would just transpose
+and look at the SVD. So let's say M less or
+
+1377
+00:11:16,480 --> 00:11:19,440
+equal N. So let's
+say it's got full rank.
+
+1386
+00:11:22,340 --> 00:11:30,240
+And what's the largest rank that the matrix
+can have? M, clearly. Full rank M. So the
+
+1403
+00:11:30,640 --> 00:11:41,440
+SVD will be M by M. Let's remember the U,
+the sigma, and the V transpose. This will
+
+1421
+00:11:41,440 --> 00:11:50,060
+be M by N. And this will be N by N for the
+full scale SVD. And if the rank is equal to
+
+1444
+00:11:50,060 --> 00:11:50,160
+M,
+
+1445
+00:11:52,340 --> 00:12:04,700
+then I really expect to get, I expect it
+to add up to the total. The original A has
+
+1464
+00:12:04,700 --> 00:12:08,020
+MN, right? It's
+an M by N matrix.
+
+1472
+00:12:10,060 --> 00:12:20,160
+The matrix A is M by N with M less or equal
+N giving me these things. So it has MN
+
+1493
+00:12:20,160 --> 00:12:20,260
+parameters.
+
+1494
+00:12:25,700 --> 00:12:33,820
+So do we get M times N from this? I hope we
+do. I know how many we get from sigma. How
+
+1516
+00:12:33,820 --> 00:12:43,180
+many? What's the count for sigma? M. And
+what's the count for V? So that's an N by
+
+1534
+00:12:43,180 --> 00:12:50,040
+N. And what's the count for U? OK. Yeah.
+That's their orthogonal matrices. So I
+
+1549
+00:12:50,040 --> 00:12:55,860
+should be able to go up to that line. This
+was an M by M one. So that's, is that a
+
+1570
+00:12:55,860 --> 00:13:01,840
+half N, N minus 1? Am I copying
+that correctly out of this circle there?
+
+1585
+00:13:04,600 --> 00:13:11,120
+That's an M by M orthogonal matrix. Oh, but
+I have to write M. That was foolish. OK.
+
+1603
+00:13:11,120 --> 00:13:21,820
+M, M. Yeah, because that matrix is of size
+M. So that's an M. And then I have that.
+
+1622
+00:13:23,140 --> 00:13:31,900
+And then I have whatever V transpose
+N by N. Oh, what's the deal in there? Do
+
+1639
+00:13:33,960 --> 00:13:38,540
+I want all of the 1
+half N, N minus 1?
+
+1650
+00:13:42,400 --> 00:13:47,480
+Oh, god. I thought I'd
+got this straight. Now to C.
+
+1661
+00:13:49,880 --> 00:13:50,740
+No, I'm not.
+
+1664
+00:13:53,140 --> 00:14:00,320
+Yes. And find out what I should say. Well,
+students have been known to do this too.
+
+1681
+00:14:01,180 --> 00:14:09,740
+Let's see. Well, let's try to think anyway.
+So I have this N by N orthogonal matrix.
+
+1698
+00:14:11,360 --> 00:14:23,180
+So first, it could be any orthogonal
+matrix. Yeah. But is it only the first M
+
+1714
+00:14:23,960 --> 00:14:32,920
+columns that I really need? The rest I
+could just throw away. So let me try to
+
+1731
+00:14:32,920 --> 00:14:40,120
+imagine that it's just the first. Well,
+then I won't have any N in here. So maybe I
+
+1749
+00:14:40,120 --> 00:14:47,660
+better take a half N. Help.
+Oh. Oh, yes. Of course. Ha.
+
+1761
+00:14:50,760 --> 00:14:52,460
+Only M columns that matter.
+
+1766
+00:14:54,540 --> 00:15:01,680
+Everybody sort of now understands that
+SVD. We've got the rank as M. Don't forget
+
+1781
+00:15:01,680 --> 00:15:11,860
+that. Then the first R, the first M columns
+of V are important. Those are the singular
+
+1798
+00:15:11,860 --> 00:15:18,940
+vectors that go with non -zero singular
+values that really matter. And the rest
+
+1812
+00:15:19,180 --> 00:15:29,040
+really don't matter. So I'm going to just,
+I have to count how many. So sorry. V, the
+
+1830
+00:15:29,040 --> 00:15:31,660
+important part of V, has
+
+1835
+00:15:34,120 --> 00:15:35,960
+how many?
+
+1837
+00:15:38,100 --> 00:15:44,860
+Only M columns. But it's an N by N matrix.
+And those columns are orthogonal. So the
+
+1854
+00:15:44,860 --> 00:15:52,180
+answer is not MN for this guy. I have to
+go through this foolish reasoning again. I
+
+1871
+00:15:52,180 --> 00:16:00,560
+have N minus 1 plus N minus
+2 plus so on plus N minus M.
+
+1886
+00:16:05,360 --> 00:16:10,540
+There were N minus 1 parameters in the
+first orthogonal vector or unit vector, N
+
+1901
+00:16:10,540 --> 00:16:16,180
+minus 2 in the second one, up to N minus
+M in the third. And then V has some more
+
+1921
+00:16:16,280 --> 00:16:24,980
+columns that are coming really from a null
+space that are not important. I believe
+
+1936
+00:16:24,980 --> 00:16:35,060
+this is the right thing to do. I'm hoping
+you agree. And now I'm hoping even more
+
+1953
+00:16:35,060 --> 00:16:36,860
+that those add up to M times N.
+
+1961
+00:16:38,940 --> 00:16:48,000
+OK. I have a half N. Oh, I really have to
+total this thing. OK, this had M terms. So
+
+1981
+00:16:48,000 --> 00:16:57,880
+there's M of these Ns. And then I have to
+subtract off 1 plus 2 plus 3 up to M. And
+
+2002
+00:16:57,880 --> 00:17:04,040
+so what am I subtracting off? What's
+that sum, 1 plus 2 plus 3 stopping at M?
+
+2019
+00:17:07,359 --> 00:17:15,940
+It's one of these guys, 1 half. Is it 1
+half M, M plus 1? Yeah, 1 half M, M plus 1.
+
+2041
+00:17:17,079 --> 00:17:24,680
+Sorry, 1 half M, M plus 1. I was supposed
+to enjoy this. And now I'm a little
+
+2059
+00:17:24,680 --> 00:17:32,960
+nervous. But OK, so I believe that that is
+that. OK, well, we have the MN. That's a
+
+2077
+00:17:32,960 --> 00:17:40,080
+good sign that we're shooting for. So
+does the rest of it add to nothing? Well, I
+
+2094
+00:17:40,080 --> 00:17:46,660
+guess, yeah, I guess it does. When I put
+these two together, I have 1 half M, M plus
+
+2113
+00:17:46,660 --> 00:17:51,420
+1. And then I'm subtracting it
+away again. So I get MN. Hooray.
+
+2126
+00:17:53,440 --> 00:18:01,660
+Well, had to happen, or we wouldn't. Before
+I raise that board and consign that to
+
+2142
+00:18:01,660 --> 00:18:07,940
+history, is there, should I pause a little
+more minute? This will be, like I'm hoping,
+
+2158
+00:18:08,100 --> 00:18:14,650
+a one -page appendix to the notes and
+the book. Yeah, but I do have one more
+
+2175
+00:18:16,800 --> 00:18:24,960
+count to do. And then I'm good with this
+review and ready to move onward to the
+
+2192
+00:18:25,120 --> 00:18:30,300
+topic of saddle points and ready to move
+onward after that. Well, I'll say a little
+
+2208
+00:18:30,360 --> 00:18:39,840
+bit about the next lab homework that I'm
+creating. And then our next topic will be
+
+2224
+00:18:39,840 --> 00:18:47,500
+like covariance matrices. A little
+statistics this week. And then we get a
+
+2237
+00:18:47,500 --> 00:18:56,240
+week off to digest it, and then come back
+for gradient descent and deep learning and
+
+2253
+00:18:56,240 --> 00:19:04,840
+those things. OK, everybody happy with
+that? So what's my final question? My final
+
+2267
+00:19:04,840 --> 00:19:10,740
+question is the SVD for any
+
+2273
+00:19:12,780 --> 00:19:13,760
+matrix
+
+2274
+00:19:16,860 --> 00:19:23,220
+of rank R. So it's
+an M by N matrix,
+
+2284
+00:19:25,720 --> 00:19:35,380
+but the rank is only R. That's a natural
+question. How many parameters are there in
+
+2300
+00:19:35,380 --> 00:19:36,020
+the rank R matrix?
+
+2304
+00:19:38,980 --> 00:19:44,810
+And we may even have touched on this
+question. And I have two ways to answer it.
+
+2321
+00:19:44,960 --> 00:19:51,640
+And one way is the SVD. So let me, and
+that'll be similar to what I just pushed up
+
+2340
+00:19:51,640 --> 00:20:00,840
+there. So if the rank is R, the SVD of this
+typical rank R matrix will be u sigma v
+
+2360
+00:20:00,840 --> 00:20:10,340
+transpose. But u, now this is like the
+condensed thing where I've thrown away
+
+2374
+00:20:10,460 --> 00:20:16,220
+stuff that's automatically 0. Because if
+the rank is only R, like if the rank was 1,
+
+2391
+00:20:16,660 --> 00:20:23,140
+suppose the rank was 1. Then I'd have
+one column times one sigma times one row,
+
+2407
+00:20:23,860 --> 00:20:30,620
+right? And I could do that count
+for R equal 1. Now I have R columns.
+
+2423
+00:20:33,690 --> 00:20:40,980
+And I can do that count for M by R. The
+sigma is diagonal, of course. So I'm going
+
+2442
+00:20:40,980 --> 00:20:46,560
+to get R numbers out of that. And this
+one is now R by N. In other words, maybe I
+
+2462
+00:20:46,560 --> 00:20:56,460
+should save this little bit here that was
+helpful. But now I've got M is reduced to
+
+2479
+00:20:56,460 --> 00:21:02,160
+R. So I believe that if I count these
+three, I'll get the right number of
+
+2495
+00:21:02,160 --> 00:21:05,160
+parameters. So I've got the right number of
+parameters for a rank R matrix. And that's
+
+2511
+00:21:05,160 --> 00:21:14,420
+not so obvious. Because the rank R matrices
+are not a, we don't have a subspace. If I
+
+2529
+00:21:14,420 --> 00:21:19,320
+add a rank R matrix to another rank R
+matrix, well, the rank could be as big as
+
+2547
+00:21:19,340 --> 00:21:20,680
+2R and probably will be.
+
+2552
+00:21:22,900 --> 00:21:22,900
+So
+
+2553
+00:21:25,400 --> 00:21:34,540
+it's a little interesting to get your hands
+on matrices of rank R. They're kind of a
+
+2570
+00:21:34,540 --> 00:21:42,260
+thin, like a, well, a math person would
+call it a manifold, some kind of a surface
+
+2587
+00:21:42,360 --> 00:21:48,540
+within matrix space. Have you ever thought
+about matrix space? So that's a vector
+
+2601
+00:21:48,540 --> 00:21:53,460
+space. Because we can add matrices. We
+can multiply them by constants. We can take
+
+2616
+00:21:53,500 --> 00:21:59,300
+linear combinations. So we could call them
+vectors if we like. That would be a vector
+
+2632
+00:21:59,300 --> 00:22:08,020
+space of M by N matrices. What would be
+the dimension of that space? So the vector
+
+2649
+00:22:08,020 --> 00:22:17,680
+space of all 3 by 4 matrices, that has
+what dimension? 12. Because you've got 12
+
+2665
+00:22:17,680 --> 00:22:23,940
+numbers to choose. And it is a space
+because you can add. Now if I say 3 by 4
+
+2684
+00:22:24,300 --> 00:22:25,420
+matrices of rank 2,
+
+2688
+00:22:27,960 --> 00:22:36,680
+I don't have a space anymore. That word
+space is seriously preserved for meaning
+
+2702
+00:22:36,680 --> 00:22:41,120
+vector space, meaning I can take
+combinations. But if I take a rank 2 matrix
+
+2717
+00:22:41,120 --> 00:22:50,440
+plus a rank 2 matrix, I'm not. So it's
+sort of a surface within 12D, the 3 by 4
+
+2736
+00:22:50,440 --> 00:22:56,340
+matrices of rank 2. And we're about to find
+the dimension of that surface. Does your
+
+2752
+00:22:56,640 --> 00:23:03,300
+mind sort of visualize a surface in 12
+dimensions? Yeah. Yeah, well, give it a
+
+2767
+00:23:03,360 --> 00:23:12,980
+shot anyway. But that surface could be 11
+dimensional, so to speak. Meaning locally,
+
+2781
+00:23:14,300 --> 00:23:22,980
+it wouldn't have to be an 11 dimensional
+plane going through the origin. In fact, it
+
+2797
+00:23:22,980 --> 00:23:28,020
+wouldn't go through the origin because the
+origin won't have rank R. So it's some kind
+
+2813
+00:23:28,020 --> 00:23:33,760
+of a surface. And maybe it's got some
+different pieces. Probably some smart
+
+2826
+00:23:33,840 --> 00:23:39,800
+person knows what that surface looks like.
+But we're just going to find out something
+
+2841
+00:23:40,360 --> 00:23:46,340
+about its number of parameters, its local
+dimension. Well, I know that this answer is
+
+2856
+00:23:46,340 --> 00:23:57,980
+R. Because I've got R sigmas. And this one
+I'm pretty good at. But now it's R by N. So
+
+2876
+00:23:57,980 --> 00:24:11,740
+it's instead of here, R was M. But now down
+here, R is R. So I think it's RN minus 1
+
+2897
+00:24:11,740 --> 00:24:12,140
+half.
+
+2898
+00:24:14,600 --> 00:24:23,600
+What's that? Is that an M? So
+now it's an R, R plus 1, I think. I think.
+
+2916
+00:24:25,700 --> 00:24:34,080
+And what about the U? So U is going to
+be similar, except instead of the N here,
+
+2934
+00:24:34,360 --> 00:24:44,000
+we've got an M. So I think for U, we'll
+have M minus 1 plus M minus 2 plus. So let
+
+2955
+00:24:44,000 --> 00:24:50,540
+me write it here. M minus 1. So U, I'm
+talking about U here. It's got R columns.
+
+2973
+00:24:51,300 --> 00:24:56,050
+The first one has M minus 1, because I
+throw away 1, because it's a unit vector,
+
+2990
+00:24:56,580 --> 00:25:06,280
+up to M minus R. That's its R -th column.
+And now, so what does that add up to? Well,
+
+3010
+00:25:06,280 --> 00:25:14,520
+I put all the M's together. So that's RM.
+Or let me say MR. And then I'm subtracting
+
+3028
+00:25:14,520 --> 00:25:22,300
+on 1 plus 2 plus 3 up to R. Now tell me
+again what that adds up to. 1 plus 2 plus 3
+
+3051
+00:25:22,300 --> 00:25:29,600
+stop at R. That's what we had here. And
+we've got it for V. And we've got it again
+
+3070
+00:25:29,600 --> 00:25:39,480
+here. Minus 1 half R, R plus 1. Are you OK
+with that? And now I just want to add them
+
+3091
+00:25:39,480 --> 00:25:49,420
+up. So I have MR. And I have NR. And then
+I have two of these. So let me get it here.
+
+3113
+00:25:49,650 --> 00:25:59,320
+MR and NR. And now I have to look at it.
+So MR, check. MR, check. Now I have two of
+
+3134
+00:25:59,320 --> 00:26:09,300
+these guys. So they combine into R squared
+plus R. And then I R squared. Yeah, minus R
+
+3152
+00:26:09,300 --> 00:26:14,840
+squared plus R. Sorry. They combine into
+minus R squared plus R. And then here is a
+
+3169
+00:26:15,260 --> 00:26:18,360
+R coming in with a plus. I
+think we have a minus R squared.
+
+3183
+00:26:21,210 --> 00:26:30,380
+And that is the right answer. Yeah. OK.
+So I took a bit longer than I intended. But
+
+3201
+00:26:30,720 --> 00:26:36,320
+this is a number that's sort of
+interesting. I mentioned saddle points
+
+3213
+00:26:36,380 --> 00:26:43,320
+separately from maxima and minima just
+because they are definitely not as easy to
+
+3227
+00:26:43,320 --> 00:26:52,460
+work with. You understand what I mean
+by saddle points? The matrices involved are
+
+3241
+00:26:52,460 --> 00:26:53,420
+not positive definite.
+
+3244
+00:26:57,420 --> 00:27:03,900
+They're not negative. They're not negative.
+They're not, well, those would go with
+
+3257
+00:27:03,900 --> 00:27:09,760
+maxima and minima. But we're looking in
+between. So saddle points. OK. Well, I'll
+
+3271
+00:27:09,760 --> 00:27:17,120
+get going on those. OK. I sort of realized
+that there are two main sources of saddle
+
+3288
+00:27:17,120 --> 00:27:17,220
+points.
+
+3289
+00:27:19,330 --> 00:27:27,680
+One of them is when I have problems that,
+when I, let's say I minimize. So this will
+
+3307
+00:27:27,680 --> 00:27:36,740
+be the constraint. The saddle points that
+come from the constraint. So Lagrange is
+
+3321
+00:27:36,740 --> 00:27:40,840
+going to be responsible for these saddle
+points. So we might have some minimum
+
+3335
+00:27:40,840 --> 00:27:48,240
+problem, like minimize some positive
+definite thing. And of course, if we don't
+
+3348
+00:27:48,400 --> 00:27:55,800
+say any more, the minimum is 0. Right?
+Because otherwise it's positive. But we're
+
+3362
+00:27:55,800 --> 00:28:04,960
+going to put on constraints, Ax equal
+b. So this is the classical constrained
+
+3376
+00:28:04,960 --> 00:28:13,180
+optimization problem. Quadratic cost
+function, linear constraints. We could
+
+3385
+00:28:13,180 --> 00:28:21,920
+solve this exactly. But let's just see
+where a saddle point is going to arise. So
+
+3401
+00:28:22,600 --> 00:28:28,980
+this S is positive definite. But now how do
+we deal with that problem? Well, Lagrange
+
+3417
+00:28:28,980 --> 00:28:33,800
+said what to do. Lagrange
+said look at the Lagrangian.
+
+3427
+00:28:36,920 --> 00:28:47,480
+OK. He introduced lambda. So this x is in n
+dimensions. That's an n by n matrix. But I
+
+3446
+00:28:47,480 --> 00:28:50,880
+have m constraints. So
+the matrix A is m by n.
+
+3457
+00:28:55,140 --> 00:29:02,280
+I have m constraints. And then I'm going to
+follow the rules and introduce m Lagrange
+
+3473
+00:29:02,280 --> 00:29:02,580
+multipliers.
+
+3474
+00:29:07,060 --> 00:29:07,600
+That's an m.
+
+3477
+00:29:10,700 --> 00:29:18,030
+And then the neat part of the Lagrange. And
+what is this? Well, I take the function.
+
+3494
+00:29:19,060 --> 00:29:26,880
+And then I introduce, remember lambda is a
+vector now. Not just a number. We had some
+
+3511
+00:29:26,880 --> 00:29:31,060
+application where it was just one
+constraint. But now I have m constraints.
+
+3524
+00:29:32,120 --> 00:29:41,440
+So I take lambda. So lambda transpose times
+Ax minus b. And the plus or the minus sign
+
+3542
+00:29:41,440 --> 00:29:47,480
+here is not important. I mean, you can
+choose it, because that'll determine the
+
+3556
+00:29:47,520 --> 00:29:57,640
+sign of lambda. But either way, it's
+correct. OK. So we've introduced a function
+
+3570
+00:29:57,640 --> 00:30:01,540
+that now depends on
+x and also on lambda.
+
+3579
+00:30:03,580 --> 00:30:13,160
+And they multiply each other. And my point
+is that Lagrange says take the derivatives
+
+3594
+00:30:14,540 --> 00:30:19,700
+with respect to x and lambda. So that's the
+cool thing that he's contributed. He says
+
+3610
+00:30:19,700 --> 00:30:26,640
+if you only create my function, now you can
+take x derivative and lambda derivative.
+
+3625
+00:30:26,660 --> 00:30:34,240
+That'll give you n equations from this
+one, from the x derivative, and m equations
+
+3640
+00:30:34,240 --> 00:30:39,520
+from the lambda derivative. It'll be n
+plus m. It'll determine the good x and the
+
+3656
+00:30:39,520 --> 00:30:45,560
+lambda. But I'm saying that's all true and
+all important. But I'm saying that the x
+
+3672
+00:30:45,620 --> 00:30:51,920
+and that pair x lambda will be a saddle
+point of this function. This function has
+
+3688
+00:30:52,040 --> 00:30:59,240
+saddle points. It's not a maximum.
+OK. Let's just take the derivatives and see
+
+3702
+00:30:59,240 --> 00:31:06,740
+what we get. So the derivatives
+with respect to x, d by the x. x is now a
+
+3720
+00:31:06,740 --> 00:31:14,820
+vector. So I really should say the
+gradient in the x direction. I get Sx.
+
+3735
+00:31:17,160 --> 00:31:19,460
+And here, the derivative
+with respect to x.
+
+3743
+00:31:21,660 --> 00:31:28,800
+That is A transpose lambda, because this is
+the dot product of A transpose lambda with
+
+3759
+00:31:28,800 --> 00:31:35,380
+x. You know I've put parentheses around it
+and followed the transpose rule. So that's
+
+3774
+00:31:35,380 --> 00:31:40,540
+the dot product of A transpose lambda with
+x. It's linear in x. So its derivative is
+
+3791
+00:31:41,040 --> 00:31:43,540
+just A transpose
+lambda. And that's 0.
+
+3798
+00:31:46,020 --> 00:31:49,620
+And now I take the other
+one, the lambda derivative.
+
+3808
+00:31:51,940 --> 00:31:56,580
+The lambda derivative, this doesn't depend
+on lambda. The lambda derivative is just Ax
+
+3822
+00:31:56,640 --> 00:31:59,240
+minus B. It brings
+back the constraints.
+
+3829
+00:32:03,240 --> 00:32:09,040
+So that's pretty simple. Now, it doesn't
+even require much thought, because you just
+
+3843
+00:32:09,140 --> 00:32:14,220
+know the constraints are coming back.
+And of course, B should be put over on this
+
+3859
+00:32:14,220 --> 00:32:26,040
+side, because it's a constant. So there we
+see two A block. We see a very important
+
+3876
+00:32:26,040 --> 00:32:31,740
+class of problems. And the matrix we're
+seeing, we could write this in block matrix
+
+3891
+00:32:31,740 --> 00:32:41,100
+form, S minus A transpose. Oh, I'm going to
+change that to a plus, because I'm more of
+
+3909
+00:32:41,100 --> 00:32:51,340
+a plus person. OK. A transpose and A. Yeah.
+Yeah. When I took the derivative of this,
+
+3926
+00:32:51,660 --> 00:32:56,440
+the lambda, I didn't put the minus sign in
+here. And I didn't want to. So let's make
+
+3944
+00:32:56,440 --> 00:32:59,120
+it a plus. A. And then
+
+3950
+00:33:01,460 --> 00:33:07,740
+there's nothing there. And the x
+and the lambda and the 0 and the B.
+
+3965
+00:33:10,580 --> 00:33:18,280
+That is the model of a constrained minimum,
+a minimum problem with constraints.
+
+3978
+00:33:21,540 --> 00:33:30,520
+Here is quadratic. And the constraints are
+linear. It's in course 6, it's everywhere,
+
+3992
+00:33:31,400 --> 00:33:40,340
+constantly appearing as the simplest
+model. And my point today is just that the
+
+4006
+00:33:40,380 --> 00:33:41,760
+solution x lambda,
+
+4009
+00:33:44,130 --> 00:33:56,800
+that total solution, the x together with a
+lambda, that that is a saddle point of the
+
+4026
+00:33:56,800 --> 00:34:02,340
+Lagrangian function L. It's a saddle point,
+not a minimum. It's sort of a minimum in
+
+4042
+00:34:02,340 --> 00:34:02,960
+the x direction,
+
+4045
+00:34:06,000 --> 00:34:11,980
+because this is positive definite. That
+makes that, as a function of x, it's going
+
+4060
+00:34:11,980 --> 00:34:12,159
+up.
+
+4061
+00:34:14,340 --> 00:34:24,080
+But somehow the appearance of lambda makes
+this matrix indefinite. It starts positive
+
+4074
+00:34:24,080 --> 00:34:30,800
+definite, but it has this A transpose A and
+that 0. It couldn't be posi - actually, if
+
+4092
+00:34:30,800 --> 00:34:36,159
+I look at that matrix, I see it's not
+positive definite. What do I see? Why do I
+
+4110
+00:34:36,159 --> 00:34:40,280
+say that immediately? When I look at
+that matrix, it's not a positive definite
+
+4124
+00:34:40,280 --> 00:34:41,900
+matrix, because
+
+4126
+00:34:45,100 --> 00:34:51,320
+when I see that 0 on the diagonal, that
+shoots positive definite. Couldn't be. Take
+
+4141
+00:34:51,420 --> 00:34:59,800
+as an example s equal 3, 1, and
+1, 0. Take that matrix. Just random.
+
+4156
+00:35:02,000 --> 00:35:08,220
+I made it 2 by 2 instead of size m plus
+n. Do you see, how do I know that the
+
+4177
+00:35:08,220 --> 00:35:17,440
+eigenvalues of that matrix, 1 is plus and
+1 is minus? The determinant is negative.
+
+4192
+00:35:19,800 --> 00:35:24,960
+So that tells me right away that 1 is plus
+and 1 is minus. Thanks. Yes, yes, yes. The
+
+4211
+00:35:25,200 --> 00:35:29,360
+determinant is negative. And somehow here,
+the determinant is similar. Calculation
+
+4222
+00:35:29,360 --> 00:35:36,440
+would produce A transpose A or something
+with the minus, because I'm going this way.
+
+4237
+00:35:36,860 --> 00:35:39,700
+Well, I could do
+better than that.
+
+4244
+00:35:42,140 --> 00:35:52,220
+But you saw the point. That matrix, that
+simple example of this is has eigenvalues
+
+4259
+00:35:52,220 --> 00:35:59,200
+of both signs. Let me just quickly say,
+and I'll put it in the notes or in that
+
+4277
+00:35:59,200 --> 00:36:10,240
+chapter. I guess all this is coming is
+still 3 .2. That was originally 4 .2. And
+
+4294
+00:36:10,520 --> 00:36:18,020
+you'll see it. So what do I want to say?
+I'd like to say that that example is pretty
+
+4313
+00:36:18,020 --> 00:36:27,520
+convincing to me, that these
+KKT matrices, if you talk to people
+
+4325
+00:36:32,000 --> 00:36:40,140
+in optimization, that's Karush, Kuhn, and
+Tucker, three famous guys. And these are
+
+4338
+00:36:40,260 --> 00:36:50,000
+the KKT conditions that they derived
+following Lagrange. And my point is, and
+
+4351
+00:36:50,000 --> 00:36:57,200
+this is a typical sort. So it's an
+indefinite matrix. I believe it has,
+
+4365
+00:37:00,900 --> 00:37:07,960
+if I do elimination, yeah, tell me this.
+This is a good way to look at it. I do
+
+4384
+00:37:07,960 --> 00:37:13,480
+elimination on this one or on this one?
+Well, suppose I do elimination there. What
+
+4399
+00:37:13,480 --> 00:37:21,020
+is the first pivot? 3, positive. So now
+let me turn down to here. What if I do
+
+4417
+00:37:21,020 --> 00:37:30,140
+elimination on this block matrix? Then
+I start up here, and that first pivot is
+
+4432
+00:37:30,580 --> 00:37:35,200
+positive again, right? This S is a
+positive definite matrix. Don't forget.
+
+4444
+00:37:37,880 --> 00:37:42,140
+The first two pivots will all be positive,
+because the first n pivots, you're working
+
+4459
+00:37:42,140 --> 00:37:48,360
+away in this corner. And if you're only
+thinking about the first n, this corner is
+
+4475
+00:37:48,380 --> 00:37:56,040
+sized n by n. Then you don't even see a.
+You're doing some subtractions. And I'll do
+
+4492
+00:37:56,040 --> 00:38:01,440
+those. But the pivots themselves are all
+coming from S. And S is positive definite.
+
+4507
+00:38:01,980 --> 00:38:07,100
+So we know that one of the tests for a
+positive definite matrix is all pivots are
+
+4524
+00:38:07,100 --> 00:38:13,580
+positive. So I think all n of the first
+pivots will be positive. And when we use
+
+4541
+00:38:13,580 --> 00:38:16,730
+them, let's just see what
+happens when we use them.
+
+4551
+00:38:18,860 --> 00:38:22,980
+So here is the KKT
+matrix that I start with.
+
+4561
+00:38:25,140 --> 00:38:26,480
+And what do I end up with?
+
+4568
+00:38:29,280 --> 00:38:37,560
+Well, really what I'm doing is I'm
+multiplying that block row by something and
+
+4582
+00:38:37,880 --> 00:38:45,460
+subtracting to kill that a. So these
+rows, well, near enough. Let me do block
+
+4597
+00:38:45,460 --> 00:38:51,100
+elimination. Block elimination is easier.
+I don't have to write down all little tiny
+
+4611
+00:38:51,100 --> 00:38:59,320
+numbers. So I just want to multiply
+this row by something. Tell me what. And
+
+4626
+00:38:59,620 --> 00:39:07,620
+subtract from this second row. Suppose
+there are numbers or letters. I guess they
+
+4640
+00:39:07,620 --> 00:39:13,360
+are letters. What do I multiply
+that first row by and subtract?
+
+4652
+00:39:16,380 --> 00:39:27,700
+Let's see. If these were just little tiny
+numbers, as like in 3, 1, 1, 0, what do I
+
+4671
+00:39:27,700 --> 00:39:34,260
+multiply that row by and subtract from
+this? I multiply by a over S, right? I do
+
+4688
+00:39:34,260 --> 00:39:39,400
+multiply by a over S, which puts an a
+there. And then I subtract. So here I'll
+
+4705
+00:39:39,400 --> 00:39:50,340
+multiply by a over S. But these are
+matrices. So I multiply by a S inverse,
+
+4721
+00:39:50,340 --> 00:39:56,400
+right? When I multiply by a S inverse times
+this S, I get a. And then I subtract. And
+
+4740
+00:39:56,400 --> 00:40:03,200
+I get the 0. And when I multiply by this
+guy and subtract, I get minus, because I'm
+
+4758
+00:40:03,200 --> 00:40:10,180
+subtracting, this thing
+minus a S inverse a transpose.
+
+4767
+00:40:14,740 --> 00:40:19,680
+That was block elimination,
+which just, in other words, is just,
+
+4778
+00:40:21,900 --> 00:40:24,720
+you know, you've learned
+about 2 by 2 matrices.
+
+4787
+00:40:28,160 --> 00:40:34,680
+And then stuff. Now I'm just doing it with
+blocks instead of single numbers. But you
+
+4803
+00:40:34,680 --> 00:40:41,680
+see, this produced those positive pivots.
+And what can you tell me about that matrix?
+
+4818
+00:40:43,320 --> 00:40:50,100
+What can you tell me about the signs or
+the eigenvalues or whatever of this matrix?
+
+4834
+00:40:53,960 --> 00:40:59,460
+Suppose S was the identity. What could
+you tell me about minus a A transpose?
+
+4849
+00:41:01,600 --> 00:41:09,120
+Minus a A transpose. And my voice should
+emphasize that minus. That matrix there is
+
+4864
+00:41:09,800 --> 00:41:16,780
+negative definite. So all the next set of
+m pivots that come from here will all be
+
+4881
+00:41:16,780 --> 00:41:20,440
+negative. So I
+get m, or rather n,
+
+4889
+00:41:22,740 --> 00:41:28,720
+n positive and n
+negative pivots.
+
+4895
+00:41:30,960 --> 00:41:36,380
+And then I remember that the pivots
+actually have the same sign as the
+
+4909
+00:41:36,380 --> 00:41:43,040
+eigenvalues. That's just a beautiful fact.
+We know that for positive definite ones,
+
+4922
+00:41:43,820 --> 00:41:47,960
+the eigenvalues are all positive.
+The pivots are all positive. But it's even
+
+4935
+00:41:47,960 --> 00:41:55,360
+better than that. If we have some mixture
+for the signs of the pivots, that tells us
+
+4952
+00:41:55,540 --> 00:42:00,500
+the signs of the eigenvalues. That's
+a really neat fact. So I'll just write that
+
+4967
+00:42:00,500 --> 00:42:06,260
+down. Signs, plus and
+minus signs of pivots give
+
+4976
+00:42:08,920 --> 00:42:13,740
+us the plus and minus
+signs of the eigenvalues.
+
+4985
+00:42:16,500 --> 00:42:25,980
+So I've sneaked in a nice matrix theorem
+for symmetric matrices. This is symmetric
+
+4999
+00:42:25,980 --> 00:42:26,640
+matrices.
+
+5000
+00:42:30,600 --> 00:42:38,220
+That's what I wanted to say about
+constraints and saddle points coming from
+
+5013
+00:42:38,220 --> 00:42:45,380
+there. And then I now want to say something
+about constraints and not constraints now.
+
+5028
+00:42:46,180 --> 00:42:55,000
+I'm going to look at the second source
+of saddle points. So these will be saddles
+
+5044
+00:42:58,440 --> 00:43:10,480
+from this remarkable
+function that we know.
+
+5051
+00:43:13,540 --> 00:43:21,080
+So I now have a symmetric matrix. S could
+be even positive definite. Usually it is
+
+5067
+00:43:21,080 --> 00:43:28,480
+here. Do you know what the name for r
+is? It's a ratio or a quotient. It's named
+
+5085
+00:43:28,480 --> 00:43:34,980
+after somebody starting with r. Who's that?
+Rayleigh, right? It's Rayleigh quotient.
+
+5097
+00:43:41,680 --> 00:43:45,800
+And what is the largest value,
+possible value, of the Rayleigh quotient?
+
+5109
+00:43:49,860 --> 00:43:56,660
+We've seen this idea. It is the maximum
+value of that Rayleigh quotient, of that
+
+5124
+00:43:56,660 --> 00:44:06,480
+ratio, is lambda max. Right, lambda 1, the
+biggest one. And the x that does it is the
+
+5142
+00:44:06,480 --> 00:44:06,760
+eigenvector.
+
+5143
+00:44:08,920 --> 00:44:24,520
+So max is lambda 1 and at x equal q1.
+Because q1 transpose Sq1 over q1 transpose
+
+5160
+00:44:24,520 --> 00:44:35,420
+q1. So I'm plugging in this winner. And
+Sq1 is lambda 1 q1, right? It's the first
+
+5177
+00:44:35,420 --> 00:44:40,020
+eigenvector. And so a lambda
+1 comes out. So I get lambda 1.
+
+5190
+00:44:42,370 --> 00:44:51,040
+I know everything about that. And what I
+know is, if I put in any x, what do I know?
+
+5210
+00:44:51,540 --> 00:44:57,740
+If I put in any x whatever and look at this
+number, what do I know about that number?
+
+5229
+00:44:59,800 --> 00:45:06,040
+It's smaller than lambda 1. Or it might hit
+lambda 1, but it's not bigger. That's why
+
+5246
+00:45:06,040 --> 00:45:12,520
+maxima are easy. You put in any vector, and
+you know what's happening. You know it's
+
+5262
+00:45:12,840 --> 00:45:16,820
+not above the max, obviously.
+And what about the min?
+
+5272
+00:45:19,700 --> 00:45:26,080
+That's equally simple, of course. It's at
+the bottom. So what would be the minimum of
+
+5288
+00:45:26,080 --> 00:45:31,980
+that, Rayleigh, of that quotient, if I was
+looking for what eigenvector and eigenvalue
+
+5302
+00:45:31,980 --> 00:45:41,120
+will I find when I look at the bottom? Of
+this, I will find lambda n, the last guy,
+
+5321
+00:45:41,220 --> 00:45:41,780
+lambda min.
+
+5323
+00:45:44,540 --> 00:45:52,280
+And the winning x will be its eigenvector.
+And again, this stuff will equal lambda n.
+
+5339
+00:45:54,450 --> 00:45:58,700
+So that's easy. I know that if
+I put in any vector whatever,
+
+5352
+00:46:01,440 --> 00:46:07,320
+just choose any vector in n dimensions
+and compute r of x, what do I now also know
+
+5370
+00:46:07,320 --> 00:46:14,280
+about that r of that vector?
+It's greater than lambda n,
+
+5381
+00:46:16,860 --> 00:46:24,360
+below the max, above the min. But now, if I
+put in, now what about the other lambdas?
+
+5399
+00:46:24,640 --> 00:46:30,000
+Well, the point is that those are saddle
+points. The beautiful thing about this
+
+5413
+00:46:30,000 --> 00:46:36,620
+Rayleigh quotient is, its derivative
+equals 0 right at the saddle point. At the
+
+5427
+00:46:36,620 --> 00:46:43,800
+eigenvectors. And its value at the
+eigenvectors is the eigenvalue. So I have,
+
+5440
+00:46:44,540 --> 00:46:52,120
+you see what I'm saying? I have lambda 1
+here, a max, lambda n here, a min. And in
+
+5459
+00:46:52,120 --> 00:46:59,320
+between, I have a bunch of other lambdas,
+which are saddle points. And if I put an x
+
+5477
+00:46:59,400 --> 00:47:07,720
+in to r of x and look to see what happens,
+I have no idea whether I'm on this side,
+
+5497
+00:47:07,860 --> 00:47:16,020
+below it, or this side above lambda i. So
+the saddle points are more difficult and
+
+5513
+00:47:16,840 --> 00:47:23,720
+take a little more patience. So that's
+the other source of saddle points. And I,
+
+5528
+00:47:27,840 --> 00:47:37,040
+so these are, so let me just emphasize
+again what I'm saying. Lambda at x equal
+
+5544
+00:47:37,040 --> 00:47:54,200
+qk, I have some number, the r of x has some
+number of positive eigenvalues and some
+
+5561
+00:47:54,200 --> 00:48:01,260
+number of negative ones for the
+things above and below qk. OK.
+
+5573
+00:48:04,140 --> 00:48:12,920
+Follow up on the saddle point part of the,
+on the details of this picture. I might,
+
+5590
+00:48:13,920 --> 00:48:19,020
+that'll be in the notes. And I might come
+back to it at the very start of next time.
+
+5609
+00:48:20,640 --> 00:48:31,420
+But I will, before that, you will have
+the lab number three. And then I think we
+
+5626
+00:48:31,500 --> 00:48:34,540
+should discuss it. Because
+I haven't done this lab.
+
+5635
+00:48:37,340 --> 00:48:42,680
+It's intended to give you some feeling for
+overfitting, and also intended to give you
+
+5650
+00:48:42,680 --> 00:48:50,300
+a little introduction to deep learning.
+And so I'll get it to you, and we can talk
+
+5667
+00:48:50,300 --> 00:48:56,700
+about it Wednesday. And again, it won't
+be due until the Wednesday after break. OK,
+
+5682
+00:48:56,920 --> 00:48:58,120
+thanks. So I'll see
+you Wednesday.
+

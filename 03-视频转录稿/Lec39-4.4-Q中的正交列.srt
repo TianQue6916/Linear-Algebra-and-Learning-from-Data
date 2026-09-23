@@ -1,0 +1,3250 @@
+﻿1
+00:00:01,640 --> 00:00:04,820
+The following content is
+provided under a Creative Commons license.
+
+2
+00:00:05,340 --> 00:00:10,940
+Your support will help MIT OpenCourseWare continue to
+offer high -quality educational resources for free.
+
+3
+00:00:11,620 --> 00:00:15,740
+To make a donation or to view additional
+materials from hundreds of MIT courses,
+
+4
+00:00:16,500 --> 00:00:20,920
+visit MIT
+OpenCourseWare at ocw .mit .edu.
+
+5
+00:00:22,340 --> 00:00:23,780
+So we're really moving along
+
+6
+00:00:24,440 --> 00:00:29,980
+this review of the highlights of
+linear algebra, and today it's matrices Q.
+
+7
+00:00:31,020 --> 00:00:34,360
+They get that name. They
+have orthonormal columns.
+
+8
+00:00:35,620 --> 00:00:44,680
+So that's what one looks like. And then the key fact,
+orthonormal columns translates directly into that
+
+9
+00:00:45,440 --> 00:00:54,920
+simple fact that you just keep remembering. Every time you see Q transpose
+Q, you've got the identity matrix. Let's just see why. So Q transpose
+
+10
+00:00:54,920 --> 00:00:55,880
+would be,
+
+11
+00:00:57,620 --> 00:01:00,420
+I'll take those columns and make them into
+rows.
+
+12
+00:01:03,080 --> 00:01:05,560
+And then
+I multiply by Q with the columns.
+
+13
+00:01:08,860 --> 00:01:09,640
+And what do I get?
+
+14
+00:01:10,920 --> 00:01:13,380
+Well, hopefully I
+get the identity matrix.
+
+15
+00:01:18,500 --> 00:01:19,540
+OK. Why?
+
+16
+00:01:20,300 --> 00:01:28,620
+Because Q, oh, yeah. The normal part tells me that the length
+of each vector, that's the length squared Q transpose Q,
+
+17
+00:01:29,320 --> 00:01:31,120
+the length squared is 1.
+
+18
+00:01:31,840 --> 00:01:39,760
+So that gives me the 1 in the identity matrix all along
+the diagonal. And then Q transpose times a different Q
+
+19
+00:01:40,560 --> 00:01:42,560
+is 0. That's the ortho part.
+
+20
+00:01:43,220 --> 00:01:44,760
+So that gives me the 0s.
+
+21
+00:01:45,680 --> 00:01:49,180
+So
+that's a simple identity, but it translates
+
+22
+00:01:50,130 --> 00:01:54,060
+from a lot of words into a simple
+expression.
+
+23
+00:01:55,920 --> 00:01:56,740
+Now, does
+
+24
+00:01:57,460 --> 00:02:00,400
+that mean that in the
+other order,
+
+25
+00:02:00,900 --> 00:02:03,140
+Q Q transpose,
+is that the identity?
+
+26
+00:02:03,700 --> 00:02:06,260
+So that's a
+question to think about.
+
+27
+00:02:07,100 --> 00:02:07,300
+Is
+
+28
+00:02:07,820 --> 00:02:11,100
+Q Q transpose equal
+the identity? Question.
+
+29
+00:02:12,980 --> 00:02:14,760
+Sometimes yes, sometimes no.
+
+30
+00:02:15,560 --> 00:02:16,540
+Easy to tell which.
+
+31
+00:02:17,480 --> 00:02:18,540
+The answer is yes.
+
+32
+00:02:20,100 --> 00:02:20,420
+Yes,
+
+33
+00:02:21,520 --> 00:02:23,940
+when Q is square.
+
+34
+00:02:28,020 --> 00:02:30,300
+The answer is yes. If
+Q is a square matrix,
+
+35
+00:02:30,820 --> 00:02:36,080
+a square matrix, this
+is saying that the square matrix Q
+
+36
+00:02:37,140 --> 00:02:38,640
+has that inverse on its left.
+
+37
+00:02:39,920 --> 00:02:42,900
+But for square matrices, a left inverse, Q
+transpose,
+
+38
+00:02:43,720 --> 00:02:44,820
+is also a right inverse.
+
+39
+00:02:45,900 --> 00:02:50,600
+So for a square matrix, if you have an inverse that
+works on one side, it will work on the other side.
+
+40
+00:02:51,640 --> 00:02:53,780
+So the answer is
+yes in that case.
+
+41
+00:02:54,320 --> 00:02:55,580
+And then in that case,
+
+42
+00:02:56,300 --> 00:02:58,680
+that's the
+case when we call Q is,
+
+43
+00:03:00,800 --> 00:03:05,800
+well, we really, I don't know what the right name
+would be, but here's the name everybody uses,
+
+44
+00:03:06,440 --> 00:03:07,340
+an orthogonal matrix.
+
+45
+00:03:15,900 --> 00:03:16,940
+Only in this square case,
+
+46
+00:03:17,680 --> 00:03:18,180
+square.
+
+47
+00:03:23,000 --> 00:03:24,530
+Q is an orthogonal matrix.
+
+48
+00:03:25,720 --> 00:03:29,240
+Right. Do you want to
+just see an example of how that works?
+
+49
+00:03:30,140 --> 00:03:30,980
+And it will not.
+
+50
+00:03:31,800 --> 00:03:38,160
+So if Q is rectangular,
+let me do a rectangular Q and a square Q.
+
+51
+00:03:39,480 --> 00:03:42,780
+So I think there
+must be a board up there somewhere.
+
+52
+00:03:43,920 --> 00:03:44,120
+Here.
+
+53
+00:03:45,900 --> 00:03:46,000
+OK.
+
+54
+00:03:48,360 --> 00:03:48,760
+Square.
+
+55
+00:03:52,820 --> 00:03:53,120
+All right.
+
+56
+00:03:54,860 --> 00:03:56,280
+Good
+to see some orthogonal matrices,
+
+57
+00:03:57,040 --> 00:04:00,660
+because my message is that they are really
+important in all kinds of applications.
+
+58
+00:04:01,420 --> 00:04:10,300
+Let's start 2 by 2. I can think of two different ways
+to get an orthogonal matrix. That's a 2 by 2 matrix.
+
+59
+00:04:11,160 --> 00:04:13,170
+And one of them you
+will know immediately.
+
+60
+00:04:14,000 --> 00:04:14,880
+Cos theta,
+
+61
+00:04:15,520 --> 00:04:16,260
+sine theta.
+
+62
+00:04:17,100 --> 00:04:17,980
+So that's a unit vector.
+
+63
+00:04:19,220 --> 00:04:21,839
+It's normalized.
+Cos squared plus sine squared is 1.
+
+64
+00:04:22,460 --> 00:04:29,120
+And this guy has to be orthogonal to it. So
+I'll make that minus sine theta and cos theta.
+
+65
+00:04:30,240 --> 00:04:30,380
+OK.
+
+66
+00:04:32,180 --> 00:04:33,420
+Those are both length 1.
+
+67
+00:04:34,220 --> 00:04:35,040
+They're orthogonal.
+
+68
+00:04:35,700 --> 00:04:37,560
+Then this is my Q.
+
+69
+00:04:38,740 --> 00:04:41,920
+And the inverse of
+Q will be the transpose.
+
+70
+00:04:42,900 --> 00:04:43,360
+If I multiply,
+
+71
+00:04:43,880 --> 00:04:49,760
+the transpose would put the minus sign down here
+and would produce the inverse matrix. And what does
+
+72
+00:04:50,740 --> 00:04:53,320
+that particular matrix
+represent?
+
+73
+00:04:55,400 --> 00:04:58,340
+Geometrically, where
+do we see that matrix?
+
+74
+00:05:00,220 --> 00:05:01,360
+It's a rotation. Thank you.
+
+75
+00:05:02,060 --> 00:05:04,400
+It's a rotation of the
+whole plane by theta.
+
+76
+00:05:05,360 --> 00:05:09,300
+Yeah. So if I apply that
+to 1, 0, for example,
+
+77
+00:05:10,300 --> 00:05:13,480
+I get the first column, which is cos theta,
+sine theta.
+
+78
+00:05:14,740 --> 00:05:16,060
+And that's just
+
+79
+00:05:16,780 --> 00:05:18,310
+a rop. Let me draw a picture.
+
+80
+00:05:19,020 --> 00:05:19,020
+That
+
+81
+00:05:19,540 --> 00:05:22,500
+vector 1, 0
+has got rotated up to.
+
+82
+00:05:23,260 --> 00:05:25,900
+So there's the 1, 0.
+
+83
+00:05:27,060 --> 00:05:34,800
+And there it got rotated through an angle theta. And
+similarly, 0, 1 will get rotated through an angle theta
+
+84
+00:05:35,720 --> 00:05:36,040
+to there.
+
+85
+00:05:36,800 --> 00:05:37,660
+So the whole plane rotates.
+
+86
+00:05:40,320 --> 00:05:43,260
+Oh,
+that makes me remember a highly important,
+
+87
+00:05:44,080 --> 00:05:46,540
+very important property of Q.
+
+88
+00:05:47,060 --> 00:05:49,640
+It doesn't change length.
+
+89
+00:05:50,500 --> 00:06:00,240
+The length of any vector is the same after you rotate it. The length
+of any vector is the same after you multiply by Q. Can I just do that?
+
+90
+00:06:01,120 --> 00:06:03,560
+I claim any x, any vector x.
+
+91
+00:06:04,970 --> 00:06:05,880
+I want to
+
+92
+00:06:06,620 --> 00:06:08,120
+look at the length of Qx.
+
+93
+00:06:10,400 --> 00:06:11,540
+Same length as x.
+
+94
+00:06:12,660 --> 00:06:15,780
+Actually,
+that's the reason in computations
+
+95
+00:06:16,280 --> 00:06:16,440
+that
+
+96
+00:06:17,180 --> 00:06:19,720
+orthogonal matrix are
+so much loved,
+
+97
+00:06:20,600 --> 00:06:24,060
+because no overflow can
+happen with orthogonal matrices.
+
+98
+00:06:24,980 --> 00:06:31,700
+Lengths don't change. I can multiply by any number
+of orthogonal matrices, and the lengths don't change.
+
+99
+00:06:32,420 --> 00:06:34,920
+Can we just see why that's true?
+
+100
+00:06:35,620 --> 00:06:36,660
+How would you show?
+
+101
+00:06:37,340 --> 00:06:38,520
+So what do we have to go on?
+
+102
+00:06:39,180 --> 00:06:42,240
+What
+we have to go on is Q transpose Q equal i.
+
+103
+00:06:43,940 --> 00:06:48,380
+Whatever we're going to prove, it's got to
+come out of that, because that's all we know.
+
+104
+00:06:49,400 --> 00:06:52,760
+So how do I
+use that to get that one?
+
+105
+00:06:53,940 --> 00:07:00,420
+Well, we haven't said a whole lot about lengths, but you'll see it
+all now. It'll be easier to prove that the squares are the same.
+
+106
+00:07:01,280 --> 00:07:07,660
+So what's the matrix expression for the length
+squared? What's the right -hand side of that equation?
+
+107
+00:07:09,590 --> 00:07:09,940
+X transpose x,
+
+108
+00:07:10,480 --> 00:07:10,700
+right?
+
+109
+00:07:11,500 --> 00:07:14,280
+X transpose x gives me
+the sum of the squares.
+
+110
+00:07:14,880 --> 00:07:20,360
+Pythagoras says that's the length squared.
+So that right -hand side is x transpose x.
+
+111
+00:07:21,260 --> 00:07:21,960
+What's the left side?
+
+112
+00:07:23,780 --> 00:07:30,400
+It's the length squared of Qx.
+So it must be the same as Qx transpose Qx.
+
+113
+00:07:32,440 --> 00:07:34,940
+And the claim is
+that that equation holds.
+
+114
+00:07:36,730 --> 00:07:37,620
+And do you see it?
+
+115
+00:07:39,320 --> 00:07:40,400
+Where is it? So
+
+116
+00:07:41,360 --> 00:07:46,260
+any property from
+Q has to just come out directly from that.
+
+117
+00:07:46,760 --> 00:07:47,560
+Where is it here?
+
+118
+00:07:48,940 --> 00:07:53,760
+Do I just push away a little bit
+at that left -hand side and see it?
+
+119
+00:07:55,260 --> 00:07:59,740
+Qx transpose is the
+same as x transpose Q transpose.
+
+120
+00:08:00,640 --> 00:08:02,040
+And Qx is Qx.
+
+121
+00:08:03,640 --> 00:08:09,140
+And now I'm seeing, well, you might say, wait
+a minute. The parentheses were there and there.
+
+122
+00:08:09,800 --> 00:08:17,260
+But I say the most important law for matrix multiplication is you
+can move parentheses or throw them away. Let's throw them away.
+
+123
+00:08:18,240 --> 00:08:22,320
+So in here, I'm seeing Q transpose Q, which
+is the identity.
+
+124
+00:08:22,960 --> 00:08:24,760
+So it's true.
+
+125
+00:08:26,040 --> 00:08:26,040
+Yeah.
+
+126
+00:08:26,660 --> 00:08:31,800
+So that means that you never underflow
+or overflow when you're multiplying by Q.
+
+127
+00:08:32,919 --> 00:08:40,919
+Every numerical algorithm is written to you
+to use orthogonal matrices wherever it can.
+
+128
+00:08:41,480 --> 00:08:41,720
+OK.
+
+129
+00:08:42,400 --> 00:08:45,060
+And here's the first example.
+
+130
+00:08:49,130 --> 00:08:55,360
+I think it may be good for me to think of other
+examples, or for us to think of other examples
+
+131
+00:08:55,860 --> 00:08:56,820
+of orthogonal matrices.
+
+132
+00:08:58,840 --> 00:09:01,320
+So I'm using that
+word orthogonal matrix.
+
+133
+00:09:02,460 --> 00:09:05,420
+We should really
+be saying orthonormal.
+
+134
+00:09:06,180 --> 00:09:08,880
+And
+I'm really thinking mostly of square ones.
+
+135
+00:09:09,760 --> 00:09:10,720
+So in
+
+136
+00:09:11,420 --> 00:09:16,860
+the
+square case, when Q transpose is Q inverse.
+
+137
+00:09:19,460 --> 00:09:19,740
+Of course,
+
+138
+00:09:20,760 --> 00:09:31,080
+that fact makes it easy to solve all equations that have Q as a coefficient
+matrix, because you want the inverse and you just use the transpose. OK.
+
+139
+00:09:34,820 --> 00:09:35,420
+Let's just take
+
+140
+00:09:37,280 --> 00:09:44,000
+some minutes to think of examples of Qs. If they're
+so important, there have to be interesting examples.
+
+141
+00:09:44,600 --> 00:09:51,000
+And that was a first one. Now, there's one
+more 2 by 2 example that you should know.
+
+142
+00:09:52,260 --> 00:09:53,320
+Do you know what that would be?
+
+143
+00:09:54,300 --> 00:09:56,360
+So another,
+this will be example 2.
+
+144
+00:09:57,160 --> 00:09:59,760
+And it's also going to be only 2
+by 2.
+
+145
+00:10:00,540 --> 00:10:01,220
+And real.
+
+146
+00:10:02,000 --> 00:10:05,440
+And what
+possibility have I got left here?
+
+147
+00:10:07,140 --> 00:10:09,120
+I'll use the same first column,
+
+148
+00:10:09,880 --> 00:10:14,210
+cos theta
+sine theta, because that's more or less any
+
+149
+00:10:14,960 --> 00:10:19,420
+unit vector
+in two dimensions. This has got that form.
+
+150
+00:10:20,200 --> 00:10:23,060
+So
+what do you propose for the second column?
+
+151
+00:10:25,400 --> 00:10:25,600
+Yes?
+
+152
+00:10:26,900 --> 00:10:28,440
+So theta more or less
+times theta.
+
+153
+00:10:29,940 --> 00:10:32,540
+GILBERT STRANGER GILBERT STRANGER Yeah. Put
+the minus sign down here.
+
+154
+00:10:33,720 --> 00:10:35,280
+So you think, does that make any
+difference?
+
+155
+00:10:36,280 --> 00:10:38,900
+So sine theta and
+minus cos theta.
+
+156
+00:10:41,300 --> 00:10:43,200
+I don't
+know if you've ever looked at that matrix.
+
+157
+00:10:45,000 --> 00:10:54,180
+We're trying to collect together a few matrices that are worth knowing,
+are worth looking at. OK. Now, what's happened here? You may say that was a
+
+158
+00:10:54,220 --> 00:10:54,620
+trivial change,
+
+159
+00:10:55,640 --> 00:10:56,760
+which it kind of was.
+
+160
+00:10:57,460 --> 00:10:59,160
+But it's a different matrix now.
+
+161
+00:11:01,760 --> 00:11:02,650
+That's not a rotation.
+
+162
+00:11:03,780 --> 00:11:07,700
+And yeah, somehow, now
+it's symmetric.
+
+163
+00:11:09,260 --> 00:11:11,580
+And yeah,
+
+164
+00:11:13,360 --> 00:11:16,320
+it's eigenvectors. Must
+be something or other. We'll get to those.
+
+165
+00:11:17,640 --> 00:11:19,220
+But what does that
+
+166
+00:11:19,760 --> 00:11:23,340
+matrix do? I don't know. I don't
+know if you've seen it. If you haven't,
+
+167
+00:11:23,980 --> 00:11:28,860
+it doesn't jump out. But it's an important
+case.
+
+168
+00:11:29,380 --> 00:11:30,760
+This is a reflection matrix.
+
+169
+00:11:39,800 --> 00:11:42,220
+Notice that it's
+determined it is minus 1.
+
+170
+00:11:42,740 --> 00:11:55,800
+You have minus cos squared theta minus sine squared theta. It's determined
+it is minus 1. There's some eigenvalue coming up that's got a minus. Yeah.
+
+171
+00:11:57,220 --> 00:12:01,500
+OK. So what do I mean by
+a reflection matrix? Let me draw a plane.
+
+172
+00:12:02,280 --> 00:12:02,700
+And I think,
+
+173
+00:12:03,860 --> 00:12:05,080
+so 1, 0.
+
+174
+00:12:05,660 --> 00:12:06,910
+Let's follow it again.
+
+175
+00:12:07,600 --> 00:12:11,500
+1, 0, where does that go? That gives me the
+first column. So as before,
+
+176
+00:12:12,580 --> 00:12:14,740
+it goes to cos theta,
+
+177
+00:12:15,340 --> 00:12:15,600
+sine theta.
+
+178
+00:12:47,260 --> 00:12:48,340
+At angle theta.
+
+179
+00:12:49,080 --> 00:12:51,720
+And
+halfway between was the theta over 2 line.
+
+180
+00:12:52,580 --> 00:12:54,480
+That's OK.
+
+181
+00:12:55,280 --> 00:12:58,180
+Now, what about the other guy, 0,
+1?
+
+182
+00:12:59,700 --> 00:13:00,880
+Here's 0, 1.
+
+183
+00:13:01,800 --> 00:13:02,960
+OK. I multiply that.
+
+184
+00:13:03,500 --> 00:13:08,760
+Can I put the 0, 1
+up here so your i does the multiplication?
+
+185
+00:13:09,600 --> 00:13:11,780
+Where is the result of 0, 1?
+
+186
+00:13:13,980 --> 00:13:17,740
+What's the output from q applied
+to 0,
+
+187
+00:13:18,360 --> 00:13:18,360
+1?
+
+188
+00:13:20,060 --> 00:13:23,500
+Sine theta minus cos theta, right? It's the
+second column.
+
+189
+00:13:24,440 --> 00:13:25,500
+And so where is that?
+
+190
+00:13:26,840 --> 00:13:29,860
+Well, it's perpendicular to that
+guy. That's why I know,
+
+191
+00:13:30,440 --> 00:13:34,060
+right? That was the point,
+that the two columns are perpendicular.
+
+192
+00:13:35,100 --> 00:13:37,480
+So it must go
+down this way, right?
+
+193
+00:13:38,200 --> 00:13:40,800
+Sine theta cos theta.
+
+194
+00:13:41,740 --> 00:13:43,420
+And it doesn't change length.
+
+195
+00:13:44,060 --> 00:13:45,660
+All these facts that we
+just learned
+
+196
+00:13:46,260 --> 00:13:46,460
+are key.
+
+197
+00:13:47,840 --> 00:13:51,470
+So there's 0, 1. And it goes
+
+198
+00:13:53,300 --> 00:13:53,920
+to this guy,
+
+199
+00:13:54,580 --> 00:13:54,680
+which
+
+200
+00:13:55,620 --> 00:13:58,220
+is
+whatever that second column is, sine theta
+
+201
+00:13:59,060 --> 00:14:00,640
+minus cos theta.
+
+202
+00:14:03,060 --> 00:14:05,100
+And if you check that,
+
+203
+00:14:06,700 --> 00:14:09,280
+actually,
+gosh, this is like plane geometry.
+
+204
+00:14:09,880 --> 00:14:10,540
+I believe,
+
+205
+00:14:11,240 --> 00:14:13,780
+it never occurred to me
+before, but I believe it,
+
+206
+00:14:15,080 --> 00:14:20,420
+that this angle going down
+to there, that that goes straight through,
+
+207
+00:14:21,020 --> 00:14:23,600
+and that the halfway one is that
+line.
+
+208
+00:14:27,260 --> 00:14:32,000
+Yeah, I think that picture
+has got it. And I think it's in the notes.
+
+209
+00:14:33,200 --> 00:14:34,480
+So that's a reflection matrix.
+
+210
+00:14:35,220 --> 00:14:37,600
+Well, that's a 2
+by 2 reflection matrix.
+
+211
+00:14:40,070 --> 00:14:40,920
+See
+
+212
+00:14:42,480 --> 00:14:45,940
+some other matrices like
+this one, but larger.
+
+213
+00:14:47,660 --> 00:14:52,000
+They're named after a
+guy named Householder.
+
+214
+00:14:53,900 --> 00:14:56,450
+So these are
+Householder reflections.
+
+215
+00:15:02,600 --> 00:15:03,520
+What am I doing here?
+
+216
+00:15:04,200 --> 00:15:08,840
+I'm collecting together some orthogonal
+matrices that are useful and important.
+
+217
+00:15:10,610 --> 00:15:20,680
+And Householder found a whole bunch of them. And his
+algorithm is a much used part of numerical linear algebra.
+
+218
+00:15:21,480 --> 00:15:23,660
+So he
+started with a unit vector.
+
+219
+00:15:24,700 --> 00:15:25,440
+Start with
+
+220
+00:15:25,980 --> 00:15:30,200
+a unit vector
+u transpose u equal 1.
+
+221
+00:15:30,830 --> 00:15:32,980
+So the length of
+the vector is 1.
+
+222
+00:15:33,940 --> 00:15:36,420
+And then he
+created, let's name it after him,
+
+223
+00:15:37,140 --> 00:15:38,840
+h. He created this matrix.
+
+224
+00:15:39,460 --> 00:15:42,760
+The identity
+minus 2 u u transpose.
+
+225
+00:15:47,060 --> 00:15:50,140
+And I
+believe that that's a really useful matrix.
+
+226
+00:15:51,340 --> 00:15:52,320
+So it's just like,
+
+227
+00:15:53,200 --> 00:16:00,140
+I think this review is
+like going beyond 1806 into what ones
+
+228
+00:16:01,900 --> 00:16:02,620
+are really
+
+229
+00:16:03,200 --> 00:16:05,300
+worth knowing individually.
+
+230
+00:16:06,600 --> 00:16:16,780
+OK, could we just check what are the properties of Householder's
+reflection of that i minus 2? You recognize here a column times a row.
+
+231
+00:16:17,840 --> 00:16:18,800
+So that's a matrix.
+
+232
+00:16:19,900 --> 00:16:22,420
+And what could
+you tell me about that
+
+233
+00:16:22,920 --> 00:16:24,300
+matrix u u transpose?
+
+234
+00:16:25,960 --> 00:16:29,800
+It's, yeah,
+
+235
+00:16:30,760 --> 00:16:30,760
+what?
+
+236
+00:16:32,180 --> 00:16:37,350
+Or what can we say about h?
+
+237
+00:16:39,220 --> 00:16:45,800
+So I guess I'm believing that h is an orthogonal
+matrix. Otherwise, it wouldn't be here today.
+
+238
+00:16:46,400 --> 00:16:50,160
+So I believe that.
+And not only is it orthogonal, it is also,
+
+239
+00:16:51,300 --> 00:16:53,560
+have a look at it. Symmetric.
+
+240
+00:16:54,400 --> 00:16:56,720
+It's
+also symmetric. The identity is symmetric.
+
+241
+00:16:57,620 --> 00:17:02,700
+u u transpose is symmetric. So this is
+a family of symmetric orthogonal matrices.
+
+242
+00:17:03,460 --> 00:17:04,950
+And that was one of them.
+
+243
+00:17:06,260 --> 00:17:07,960
+That's a
+symmetric orthogonal matrix.
+
+244
+00:17:09,180 --> 00:17:09,869
+And these matrices are really
+
+245
+00:17:10,619 --> 00:17:12,000
+great to have. You just,
+
+246
+00:17:12,520 --> 00:17:15,319
+like in using linear algebra,
+
+247
+00:17:16,240 --> 00:17:26,160
+it's, you just get a collection of useful matrices that
+you can call on. And these are definitely one family.
+
+248
+00:17:26,880 --> 00:17:30,060
+Well, it's obviously symmetric.
+Shall we check that it's orthogonal?
+
+249
+00:17:31,200 --> 00:17:34,720
+So to check that it's
+orthogonal, I just, so I'm going to check
+
+250
+00:17:35,720 --> 00:17:38,660
+that h transpose h is
+the identity.
+
+251
+00:17:40,340 --> 00:17:41,780
+Can I just check that?
+
+252
+00:17:43,460 --> 00:17:50,920
+Well, h transpose is the same as h, because it was symmetric.
+So I'm going to square this guy. This is really h times h.
+
+253
+00:17:51,680 --> 00:17:52,780
+I'm squaring it.
+
+254
+00:17:53,480 --> 00:17:55,060
+And what do I get if I square?
+
+255
+00:17:55,860 --> 00:17:56,600
+So I get,
+
+256
+00:17:57,570 --> 00:18:00,040
+I
+hope I get the identity, but let's see it.
+
+257
+00:18:01,860 --> 00:18:03,440
+What do I
+get when I square? This?
+
+258
+00:18:06,580 --> 00:18:06,920
+Get a little,
+
+259
+00:18:07,540 --> 00:18:08,320
+multiply it out.
+
+260
+00:18:09,460 --> 00:18:11,380
+So i times i is i.
+
+261
+00:18:12,300 --> 00:18:18,200
+And then I get some number of u u transposes.
+How many do I get for the, from that?
+
+262
+00:18:19,400 --> 00:18:24,380
+So I'm squaring this thing, because
+h transpose h is the same as h times h.
+
+263
+00:18:25,260 --> 00:18:28,240
+So I'm squaring it. So how many, what do I
+put here?
+
+264
+00:18:29,320 --> 00:18:29,620
+4.
+
+265
+00:18:30,820 --> 00:18:38,200
+And now I've got this guy squared with a
+plus. So that's 4 u u transpose u u transpose.
+
+266
+00:18:43,160 --> 00:18:49,280
+Yeah, I'm totally realizing I've practiced for a
+lifetime doing these dinky little calculations.
+
+267
+00:18:49,880 --> 00:18:50,040
+But
+
+268
+00:18:50,980 --> 00:18:51,620
+they are dinky.
+
+269
+00:18:52,140 --> 00:18:57,780
+And you'll get the hang of it quickly. Now,
+what am I hoping out of that bottom line?
+
+270
+00:18:59,500 --> 00:19:00,260
+That it is?
+
+271
+00:19:01,140 --> 00:19:01,660
+i.
+
+272
+00:19:02,300 --> 00:19:04,900
+We're hoping to get i.
+Do we get i? Yes.
+
+273
+00:19:05,410 --> 00:19:08,410
+Who sees how to get i
+out of that thing?
+
+274
+00:19:09,090 --> 00:19:10,260
+u transpose u. GILBERT
+STRANGSKI. Yeah.
+
+275
+00:19:10,980 --> 00:19:13,920
+u transpose
+u in here is a number.
+
+276
+00:19:15,320 --> 00:19:20,580
+That was u, that was column times row
+times column times row. And I look at the,
+
+277
+00:19:21,640 --> 00:19:27,460
+in the middle here is row times column. And
+that's the number 1, right? Because it's there.
+
+278
+00:19:28,480 --> 00:19:35,020
+So that's 1. And then I have minus 4 of that, plus
+4 of that. They cancel each other. And I get i.
+
+279
+00:19:37,840 --> 00:19:40,160
+So those are good matrices.
+
+280
+00:19:43,000 --> 00:19:44,580
+We'll use them.
+
+281
+00:19:46,800 --> 00:19:52,360
+We'll use them. Actually, they're better than Gram
+-Schmidt. So we'll use them in making things orthogonal.
+
+282
+00:19:53,980 --> 00:19:55,280
+So what other
+
+283
+00:19:56,360 --> 00:19:56,920
+orthogonal matrices?
+
+284
+00:19:58,420 --> 00:19:58,900
+We'll create some.
+
+285
+00:20:00,140 --> 00:20:01,500
+You know,
+
+286
+00:20:02,560 --> 00:20:04,600
+creating good
+orthogonal matrices is,
+
+287
+00:20:05,620 --> 00:20:09,540
+you know, it
+pays off. Let's think.
+
+288
+00:20:11,500 --> 00:20:19,420
+So there's a family named after this French
+guy
+
+289
+00:20:22,940 --> 00:20:26,200
+who lived
+to 100. He was a real old timer.
+
+290
+00:20:27,880 --> 00:20:31,640
+Well,
+MIT had a faculty member in math
+
+291
+00:20:32,140 --> 00:20:35,220
+when
+I came, Professor Stroik, who lived to 106.
+
+292
+00:20:36,340 --> 00:20:43,600
+And I heard him give a lecture at Brown University at age 100.
+And it was like perfect. You could not have done it better.
+
+293
+00:20:44,180 --> 00:20:46,260
+So he's my inspiration.
+I keep going.
+
+294
+00:20:47,000 --> 00:20:50,080
+I only have like
+n more years to get there.
+
+295
+00:20:50,880 --> 00:20:53,500
+And n is, well,
+it's too many anyway.
+
+296
+00:20:54,000 --> 00:20:54,800
+OK. Adam Arn.
+
+297
+00:20:55,400 --> 00:20:57,340
+All right. Adam Arn. So
+Adam Arn, he
+
+298
+00:20:57,880 --> 00:20:58,640
+stated, well,
+
+299
+00:21:01,780 --> 00:21:02,700
+that's the simplest,
+
+300
+00:21:03,460 --> 00:21:04,700
+the smallest.
+
+301
+00:21:06,800 --> 00:21:07,160
+Now,
+
+302
+00:21:07,900 --> 00:21:11,400
+the next guy is
+going to be 4 by 4. I'm going to put that.
+
+303
+00:21:12,260 --> 00:21:13,480
+So where I see a 1,
+
+304
+00:21:14,000 --> 00:21:18,400
+I'm going to put Adam Arn. 1, 1,
+
+305
+00:21:18,920 --> 00:21:21,900
+1 minus 1, 1, 1, 1 minus 1.
+
+306
+00:21:22,680 --> 00:21:25,680
+And then when I see a
+minus, I'm going to put it in with a minus.
+
+307
+00:21:29,640 --> 00:21:31,280
+You saw that picture?
+
+308
+00:21:32,400 --> 00:21:38,420
+It
+was a picture of H2, H2, H2, and minus H2.
+
+309
+00:21:39,540 --> 00:21:41,070
+That's what I've got there.
+
+310
+00:21:43,500 --> 00:21:45,780
+And I believe those
+columns are orthogonal.
+
+311
+00:21:49,020 --> 00:21:49,160
+Right?
+
+312
+00:21:51,900 --> 00:21:57,160
+Now, what could I do? Well, it's not quite
+an orthogonal matrix. What do I have to do?
+
+313
+00:21:58,240 --> 00:22:03,660
+To make it, this isn't quite an orthogonal matrix
+either. What do I do to make that an orthogonal matrix?
+
+314
+00:22:05,920 --> 00:22:07,840
+Divide by
+
+315
+00:22:08,960 --> 00:22:09,600
+square root of 2.
+
+316
+00:22:10,460 --> 00:22:12,990
+I need unit vectors there.
+
+317
+00:22:15,300 --> 00:22:22,660
+And here, those lengths are 1 squared, 1 squared, 4.
+Square root of 4 is 2. So I better divide by the 2 there.
+
+318
+00:22:23,840 --> 00:22:27,320
+And now here, I'm going to, here I'm up to,
+yeah. So that was.
+
+319
+00:22:28,160 --> 00:22:28,360
+That one.
+
+320
+00:22:29,000 --> 00:22:30,500
+Tell me the next one up.
+
+321
+00:22:31,320 --> 00:22:32,880
+What's that going to be? 8 by 8?
+
+322
+00:22:34,460 --> 00:22:36,360
+So this is H4 here.
+
+323
+00:22:39,180 --> 00:22:40,360
+Oops, 4.
+
+324
+00:22:41,520 --> 00:22:46,460
+So tell me what I should
+do for 8 by 8. You'll think this is simple.
+
+325
+00:22:47,340 --> 00:22:50,060
+But that's a good
+thing to say about it.
+
+326
+00:22:51,600 --> 00:22:52,400
+There,
+
+327
+00:22:53,180 --> 00:22:58,360
+in coding theory, all sorts of places, you
+want matrices of 1's and minus 1's.
+
+328
+00:22:59,380 --> 00:23:00,240
+OK. What's H8?
+
+329
+00:23:01,780 --> 00:23:03,500
+I'm going to build it out of H4.
+
+330
+00:23:05,000 --> 00:23:06,880
+So
+what am I going to, what's it going to be?
+
+331
+00:23:07,980 --> 00:23:10,800
+I'm going to put an H4
+there. What am I going to put here?
+
+332
+00:23:12,580 --> 00:23:13,380
+Another H4.
+
+333
+00:23:14,460 --> 00:23:15,040
+And up here?
+
+334
+00:23:16,340 --> 00:23:18,620
+Another H4. And finally here?
+
+335
+00:23:19,940 --> 00:23:20,280
+Minus H4.
+
+336
+00:23:23,120 --> 00:23:24,980
+And I think I've
+got an orthogonal matrix.
+
+337
+00:23:25,760 --> 00:23:29,020
+Columns again. Right?
+
+338
+00:23:29,680 --> 00:23:29,680
+Because
+
+339
+00:23:30,420 --> 00:23:33,180
+the columns within these
+
+340
+00:23:33,700 --> 00:23:35,220
+dot products with themselves
+
+341
+00:23:36,100 --> 00:23:37,580
+give 0 and 0.
+
+342
+00:23:38,380 --> 00:23:48,980
+The dot products from these columns and these columns obviously have the
+minus. And the dot products in here are 0 from that and 0 from that. Yeah.
+
+343
+00:23:49,200 --> 00:23:49,860
+It works.
+
+344
+00:24:20,120 --> 00:24:24,600
+It doesn't come directly from our little
+pattern, which is doubling size every time.
+
+345
+00:24:25,300 --> 00:24:26,420
+But you could still hope.
+
+346
+00:24:27,220 --> 00:24:27,840
+And it works.
+
+347
+00:24:28,460 --> 00:24:30,380
+There
+is a, I don't know what it is, but
+
+348
+00:24:31,540 --> 00:24:32,200
+there's a matrix
+
+349
+00:24:32,820 --> 00:24:36,980
+of 1's and minus 1's orthogonal,
+12 orthogonal columns.
+
+350
+00:24:37,840 --> 00:24:39,500
+So the answer is yes.
+
+351
+00:24:41,540 --> 00:24:41,640
+OK.
+
+352
+00:24:42,660 --> 00:24:45,180
+So we make an 18 .065
+conjecture.
+
+353
+00:24:46,680 --> 00:24:49,200
+Every matrix, every matrix size
+
+354
+00:24:50,740 --> 00:24:54,260
+Well, not every matrix
+size, because 3 by 3 is not going to work.
+
+355
+00:24:55,000 --> 00:24:56,720
+1 by 1 is not
+going to work either.
+
+356
+00:24:57,560 --> 00:25:00,560
+But H12 works. H8, H16.
+
+357
+00:25:01,100 --> 00:25:02,280
+What's our conjecture?
+
+358
+00:25:03,020 --> 00:25:12,380
+We won't be the first to conjecture it. That there is a
+1's and minus 1's orthogonal matrix with orthogonal columns
+
+359
+00:25:13,380 --> 00:25:15,840
+of every size n.
+
+360
+00:25:17,000 --> 00:25:17,840
+So always,
+
+361
+00:25:18,480 --> 00:25:20,100
+so I'll start the conjecture.
+
+362
+00:25:21,040 --> 00:25:22,580
+Always possible
+
+363
+00:25:23,240 --> 00:25:27,580
+if n,
+
+364
+00:25:28,080 --> 00:25:30,320
+which is
+the size of the matrix, let's say,
+
+365
+00:25:31,500 --> 00:25:33,300
+what would you guess?
+
+366
+00:25:34,440 --> 00:25:39,470
+Just take a shot. You won't be asked
+for a proof, because nobody has the proof.
+
+367
+00:25:42,520 --> 00:25:42,520
+Even?
+
+368
+00:25:43,960 --> 00:25:45,300
+Well, you could hope for even.
+
+369
+00:25:46,500 --> 00:25:51,620
+You could look for, try 6, I guess, would be the
+first guy. There and I don't think it's possible.
+
+370
+00:25:52,720 --> 00:25:54,690
+I think 6 is not possible.
+
+371
+00:25:55,720 --> 00:25:59,940
+So every even size is,
+I think, not going to work.
+
+372
+00:26:00,500 --> 00:26:02,480
+But it's a natural idea to try.
+
+373
+00:26:03,100 --> 00:26:03,980
+What's the next thought?
+
+374
+00:26:05,300 --> 00:26:07,340
+Every multiple of 4. If n
+
+375
+00:26:08,580 --> 00:26:10,800
+over 4 is a whole number.
+
+376
+00:26:20,020 --> 00:26:24,960
+So but nobody has a way, a systematic way,
+to create these things.
+
+377
+00:26:25,860 --> 00:26:29,640
+So like some of them, at this point, we're
+down to doing it one at a time.
+
+378
+00:26:30,180 --> 00:26:32,220
+And we're up to 668.
+
+379
+00:26:34,540 --> 00:26:35,860
+But we haven't got that one yet.
+
+380
+00:26:36,800 --> 00:26:38,960
+Isn't that crazy? So all this is
+coming from Wikipedia,
+
+381
+00:26:39,720 --> 00:26:40,160
+my source.
+
+382
+00:26:41,460 --> 00:26:44,740
+My
+source of all that's good in mathematics is
+
+383
+00:26:45,300 --> 00:26:46,030
+there on Wikipedia.
+
+384
+00:26:46,700 --> 00:26:48,040
+Anyway, this is the conjecture.
+
+385
+00:26:49,560 --> 00:26:53,320
+Conjecture means you don't have
+any damn idea of whether it's true or not.
+
+386
+00:26:54,280 --> 00:26:57,040
+Is that divisible by 4?
+
+387
+00:26:57,780 --> 00:26:59,140
+Yeah, I guess it would be.
+
+388
+00:26:59,880 --> 00:27:02,560
+600 certainly is, and
+68 certainly is. Yeah.
+
+389
+00:27:03,300 --> 00:27:05,220
+OK. So I think
+that's the first one.
+
+390
+00:27:05,960 --> 00:27:16,060
+So anybody, if you find one of size 668, just skip the whole thing.
+Homework and tell us about that one. But I don't think I'll assign that.
+
+391
+00:27:17,000 --> 00:27:17,940
+Yeah. I guess, well,
+
+392
+00:27:18,460 --> 00:27:21,220
+yeah, I must have
+searched for it online.
+
+393
+00:27:22,240 --> 00:27:24,380
+But yeah.
+
+394
+00:27:25,140 --> 00:27:25,380
+Anyway,
+
+395
+00:27:26,200 --> 00:27:26,920
+so
+
+396
+00:27:28,120 --> 00:27:29,840
+those are the atom -r matrices.
+
+397
+00:27:32,140 --> 00:27:35,480
+Now, where else do I remember
+
+398
+00:27:36,040 --> 00:27:38,300
+orthogonal matrices coming from?
+Well.
+
+399
+00:27:40,580 --> 00:27:44,040
+Yeah, really,
+the biggest source of,
+
+400
+00:27:44,760 --> 00:27:46,460
+so when I'm
+looking for orthogonal matrices,
+
+401
+00:27:47,520 --> 00:27:50,940
+I'm
+looking for a basis of orthogonal vectors.
+
+402
+00:27:52,120 --> 00:27:55,000
+And where in
+math am I going to find
+
+403
+00:27:55,790 --> 00:27:57,620
+vectors that come
+out to be orthogonal?
+
+404
+00:27:59,900 --> 00:28:04,060
+We haven't seen that. It's the next section
+of the notes. But maybe you're remembering.
+
+405
+00:28:05,380 --> 00:28:06,060
+Where will
+
+406
+00:28:06,600 --> 00:28:07,280
+we sort of like
+
+407
+00:28:07,800 --> 00:28:09,900
+automatically show up
+with orthogonal vectors?
+
+408
+00:28:12,040 --> 00:28:15,140
+They could be
+the eigenvectors of a?
+
+409
+00:28:16,480 --> 00:28:16,760
+Symmetric.
+
+410
+00:28:17,940 --> 00:28:19,060
+And that's where
+
+411
+00:28:19,720 --> 00:28:21,720
+the most
+important ones come from.
+
+412
+00:28:22,360 --> 00:28:30,980
+Oh, I could tell you about wavelets, though. Wavelets are more like this
+picture. They're ones and minus ones. Or the simplest wavelets are ones and
+
+413
+00:28:30,980 --> 00:28:37,540
+minus ones. Before I go on
+to the eigenvector business, can I mention
+
+414
+00:28:38,460 --> 00:28:39,620
+the wavelets matrices?
+
+415
+00:28:40,580 --> 00:28:43,280
+Yeah, these
+are really important,
+
+416
+00:28:43,920 --> 00:28:45,460
+simple and
+important constructions.
+
+417
+00:28:46,940 --> 00:28:47,440
+So wavelets,
+
+418
+00:28:49,440 --> 00:28:50,310
+let me, yeah,
+
+419
+00:28:51,740 --> 00:28:53,380
+let me draw a picture of,
+
+420
+00:28:54,240 --> 00:28:54,440
+so
+
+421
+00:28:55,710 --> 00:28:58,480
+I'm going to
+come up with four. I'll do the 4 by 4 case.
+
+422
+00:28:59,780 --> 00:29:03,430
+And these are the
+
+423
+00:29:05,840 --> 00:29:06,760
+orthogonal guys.
+
+424
+00:29:07,500 --> 00:29:09,840
+And then the next one is up.
+
+425
+00:29:10,740 --> 00:29:11,600
+And down.
+
+426
+00:29:12,440 --> 00:29:12,920
+And 0.
+
+427
+00:29:14,880 --> 00:29:18,940
+And the last one is 0. And up.
+
+428
+00:29:19,800 --> 00:29:20,240
+And down.
+
+429
+00:29:20,940 --> 00:29:26,540
+So that's four things. But let me show you
+the matrix. So I'll call it w for wavelets.
+
+430
+00:29:28,060 --> 00:29:31,080
+So that guy I'm thinking
+of as 1, 1, 1, 1.
+
+431
+00:29:31,920 --> 00:29:35,380
+This guy
+I'm thinking of as 1, 1, minus 1, minus 1.
+
+432
+00:29:36,120 --> 00:29:38,000
+It's
+looking sort of Atomard way.
+
+433
+00:29:38,920 --> 00:29:47,560
+But there's a difference here. This guy is
+1, minus 1, 0, 0. So the wavelets rescale.
+
+434
+00:29:48,740 --> 00:29:51,200
+That's the difference
+between Atomard and wavelets.
+
+435
+00:29:51,720 --> 00:29:52,080
+Wavelets
+
+436
+00:29:52,720 --> 00:29:53,920
+are scaling,
+
+437
+00:29:55,940 --> 00:29:58,480
+self -scaling. And
+what's the last guy here?
+
+438
+00:29:59,140 --> 00:30:02,260
+What's
+the fourth column from that fourth wavelet?
+
+439
+00:30:03,500 --> 00:30:03,600
+0,
+
+440
+00:30:04,560 --> 00:30:04,560
+0,
+
+441
+00:30:05,660 --> 00:30:08,020
+1,
+
+442
+00:30:08,940 --> 00:30:09,620
+minus 1.
+
+443
+00:30:11,280 --> 00:30:11,380
+Yeah.
+
+444
+00:30:14,600 --> 00:30:16,580
+So Haar came up with that.
+
+445
+00:30:17,600 --> 00:30:18,990
+This is the Haar wavelet,
+
+446
+00:30:19,580 --> 00:30:24,700
+which was many years before the word
+wavelets was invented.
+
+447
+00:30:27,580 --> 00:30:29,560
+He came up
+with this construction.
+
+448
+00:30:31,520 --> 00:30:33,680
+The
+Haar matrix, the Haar functions.
+
+449
+00:30:34,600 --> 00:30:36,000
+So they're
+very simple functions.
+
+450
+00:30:36,920 --> 00:30:37,120
+But
+
+451
+00:30:38,620 --> 00:30:40,000
+that makes them usable,
+
+452
+00:30:40,800 --> 00:30:42,350
+the fact that they're so simple.
+
+453
+00:30:43,080 --> 00:30:43,160
+Now,
+
+454
+00:30:44,020 --> 00:30:45,120
+I don't know if you want to
+
+455
+00:30:45,960 --> 00:30:52,400
+see the pattern in 8 by 8. But let me start the
+8 by 8. So you'll know what wavelets are about.
+
+456
+00:30:53,360 --> 00:30:55,580
+You'll know
+what these Haar wavelets are about anyway.
+
+457
+00:30:56,120 --> 00:31:01,330
+They're the ones that were kind of easy to
+visualize.
+
+458
+00:31:02,540 --> 00:31:05,080
+So if that's w4,
+
+459
+00:31:05,810 --> 00:31:07,340
+let's just take a minute.
+
+460
+00:31:07,840 --> 00:31:10,600
+It won't take long for w8.
+
+461
+00:31:11,680 --> 00:31:14,860
+OK. So the first
+column is going to be 8,
+
+462
+00:31:17,860 --> 00:31:18,720
+1. And
+
+463
+00:31:21,300 --> 00:31:24,040
+what's the next column
+going to be?
+
+464
+00:31:26,480 --> 00:31:29,320
+4, 1s and 4, minus 1s, like so.
+
+465
+00:31:30,600 --> 00:31:32,080
+So 4, 1s
+
+466
+00:31:33,120 --> 00:31:34,860
+and 4, minus 1s.
+
+467
+00:31:36,280 --> 00:31:38,180
+OK. And now the next column.
+
+468
+00:31:39,260 --> 00:31:41,160
+2, 1s. Two 1s,
+
+469
+00:31:42,100 --> 00:31:44,180
+2, minus 1s, and 0s.
+
+470
+00:31:45,320 --> 00:31:45,640
+Right?
+
+471
+00:31:46,680 --> 00:31:49,140
+1, 1, minus 1, minus 1, and 0s.
+
+472
+00:31:50,760 --> 00:31:53,120
+And the fourth will be 0s
+
+473
+00:31:54,020 --> 00:31:56,220
+and 2, 1s and 2, minus 1s.
+
+474
+00:31:58,400 --> 00:32:00,050
+We've got half a matrix now.
+
+475
+00:32:02,720 --> 00:32:04,680
+Now, if we
+just tell me the fifth,
+
+476
+00:32:05,620 --> 00:32:06,740
+what do you think?
+
+477
+00:32:07,740 --> 00:32:09,580
+What do I put in the fifth one?
+
+478
+00:32:10,500 --> 00:32:11,040
+So again,
+
+479
+00:32:11,840 --> 00:32:12,250
+it's going to
+
+480
+00:32:13,300 --> 00:32:14,840
+squeeze down and rescale.
+
+481
+00:32:16,020 --> 00:32:22,180
+And what's the fifth column up here that's
+going to be 1s and minus 1s and 0s now?
+
+482
+00:32:22,760 --> 00:32:23,700
+So it's not Adamard.
+
+483
+00:32:24,500 --> 00:32:24,800
+It's Haar.
+
+484
+00:32:25,610 --> 00:32:27,480
+And what shall I put? 1,
+
+485
+00:32:29,100 --> 00:32:31,440
+1. 1, 1.
+How's it? Shall I start with 1, 1?
+
+486
+00:32:32,000 --> 00:32:34,420
+1 minus 1. Oh, 1 minus 1. Yeah.
+
+487
+00:32:35,540 --> 00:32:36,600
+And then all 0s?
+
+488
+00:32:37,340 --> 00:32:41,040
+Oh, yeah. Thanks. Perfect.
+
+489
+00:32:41,860 --> 00:32:51,840
+1, minus 1, and then all 0s. And then the next three columns will have
+the 1, minus 1 here, and the 1, minus 1 here, and the 1, minus 1 here. And
+
+490
+00:32:51,840 --> 00:32:53,520
+otherwise, all 0s. Yeah.
+
+491
+00:32:54,060 --> 00:32:57,660
+So you see the pattern.
+It's scaling at every step.
+
+492
+00:33:00,120 --> 00:33:01,780
+And so that
+
+493
+00:33:02,640 --> 00:33:05,700
+matrix has the advantage
+of being quite sparse.
+
+494
+00:33:06,620 --> 00:33:15,200
+Sort
+of this, in my mind, is a 4, 1s.
+
+495
+00:33:16,500 --> 00:33:18,940
+That's
+involved with taking the average.
+
+496
+00:33:21,780 --> 00:33:22,160
+Then
+
+497
+00:33:22,780 --> 00:33:25,240
+this guy is like
+taking the differences,
+
+498
+00:33:26,220 --> 00:33:27,820
+differences
+between those and those.
+
+499
+00:33:28,380 --> 00:33:30,720
+And then this is like
+taking the difference
+
+500
+00:33:31,500 --> 00:33:32,440
+at a smaller scale,
+
+501
+00:33:33,040 --> 00:33:33,180
+and
+
+502
+00:33:33,680 --> 00:33:38,540
+that also at a smaller scale. So that's what
+we keep doing. Yeah. Yeah. So that's wavelets.
+
+503
+00:33:41,820 --> 00:33:51,080
+It looks so simple, right?
+But just a one -minute history of wavelets.
+
+504
+00:33:51,800 --> 00:33:54,880
+I invented this
+in like 1910. I mean,
+
+505
+00:33:56,100 --> 00:33:56,400
+how long?
+
+506
+00:33:58,860 --> 00:33:59,120
+Forever.
+
+507
+00:34:00,400 --> 00:34:05,280
+But then you
+wanted wavelets that were a little better,
+
+508
+00:34:07,300 --> 00:34:14,120
+and not
+just 1s and minus 1s and 0s. And that took
+
+509
+00:34:14,840 --> 00:34:20,320
+a lot of thinking. A lot of people
+were searching for it. And Ingrid Dovishy,
+
+510
+00:34:21,040 --> 00:34:22,409
+so I'll just put her name,
+
+511
+00:34:23,560 --> 00:34:25,280
+became famous for finding them.
+
+512
+00:34:27,320 --> 00:34:29,420
+So in about 1988,
+
+513
+00:34:33,030 --> 00:34:37,620
+she
+found a whole lot of families of wavelets.
+
+514
+00:34:38,659 --> 00:34:42,760
+And when I say wavelets, she found a whole
+lot of orthogonal matrices
+
+515
+00:34:43,260 --> 00:34:47,900
+that had good properties.
+Yeah. So that's the wavelet picture.
+
+516
+00:34:48,820 --> 00:34:48,920
+OK.
+
+517
+00:34:50,260 --> 00:34:52,020
+Now, to close today
+
+518
+00:34:52,639 --> 00:34:54,219
+and to connect with
+
+519
+00:34:55,440 --> 00:34:57,980
+the
+next lecture on eigenvalues, eigenvectors,
+
+520
+00:34:58,560 --> 00:35:00,800
+positive definite
+matrices, we're really
+
+521
+00:35:01,300 --> 00:35:03,500
+getting to the
+heart of things here.
+
+522
+00:35:04,180 --> 00:35:05,380
+Let me
+
+523
+00:35:06,120 --> 00:35:07,160
+follow through on that idea.
+
+524
+00:35:08,700 --> 00:35:11,460
+So the eigenvectors
+
+525
+00:35:14,360 --> 00:35:16,560
+of a symmetric matrix,
+
+526
+00:35:18,040 --> 00:35:19,940
+but also of
+an orthogonal matrix,
+
+527
+00:35:23,160 --> 00:35:25,280
+are orthogonal.
+
+528
+00:35:33,260 --> 00:35:35,440
+And that is really where people,
+
+529
+00:35:36,180 --> 00:35:37,160
+where you can invent,
+
+530
+00:35:37,920 --> 00:35:41,660
+because you don't have to work hard.
+You just find a symmetric matrix.
+
+531
+00:35:42,400 --> 00:35:45,720
+Its
+eigenvectors are automatically orthogonal.
+
+532
+00:35:48,040 --> 00:35:52,040
+Great for use, but some
+of them are
+
+533
+00:35:54,020 --> 00:35:54,720
+really important.
+
+534
+00:35:55,760 --> 00:35:58,720
+And maybe the most important of all is the
+Fourier.
+
+535
+00:35:59,680 --> 00:36:06,560
+So you probably have seen Fourier series, sines
+and cosines. Those guys are orthogonal functions.
+
+536
+00:36:08,020 --> 00:36:10,800
+But the discrete
+Fourier series is what everybody computes.
+
+537
+00:36:11,920 --> 00:36:13,580
+And those
+are orthogonal vectors.
+
+538
+00:36:14,640 --> 00:36:15,860
+So the orthogonal vectors
+
+539
+00:36:18,180 --> 00:36:21,080
+go into the
+discrete Fourier transform.
+
+540
+00:36:22,720 --> 00:36:26,960
+And then they're done at high speed by the
+fast Fourier transform.
+
+541
+00:36:27,500 --> 00:36:29,840
+Those are eigenvectors of Q,
+
+542
+00:36:30,540 --> 00:36:32,140
+eigenvectors of the right Q.
+
+543
+00:36:32,700 --> 00:36:38,100
+So let me just invent
+the right, tell you the right Q,
+
+544
+00:36:39,420 --> 00:36:40,660
+whose eigenvectors.
+
+545
+00:36:41,420 --> 00:36:43,000
+So here we go.
+
+546
+00:36:43,500 --> 00:36:44,160
+Eigenvectors
+
+547
+00:36:45,280 --> 00:36:48,560
+of Q.
+
+548
+00:36:49,140 --> 00:36:53,580
+Let me, you will just
+be amazed by how simple this matrix is.
+
+549
+00:36:54,140 --> 00:36:54,600
+It's just
+
+550
+00:36:55,400 --> 00:36:55,820
+that matrix.
+
+551
+00:36:57,800 --> 00:37:00,000
+It's called
+a permutation matrix.
+
+552
+00:37:02,120 --> 00:37:03,340
+It just puts the,
+
+553
+00:37:04,960 --> 00:37:10,150
+those are the
+Fourier, four Fourier
+
+554
+00:37:13,020 --> 00:37:13,720
+discrete.
+
+555
+00:37:14,790 --> 00:37:16,540
+Discrete, let me put the
+
+556
+00:37:17,040 --> 00:37:18,050
+word discrete up here,
+
+557
+00:37:18,860 --> 00:37:18,940
+transform.
+
+558
+00:37:22,120 --> 00:37:25,080
+So I really meant
+to put discrete Fourier transform.
+
+559
+00:37:26,520 --> 00:37:29,820
+Yeah.
+The eigenvectors of that matrix,
+
+560
+00:37:31,020 --> 00:37:32,420
+first of all, they are
+orthogonal.
+
+561
+00:37:34,360 --> 00:37:35,140
+And then
+
+562
+00:37:36,060 --> 00:37:39,460
+second and more important,
+they're tremendously useful.
+
+563
+00:37:40,580 --> 00:37:42,140
+They're the heart
+of signal processing.
+
+564
+00:37:44,680 --> 00:37:47,740
+In signal processing,
+
+565
+00:37:48,420 --> 00:37:57,620
+they just take the discrete Fourier transform of a vector before they
+even look at it. I mean, that's the way to see it, is split it into its
+
+566
+00:37:57,620 --> 00:37:58,060
+frequencies.
+
+567
+00:37:59,140 --> 00:38:05,240
+And that's what the eigenvectors of this will do. So
+we're going to see the discrete Fourier transform.
+
+568
+00:38:07,780 --> 00:38:13,040
+But my point here
+is to know that they're orthogonal
+
+569
+00:38:14,020 --> 00:38:19,700
+just comes out of this fact that
+the eigenvectors are orthogonal for
+
+570
+00:38:21,080 --> 00:38:23,060
+any Q. And
+that is certainly a Q.
+
+571
+00:38:23,780 --> 00:38:23,780
+Everybody
+
+572
+00:38:24,340 --> 00:38:27,220
+can see that those
+columns are orthogonal.
+
+573
+00:38:28,920 --> 00:38:32,500
+The columns of
+a perm, that's a permutation matrix, right?
+
+574
+00:38:33,580 --> 00:38:39,620
+You've taken the columns of the identity, which are totally
+orthogonal. And you just put them in a different order.
+
+575
+00:38:40,580 --> 00:38:44,620
+So a permutation matrix is a reordering of
+the identity matrix.
+
+576
+00:38:45,180 --> 00:38:46,400
+It's got to be a Q.
+
+577
+00:38:48,240 --> 00:38:48,640
+And therefore,
+
+578
+00:38:50,420 --> 00:38:55,160
+its eigenvectors
+are orthogonal. And they're just
+
+579
+00:38:55,740 --> 00:38:56,100
+the winners.
+
+580
+00:38:56,840 --> 00:38:59,920
+I mean, the matrix of,
+
+581
+00:39:00,560 --> 00:39:05,200
+the Fourier matrix with those
+four eigenvectors in it, I'll show you now.
+
+582
+00:39:05,900 --> 00:39:07,480
+OK. So this is really,
+we're finishing.
+
+583
+00:39:08,140 --> 00:39:11,420
+Today, by
+leading into Wednesday,
+
+584
+00:39:12,960 --> 00:39:14,160
+eigenvectors and eigenvalues.
+
+585
+00:39:15,100 --> 00:39:18,820
+And we happen to be
+doing eigenvectors and eigenvalues of a Q,
+
+586
+00:39:20,720 --> 00:39:21,100
+not
+
+587
+00:39:21,780 --> 00:39:22,980
+today of an S.
+
+588
+00:39:23,540 --> 00:39:30,320
+Most of the time, it's a symmetric matrix whose
+eigenvectors we take. But here, that happens to be a Q.
+
+589
+00:39:30,820 --> 00:39:32,090
+Can I show you the eigenvectors?
+
+590
+00:39:33,000 --> 00:39:35,400
+The four eigenvectors of that.
+
+591
+00:39:40,620 --> 00:39:43,660
+The complex number i is
+going to come in. You have
+
+592
+00:39:44,960 --> 00:39:46,040
+to let it in here.
+
+593
+00:39:46,820 --> 00:39:47,160
+Yeah, sorry.
+
+594
+00:39:50,420 --> 00:39:55,820
+If S is a real symmetric
+matrix, its eigenvectors are real.
+
+595
+00:39:57,440 --> 00:40:06,700
+But if Q is a orthogonal matrix, its eigenvectors, even
+though you couldn't ask for a more real matrix than that.
+
+596
+00:40:07,600 --> 00:40:14,160
+But its eigenvectors are
+at least, yeah, the good
+
+597
+00:40:14,700 --> 00:40:19,980
+way are complex numbers. So can I show you
+the eigenvectors of?
+
+598
+00:40:21,820 --> 00:40:21,980
+OK.
+
+599
+00:40:24,200 --> 00:40:24,200
+OK.
+
+600
+00:40:27,320 --> 00:40:32,000
+So again, overall, the
+point today is to see orthogonal matrices.
+
+601
+00:40:33,320 --> 00:40:35,920
+So I'll just
+repeat now while I can.
+
+602
+00:40:41,340 --> 00:40:41,440
+Reflections here.
+
+603
+00:40:42,180 --> 00:40:42,280
+Reflections.
+
+604
+00:40:46,360 --> 00:40:46,620
+Wavelets.
+
+605
+00:40:51,230 --> 00:41:01,160
+The householder idea of reflections of large
+matrices that have this form, i minus 2 uu transpose,
+
+606
+00:41:02,160 --> 00:41:05,500
+are orthogonal. And now we're going to see
+the big guys,
+
+607
+00:41:06,400 --> 00:41:10,920
+the eigenvectors of Q.
+
+608
+00:41:11,580 --> 00:41:11,580
+Right.
+
+609
+00:41:12,240 --> 00:41:12,420
+Yes?
+
+610
+00:41:12,960 --> 00:41:19,420
+Do you want to rescale the column? Oh, yeah. We don't have
+orthonormal. That's right. We don't have orthonormal. I better
+
+611
+00:41:20,160 --> 00:41:21,300
+divide by square root of 8.
+
+612
+00:41:22,140 --> 00:41:23,960
+Right. Or
+is it a different form?
+
+613
+00:41:24,520 --> 00:41:26,080
+Oh, yes. Oh, you're right.
+
+614
+00:41:27,640 --> 00:41:30,000
+Sorry. I thought
+I'd get away with that, but I didn't.
+
+615
+00:41:31,580 --> 00:41:31,860
+Yeah.
+
+616
+00:41:32,980 --> 00:41:41,300
+These guys are square roots of 8. So are these. But these guys are square
+roots of 4. And these guys are square roots of 2. Thank you. Absolutely
+
+617
+00:41:41,300 --> 00:41:41,400
+right.
+
+618
+00:41:42,600 --> 00:41:42,620
+Absolutely.
+
+619
+00:41:43,620 --> 00:41:43,620
+Yeah.
+
+620
+00:41:45,400 --> 00:41:49,640
+OK. So
+what are the eigenvectors of a permutation?
+
+621
+00:41:50,160 --> 00:41:54,260
+This is going to be nice to see.
+
+622
+00:41:54,960 --> 00:41:58,590
+And I'll use the
+matrix F for the eigenvector matrix.
+
+623
+00:42:07,260 --> 00:42:09,080
+So I'm going to ask you for
+the eigenvector matrix of that Q up there.
+
+624
+00:42:10,340 --> 00:42:11,880
+And F is for Fourier.
+
+625
+00:42:12,460 --> 00:42:17,040
+And it'd be the 4 by 4 Fourier
+matrix. OK. What are the eigenvectors of Q?
+
+626
+00:42:19,420 --> 00:42:19,520
+OK.
+
+627
+00:42:20,500 --> 00:42:22,260
+So Q is a permutation.
+
+628
+00:42:24,020 --> 00:42:26,520
+So I'm going to ask
+you for one eigenvector
+
+629
+00:42:27,540 --> 00:42:29,220
+of every permutation matrix.
+
+630
+00:42:29,780 --> 00:42:40,900
+What vector can you tell me that? Actually, the eigenvalue will be 1.
+What vector can you tell me where if I permute it, I don't change it?
+
+631
+00:42:41,620 --> 00:42:42,840
+1, 1, 1, 1.
+
+632
+00:42:43,820 --> 00:42:46,280
+It's like
+it's everywhere here. 1, 1, 1, 1.
+
+633
+00:42:49,320 --> 00:42:53,480
+So that's the zero frequency
+Fourier vector, the constant vector,
+
+634
+00:42:54,280 --> 00:42:54,480
+all ones.
+
+635
+00:42:55,420 --> 00:42:59,100
+Everybody sees
+that if I multiply by Q, it doesn't change.
+
+636
+00:42:59,900 --> 00:43:01,400
+OK. Now, the next one,
+
+637
+00:43:01,960 --> 00:43:03,400
+I'll show you the 4 now.
+
+638
+00:43:04,080 --> 00:43:06,620
+The next one will be 1i,
+
+639
+00:43:07,640 --> 00:43:08,920
+i squared and i cubed.
+
+640
+00:43:12,660 --> 00:43:13,600
+Of course, i squared,
+
+641
+00:43:15,000 --> 00:43:16,120
+I don't know how many course
+
+642
+00:43:17,800 --> 00:43:29,000
+6j people are in this audience. But this is a math building. We
+paid for it. It's 2 ,190. And it's i in this room. Yeah. So yeah.
+
+643
+00:43:30,220 --> 00:43:30,320
+Anyway,
+
+644
+00:43:31,500 --> 00:43:35,040
+i is the first letter in what?
+
+645
+00:43:36,720 --> 00:43:40,620
+Imaginary. Imaginary. Thank you. The first
+letter in imaginary. You can't say jimaginary.
+
+646
+00:43:41,460 --> 00:43:43,600
+So that's it. OK.
+
+647
+00:43:44,160 --> 00:43:49,020
+And then the next
+one is 1i squared i fourth i sixth.
+
+648
+00:43:49,620 --> 00:43:52,620
+And the next
+one is 1i cubed i sixth
+
+649
+00:43:53,180 --> 00:43:53,740
+and i ninth.
+
+650
+00:43:55,220 --> 00:43:56,380
+Isn't that just beautiful?
+
+651
+00:43:57,480 --> 00:43:58,240
+And you could
+
+652
+00:43:58,760 --> 00:43:59,740
+show that every
+
+653
+00:44:00,420 --> 00:44:06,080
+one of those four columns, if you multiply
+them by Q, you would get the eigenvalues.
+
+654
+00:44:07,140 --> 00:44:07,660
+And
+
+655
+00:44:09,000 --> 00:44:10,940
+you would see
+that it's an eigenvector.
+
+656
+00:44:11,760 --> 00:44:18,420
+And this is just sort of like a discrete
+Fourier stuff. And instead of e to the i,
+
+657
+00:44:19,220 --> 00:44:23,820
+e to the ix, e to the 2ix, e to the
+3ix, and so on, we just have vectors.
+
+658
+00:44:27,130 --> 00:44:29,640
+So those are
+the four eigenvectors.
+
+659
+00:44:30,480 --> 00:44:43,700
+I can implement the Well,
+
+660
+00:44:44,640 --> 00:44:48,080
+I should really say
+zeroth -column and first -column if
+
+661
+00:44:49,540 --> 00:44:52,040
+I'm talking frequencies.
+
+662
+00:44:53,280 --> 00:45:03,040
+Do you see that that's orthogonal to that? Well, y is 1 plus i
+plus i squared plus i cubed equals 0. That's the dot product.
+
+663
+00:45:03,740 --> 00:45:06,490
+This is column 1 dot column 2.
+
+664
+00:45:09,780 --> 00:45:10,380
+Yeah,
+
+665
+00:45:11,700 --> 00:45:15,060
+you're right.
+This happens to come out 0. Is that right?
+
+666
+00:45:17,340 --> 00:45:18,780
+That'll come
+
+667
+00:45:19,400 --> 00:45:20,240
+out 0.
+
+668
+00:45:22,700 --> 00:45:25,060
+But somebody mentioned
+that this isn't right.
+
+669
+00:45:26,120 --> 00:45:30,060
+I mean, it's true
+that that came out 0. But
+
+670
+00:45:30,880 --> 00:45:34,400
+when I have imaginary
+numbers anywhere around,
+
+671
+00:45:36,380 --> 00:45:40,020
+this isn't the correct dot product to test
+orthogonal.
+
+672
+00:45:40,620 --> 00:45:45,980
+If I have imaginary complex vectors,
+if I have complex numbers, complex vectors,
+
+673
+00:45:46,720 --> 00:45:49,360
+I should test column 1
+
+674
+00:45:50,480 --> 00:45:53,120
+conjugate dotted with column 2,
+
+675
+00:45:53,900 --> 00:45:57,440
+column i conjugate. Well,
+let me take
+
+676
+00:45:58,360 --> 00:45:59,160
+column 1.
+
+677
+00:46:00,080 --> 00:46:04,100
+See, which one
+shall I take? Maybe that guy and that guy.
+
+678
+00:46:04,720 --> 00:46:07,620
+Many of them you luck out here.
+
+679
+00:46:08,480 --> 00:46:12,340
+But really, I should be
+
+680
+00:46:13,040 --> 00:46:22,500
+taking the conjugate. So these 1s. But the thing
+is the complex conjugate of 1 is 1. So that was OK.
+
+681
+00:46:23,840 --> 00:46:26,740
+But in general, if
+I wanted to take column
+
+682
+00:46:27,380 --> 00:46:28,200
+2
+
+683
+00:46:28,840 --> 00:46:30,380
+dotted with column,
+
+684
+00:46:30,920 --> 00:46:30,920
+I
+
+685
+00:46:32,400 --> 00:46:34,880
+don't know,
+maybe 4 would be a little dodgy.
+
+686
+00:46:35,780 --> 00:46:37,280
+Yeah, look what happens.
+
+687
+00:46:38,120 --> 00:46:39,120
+Take that column
+
+688
+00:46:40,180 --> 00:46:40,760
+and that column.
+
+689
+00:46:41,900 --> 00:46:42,700
+Take their dot product.
+
+690
+00:46:44,540 --> 00:46:45,320
+Do it the wrong way.
+
+691
+00:46:47,440 --> 00:46:48,460
+So what's the wrong way?
+
+692
+00:46:49,760 --> 00:46:57,620
+Forget about the complex conjugate and just do it
+the usual way. So 1 times 1 is 1. i times i cubed is?
+
+693
+00:47:00,600 --> 00:47:01,300
+1.
+
+694
+00:47:02,520 --> 00:47:04,400
+i squared times i 6 is?
+
+695
+00:47:05,260 --> 00:47:06,880
+1. I'm getting all 1s.
+
+696
+00:47:07,520 --> 00:47:18,020
+I'm not getting orthogonality there. And that's because I forgot that I
+should take the complex conjugate. Well, of these guys, 1. I should take
+
+697
+00:47:18,020 --> 00:47:18,800
+minus i,
+
+698
+00:47:19,440 --> 00:47:23,260
+minus i square, minus i. Well, that's real.
+So it's OK.
+
+699
+00:47:24,300 --> 00:47:24,980
+Minus there.
+
+700
+00:47:27,680 --> 00:47:31,280
+So minus i squared is
+still minus 1.
+
+701
+00:47:32,560 --> 00:47:35,140
+So now if I
+do it, it comes out 0.
+
+702
+00:47:36,480 --> 00:47:38,840
+So let me repeat again.
+
+703
+00:47:39,420 --> 00:47:41,100
+Let me just make this statement.
+
+704
+00:47:42,120 --> 00:47:49,620
+If Q transpose Q
+is i, and Qx is lambda x,
+
+705
+00:47:50,680 --> 00:47:54,980
+and Qy is a
+different eigenvalue y,
+
+706
+00:47:55,600 --> 00:47:55,900
+OK.
+
+707
+00:47:57,420 --> 00:48:05,000
+So I'm setting up the main fact that in the last minute, I'm
+just going to write down. So I have an orthogonal matrix.
+
+708
+00:48:05,980 --> 00:48:08,180
+I
+have an eigenvector with eigenvalue lambda.
+
+709
+00:48:08,680 --> 00:48:12,240
+I have another
+eigenvector with a different eigenvalue mu.
+
+710
+00:48:12,940 --> 00:48:15,900
+Then the
+claim is that, what is the claim?
+
+711
+00:48:17,140 --> 00:48:18,240
+About the eigenvectors.
+
+712
+00:48:19,020 --> 00:48:23,710
+So here it has one eigen. This has an
+eigenvalue. This has a different eigenvalue.
+
+713
+00:48:24,800 --> 00:48:27,790
+I need them to be different to really know
+that
+
+714
+00:48:28,860 --> 00:48:33,150
+the x's and the y's can't be the
+same. So what is it that I want to show?
+
+715
+00:48:33,660 --> 00:48:36,320
+Conjugated x is orthogonal. GILBERT STRANG.
+GILBERT STRANG. Yes. That x,
+
+716
+00:48:37,600 --> 00:48:42,780
+and I have
+to remember to do that, x transpose y is 0.
+
+717
+00:48:43,780 --> 00:48:44,660
+That's orthogonality.
+
+718
+00:48:46,580 --> 00:48:56,080
+That's orthogonality for complex vectors. I have to remember
+to change every i to a minus i in one of the vectors.
+
+719
+00:48:57,020 --> 00:48:59,540
+And I can prove that fact by
+
+720
+00:49:03,360 --> 00:49:07,010
+playing with starting from here. I can get
+to that.
+
+721
+00:49:08,100 --> 00:49:12,000
+OK. We've done a lot today. A lot of stuff
+about orthogonal matrices.
+
+722
+00:49:13,200 --> 00:49:14,220
+Important ones.
+
+723
+00:49:16,400 --> 00:49:18,340
+Sources of important ones.
+
+724
+00:49:18,900 --> 00:49:19,000
+Eigenvectors.
+
+725
+00:49:19,620 --> 00:49:22,120
+And so
+it'll be eigenvectors on Wednesday.
+

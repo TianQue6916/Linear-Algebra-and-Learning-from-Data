@@ -1,0 +1,2210 @@
+1
+00:00:00,000 --> 00:00:04,800
+The following content is provided under a Creative Commons license.
+
+2
+00:00:04,800 --> 00:00:10,940
+Your support will help MIT OpenCourseWare continue to offer high-quality educational resources for free.
+
+3
+00:00:11,640 --> 00:00:15,620
+To make a donation or to view additional materials from hundreds of MIT courses,
+
+4
+00:00:16,480 --> 00:00:24,760
+visit MIT OpenCourseWare at ocw.mit.edu.
+Okay, let me start one minute early.
+
+6
+00:00:24,760 --> 00:00:39,960
+So this being MIT, I just came from a terrific faculty member, Andy Lowe, in Sloan School.
+
+7
+00:00:40,520 --> 00:00:42,900
+And I have to tell you what he told us.
+
+8
+00:00:42,900 --> 00:00:47,560
+And then I had to leave before he could explain why it's true.
+
+9
+00:00:48,320 --> 00:00:53,580
+But this is like an amazing fact, which
+I don't want to forget. So here you go.
+
+11
+00:00:54,080 --> 00:01:00,099
+This is... Everything will be on that
+board. So it's an observation about us.
+
+14
+00:01:01,019 --> 00:01:09,220
+Or other people. Maybe not us, but...
+So suppose you have a biased coin.
+
+17
+00:01:09,220 --> 00:01:13,240
+Maybe you don't... The people
+playing this game don't know,
+
+19
+00:01:13,920 --> 00:01:21,100
+but it's 75% likely to produce
+heads, 25% likely to produce tails.
+
+21
+00:01:22,180 --> 00:01:31,240
+And then the player... Has to guess,
+for one flip after another, heads or tails.
+
+23
+00:01:33,039 --> 00:01:39,039
+And you get a dollar if you're
+right. You pay a dollar if you're wrong.
+
+25
+00:01:39,840 --> 00:01:47,840
+So you just want to get as many right choices as possible from this coin flip that continues.
+
+26
+00:01:48,720 --> 00:01:53,820
+So what should you do? Well...
+What I guess... Well... Well... Well...
+
+32
+00:01:53,820 --> 00:02:01,500
+What I guess I hope we would do is we would not know what the probabilities were.
+
+33
+00:02:01,500 --> 00:02:09,579
+So we would guess maybe heads the first time, tails the second time, heads the third time, and so on.
+
+34
+00:02:09,579 --> 00:02:14,060
+But the actual result would be mostly heads.
+
+35
+00:02:14,060 --> 00:02:21,060
+So we would learn at some point that maybe not quite as soon as that.
+
+36
+00:02:21,060 --> 00:02:23,140
+We would eventually learn...
+
+37
+00:02:23,140 --> 00:02:26,739
+We would eventually learn that we should keep guessing heads, right?
+
+38
+00:02:26,739 --> 00:02:28,859
+And then we would be...
+
+39
+00:02:28,859 --> 00:02:32,660
+That would be our optimal strategy, to guess heads all the time.
+
+40
+00:02:32,660 --> 00:02:42,579
+But what do people actually do?
+They do start like this, same way.
+
+42
+00:02:44,160 --> 00:02:48,739
+And then they're beginning to learn that heads is more common.
+
+43
+00:02:48,739 --> 00:02:57,380
+So maybe they do more heads.
+And tails. But sometimes tails is right.
+
+46
+00:02:57,380 --> 00:03:03,519
+And then after a little while, they maybe see that it's, yeah.
+
+47
+00:03:03,519 --> 00:03:06,519
+Or they're just, well, maybe they're not counting.
+
+48
+00:03:06,519 --> 00:03:11,160
+They're just like operating like ordinary people.
+
+49
+00:03:11,160 --> 00:03:16,380
+And what do ordinary people actually do in the long run?
+
+50
+00:03:16,380 --> 00:03:21,779
+You would think guess heads every time,
+right? But they don't. But they don't.
+
+53
+00:03:21,779 --> 00:03:27,920
+But they don't. In the long run,
+people, and maybe animals and whatever,
+
+55
+00:03:27,920 --> 00:03:33,400
+guess heads 3 quarters of the
+time and tails 1 quarter of the time.
+
+57
+00:03:33,400 --> 00:03:38,140
+Isn't that unbelievable? They're
+guessing tails a quarter of the time
+
+59
+00:03:38,140 --> 00:03:42,220
+when the odds are never changing.
+
+60
+00:03:42,220 --> 00:03:49,240
+Anyway, that's something that economists
+and other people have to explain.
+
+62
+00:03:49,240 --> 00:03:50,280
+And if I had been able to stay another hour, I could tell you,
+
+63
+00:03:50,280 --> 00:03:51,200
+I'm not sure if I would have been able to stay another hour.
+
+64
+00:03:51,200 --> 00:03:51,400
+But I'm sure that's something that economists and other people
+
+65
+00:03:51,400 --> 00:03:57,779
+have to explain. But
+anyway, that's, oh, I see.
+
+67
+00:03:57,779 --> 00:04:02,440
+I've written that on a board that I have
+no way to bury. So it's going to be there.
+
+69
+00:04:02,440 --> 00:04:10,019
+And it's not the subject of
+18065. But it's kind of amazing.
+
+71
+00:04:10,019 --> 00:04:18,940
+So there's good math problems everywhere.
+OK, can I just leave you with what I know?
+
+73
+00:04:18,940 --> 00:04:24,919
+And if I learn more, I'll come back to
+that quickly. But I have a question. OK.
+
+76
+00:04:24,919 --> 00:04:32,120
+Please turn attention this way.
+Right? Norms. A few words on norms.
+
+80
+00:04:32,120 --> 00:04:35,640
+Just like that should be a word in your language.
+
+81
+00:04:35,640 --> 00:04:37,880
+And so you should know what it means.
+
+82
+00:04:37,880 --> 00:04:41,740
+And you should know a few of the important norms.
+
+83
+00:04:41,740 --> 00:04:47,080
+Again, a norm is a way to measure the size of a vector,
+
+84
+00:04:47,080 --> 00:04:53,240
+or the size of a matrix, or the size of a
+tensor, whatever. We have. Or a function.
+
+87
+00:04:53,240 --> 00:05:00,200
+Very important. A norm would be
+a function like sine x from 0 to pi.
+
+89
+00:05:00,200 --> 00:05:02,979
+What would be the size of that function?
+
+90
+00:05:02,979 --> 00:05:07,000
+Well, if it was 2 sine x, the size would be twice as much.
+
+91
+00:05:07,000 --> 00:05:09,580
+So the norm should reflect that.
+
+92
+00:05:13,020 --> 00:05:23,359
+So yesterday, or Wednesday, I
+told you the, so there, p equals 2. 1.
+
+95
+00:05:23,359 --> 00:05:29,620
+Actually, infinity. And then I'm going to
+put in the 0 norm with a question mark,
+
+97
+00:05:29,620 --> 00:05:36,140
+because you'll see that it has a problem.
+But let me just recall from last time.
+
+99
+00:05:36,140 --> 00:05:43,240
+So these are the p equal to 2 is
+the usual sum of squares, square root.
+
+101
+00:05:43,240 --> 00:05:51,440
+Usual length of a vector. p equal 1 is
+this very important norm. So I would.
+
+104
+00:05:51,440 --> 00:05:58,380
+I would call that the L1 norm.
+And we'll see a lot of that.
+
+106
+00:05:58,380 --> 00:06:03,840
+Really, I mentioned that it plays a very
+significant part now in compressed sensing.
+
+108
+00:06:03,840 --> 00:06:09,140
+It really was a bombshell in signal processing to discover,
+
+109
+00:06:09,140 --> 00:06:11,420
+and in other fields too, to discover
+
+110
+00:06:11,420 --> 00:06:17,360
+that some things really work well, work best in the L1 norm.
+
+111
+00:06:17,360 --> 00:06:20,880
+The maximum norm has
+a natural part to play. OK.
+
+113
+00:06:20,880 --> 00:06:30,000
+And we'll see that, or its matrix
+analog. So I didn't mention the L0 norm.
+
+115
+00:06:30,000 --> 00:06:45,640
+All this LP business. So the LP norm
+for any p is you take the pth power
+
+117
+00:06:45,640 --> 00:06:52,140
+to the pth power up here. P
+was 2. And you take. The pth root.
+
+121
+00:06:52,140 --> 00:06:57,680
+So maybe I should write it to the 1 over p.
+
+122
+00:06:57,680 --> 00:07:01,620
+Then that way, taking pth powers and pth roots,
+
+123
+00:07:01,620 --> 00:07:08,159
+we do get the norm of 2v as a
+factor 2 compared to the norm of v.
+
+125
+00:07:08,159 --> 00:07:11,700
+So p equal to 2, you see that we've got it right there.
+
+126
+00:07:11,700 --> 00:07:17,740
+P equal 1, you see it here because it's
+just just the sum of the absolute values.
+
+128
+00:07:17,740 --> 00:07:22,120
+P equal infinity. If I. If I move p. I
+move. I move. Up and up and up.
+
+134
+00:07:22,120 --> 00:07:27,620
+It will pick out, as I increase p, whichever one is biggest
+
+135
+00:07:27,620 --> 00:07:31,560
+is going to just take over. And
+that's why you get the max norm.
+
+137
+00:07:31,560 --> 00:07:39,659
+Now the 0 norm, where I'm using
+that word improperly, as you'll see.
+
+139
+00:07:39,659 --> 00:07:41,700
+So what is the 0 norm?
+
+140
+00:07:46,380 --> 00:07:50,140
+So let me write
+this. Sorry, complete.
+
+142
+00:07:50,140 --> 00:07:59,520
+It's the number of non-zeros, of non-zero components.
+
+143
+00:08:05,099 --> 00:08:10,520
+It's the thing that you'd like to
+know about in question of sparsity.
+
+145
+00:08:10,520 --> 00:08:17,460
+Is there just one non-zero component?
+Are there 11? Are there 101? Like, what?
+
+149
+00:08:17,460 --> 00:08:24,260
+You might want to minimize that.
+Because sparse vectors and sparse matrices
+
+151
+00:08:24,260 --> 00:08:27,599
+are much faster to compute
+with. You've got good stuff.
+
+153
+00:08:27,599 --> 00:08:33,319
+But now I claim that's not a norm,
+the number of non-zero components.
+
+155
+00:08:33,319 --> 00:08:36,439
+Because what's the norm of 2?
+
+156
+00:08:36,439 --> 00:08:43,980
+How does the norm of 2v compare with a norm
+of v, the 0 norm? It would be the same.
+
+158
+00:08:43,980 --> 00:08:50,140
+2v has the same number of non-zeros
+as v. So it violates the rule for a norm.
+
+160
+00:08:50,140 --> 00:09:00,420
+So I think with these norms and all the p's in between,
+
+161
+00:09:00,420 --> 00:09:07,760
+so actually the math papers are
+full of let p be between 1 and infinity.
+
+163
+00:09:07,760 --> 00:09:12,920
+Because that's the range where you
+do have a proper norm, as we will see.
+
+165
+00:09:12,920 --> 00:09:15,960
+I think the good thing to do with these norms
+
+166
+00:09:15,960 --> 00:09:19,540
+is to have a picture in your mind, the
+geometry of a norm. OK. OK. OK. OK. OK. OK.
+
+173
+00:09:19,540 --> 00:09:21,699
+OK. OK. OK. OK. OK. OK. OK. OK. OK. OK.
+OK. OK. OK. OK. OK. OK. OK. OK. OK. OK. OK.
+
+194
+00:09:21,699 --> 00:09:24,100
+OK. OK. OK. OK. So you've
+got a 2D norm is really good.
+
+199
+00:09:24,100 --> 00:09:25,699
+So the picture I'm going to suggest
+
+200
+00:09:25,699 --> 00:09:34,020
+is plot all the vectors, let's say, in
+2D, so two-dimensional space, R 2.
+
+202
+00:09:34,020 --> 00:09:43,160
+So I want to plot the vectors that
+have v equal 1 in these different norms.
+
+204
+00:09:43,160 --> 00:09:49,960
+So let me ask you what so here's 2D space, R 2.
+
+205
+00:09:49,960 --> 00:09:58,640
+And now I want to plot all the vectors
+that have the ordinary L2 length equal 1.
+
+207
+00:09:58,640 --> 00:10:03,120
+So what does that picture look like? I just
+think a picture is really worth something.
+
+209
+00:10:03,120 --> 00:10:07,400
+It's a circle. Thanks.
+It's a circle. It's a circle.
+
+213
+00:10:07,400 --> 00:10:13,640
+This circle has the equation, of course,
+v1 squared plus v2 squared equal 1.
+
+215
+00:10:13,640 --> 00:10:26,780
+So I would call that the unit ball
+for the norm or whatever is a circle.
+
+217
+00:10:26,780 --> 00:10:32,199
+OK, now here comes more
+interesting. What about in the L1 norm?
+
+219
+00:10:35,920 --> 00:10:46,240
+So again, tell me how to plot all the
+points that have v1 plus v2. v2 equal 1.
+
+222
+00:10:46,240 --> 00:10:51,939
+What's the boundary going to look
+like now? It's going to be, let's see.
+
+224
+00:10:51,939 --> 00:10:54,760
+Well, I can put it on a certain number of points.
+
+225
+00:10:54,760 --> 00:11:00,380
+There out at 1, and there at 1, and
+there at minus 1, and there at minus 1.
+
+227
+00:11:00,380 --> 00:11:04,680
+That would be the vector.
+That would reflect the vector 1, 0.
+
+229
+00:11:04,680 --> 00:11:10,939
+And this would reflect the
+vector 0 minus 1. So yeah.
+
+231
+00:11:10,939 --> 00:11:18,699
+OK, so those are like four points.
+Easy to plot. Easy to see the L1 norm.
+
+234
+00:11:18,699 --> 00:11:30,120
+But what's the rest of the boundary
+here? It's a diamond. Good. It's a diamond.
+
+238
+00:11:30,120 --> 00:11:38,340
+We have linear set equal to 1.
+Up here in the positive quadrant,
+
+240
+00:11:38,340 --> 00:11:43,280
+it's just v1 plus v2 equal 1. And
+the graph of that is a straight line. OK.
+
+243
+00:11:43,280 --> 00:11:51,640
+So all these guys, this is all the
+points with v1 plus v2 equal 1.
+
+245
+00:11:51,640 --> 00:11:55,420
+And over here, and over here, and over here.
+
+246
+00:11:55,420 --> 00:12:01,780
+So the unit ball in the L1 norm is a diamond.
+
+247
+00:12:01,780 --> 00:12:09,199
+And that's a very important picture. It
+reflects in a very simple way something
+
+249
+00:12:09,199 --> 00:12:12,480
+important about the L1 norm and
+the reason it's just, it's just a diamond.
+
+251
+00:12:12,480 --> 00:12:17,640
+It's a diamond. But it didn't explode
+in importance. Let me continue though.
+
+254
+00:12:17,640 --> 00:12:24,060
+What about the max norm?
+v max or v infinity equal 1.
+
+256
+00:12:24,060 --> 00:12:26,819
+So again, let me plot these guys.
+
+257
+00:12:26,819 --> 00:12:32,280
+And these guys are certainly going to be in it again.
+
+258
+00:12:32,280 --> 00:12:39,540
+The 0, the plus or minus i and
+plus or minus j are good friends.
+
+260
+00:12:39,540 --> 00:12:42,800
+What's the rest of the
+boundary look like now? No.
+
+262
+00:12:42,800 --> 00:12:54,560
+Now, this means max of the v's equal
+1. So what are the rest of the points?
+
+264
+00:12:57,839 --> 00:13:03,599
+You see, it does take a little thought, but
+then you get it, and you don't forget it.
+
+266
+00:13:03,599 --> 00:13:13,000
+OK, so what's up? I'm looking.
+So suppose the maximum is v1.
+
+269
+00:13:13,000 --> 00:13:17,580
+I think you're going to go, I
+think it's going to look like that.
+
+271
+00:13:21,120 --> 00:13:35,760
+Out to 1, 0, and up to 0, 1. And up here,
+the vector would be 1.4 or something.
+
+273
+00:13:35,760 --> 00:13:39,060
+So the maximum
+would be 1. Is that OK?
+
+275
+00:13:39,060 --> 00:13:46,000
+So somehow, what really sees, as you change this number p,
+
+276
+00:13:46,000 --> 00:13:50,439
+you start with p equal 1 or diamond,
+
+277
+00:13:50,439 --> 00:13:55,740
+and it kind of swells out to be a circle at p equal to 2.
+
+278
+00:13:55,740 --> 00:14:03,300
+And then it kind of keeps swelling
+to be a square at p equal infinity.
+
+280
+00:14:03,300 --> 00:14:09,160
+That's an interesting
+thing. And yeah, yeah.
+
+282
+00:14:09,160 --> 00:14:13,020
+Now, what's the problem with the zero norm?
+
+283
+00:14:15,600 --> 00:14:16,920
+This is the number of non-zeros.
+
+284
+00:14:21,380 --> 00:14:27,640
+OK, let me draw it. Where
+are the points with 1 non-zero?
+
+286
+00:14:27,640 --> 00:14:35,640
+So I'm plotting the unit ball. Where
+are the points? Where are the points?
+
+289
+00:14:35,640 --> 00:14:42,360
+Where are the vectors in this thing
+that have 1 non-zero, not 0 non-zero?
+
+291
+00:14:42,360 --> 00:14:44,100
+So that's not included.
+
+292
+00:14:48,699 --> 00:14:54,040
+So what do I have? I'm not
+allowed the vector 1 third, 2 thirds,
+
+294
+00:14:54,040 --> 00:15:01,260
+because that has 2 non-zeros. So
+where are the points with only 1 non-zero?
+
+296
+00:15:01,260 --> 00:15:07,980
+Yeah, on the axes. Yeah, that tells you.
+So it can be. It can be there and there.
+
+300
+00:15:07,980 --> 00:15:14,079
+Oops, without that guy. And of
+course, those just keep going out.
+
+302
+00:15:14,079 --> 00:15:22,459
+So it totally violates the, you know, so maybe the point
+
+303
+00:15:22,459 --> 00:15:30,000
+that I should make about these figures. So
+like what's happening when I go down to 0?
+
+305
+00:15:30,000 --> 00:15:34,060
+I'm sort of, really, that figure
+should be at the other end, right?
+
+307
+00:15:34,060 --> 00:15:37,300
+Oh, no, it shouldn't. It shouldn't.
+This guy is in the middle.
+
+310
+00:15:37,300 --> 00:15:46,500
+This is a badly drawn figure. L2 is
+kind of the center guy. L1 is at one end.
+
+313
+00:15:46,500 --> 00:15:53,800
+L infinity is at the other end. And this
+one has gone off the end at the left there.
+
+315
+00:15:53,800 --> 00:15:56,980
+The diamond has, yeah, what's happened here,
+
+316
+00:15:56,980 --> 00:16:02,840
+as that 1 goes down towards 0, none of
+these will be OK. These balls. These balls.
+
+319
+00:16:02,840 --> 00:16:04,840
+These balls. These balls.
+These balls. These balls.
+
+323
+00:16:04,840 --> 00:16:09,900
+These balls will, or these sets will lose weight.
+
+324
+00:16:12,720 --> 00:16:18,620
+So they'll always have these points in, but
+they'll be like this, and then like this,
+
+326
+00:16:18,620 --> 00:16:24,200
+and then finally in the
+unacceptable limit. But none of those.
+
+328
+00:16:24,200 --> 00:16:31,200
+This was not any good either.
+This was for p equal 1 half, let's say.
+
+330
+00:16:31,200 --> 00:16:36,800
+Sort of, that's a p equal 1 half,
+and that's not a good norm. Yeah.
+
+333
+00:16:36,800 --> 00:16:43,500
+So maybe the thing, so there's a property of the circle,
+
+334
+00:16:43,500 --> 00:16:52,720
+the diamond, and the square, which is
+a nice math property of those three sets,
+
+336
+00:16:52,720 --> 00:17:01,560
+and is not possessed by this. As this
+thing loses weight, I lose the property.
+
+338
+00:17:01,560 --> 00:17:04,280
+And then, of course, that's totally
+lost over there. Do you know what?
+
+340
+00:17:04,280 --> 00:17:11,060
+What that property would be? What? Explain.
+Concave convex. Convex, I would say.
+
+345
+00:17:11,060 --> 00:17:11,560
+Convex.
+
+346
+00:17:14,060 --> 00:17:22,579
+This is a true norm, has the convex unit ball.
+
+347
+00:17:22,579 --> 00:17:29,200
+Maybe for ball, I'm taking all of these less or equal 1.
+
+348
+00:17:29,200 --> 00:17:34,160
+Yeah, so I'm allowing the insides of these
+shapes. Yeah. So this is not a concave.
+
+351
+00:17:34,160 --> 00:17:41,480
+Convex set. That set, which I
+should maybe, so not convex,
+
+353
+00:17:41,480 --> 00:17:54,800
+would be this one with, like so. And that
+reflects the fact that the rules for a norm
+
+355
+00:17:54,800 --> 00:18:02,640
+are broken. The triangle inequality is
+probably broken, and the other stuff. Yeah.
+
+359
+00:18:02,640 --> 00:18:06,340
+I think that's sort of like
+working. It's worth remembering.
+
+361
+00:18:06,340 --> 00:18:20,620
+And then one more norm that's natural to think about is,
+
+362
+00:18:20,620 --> 00:18:24,320
+so S, as in the Piazza question, S
+
+363
+00:18:24,320 --> 00:18:30,160
+does always represent a symmetric matrix in 18.065.
+
+364
+00:18:30,160 --> 00:18:36,960
+And now I'm going to ask, my norm is going
+to be. So I'm going to call it the S norm.
+
+366
+00:18:36,960 --> 00:18:41,740
+So S is a, actually, it's a positive
+definite symmetric matrix.
+
+368
+00:18:41,740 --> 00:18:45,720
+F is a positive definite symmetric
+matrix. And what will I do?
+
+370
+00:18:45,720 --> 00:18:57,920
+I'll take V transpose AV. SV, sorry. SV.
+OK, what's our word for that? The energy.
+
+375
+00:18:57,920 --> 00:19:04,220
+That's the energy in the vector V. And I'll
+take the square root. OK. OK. OK. OK. OK.
+
+381
+00:19:04,220 --> 00:19:13,660
+So that I now have the length of 2 if I double V, from V to 2V.
+
+382
+00:19:13,660 --> 00:19:18,900
+Then I get a 2 here and a 2 here. And when
+I take the square root, I get an overall 2.
+
+384
+00:19:18,900 --> 00:19:25,100
+And that's what I want. I want the
+norm to grow linearly with the 2 or 3
+
+386
+00:19:25,100 --> 00:19:31,800
+or whatever I multiply by. But what is
+the shape of this thing? So what is the?
+
+389
+00:19:33,720 --> 00:19:39,600
+What is the shape of?
+Let me put it on this board.
+
+391
+00:19:39,600 --> 00:19:41,660
+I'm going to get a picture like that.
+
+392
+00:19:41,660 --> 00:19:54,720
+So what is the shape of V transpose
+SV equal 1, or less or equal 1?
+
+394
+00:19:54,720 --> 00:19:59,720
+If S is, this is a positive, symmetric positive definite.
+
+395
+00:19:59,720 --> 00:20:06,780
+People use those three letters to tell us.
+I'm claiming that we get a bunch of norms.
+
+397
+00:20:06,780 --> 00:20:15,380
+When do we get the L2 norm? What
+matrix S would this give us the L2 norm?
+
+399
+00:20:15,380 --> 00:20:21,380
+The identity, certainly. Now, what's going
+to happen if I use some different matrix S?
+
+401
+00:20:21,380 --> 00:20:26,080
+This circle is going to change shape.
+
+402
+00:20:26,080 --> 00:20:29,040
+I'm going to have a different norm depending on S.
+
+403
+00:20:29,040 --> 00:20:33,160
+And a typical case would be S equal 2, 3.
+
+404
+00:20:33,160 --> 00:20:40,640
+That's a positive definite symmetric matrix.
+
+405
+00:20:40,640 --> 00:20:48,820
+And now I would be drawing the
+graph of 2V1 squared plus 3V2 squared.
+
+407
+00:20:48,820 --> 00:20:52,040
+That would be the
+energy, right? Equal 1.
+
+409
+00:20:52,040 --> 00:20:59,520
+And I just want you to tell me what shape
+that is. So that's a perfectly good norm.
+
+411
+00:20:59,520 --> 00:21:03,120
+You could check all its
+properties. They all come out easily.
+
+413
+00:21:03,120 --> 00:21:09,699
+But I get a new picture, a new norm that's kind of adjustable.
+
+414
+00:21:09,699 --> 00:21:14,300
+You could say it's a weighted norm.
+Weights mean that you kind of have
+
+416
+00:21:14,300 --> 00:21:18,679
+picked some numbers sort of
+appropriate to the particular problem.
+
+418
+00:21:18,679 --> 00:21:26,560
+Well, suppose those numbers are 2 and 3.
+What shape is the unit ball in this S norm?
+
+420
+00:21:26,560 --> 00:21:29,780
+It's an ellipse,
+right. It's an ellipse.
+
+422
+00:21:29,780 --> 00:21:33,060
+And I guess it'll actually be, so the larger
+
+423
+00:21:33,060 --> 00:21:39,300
+number 3 will mean you can't go as far as the smaller number 2.
+
+424
+00:21:39,300 --> 00:21:43,560
+I think it would probably be an ellipse like this.
+
+425
+00:21:43,560 --> 00:21:46,820
+And the axis length of the ellipse
+
+426
+00:21:46,820 --> 00:21:50,639
+would probably have something to do with the 2 and the 3.
+
+427
+00:21:50,639 --> 00:21:56,899
+OK, so that's just now you know really all the vector norms
+
+428
+00:21:56,899 --> 00:22:02,659
+that are sort of natural
+to use. These come up.
+
+430
+00:22:03,060 --> 00:22:10,200
+They're all, as we said, the identity
+matrix brings us back to the 2 norm.
+
+432
+00:22:10,200 --> 00:22:15,020
+So these are all sort of variations on the 2 norm.
+
+433
+00:22:15,020 --> 00:22:21,120
+And these are variations as p runs from 1 up to 2
+
+434
+00:22:21,120 --> 00:22:27,860
+onto infinity and is not allowed
+to go below 1. OK, that's norms.
+
+436
+00:22:30,840 --> 00:22:34,740
+And then maybe you can
+actually see. See from this picture.
+
+438
+00:22:34,740 --> 00:22:48,060
+Here is a like somewhat hokey idea of why
+it is that this norm minimizing the error
+
+440
+00:22:48,060 --> 00:22:55,820
+in this norm. So what do I mean by
+that? Here would be a typical problem.
+
+443
+00:22:55,820 --> 00:23:12,120
+Minimize subject to Ax equal b. The L1,
+sorry, I'm using x now. The L1 norm of x.
+
+446
+00:23:17,260 --> 00:23:21,200
+So that would be an important
+problem. Actually, it has a name.
+
+448
+00:23:21,200 --> 00:23:25,320
+People have spent a lot of time
+thinking of a fast way to solve it.
+
+450
+00:23:25,320 --> 00:23:31,639
+It's almost like least squares. What would
+make it more like least squares would be?
+
+452
+00:23:31,639 --> 00:23:38,000
+Change that to 2. Yeah, yeah.
+
+454
+00:23:38,000 --> 00:23:43,540
+Can I just sort of sketch without making a big argument
+
+455
+00:23:43,540 --> 00:23:52,159
+here the difference between L equal
+1 or 2 here? I'll just draw a picture.
+
+457
+00:23:52,159 --> 00:24:02,379
+Now, I'll erase this ellipse, but you won't
+forget. OK, so this is our problem. The L.
+
+460
+00:24:02,379 --> 00:24:06,020
+With L1. Yeah. L1, it has a
+famous name, basis pursuit.
+
+463
+00:24:06,020 --> 00:24:10,020
+Well, famous to people who work in optimization.
+
+464
+00:24:10,020 --> 00:24:12,840
+For L2, it has an important name.
+
+465
+00:24:12,840 --> 00:24:20,220
+Well, it's sort of like least squares,
+ridge regression, all sorts of.
+
+467
+00:24:20,220 --> 00:24:23,080
+This is like a beautiful model problem.
+
+468
+00:24:23,080 --> 00:24:26,220
+Among all solutions to Ax, suppose this is just one
+
+469
+00:24:26,220 --> 00:24:36,440
+equation, like c1 x1 plus c2 x2 e3.
+Let's say x equals some right side b.
+
+471
+00:24:36,440 --> 00:24:43,580
+So the x's, the constraint says
+that vectors x have to be on a line.
+
+473
+00:24:43,580 --> 00:24:51,780
+Suppose that's a graph of that line.
+So among all these x's, which one?
+
+475
+00:24:51,780 --> 00:24:57,919
+Yeah, I never realizing what I'm
+going to say is going to be smart. OK?
+
+477
+00:24:57,919 --> 00:25:02,600
+I mean, it's going to be nice.
+It's not going to be difficult.
+
+479
+00:25:02,600 --> 00:25:08,379
+to the one we know best, l2.
+So here's a picture of the line.
+
+481
+00:25:08,379 --> 00:25:19,600
+Let me make it a little more tilted
+so you, yeah, yeah, yeah, like 2, 3.
+
+483
+00:25:19,600 --> 00:25:25,439
+OK, where, this is the xy
+plane. Here's x1, here's x2.
+
+485
+00:25:25,439 --> 00:25:29,179
+Here are the points that satisfy my condition.
+
+486
+00:25:29,180 --> 00:25:37,700
+Which one minimizes, which point on that
+line minimizes as the smallest l2 norm?
+
+488
+00:25:37,700 --> 00:25:44,060
+Which point on the line has the smallest l2 norm?
+
+489
+00:25:44,060 --> 00:25:49,140
+Yeah, you're drawing the right figure with your hands.
+
+490
+00:25:49,140 --> 00:25:55,280
+The smallest l2 norm, l2,
+remember, is just how far out you go.
+
+492
+00:25:55,280 --> 00:25:59,180
+It's circular here, so it doesn't
+matter what direction there.
+
+494
+00:25:59,180 --> 00:26:02,880
+It's all giving the same
+l2 norm. It's just how far.
+
+496
+00:26:02,880 --> 00:26:07,240
+So we're looking for the closest point on the line,
+
+497
+00:26:07,240 --> 00:26:12,000
+because we don't want to go any further.
+We want to go a minimum distance with l.
+
+499
+00:26:12,000 --> 00:26:13,560
+I'm doing l2 now.
+
+500
+00:26:16,980 --> 00:26:19,020
+So where is the point at minimum distance?
+
+501
+00:26:19,020 --> 00:26:26,620
+Yeah, it should show me again once
+more with hands or whatever. It'll be that.
+
+504
+00:26:26,620 --> 00:26:31,320
+I didn't want 45 degree angles
+there. I'm going to erase it again.
+
+506
+00:26:31,320 --> 00:26:41,139
+And really, this time I'm going to get
+angles that are not 45. Is that obviously?
+
+508
+00:26:41,139 --> 00:26:46,000
+All right, brilliant. Got
+it. OK, that's my line.
+
+511
+00:26:46,000 --> 00:26:51,179
+OK, and what's the nearest point in the
+l2 norm? Here's the winner in l2, right?
+
+513
+00:26:51,179 --> 00:26:55,340
+The nearest point.
+Everybody sees that picture?
+
+515
+00:26:55,340 --> 00:26:58,879
+So that's the, that's, you know, that's a basic, you know,
+
+516
+00:26:58,880 --> 00:27:06,140
+basic picture for minimizing something with a constraint,
+
+517
+00:27:06,140 --> 00:27:09,860
+which is the fundamental problem of optimization,
+
+518
+00:27:09,860 --> 00:27:16,760
+of neural nets, of everything, really,
+of life. Well, I'm getting philosophical.
+
+520
+00:27:16,760 --> 00:27:22,880
+So OK, that's, but of course, the question always is,
+
+521
+00:27:22,880 --> 00:27:28,680
+and maybe it's true in life too, which
+norm are you using? OK. Now. OK.
+
+525
+00:27:28,680 --> 00:27:34,740
+So that was the minimum in l2.
+
+526
+00:27:34,740 --> 00:27:38,100
+That's the shortest distance, where distance means what we
+
+527
+00:27:38,100 --> 00:27:44,240
+usually think of it as meaning.
+But now let's go for the l1 norm.
+
+529
+00:27:44,240 --> 00:27:53,300
+Which point on the line has the smallest
+l1 norm? So now I'm going to add the two.
+
+531
+00:27:53,300 --> 00:27:57,980
+So if this is some point a, this is some point a0,
+
+532
+00:27:57,980 --> 00:28:07,160
+and this is some point 0b, right there. So
+those two points are obviously important.
+
+534
+00:28:07,160 --> 00:28:10,340
+And that point we could figure out the formula for,
+
+535
+00:28:10,340 --> 00:28:17,360
+because we know what the geometry
+is. But I've just put those two points in.
+
+537
+00:28:17,360 --> 00:28:24,440
+So did I get a 0b? Yeah, that's a 0.
+So let me just ask you the question.
+
+540
+00:28:24,440 --> 00:28:28,280
+What point on that line has the smallest
+l1 norm? Which has the smallest l1 norm?
+
+542
+00:28:28,280 --> 00:28:34,300
+Which has the smallest
+l1 norm? Somebody said it.
+
+544
+00:28:34,300 --> 00:28:37,780
+Just say it a little louder so that you're on tape forever.
+
+545
+00:28:40,899 --> 00:28:47,300
+0b. This point. That's the
+winner. This is the l1 winner.
+
+549
+00:28:49,760 --> 00:28:51,500
+And this was the l2 winner.
+
+550
+00:28:54,300 --> 00:28:58,820
+And notice what I said earlier.
+And I didn't see it coming.
+
+552
+00:28:58,820 --> 00:29:08,040
+But now I realize this is a figure to put
+in the notes. The winner has the most 0s.
+
+554
+00:29:08,040 --> 00:29:10,960
+It's the sparsest
+vector. It's got a 0.
+
+556
+00:29:10,960 --> 00:29:16,960
+Well, out of two components, it didn't have
+much freedom. But it has a 0 component.
+
+558
+00:29:16,960 --> 00:29:27,240
+It's on the axes. It's the things on
+the axes that have the smallest number,
+
+560
+00:29:27,240 --> 00:29:35,980
+the smallest number of components.
+So this is the picture in l2. In 2.
+
+563
+00:29:35,980 --> 00:29:40,860
+Sorry, the picture in two
+dimensions. So I'm in 2D.
+
+565
+00:29:40,860 --> 00:29:47,400
+And you can see that the winner
+has a 0 component. Yeah. Yeah.
+
+568
+00:29:47,400 --> 00:29:52,580
+And that's a fact that extends into higher dimensions, too.
+
+569
+00:29:52,580 --> 00:29:57,200
+And that makes the l1 norm
+special, as I've said. Yeah.
+
+571
+00:29:57,200 --> 00:30:01,940
+So I'm not going to go into too much detail about that example.
+
+572
+00:30:01,940 --> 00:30:11,240
+For a simple 2D question, that really makes
+the point. That the l1 winner is there.
+
+574
+00:30:11,240 --> 00:30:14,320
+It's not further. You don't
+go further up the line, right?
+
+576
+00:30:14,320 --> 00:30:19,680
+Because then you have even, that's bad in all ways.
+
+577
+00:30:19,680 --> 00:30:26,320
+When you go up further, you're
+adding some non-zero first component.
+
+579
+00:30:26,320 --> 00:30:29,940
+And you're increasing the non-zero
+component. So that's a bad idea.
+
+582
+00:30:29,940 --> 00:30:38,660
+That's a bad idea. This is the winner.
+And in a way, here's the picture. Yeah.
+
+586
+00:30:38,660 --> 00:30:46,080
+Oh, yeah. I should prepare these lectures.
+But this one's coming out all right anyway.
+
+589
+00:30:46,080 --> 00:30:53,740
+So the picture there is the nearest
+ball hits at that point. And what is it?
+
+591
+00:30:53,740 --> 00:31:00,399
+Can you see that? So that star is outside
+the. The circle. This is the l1 winner.
+
+595
+00:31:00,399 --> 00:31:08,820
+So and that's the nearest. That's
+the blow up the l1 norm until it hits.
+
+597
+00:31:08,820 --> 00:31:19,159
+That's the point where the l1 norm hits. Do
+you see it? Just give it a little thought.
+
+600
+00:31:19,159 --> 00:31:23,000
+Another geometric way to see the answer to this problem
+
+601
+00:31:23,000 --> 00:31:26,600
+is you start at the origin, and then you blow up the norm,
+
+602
+00:31:26,600 --> 00:31:32,419
+until you get a point on the
+line. That satisfies your constraint.
+
+604
+00:31:32,419 --> 00:31:36,980
+And because you were blowing up the norm, when it hits first,
+
+605
+00:31:36,980 --> 00:31:43,679
+that's the smallest blow up possible.
+That's the guy that minimizes. Yeah.
+
+608
+00:31:43,679 --> 00:31:49,879
+Just think about that picture, and
+I'll draw it better somewhere, too.
+
+610
+00:31:49,879 --> 00:31:52,699
+Well, that's vector norms.
+
+611
+00:31:55,659 --> 00:32:00,800
+And then. I introduced some matrix norms,
+and let me just say a word about those.
+
+614
+00:32:06,939 --> 00:32:16,820
+A word about matrix norms.
+So the matrix norms were the.
+
+616
+00:32:16,820 --> 00:32:26,120
+So now I have a matrix A, and I want
+to define those same three norms again,
+
+618
+00:32:26,120 --> 00:32:36,679
+for a matrix. And this was the 2-norm.
+And what was the 2-norm of a matrix?
+
+621
+00:32:36,679 --> 00:32:41,260
+Well, it was sigma 1.
+
+622
+00:32:44,580 --> 00:32:49,320
+Turned out to be. So that doesn't
+define it. Or it could define it.
+
+625
+00:32:49,320 --> 00:32:54,419
+Just say, OK, the largest singular
+value is the 2-norm of the matrix.
+
+627
+00:32:54,419 --> 00:32:56,459
+But actually, it comes from
+something. It comes from somewhere.
+
+629
+00:32:56,459 --> 00:32:59,820
+So I want to speak about this one first.
+
+630
+00:33:03,219 --> 00:33:08,479
+The 2-norm. So it's
+the 2-norm of a matrix.
+
+632
+00:33:08,479 --> 00:33:21,280
+And one way to see the 2-norm of a matrix
+is to connect it to the 2-norm of vectors.
+
+634
+00:33:23,919 --> 00:33:29,520
+I'd like to connect the 2-norm. of
+matrices to the 2-norm of vectors.
+
+636
+00:33:29,520 --> 00:33:40,620
+And how shall I do that? I think I'm going
+to look at the 2-norm of Ax over the 2-norm
+
+638
+00:33:40,620 --> 00:33:49,500
+of x. So in a way, to me, that
+ratio is like the blow-up factor.
+
+640
+00:33:49,500 --> 00:33:55,159
+If A was 7 times the identity, to take
+an easy case, if A is 7 times the identity.
+
+642
+00:33:55,160 --> 00:34:07,300
+What will that ratio be? Say it,
+yeah? 7. If A is 7i, this will be 7x.
+
+646
+00:34:07,300 --> 00:34:16,720
+And this will be x. And norms, the factor
+7 comes out. So that ratio will be 7. OK.
+
+650
+00:34:16,720 --> 00:34:21,320
+For me, the norm is, that's the blow-up factor.
+
+651
+00:34:21,320 --> 00:34:30,320
+So here's the idea of a matrix
+norm. Now I'm doing matrix.
+
+653
+00:34:30,320 --> 00:34:39,320
+Matrix norm from vector norm. And
+the answer will be the maximum blow-up.
+
+655
+00:34:39,320 --> 00:34:45,320
+The maximum of this ratio. I
+call that ratio the blow-up factor.
+
+657
+00:34:45,320 --> 00:34:47,320
+That's the maximum. So I'm
+going to do a matrix norm.
+
+659
+00:34:47,320 --> 00:34:49,320
+And I'm going to do a vector norm.
+And I'm going to do a vector norm.
+
+661
+00:34:49,320 --> 00:34:51,320
+And I'm going to do a vector norm.
+And I'm going to do a vector norm.
+
+663
+00:34:51,320 --> 00:34:56,260
+It's just a made-up name.
+The maximum over all x's.
+
+665
+00:34:58,900 --> 00:35:02,640
+I look to see which vector gets blown up the most.
+
+666
+00:35:02,640 --> 00:35:12,580
+And that is the norm of the matrix. I
+know I've settled on norms of vectors.
+
+668
+00:35:12,580 --> 00:35:18,700
+That's done upstairs there. Now
+I'm looking at norms of matrices.
+
+670
+00:35:18,700 --> 00:35:21,240
+And this is one
+way to get it. Good.
+
+672
+00:35:21,240 --> 00:35:26,240
+So I'm going to do a matrix norm of a
+matrix that kind of comes from the 2-norm.
+
+674
+00:35:26,240 --> 00:35:31,240
+So there would be other norms for
+matrices coming from other vector norms.
+
+676
+00:35:31,240 --> 00:35:37,240
+And those we haven't seen. But the
+2-norm is, this is a very important one.
+
+678
+00:35:37,240 --> 00:35:45,240
+So what is the maximum value
+of this, of that ratio, for a matrix A?
+
+680
+00:35:45,240 --> 00:35:51,240
+The claim is that it's sigma 1.
+Can I put a big equality there? Yeah.
+
+683
+00:35:51,240 --> 00:35:53,740
+So it's just a very important factor.
+And that's a very important factor.
+
+685
+00:35:53,740 --> 00:35:59,160
+Now can we see why is sigma 1 the answer to this problem?
+
+686
+00:36:03,240 --> 00:36:07,459
+I can see a couple of ways to think about
+that. But that's a very important fact.
+
+688
+00:36:07,459 --> 00:36:16,720
+In fact, this is a way to discover what
+sigma 1 is without all the other sigmas.
+
+690
+00:36:16,720 --> 00:36:19,919
+If I look for the x that has the biggest blowup factor.
+
+691
+00:36:19,919 --> 00:36:22,359
+And by the way, which is the
+biggest blowup factor? x will it be?
+
+693
+00:36:22,359 --> 00:36:26,680
+Which x will win the max competition here
+
+694
+00:36:26,680 --> 00:36:36,180
+and be sigma 1 times as large as
+the ratio be sigma 1? That'll be sigma 1.
+
+696
+00:36:36,180 --> 00:36:42,299
+When is this thing sigma 1
+times as large as that? For which x?
+
+698
+00:36:42,299 --> 00:36:50,299
+Not for an eigenvector. If x was an
+eigenvector, what would that ratio be?
+
+700
+00:36:50,300 --> 00:36:56,800
+Lambda. But if A is
+not a symmetric matrix,
+
+702
+00:36:56,800 --> 00:37:03,280
+maybe the eigenvectors don't tell you the exact way to go.
+
+703
+00:37:03,280 --> 00:37:07,720
+So what vector would you now
+guess? It's not an eigenvector.
+
+705
+00:37:07,720 --> 00:37:16,220
+It is a singular vector. And which singular
+vector is it probably going to be? V1.
+
+708
+00:37:16,220 --> 00:37:20,300
+Yeah, V1. Makes sense. Winner.
+So the winner of this competition
+
+712
+00:37:20,300 --> 00:37:29,980
+is x equal V1, the first right singular vector.
+
+713
+00:37:33,080 --> 00:37:39,880
+And we better be able to check that.
+So again, this maximization problem,
+
+715
+00:37:39,880 --> 00:37:46,580
+the answer tells you is in terms of the singular vector.
+
+716
+00:37:46,580 --> 00:37:52,240
+So that's a way to find this first
+singular vector without finding them all.
+
+718
+00:37:52,240 --> 00:38:02,860
+And let's just plug in the first singular
+vector and see that the ratio is sigma 1.
+
+720
+00:38:02,860 --> 00:38:14,880
+So now let me plug it in. So what do I
+have? I want A V1 over length of V1. OK.
+
+724
+00:38:14,880 --> 00:38:19,860
+And I'm hoping to get that answer. Well,
+what's the bottom of the denominator?
+
+726
+00:38:19,860 --> 00:38:25,620
+What's the bottom of the
+denominator here? The length of V1 is 1.
+
+728
+00:38:25,620 --> 00:38:33,540
+So no big deal there. That's 1. What's
+the length of the top one? So is A V1.
+
+732
+00:38:33,540 --> 00:38:40,240
+Now, what is A V1? If V1 is
+the first right singular vector,
+
+734
+00:38:40,240 --> 00:38:48,920
+then A V1 is sigma 1 times u1. What?
+Remember? What? What? What? What? What?
+
+742
+00:38:48,920 --> 00:38:53,220
+What? What? What? Remember
+that our equals were Av equals sigma u,
+
+746
+00:38:53,220 --> 00:38:57,620
+Avk equals sigma kuk. Avk equals sigma
+kuk. V equals sigma k. V equals sigma k.
+
+750
+00:38:57,620 --> 00:39:02,180
+Remember that. Avk equals sigma k. It's the
+same thing. So they're not eigenvectors.
+
+754
+00:39:02,180 --> 00:39:11,720
+They're singular vectors. So that
+is, A V1 is the length of sigma 1u1,
+
+756
+00:39:11,720 --> 00:39:19,160
+and it's divided by 1, and of course, u1 is
+also a unit vector. So I just get sigma 1.
+
+759
+00:39:19,160 --> 00:39:27,480
+OK. So that's another way to
+say that you can find sigma 1
+
+761
+00:39:27,480 --> 00:39:35,339
+by solving this maximum problem.
+And you get that sigma 1. OK.
+
+764
+00:39:35,339 --> 00:39:39,080
+And I could get other norms, matrix norms,
+
+765
+00:39:39,080 --> 00:39:45,000
+by maximizing that blow-up factor in that vector norm.
+
+766
+00:39:45,000 --> 00:39:50,880
+I won't do that now, just to keep control of what we've got.
+
+767
+00:39:50,880 --> 00:39:56,100
+Now, what was the next matrix norm that came in last time?
+
+768
+00:39:56,100 --> 00:40:01,200
+Very, very important one for deep learning and neural nets.
+
+769
+00:40:01,200 --> 00:40:08,240
+Somehow it's a little simpler than this
+guy. And what was that matrix norm?
+
+771
+00:40:08,240 --> 00:40:10,760
+What letter whose name goes here?
+
+772
+00:40:13,500 --> 00:40:19,180
+Frobenius. So capital. F for
+Frobenius. And what was that?
+
+776
+00:40:19,180 --> 00:40:25,380
+That was the square root of the sum of all the add up, add,
+
+777
+00:40:25,380 --> 00:40:36,620
+all the aij squareds for all over the
+matrix, and then take the square root.
+
+779
+00:40:36,620 --> 00:40:41,580
+And then somebody asked a good
+question after class on Wednesday.
+
+781
+00:40:41,580 --> 00:40:44,900
+What has that got to
+do with the sigmas? OK.
+
+783
+00:40:44,900 --> 00:40:52,140
+Because my point was that these norms are the guys that
+
+784
+00:40:52,140 --> 00:40:58,320
+go with the sigmas, that have nice
+formulas for the sigmas. And here it is.
+
+786
+00:40:58,320 --> 00:41:02,280
+It's the square root of the sum of the squares of all the sigmas.
+
+787
+00:41:07,160 --> 00:41:10,020
+This is the psi. Let me
+write Frobenius again.
+
+789
+00:41:14,900 --> 00:41:20,580
+But this notation with an f is now pretty standard.
+
+790
+00:41:20,580 --> 00:41:26,660
+And we should be able to see why
+that number is the same as that number.
+
+792
+00:41:35,160 --> 00:41:42,500
+Yeah. I could give you a reason, or
+I couldn't put it on the problem set.
+
+795
+00:41:44,900 --> 00:41:49,040
+Yeah. I think it's better
+on the problem set.
+
+797
+00:41:49,040 --> 00:41:52,560
+Because first of all, I'll get off the hook right away.
+
+798
+00:41:52,560 --> 00:41:58,220
+And secondly, this connection between in Frobenius,
+
+799
+00:41:58,220 --> 00:42:00,960
+that's like a beautiful fact about Frobenius norm
+
+800
+00:42:00,960 --> 00:42:06,500
+that you add up all the sigma squareds.
+This is m times n of them, because it's
+
+802
+00:42:06,500 --> 00:42:09,740
+all filled matrix.
+Or you add up.
+
+804
+00:42:09,740 --> 00:42:14,720
+So another way to say it is, we
+haven't written down the SVD today. A.
+
+807
+00:42:14,720 --> 00:42:16,759
+A equals u sigma v transpose.
+
+808
+00:42:21,080 --> 00:42:27,080
+And the point is that for the Frobenius norm, actually
+
+809
+00:42:27,080 --> 00:42:32,839
+for all these norms, I can change
+u. It doesn't change the norm.
+
+811
+00:42:32,839 --> 00:42:38,180
+So I can make u the identity. u, as
+we all know, is an orthogonal matrix.
+
+813
+00:42:38,180 --> 00:42:41,299
+And what I'm saying is orthogonal matrix u
+
+814
+00:42:41,299 --> 00:42:46,660
+doesn't change any of these particular
+norms. So suppose it was the identity.
+
+816
+00:42:46,660 --> 00:42:50,700
+Same here. That could be the
+identity without changing the norm.
+
+818
+00:42:50,700 --> 00:42:58,620
+So we're down to the norm of the Frobenius.
+So what's the Frobenius norm of that guy?
+
+820
+00:43:01,279 --> 00:43:06,320
+What's the Frobenius norm of that diagonal matrix?
+
+821
+00:43:06,320 --> 00:43:11,080
+Well, you're supposed to add up the
+squares of all the numbers in the matrix.
+
+823
+00:43:11,080 --> 00:43:18,800
+And what do you get? You get that.
+So that's why this is the same as this,
+
+826
+00:43:18,800 --> 00:43:22,480
+because the orthogonal guy there and the orthogonal guy there
+
+827
+00:43:22,480 --> 00:43:25,960
+make no difference in the
+norm. But that takes checking.
+
+829
+00:43:29,020 --> 00:43:33,040
+But that's another way to see
+why the Frobenius norm gives this.
+
+831
+00:43:33,040 --> 00:43:35,920
+And then finally, this was the nuclear norm.
+
+832
+00:43:38,540 --> 00:43:42,900
+And actually, just before my lunch lecture on the subject
+
+833
+00:43:42,900 --> 00:43:48,580
+of probably learning morning, the lunch lecture
+
+834
+00:43:48,580 --> 00:43:55,660
+was about this crazy way that humans
+behave. Not us, but other humans.
+
+836
+00:43:58,140 --> 00:44:03,680
+Other actual. Well, no, I don't want
+to say that. Take that out of the tape.
+
+839
+00:44:06,140 --> 00:44:12,700
+Yeah. OK. Anyway, that was that lecture.
+Well, before that was a lecture for an hour
+
+843
+00:44:12,700 --> 00:44:18,339
+plus about deep learning by somebody who really, really has
+
+844
+00:44:18,339 --> 00:44:21,939
+begun to understand what is happening inside.
+
+845
+00:44:21,939 --> 00:44:27,520
+How does that gradient descent optimization algorithm pick out?
+
+846
+00:44:27,520 --> 00:44:33,680
+What does it pick out as the thing it learns?
+
+847
+00:44:33,680 --> 00:44:39,700
+This is going to be our goal in
+this course. We're not there yet.
+
+849
+00:44:39,700 --> 00:44:46,520
+But his conjecture is. That, yeah, so it's
+a conjecture. He doesn't have a proof.
+
+852
+00:44:46,520 --> 00:44:51,080
+He's got proofs of some nice cases where things commute.
+
+853
+00:44:51,080 --> 00:44:55,980
+But he hasn't got the whole
+thing yet. But it's pretty terrific work.
+
+855
+00:44:55,980 --> 00:45:03,460
+So this was Professor Srebro, who's in Chicago.
+
+856
+00:45:03,460 --> 00:45:05,740
+So he just announced his conjecture.
+
+857
+00:45:05,740 --> 00:45:11,859
+And his conjecture is that in a model case, the deep learning
+
+858
+00:45:11,860 --> 00:45:15,760
+problem is going to be the same as the one that we'll learn
+
+859
+00:45:15,760 --> 00:45:22,480
+about with the gradient descent that
+we'll learn about to find the best weights.
+
+861
+00:45:22,480 --> 00:45:28,780
+The point is that in a typical deep learning problem
+
+862
+00:45:28,780 --> 00:45:33,760
+these days, there are many more weights than samples.
+
+863
+00:45:33,760 --> 00:45:37,360
+And so there are a lot of possible minimum.
+
+864
+00:45:37,360 --> 00:45:41,600
+Many different weights give the same minimum loss, because there
+
+865
+00:45:41,600 --> 00:45:46,580
+are too many variables. But it turns
+out to be a very, very good thing.
+
+867
+00:45:46,580 --> 00:45:54,920
+That's part of the success. And he
+believes that in a model situation,
+
+869
+00:45:54,920 --> 00:46:00,220
+that optimization by gradient descent
+
+870
+00:46:00,220 --> 00:46:06,980
+picks out the weights that minimize the nuclear norm.
+
+871
+00:46:06,980 --> 00:46:11,920
+So this would be a norm of a lot
+of weights. Yeah. Yeah. Yeah. Yeah.
+
+876
+00:46:11,920 --> 00:46:16,480
+He thinks that's where the
+system goes. We'll see this.
+
+878
+00:46:16,480 --> 00:46:21,560
+This comes up in compressed
+sensing, as I mentioned last time.
+
+880
+00:46:21,560 --> 00:46:26,940
+But now I have to remember what was the definition.
+
+881
+00:46:26,940 --> 00:46:29,420
+Do you remember what the nuclear norm was?
+
+882
+00:46:29,420 --> 00:46:35,220
+It's also, he often used a little star instead of an n.
+
+883
+00:46:35,220 --> 00:46:40,980
+I'll put that in the notes. Other people
+call it the trace norm. But I think this n.
+
+886
+00:46:40,980 --> 00:46:47,860
+Yeah. This n kind of gives it a
+name or notation you can remember.
+
+888
+00:46:47,860 --> 00:46:54,400
+So let's call it the nuclear norm. Do you
+remember what that one was? It was, yeah.
+
+891
+00:46:54,400 --> 00:47:01,380
+Somebody's saying it right. Add the
+sigmas. Yeah. Just the sum of the sigmas.
+
+895
+00:47:01,380 --> 00:47:09,680
+Like the L1 norm. Yeah. In a way, that's
+the idea is that this is the natural sort
+
+898
+00:47:09,680 --> 00:47:14,320
+of L1 type. It's the L1
+type of norm for matrices.
+
+900
+00:47:14,320 --> 00:47:17,620
+It's the L1 norm, yeah, of that sigma vector.
+
+901
+00:47:17,620 --> 00:47:21,980
+This would be the L2 norm of the sigma
+vector. That would be the L infinity norm.
+
+903
+00:47:21,980 --> 00:47:27,640
+Notice that the vector numbers, infinity, 2, and 1,
+
+904
+00:47:27,640 --> 00:47:38,900
+get changed around when you look at the
+matrix. Well, so that's an exciting idea,
+
+906
+00:47:38,900 --> 00:47:48,040
+and it remains to be proved. And people
+are experimenting to see, is it true? Yeah.
+
+909
+00:47:48,040 --> 00:47:55,680
+So that's a big thing for the future. Yes.
+OK. So today, we've talked about norms,
+
+913
+00:47:55,680 --> 00:47:59,820
+and this section of the notes will be all about norms.
+
+914
+00:48:02,660 --> 00:48:10,700
+We've taken a big leap into a
+comment about deep learning. And.
+
+916
+00:48:11,260 --> 00:48:18,220
+I think this is what I want to say the
+most. And I say it to every class I teach
+
+918
+00:48:18,220 --> 00:48:22,180
+at the near the start of the semester.
+
+919
+00:48:22,180 --> 00:48:26,520
+My feeling about what my job is is to teach you things,
+
+920
+00:48:26,520 --> 00:48:32,380
+or to join with you in learning things, as
+has happened today. It's not to grade you.
+
+922
+00:48:32,380 --> 00:48:39,960
+I don't spend any time like losing sleep.
+Should that person take a one pointer?
+
+924
+00:48:39,960 --> 00:48:40,660
+Should that person take a one pointer?
+Should that person take a one pointer?
+
+926
+00:48:40,660 --> 00:48:41,240
+Should that person take a one pointer?
+Should that person take a one pointer?
+
+928
+00:48:41,260 --> 00:48:49,480
+Epsilon penalty for turning it in
+four minutes late. Hell with that.
+
+930
+00:48:49,480 --> 00:48:55,260
+We've got a lot to do here. And
+so anyway, we'll get on with the job.
+
+932
+00:48:55,260 --> 00:49:03,040
+So homework three coming up. And
+we'll be using the notes that you already
+
+934
+00:49:03,040 --> 00:49:09,220
+have posted in Stellar for those
+sections eight and nine and so on.
+
+936
+00:49:09,220 --> 00:49:14,640
+And we'll keep going on Monday. OK.
+See you Monday, and have a great weekend.
+

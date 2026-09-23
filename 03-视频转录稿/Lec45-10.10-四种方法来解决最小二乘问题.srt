@@ -1,0 +1,1828 @@
+1
+00:00:01,620 --> 00:00:06,160
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,160 --> 00:00:10,680
+help MIT OpenCourseWare continue to offer
+high quality educational resources for
+
+25
+00:00:10,680 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:28,660
+courses, visit MIT OpenCourseWare at ocw
+.mit .edu. Well, OK. So first, important
+
+52
+00:00:28,820 --> 00:00:36,640
+things about the course, plans for the
+course. And then today, I'm going to move
+
+67
+00:00:36,820 --> 00:00:39,680
+to the next section
+of the notes,
+
+74
+00:00:41,920 --> 00:00:48,600
+section 2, or part 2, I should say. And
+actually, I'll skip for the moment section
+
+90
+00:00:48,600 --> 00:01:00,500
+2 .1 and go to section 2 .2. And all of
+chapter 2 will come to you probably today
+
+109
+00:01:01,240 --> 00:01:08,020
+or latest tomorrow. So that's where we're
+going next. I'm following the notes pretty
+
+123
+00:01:08,020 --> 00:01:12,580
+carefully, except I'm going
+to skip the section on tensors
+
+133
+00:01:14,900 --> 00:01:21,900
+until I learn more, basically. Yeah, yeah.
+I could say a little about tensors. But
+
+148
+00:01:22,200 --> 00:01:34,980
+this flows naturally using the SVD. So it's
+just a terribly important problem, least
+
+162
+00:01:34,980 --> 00:01:40,440
+squares. And of course, I know that you've
+seen one or two ways to do least squares.
+
+179
+00:01:40,560 --> 00:01:46,380
+And really, the whole subject comes
+together. Here, I want to say something
+
+192
+00:01:46,380 --> 00:01:52,600
+before I send out a plan for looking
+ahead for the course as a whole.
+
+207
+00:01:55,900 --> 00:02:01,380
+So there's no final exam. And I don't
+really see how to examine you, how to give
+
+224
+00:02:01,380 --> 00:02:10,680
+tests. I could, of course, create our tests
+about the linear algebra part. But I don't
+
+240
+00:02:10,680 --> 00:02:17,920
+think it's not sort of the style of this
+course. To expect you quickly to create a
+
+257
+00:02:18,000 --> 00:02:24,640
+proof or something in a class. So I think,
+and especially looking at what we're headed
+
+273
+00:02:24,640 --> 00:02:35,680
+for and moving quite steadily in that
+direction, is all the problems that this
+
+287
+00:02:35,800 --> 00:02:43,460
+linear algebra is aimed at, right up to and
+including conjugate gradient descent and
+
+301
+00:02:43,460 --> 00:02:56,640
+deep learning. The big, the overwhelmingly
+important and lively active research area.
+
+313
+00:02:57,680 --> 00:03:04,180
+I couldn't do better than to keep the
+course going in that direction. So I think
+
+329
+00:03:04,180 --> 00:03:17,600
+what I would ask you to do is late in sort
+of April, May, the regular homeworks I'll
+
+347
+00:03:17,600 --> 00:03:26,180
+discontinue at a certain point. And then
+instead, I'll be asking and encouraging a
+
+361
+00:03:26,180 --> 00:03:33,720
+project. I don't know if that's the right
+word to be using. In which you use what
+
+378
+00:03:33,720 --> 00:03:43,400
+we've done. And I'll send out a message on
+Stellar listing like five or six areas. One
+
+395
+00:03:43,400 --> 00:03:48,020
+of them is the machine learning, deep
+learning part. But there are all the other
+
+410
+00:03:48,060 --> 00:03:54,360
+parts that things we've learned are
+learning how to do. How to find sparse
+
+424
+00:03:54,360 --> 00:04:00,500
+solutions, for example. Or something about
+the pseudo -inverse. All kinds of things.
+
+437
+00:04:01,080 --> 00:04:10,900
+So that's my goal, is to give you something
+to do which uses the material you've learned.
+
+454
+00:04:13,300 --> 00:04:21,899
+Not expecting a thesis, but it's a good
+chance. So it will be more than just like
+
+471
+00:04:22,660 --> 00:04:30,000
+drag in some code for deep learning and
+some data matrix and do it. But we'll talk
+
+488
+00:04:30,000 --> 00:04:35,700
+more as the time comes. So I just
+thought I'd say, before sending out the
+
+503
+00:04:35,700 --> 00:04:37,900
+announcement, I
+would say it's coming.
+
+509
+00:04:44,420 --> 00:04:51,360
+So a larger scale than single one week
+homeworks would be here before. Any
+
+523
+00:04:51,360 --> 00:04:57,960
+thoughts about that? I haven't given you
+details. So let me do that with a message
+
+539
+00:04:58,020 --> 00:05:05,360
+and then ask again. But I'm open to it. I
+hope you've understood. I think you have.
+
+556
+00:05:06,020 --> 00:05:12,680
+That if you make suggestions either
+directly to my email or on Piazza or
+
+570
+00:05:12,680 --> 00:05:21,500
+whatever, they get paid attention to. Shall
+I just go forward with least squares? So
+
+585
+00:05:21,500 --> 00:05:25,180
+what's the least squares problem?
+And what are these four ways?
+
+596
+00:05:28,040 --> 00:05:33,160
+So let me speak about the pseudo -inverse
+first. OK. The pseudo -inverse of a matrix.
+
+612
+00:05:33,440 --> 00:05:34,620
+All right. Good.
+
+615
+00:05:39,720 --> 00:05:47,640
+So we have a matrix A, m by n. And the
+pseudo -inverse I'm going to call A plus.
+
+634
+00:05:48,840 --> 00:05:55,940
+And it naturally is going to be n by m. I'm
+going to multiply those together. And I'm
+
+652
+00:05:55,940 --> 00:06:01,240
+going to get as near to the identity as
+I can. That's the idea, of course, of the
+
+670
+00:06:01,440 --> 00:06:07,180
+pseudo -inverse. The word pseudo is
+in there, so no one's deceived. It's not an
+
+685
+00:06:07,180 --> 00:06:16,420
+actual inverse. Oh, if the matrix is square
+and has an inverse, of course, then if A
+
+702
+00:06:16,420 --> 00:06:17,840
+inverse exists,
+
+704
+00:06:19,920 --> 00:06:26,280
+which requires a, everybody remembers, it
+requires the matrix to be square, because I
+
+718
+00:06:26,280 --> 00:06:36,120
+mean inverse on both sides. And it requires
+rank n, full rank. Then the inverse will
+
+734
+00:06:36,120 --> 00:06:41,960
+exist. You can check it. Matlab would check
+it by computing the pivots in elimination
+
+749
+00:06:41,980 --> 00:06:51,820
+and finding n pivots. So if A inverse
+exists, which means A times A inverse and A
+
+766
+00:06:51,820 --> 00:07:01,520
+inverse times A both give I,
+then A plus is A inverse, of course.
+
+780
+00:07:03,920 --> 00:07:09,720
+The pseudo -inverse is the inverse when
+there is one. But I'm thinking about cases
+
+795
+00:07:10,080 --> 00:07:20,480
+where either the matrix is rectangular,
+or it has zero eigenvalues. It could be
+
+809
+00:07:20,480 --> 00:07:26,680
+square, but has a null space other than
+just the zero vector. In other words, the
+
+825
+00:07:26,740 --> 00:07:33,760
+columns are dependent. What can we do
+then about inverting it? We can't literally
+
+839
+00:07:33,760 --> 00:07:41,220
+invert it. If A has a null space, then
+when I multiply by a vector x in that null
+
+858
+00:07:41,220 --> 00:07:50,160
+space, Ax will be 0. And when I multiply by
+A inverse, still 0. That can't change the
+
+876
+00:07:50,160 --> 00:07:57,400
+0. So if there is an x in the null space,
+then this can't happen. But so we just do
+
+896
+00:07:57,400 --> 00:08:03,820
+the best we can. And that's what the pseudo
+-inverse is. And so let me draw a picture
+
+914
+00:08:03,820 --> 00:08:07,120
+of the picture you
+know of the row space
+
+923
+00:08:09,500 --> 00:08:15,760
+and the null space. And it's there. You
+see, there is a null space. And over here,
+
+940
+00:08:15,760 --> 00:08:19,930
+I have the column space and
+the null space of A transpose.
+
+952
+00:08:22,020 --> 00:08:28,600
+So this is the row space, of course. That's
+the column space of A transpose. And there
+
+969
+00:08:28,600 --> 00:08:35,140
+is the column space of A. So which part of
+that picture is invertible, and which part
+
+986
+00:08:35,140 --> 00:08:43,340
+of the picture is hopeless? The top part is
+invertible. This is the R dimensional row
+
+1002
+00:08:43,340 --> 00:08:50,520
+space, R dimensional column space. A takes
+a vector in here, zaps it into every. Oh,
+
+1018
+00:08:50,520 --> 00:08:58,020
+you always end up in the column space.
+Here, I take a vector in the row space, say
+
+1036
+00:08:58,020 --> 00:09:07,680
+x. And it gets mapped to Ax. And between
+those two spaces, A is entirely invertible.
+
+1052
+00:09:10,500 --> 00:09:15,860
+And you get separate vectors here, go to
+separate vectors in the column space. And
+
+1067
+00:09:15,860 --> 00:09:25,480
+the inverse just brings it back. So we know
+what the pseudo -inverse should do. A will
+
+1084
+00:09:25,540 --> 00:09:36,500
+go that way. And A plus, the pseudo
+-inverse, will be just, it will give us, on
+
+1101
+00:09:36,500 --> 00:09:45,820
+the top half of the picture, it'll give us
+A plus. We'll take Ax back to x in the top
+
+1121
+00:09:45,820 --> 00:09:51,780
+half. Now, what about here? That's where
+we have trouble. We don't have, that's what
+
+1136
+00:09:51,920 --> 00:10:00,380
+spoils our inverse. If there is a null
+space vector, then it goes where? When you
+
+1152
+00:10:00,380 --> 00:10:03,960
+multiply by A, this guy in
+the null space goes to 0.
+
+1164
+00:10:34,400 --> 00:10:40,660
+Transpose, because A, sorry, yeah, what
+should the pseudo -inverse do? I said, what
+
+1178
+00:10:40,660 --> 00:10:46,120
+should the inverse do? The inverse is
+helpless. But we have to define A plus.
+
+1193
+00:10:46,680 --> 00:10:51,300
+I've said what it should do on that
+guy, on the column space. It should take
+
+1209
+00:10:51,300 --> 00:10:57,240
+everything in the column space back where
+it came from. But what should it do on this
+
+1226
+00:10:57,340 --> 00:11:04,380
+orthogonal space where, yeah, just tell me.
+What do you think? GILBERT STRANGER I have
+
+1241
+00:11:04,380 --> 00:11:12,580
+some vector here that's, let's call it v r
+plus 1. That would be like the, so here I
+
+1260
+00:11:12,580 --> 00:11:25,840
+have a basis of a nice basis for the column
+space. There's v's. I would use v's for
+
+1278
+00:11:25,840 --> 00:11:33,020
+the ones that come up in the SVD. They're
+orthogonal, and they come from orthogonal
+
+1293
+00:11:33,020 --> 00:11:40,880
+u's. So that top half is great. What shall
+I do with this stuff? I'm going to send
+
+1311
+00:11:40,880 --> 00:11:47,680
+that back by A plus. And where am I going?
+What am I going to do with it? Send it to?
+
+1332
+00:11:48,640 --> 00:11:53,520
+Nowhere else could it go. 0 is the right
+answer. All this stuff goes back to 0.
+
+1349
+00:11:56,380 --> 00:12:02,160
+I'm looking for a linear operator, a
+matrix. And I have to think of, once I've
+
+1365
+00:12:02,160 --> 00:12:06,800
+decided what to do with all those, and what
+to do with all these, then I know what to
+
+1384
+00:12:06,800 --> 00:12:12,960
+do with any combination. So I've got it.
+I've got it. So the idea will be, this is
+
+1402
+00:12:13,020 --> 00:12:20,660
+true for x in the row space.
+For x in the row space,
+
+1415
+00:12:24,300 --> 00:12:29,040
+if x is in the row space, Ax is in the
+column space, and A inverse just brings it
+
+1434
+00:12:29,040 --> 00:12:30,340
+back as it should.
+
+1438
+00:12:34,040 --> 00:12:39,900
+Matrix A, what happens to my picture?
+What is this picture looking like if A is
+
+1454
+00:12:39,920 --> 00:12:47,600
+actually a 6 by 6 invertible matrix? In
+that case, what's in my picture, and what
+
+1470
+00:12:47,600 --> 00:12:48,980
+is not in my picture?
+
+1475
+00:12:51,060 --> 00:12:55,120
+Null space. GILBERT STRANG All this null
+space stuff isn't there. And null space is
+
+1490
+00:12:55,120 --> 00:12:55,940
+just the 0 vector.
+
+1494
+00:12:57,980 --> 00:13:01,580
+But all that I don't have to worry
+about. But in general, I do have to say.
+
+1511
+00:13:04,140 --> 00:13:10,520
+A plus on the, what
+am I calling this?
+
+1520
+00:13:12,620 --> 00:13:20,640
+It's the null space of A transpose,
+or whatever on vr plus 1 to vn.
+
+1535
+00:13:23,140 --> 00:13:34,460
+All those vectors, the guys that are not
+orthogonal to the column space, then we
+
+1550
+00:13:34,460 --> 00:13:38,500
+have to say, what does A plus do to them?
+And the answer is, it takes them all to 0.
+
+1570
+00:13:41,220 --> 00:13:47,960
+So there is a picture using what I call
+the big picture of linear algebra, the four
+
+1587
+00:13:47,960 --> 00:13:57,340
+spaces. You see what A plus should do. Now,
+I need a little formula for it. I've got
+
+1605
+00:13:57,340 --> 00:14:03,280
+the plan for what it should be, and it's
+sort of the natural thing. So A plus A is,
+
+1624
+00:14:03,280 --> 00:14:11,440
+you could say, it's a projection matrix.
+It's not the identity matrix, because if x
+
+1639
+00:14:11,460 --> 00:14:19,960
+is in the null space, A plus A will take
+it to 0. So it's a projection. A plus A is
+
+1660
+00:14:19,960 --> 00:14:26,260
+the identity on the top half and 0 on the
+bottom half. That's really what the matrix
+
+1677
+00:14:26,260 --> 00:14:37,660
+is. And now, I want a simple formula for
+it. And I guess my message here is that if
+
+1696
+00:14:37,680 --> 00:14:43,820
+we're looking for a nice expression, start
+with the SVD, because the SVD works for any
+
+1712
+00:14:43,820 --> 00:14:51,460
+matrix. And it writes it as an orthogonal
+matrix times a diagonal matrix times an
+
+1727
+00:14:51,460 --> 00:14:59,380
+orthogonal matrix. And now, I want to
+invert it. Well, suppose A had an inverse.
+
+1742
+00:15:00,580 --> 00:15:01,220
+What would that be?
+
+1746
+00:15:04,700 --> 00:15:06,120
+This is if invertible.
+
+1750
+00:15:09,860 --> 00:15:16,440
+What would be the SVD of A inverse? What
+would be the singular value decomposition
+
+1765
+00:15:16,440 --> 00:15:22,800
+if this is good? So when is this going to
+be good? What would I have to know about
+
+1784
+00:15:22,800 --> 00:15:29,780
+that matrix sigma, that diagonal matrix in
+the middle, if this is truly an invertible matrix?
+
+1800
+00:15:32,020 --> 00:15:37,340
+Well, no. What's its name? Those are not
+eigenvalues. Well, they're eigenvalues of A
+
+1814
+00:15:37,380 --> 00:15:42,560
+transpose A. But they're singular values.
+Singular value, that's fine. So that's the
+
+1827
+00:15:42,560 --> 00:15:49,300
+singular value matrix. And what would
+be the situation if A had an inverse?
+
+1841
+00:15:51,340 --> 00:15:56,060
+There would be no 0s. All the singular
+values would be sitting there, sigma 1 to
+
+1857
+00:15:56,060 --> 00:16:02,360
+sigma n. What would be the shape of this
+sigma matrix? If I have an inverse, then
+
+1874
+00:16:02,360 --> 00:16:10,940
+it's got to be square n by n. So what's the
+shape of the sigma guy? Also square n by
+
+1894
+00:16:10,940 --> 00:16:18,300
+n. So the invertible case would be, and
+I'm going to erase this in a minute, the
+
+1911
+00:16:18,300 --> 00:16:25,320
+invertible case would be when sigma is just
+that. That would be the invertible case.
+
+1926
+00:16:26,400 --> 00:16:36,000
+So let's see. Finish this formula. What
+would be the SVD of A inverse? So I'm given
+
+1943
+00:16:36,060 --> 00:16:43,400
+the SVD of A. I'm given the u and the
+sigmas, cool, and the V transpose. What's
+
+1960
+00:16:43,400 --> 00:16:47,560
+the inverse of that? Yeah, I'm just really
+asking you, what's the inverse of that
+
+1975
+00:16:47,700 --> 00:16:49,000
+product of three matrices?
+
+1979
+00:16:51,240 --> 00:16:58,880
+What comes first here? V. The inverse
+of V transpose is V. That's because V is a
+
+1996
+00:16:58,880 --> 00:17:04,260
+orthogonal matrix. The inverse of sigma,
+I just won over it. It's just the sigma
+
+2011
+00:17:04,260 --> 00:17:09,420
+inverse. It's obvious what that means. And
+the inverse of u would go here, and that
+
+2027
+00:17:09,420 --> 00:17:17,079
+is? U transpose. U transpose, great. OK,
+so this is if invertible. If invertible, we
+
+2042
+00:17:17,079 --> 00:17:24,980
+know what the SVD of A inverse
+is. It just takes the Vs back to the Us.
+
+2059
+00:17:27,260 --> 00:17:35,180
+Or the Us back to the Vs, whichever. OK,
+OK. Now we've got to do it if we're going
+
+2078
+00:17:36,020 --> 00:17:44,120
+to allow, if we're going to get beyond this
+limit situation, allow the matrix sigma to
+
+2094
+00:17:44,120 --> 00:17:55,700
+be rectangular. Then let me just show you
+the idea here. So now I'm going to say, now
+
+2112
+00:17:55,700 --> 00:18:02,760
+sigma, in general, it's rectangular. It's
+got r non -zeros on the diagonal, but then
+
+2127
+00:18:02,760 --> 00:18:10,720
+it quits. So it's got a bunch of zeros that
+make it not invertible. But let's do our
+
+2145
+00:18:10,720 --> 00:18:19,830
+best and pseudo invert it. OK, so now
+help me get started on a formula for using.
+
+2162
+00:18:21,960 --> 00:18:28,680
+This A plus, which I described up there in
+terms of the subspaces. Now I'm going to
+
+2179
+00:18:28,680 --> 00:18:38,060
+describe A plus in terms of u, sigma, and V
+in the SVD guys. OK, so what shall I start
+
+2199
+00:18:38,060 --> 00:18:46,560
+with here? Well, let me give a hint.
+That was a great start. My V is still an
+
+2217
+00:18:46,560 --> 00:18:53,200
+orthogonal matrix. V transpose is still an
+orthogonal matrix. I'll invert it. At the
+
+2231
+00:18:53,200 --> 00:19:04,260
+end, the u was no problem. All the problems
+are in sigma. In sigma, remember, sigma,
+
+2247
+00:19:04,860 --> 00:19:11,100
+so it's rectangular. Maybe I'll make it
+like wide for too wide. And maybe I'll only
+
+2263
+00:19:11,100 --> 00:19:18,920
+give it two non -zeros and then all
+the rest. So the rank of my matrix A is 2.
+
+2282
+00:19:21,840 --> 00:19:29,280
+m and n are bigger than 2. It's just got
+two independent columns, and then it's just
+
+2299
+00:19:29,280 --> 00:19:35,200
+sort of totally singular. OK, so my
+question is, what am I going to put there?
+
+2315
+00:19:35,720 --> 00:19:39,880
+And I've described it one way, but now I'm
+going to describe it another way. Well, let
+
+2332
+00:19:39,880 --> 00:19:47,780
+me just say, what I'll put there is the
+pseudo inverse of sigma. I can't put sigma
+
+2349
+00:19:47,780 --> 00:19:54,760
+inverse using that symbol, because there
+is no such thing. With this, I can't invert
+
+2364
+00:19:54,760 --> 00:20:03,180
+it. So that's the best I can do. So I'm
+almost done. But to finish, I have to tell
+
+2383
+00:20:03,180 --> 00:20:12,620
+you, what is this thing? So sigma plus, I'm
+now going to tell you sigma plus. And then
+
+2401
+00:20:13,430 --> 00:20:18,720
+that's what should sit there in the middle.
+So if sigma is this diagonal matrix which
+
+2417
+00:20:19,440 --> 00:20:24,830
+quits after two sigmas, what should sigma
+plus be? Well, first of all, it should be
+
+2433
+00:20:26,100 --> 00:20:33,880
+rectangular the other way. If this was m by
+n column, n columns and m rows, now I want
+
+2452
+00:20:33,900 --> 00:20:43,560
+to have n rows and m columns. And
+yeah, here's the question. What's the best
+
+2467
+00:20:43,560 --> 00:20:46,300
+inverse you could come
+up with for that sigma?
+
+2476
+00:20:49,200 --> 00:20:56,220
+Is it of 18065? If somebody asks you,
+do your best to invert that matrix. I think
+
+2493
+00:20:56,220 --> 00:21:02,340
+we'd all agree it is. Yeah? 1 over sigma.
+GILBERT STRANG. 1 over the sigma 1 would
+
+2510
+00:21:02,340 --> 00:21:13,120
+come there. And 1 over sigma 2, the non
+-zeros. And then? Zeros. Just the way up
+
+2527
+00:21:13,120 --> 00:21:19,420
+there. When we didn't know what to do, when
+there was nothing good to do, 0 was the
+
+2545
+00:21:19,420 --> 00:21:25,720
+right answer. So this is all zeros. Of
+course, it's rectangular the other way. But
+
+2560
+00:21:25,720 --> 00:21:32,740
+do you see that if I multiply sigma
+plus times sigma, if I multiply the pseudo
+
+2576
+00:21:32,740 --> 00:21:37,280
+-inverse times the matrix, what
+do I get if I multiply that by that?
+
+2590
+00:21:39,420 --> 00:21:45,320
+What does that multiplication produce? Can
+you describe the? Well, when you tell me
+
+2604
+00:21:45,320 --> 00:21:51,700
+what it looks like, I'll write it down. So
+what is sigma plus times sigma? If sigma is
+
+2622
+00:21:51,700 --> 00:22:00,140
+a diagonal, sigma plus is a diagonal. And
+they both quit after two guys. What do I have?
+
+2640
+00:22:02,220 --> 00:22:09,220
+1. GILBERT STRANG. Because sigma 1 times 1
+over sigma 1 is a 1. And the other next guy
+
+2659
+00:22:09,220 --> 00:22:18,480
+is? A 1. And the rest are? All zeros.
+That's right. It's the best I could do. The
+
+2677
+00:22:18,480 --> 00:22:24,280
+rank was only 2. So I couldn't get
+anywhere. So that tells you what sigma plus is.
+
+2694
+00:22:26,300 --> 00:22:33,460
+OK. So I described the pseudo -inverse then
+with a picture of spaces and then with a
+
+2711
+00:22:33,520 --> 00:22:41,300
+formula of matrices. And now I want to use
+it in least squares. So now I'm going to
+
+2729
+00:22:41,300 --> 00:22:47,440
+say, what is the least squares problem? And
+the first way to solve it will be to let,
+
+2747
+00:22:48,680 --> 00:22:56,210
+to involve, A plus will give the solution.
+OK. So what is the least squares problem?
+
+2763
+00:22:56,560 --> 00:22:58,340
+Let me put it here.
+
+2768
+00:23:05,240 --> 00:23:10,460
+OK. The least squares problem is
+simply you have an equation Ax equal b.
+
+2782
+00:23:14,340 --> 00:23:22,180
+But A is not invertible. So you can't solve
+it. Of course, for which, yeah, you could
+
+2799
+00:23:22,180 --> 00:23:28,460
+find, you could solve it for certain b's.
+If b is in the column space of A, then just
+
+2818
+00:23:28,680 --> 00:23:33,940
+by the meaning of column space, this has
+a solution. The vectors in the column space
+
+2834
+00:23:33,940 --> 00:23:39,600
+are the guys that you can get. But the
+vectors in the orthogonal space, you cannot
+
+2850
+00:23:39,600 --> 00:23:45,980
+get, or all the rest of the vectors you
+cannot get. So suppose this is like so, but
+
+2868
+00:23:46,120 --> 00:23:50,160
+always A is m by n rank r.
+
+2876
+00:23:54,440 --> 00:24:06,760
+And then we get A inverse when m equals
+n equals r. That's the invertible case. OK.
+
+2893
+00:24:07,840 --> 00:24:16,340
+What do we do with a system of equations?
+When we can't solve it. This is probably
+
+2910
+00:24:16,340 --> 00:24:26,820
+the main application in 18 .06. So you've
+seen this problem before. What do we do if
+
+2927
+00:24:26,820 --> 00:24:33,500
+Ax equal b has no solution? Typically, b
+would be a vector of measurements, like
+
+2942
+00:24:33,540 --> 00:24:39,460
+we're tracking a satellite. And
+we get some measurements.
+
+2951
+00:24:41,860 --> 00:24:46,120
+And often, we get too many measurements.
+And of course, there's a little noise in
+
+2966
+00:24:46,120 --> 00:24:53,380
+them. And a little noise means that we
+can't solve the equations. That maybe, the
+
+2981
+00:24:53,380 --> 00:25:02,700
+case everybody knows is where this equation
+is like expressing a straight line going
+
+2995
+00:25:02,700 --> 00:25:10,560
+through the data points. So the famous
+example of these squares is fit a straight
+
+3010
+00:25:10,560 --> 00:25:13,940
+line. A straight line
+
+3014
+00:25:16,920 --> 00:25:29,320
+to the b's. To b1, b2. We've got m
+measurements. We've got m measurements. The
+
+3029
+00:25:29,320 --> 00:25:34,960
+physics or the mechanics of the problem is
+pretty well linear. But of course, there's
+
+3044
+00:25:34,960 --> 00:25:42,420
+noise. And the straight line only has two
+degrees of freedom. So we're going to have
+
+3060
+00:25:42,420 --> 00:25:51,180
+only two columns in our matrix. A will
+be only two columns with many rows.
+
+3075
+00:25:53,500 --> 00:26:00,940
+Highly rectangular. So fit a straight line.
+Let me call that line Cx plus d. Say this
+
+3092
+00:26:00,940 --> 00:26:07,440
+is the x direction. This is the b's
+direction. And we've got a whole bunch of
+
+3108
+00:26:07,440 --> 00:26:10,550
+data points. And
+they're not on a line.
+
+3116
+00:26:15,090 --> 00:26:23,960
+Suppose those did lie on a line. What would
+that tell me about Ax equal b? I haven't
+
+3134
+00:26:23,960 --> 00:26:30,200
+said everything I need to. But maybe
+the insight is what I'm after here. If my
+
+3150
+00:26:30,200 --> 00:26:38,340
+points are right on a line, so there is a
+straight line through them. The unknowns
+
+3166
+00:26:38,340 --> 00:26:52,800
+here. So Ax. The unknowns here are C and D. And
+the right hand side is all my measurements. OK.
+
+3186
+00:26:55,200 --> 00:27:01,700
+Suppose, without my drawing a picture,
+suppose these points are on a line. Here is
+
+3201
+00:27:01,760 --> 00:27:06,310
+the different x's, the measurement
+times. Here is the different measurements.
+
+3212
+00:27:09,420 --> 00:27:15,520
+But if they're on a line, what does that
+tell me about my linear system Ax equal b?
+
+3230
+00:27:16,140 --> 00:27:23,580
+It has a solution. Being on a line means
+everything's perfect. There is a solution.
+
+3245
+00:27:24,520 --> 00:27:29,740
+But will there usually be a solution?
+Certainly not. If I have only two
+
+3259
+00:27:29,740 --> 00:27:33,240
+parameters, two
+unknowns, two columns here,
+
+3265
+00:27:36,100 --> 00:27:43,480
+the rank is going to be 2. And
+here I'm trying to hit any noisy set of
+
+3282
+00:27:43,480 --> 00:27:48,320
+measurements. So of course, in general, the
+picture will look like that. And I'm going
+
+3297
+00:27:48,320 --> 00:27:54,870
+to look for the best C
+and D. So I'll call it Cx
+
+3310
+00:27:58,000 --> 00:28:11,800
+plus D. Yeah. Right. Sorry. That's my line.
+So those are my equations. So oh, sorry. I
+
+3327
+00:28:11,800 --> 00:28:20,400
+often write it C plus Dx. Do you mind if
+I put the constant term first in the highly
+
+3346
+00:28:20,400 --> 00:28:22,920
+difficult equation
+here for a straight line?
+
+3353
+00:28:26,960 --> 00:28:32,940
+So let me tell you what I'm. So these are
+the points where you have a measurement,
+
+3370
+00:28:33,140 --> 00:28:42,060
+x1, x2 up to xm. And these are the actual
+measurements, b1 up to bm, let's say. And
+
+3388
+00:28:42,060 --> 00:28:47,640
+the equations are, I just want to set up
+the matrix here. I just want to set up the
+
+3407
+00:28:47,640 --> 00:28:56,940
+matrix. So I want C to get multiplied
+by 1's every time. And I want D to get
+
+3425
+00:28:56,940 --> 00:29:06,920
+multiplied by these x's, x1, x2, x3, xm,
+the measurement places. And those are the
+
+3440
+00:29:06,920 --> 00:29:08,260
+measurements. Anyway.
+
+3442
+00:29:11,560 --> 00:29:17,700
+The problem is this has no solution. And
+so what do I do when there's no solution?
+
+3459
+00:29:20,480 --> 00:29:28,000
+Well, I'll do what Gauss did. He was a good
+mathematician, so I'll follow his advice.
+
+3475
+00:29:28,640 --> 00:29:40,900
+I won't do it all semester, as you know.
+But Gauss's advice was minimize. I'll blame
+
+3491
+00:29:40,900 --> 00:29:50,760
+it on Gauss. The distance between Ax
+and b squared, the L2 norm squared,
+
+3505
+00:29:53,300 --> 00:30:07,220
+which is just Ax minus b transpose Ax minus
+b. It's a quadratic. And minimizing it
+
+3521
+00:30:07,260 --> 00:30:12,500
+gives me a system of linear equations. So
+in the end, they will have a solution. So
+
+3538
+00:30:12,500 --> 00:30:18,880
+that's the whole point of these squares.
+We have an unsolvable problem, no solution.
+
+3552
+00:30:20,020 --> 00:30:29,160
+We follow Gauss's advice to get the best
+we can. And that does produce an answer. So
+
+3569
+00:30:29,160 --> 00:30:37,540
+this is, if I multiply this out, is x
+transpose A transpose Ax. That comes from
+
+3585
+00:30:37,540 --> 00:30:48,040
+the square term. And I have probably these
+actually will probably get two of those and
+
+3601
+00:30:48,040 --> 00:30:55,260
+then a constant term that has derivative
+0 so it doesn't enter. So this is what I'm
+
+3618
+00:30:55,260 --> 00:31:06,400
+minimizing. This is the loss function.
+And it leads to, let's just jump to the key
+
+3634
+00:31:06,400 --> 00:31:15,660
+here. What equation do I get when I look
+for what equation is solved by the best x?
+
+3652
+00:31:16,920 --> 00:31:28,900
+The best x. The best x solves the famous. So this
+is regression in statistics, linear regression.
+
+3669
+00:31:31,150 --> 00:31:37,740
+It's one of the main computations
+in statistics, not, of course, just for
+
+3682
+00:31:37,820 --> 00:31:46,100
+straight line fits, but for any system Ax
+equal b. That will lead to, this minimum
+
+3698
+00:31:46,100 --> 00:31:52,660
+will lead to a system of equations that I'm
+going to put a box around because it's so
+
+3716
+00:31:52,660 --> 00:32:00,140
+fundamental. And are you willing to tell
+me what that equation is? Yes, thanks. A
+
+3731
+00:32:00,140 --> 00:32:08,750
+transpose A. A transpose A is going to come
+from there. You see it. Times the best x equals.
+
+3750
+00:32:40,040 --> 00:32:48,440
+As x transpose A transpose B. So it's
+x transpose against A transpose B. It's
+
+3765
+00:32:48,440 --> 00:32:56,080
+linear. So when I take the derivative, it's
+that constant. That's pretty fast. 18 .06
+
+3780
+00:32:56,100 --> 00:33:09,340
+would patiently derive that. But here, let
+me give you the picture that goes with it.
+
+3796
+00:33:11,400 --> 00:33:15,840
+The geometry. So
+we have the problem.
+
+3803
+00:33:18,100 --> 00:33:30,060
+No solution. We have Gauss's best answer.
+Minimize the 2 norm of the error. We have
+
+3819
+00:33:31,140 --> 00:33:35,460
+the conclusion, the matrix that we get in.
+And now I want to draw a picture that goes
+
+3837
+00:33:35,520 --> 00:33:38,740
+with it. OK. So
+here is a picture.
+
+3845
+00:34:11,659 --> 00:34:19,080
+Now I've got to put b in the picture. So
+where does this vector b? So I'm trying to
+
+3864
+00:34:20,320 --> 00:34:28,820
+solve Ax equal b, but failing. So if I draw
+b in this picture, how do I draw b? Where
+
+3884
+00:34:28,820 --> 00:34:36,020
+do I put it? Shall I put it in the column
+space? No. The whole point is it's not in
+
+3904
+00:34:36,020 --> 00:34:43,380
+the column space. It's not an
+Ax. Out there somewhere. B. OK.
+
+3916
+00:34:45,440 --> 00:34:52,219
+And then what's the geometry that goes with
+these squares and the normal equations and
+
+3931
+00:34:52,219 --> 00:35:02,000
+Gauss's suggestion to minimize the error?
+Where will Ax be? The best Ax that I can
+
+3947
+00:35:02,000 --> 00:35:14,960
+do. Where will? So what Gauss has produced
+is an A. He can't find an x. He'll do his
+
+3966
+00:35:15,040 --> 00:35:24,180
+best he can. And we're calling that guy x
+hat. And this is the algebra to find x hat.
+
+3985
+00:35:24,820 --> 00:35:33,180
+And now where is the picture here? Where
+is this vector Ax hat, which is the best Ax
+
+4003
+00:35:33,180 --> 00:35:41,700
+we can get? So it has to be in the column
+space, because it's A times something. And
+
+4021
+00:35:41,700 --> 00:35:46,280
+where is it in the column
+space? It's the projection.
+
+4031
+00:35:48,800 --> 00:35:56,020
+That's Ax hat. And here is the error, which
+you couldn't do anything about. B minus Ax
+
+4048
+00:35:56,020 --> 00:36:01,520
+hat. Yeah. So it's
+the projection. Right.
+
+4055
+00:36:05,400 --> 00:36:14,140
+Justifying the so we're in the second
+approach to least squares. Solve the normal
+
+4069
+00:36:14,140 --> 00:36:20,880
+equations. Solve the normal equations.
+Yeah. That would be the second approach to
+
+4082
+00:36:20,880 --> 00:36:30,960
+least squares. And most examples, if
+they're not very big or very difficult, you
+
+4096
+00:36:30,960 --> 00:36:38,740
+just create a matrix A transpose A. And you
+call MATLAB and solve that linear system.
+
+4112
+00:36:39,220 --> 00:36:42,460
+You create the matrix. You create
+the right -hand side. And you solve it.
+
+4126
+00:36:45,720 --> 00:36:52,020
+So that's the ordinary run -of -the
+-mill least squares problem. Just do it.
+
+4140
+00:36:54,200 --> 00:36:56,700
+So that's method
+two. Just do it.
+
+4147
+00:36:59,980 --> 00:37:00,740
+What's method three?
+
+4150
+00:37:04,600 --> 00:37:08,620
+Problem here. But now I'm thinking
+it may be a little more difficult.
+
+4163
+00:37:11,060 --> 00:37:21,000
+This matrix A transpose A might be nearly
+singular. Gauss is assuming that, yeah.
+
+4177
+00:37:21,240 --> 00:37:28,060
+Yeah. When did this work? When did this
+work? And it will continue to work in the
+
+4194
+00:37:28,060 --> 00:37:34,540
+next three. This works.
+This is good if assuming
+
+4203
+00:37:37,420 --> 00:37:41,340
+A has independent columns.
+
+4207
+00:37:52,040 --> 00:37:59,700
+Yeah. Better just make clear. I'm
+claiming that when A has in. So what's the
+
+4222
+00:37:59,700 --> 00:38:06,900
+reasoning? Independent columns, but maybe
+not enough columns, like here. It's only
+
+4234
+00:38:06,900 --> 00:38:11,220
+got two columns. It's obviously not going
+to be able to match any right -hand side.
+
+4250
+00:38:11,560 --> 00:38:16,740
+But it's got independent columns. When A
+has independent columns, then what can I
+
+4264
+00:38:16,740 --> 00:38:17,980
+say about this matrix?
+
+4268
+00:38:21,900 --> 00:38:30,300
+It's invertible. Gauss's plan works. If A
+has independent columns, then this would be
+
+4282
+00:38:30,300 --> 00:38:36,620
+a linear algebra. Step. Then this will be
+invertible. You see the importance of that
+
+4297
+00:38:36,620 --> 00:38:42,720
+step. If A has independent columns, that
+means it has no null space. Only x equals 0
+
+4314
+00:38:42,720 --> 00:38:49,720
+is in the null space. Two independent
+columns, but only two. So not enough to
+
+4329
+00:38:49,800 --> 00:38:56,200
+solve systems, but independent. Then you're
+OK. This matrix is invertible. You can do
+
+4343
+00:38:56,200 --> 00:38:57,480
+what Gauss tells you.
+
+4347
+00:39:01,880 --> 00:39:05,750
+We're prepared now.
+We have to think, OK.
+
+4355
+00:39:08,000 --> 00:39:18,320
+So what do I really want to do? I want to
+connect this Gauss's solution to the pseudo
+
+4373
+00:39:18,320 --> 00:39:24,040
+-inverse, because I'm claiming they both
+give the same result. The pseudo -inverse,
+
+4386
+00:39:24,820 --> 00:39:29,340
+yeah. The pseudo
+-inverse will apply.
+
+4392
+00:39:32,220 --> 00:39:39,340
+But we have something. This A is not
+invertible. Just keep remembering this
+
+4405
+00:39:39,340 --> 00:39:49,200
+matrix. It's not invertible, but it has got
+independent columns. What am I saying
+
+4419
+00:39:49,200 --> 00:39:51,500
+there? Just going
+back to the picture.
+
+4426
+00:39:56,800 --> 00:40:03,520
+If A has a matrix with independent columns,
+what space disappears in this picture?
+
+4440
+00:40:06,600 --> 00:40:15,400
+The null space goes away. So the picture is
+simpler. But it's still the null space of
+
+4457
+00:40:15,400 --> 00:40:20,480
+A transpose. This is still pretty big,
+because I only had two columns and a whole
+
+4473
+00:40:20,480 --> 00:40:28,120
+lot of rows. And that's going to be
+reflected here. So what am I trying to say?
+
+4490
+00:40:28,620 --> 00:40:33,960
+I'm trying to say that this answer is the
+same as the pseudo -inverse answer. We
+
+4506
+00:40:33,960 --> 00:40:38,590
+could possibly even check that
+point. Let me write it down first.
+
+4518
+00:40:40,680 --> 00:40:41,860
+I claim
+
+4520
+00:40:46,060 --> 00:40:57,420
+that the answer A plus B is the same as
+the answer coming from here, A transpose A
+
+4538
+00:40:58,920 --> 00:41:13,680
+inverse A transpose B, when I guess
+the null space is 0, the rank is all of n,
+
+4556
+00:41:14,140 --> 00:41:22,000
+whatever you like to say. I believe that
+method 1, this two -identification in one
+
+4571
+00:41:22,000 --> 00:41:33,840
+quick formula. So remember that this was V
+sigma plus U transpose, right? That's what
+
+4586
+00:41:34,160 --> 00:41:37,660
+A transpose was. That
+this should agree with this.
+
+4595
+00:41:43,880 --> 00:41:52,080
+I believe those are the same when the null
+space isn't in the picture. So the fact
+
+4612
+00:41:52,080 --> 00:41:59,640
+that the null space is just the 0 vector
+means that this inverse does exist. So this
+
+4629
+00:41:59,640 --> 00:42:04,960
+inverse exists, but A A
+transpose is not invertible,
+
+4638
+00:42:08,080 --> 00:42:10,380
+right? No inverse.
+
+4641
+00:42:12,400 --> 00:42:20,100
+Because A A transpose would be coming with
+A transpose. All this is a null space of A
+
+4659
+00:42:20,100 --> 00:42:22,380
+transpose. A transpose
+is not invertible.
+
+4665
+00:42:26,520 --> 00:42:32,040
+But A transpose A is invertible.
+How would you check that?
+
+4676
+00:42:34,200 --> 00:42:44,370
+You see what I'm? It's taken pretty
+much the whole hour to get a picture of the
+
+4693
+00:42:45,060 --> 00:42:48,660
+geometry of the pseudo -inverse.
+So this is the pseudo -inverse.
+
+4704
+00:42:50,880 --> 00:43:00,500
+And this is that matrix there. It's really
+doing its best to be the inverse. In fact,
+
+4721
+00:43:00,820 --> 00:43:07,320
+everybody here is just doing their best to
+be the inverse. Now, how well is this? How
+
+4738
+00:43:07,320 --> 00:43:12,140
+close is that to being the inverse? Can I
+just ask you about that, and then I'll make
+
+4756
+00:43:12,140 --> 00:43:18,560
+this connection, and then we're out of time.
+How close is that to being the inverse of A?
+
+4774
+00:43:21,740 --> 00:43:26,940
+Suppose I multiply that by A.
+What do I get? So just notice.
+
+4787
+00:43:29,340 --> 00:43:40,840
+If I multiply that by A, what
+do I get? I get, yeah? I get I.
+
+4803
+00:43:43,060 --> 00:43:43,460
+Terrific.
+
+4804
+00:43:45,620 --> 00:43:50,860
+But don't be deceived to thinking that this
+is the inverse of A. It worked on the left
+
+4822
+00:43:50,880 --> 00:44:00,960
+side, but it's not going to be good on the right
+-hand side. So if I multiply A by this guy in
+
+4844
+00:44:04,300 --> 00:44:10,820
+that direction, I'll get as close to the
+identity as I can come, but I won't get the
+
+4862
+00:44:10,820 --> 00:44:14,720
+identity that way. So this
+is just a little box to say.
+
+4874
+00:44:17,260 --> 00:44:18,800
+So what's the point of making?
+
+4880
+00:44:20,880 --> 00:44:27,860
+This is a pseudo -inverse, whatever.
+Whatever these spaces. The rank could be
+
+4893
+00:44:27,860 --> 00:44:38,840
+tiny, just 1. This works when the rank is
+n. I needed independent columns. So when
+
+4909
+00:44:38,840 --> 00:44:49,020
+the rank is n, so this is rank equal n.
+That Gauss worked. Then I can get a one
+
+4928
+00:44:49,020 --> 00:44:55,100
+-sided inverse, but it's not a two -sided
+inverse. I can't do that. Look, my matrix
+
+4944
+00:44:55,100 --> 00:45:02,300
+there. I could find a one -sided inverse to
+get the 2 by 2 identity, but I could never
+
+4963
+00:45:02,300 --> 00:45:08,440
+multiply that by some matrix and get the n
+by n identity out of those two pathetic columns.
+
+4981
+00:45:10,700 --> 00:45:18,670
+Maybe you feel like just checking this. Just
+takes patience. What do I mean by checking it?
+
+4998
+00:45:20,940 --> 00:45:21,340
+I mean,
+
+5000
+00:45:24,080 --> 00:45:33,940
+stick in the SVD. Just put in the SVD and
+cancel like crazy. And I think that'll pop
+
+5018
+00:45:33,940 --> 00:45:43,240
+out. Do you believe me? Because it's
+going to be a little painful. 3, u sigma v
+
+5035
+00:45:43,240 --> 00:45:46,980
+transpose, all transposed, and then
+something there and something there. I've
+
+5046
+00:45:46,980 --> 00:45:53,280
+got nine matrices multiplying away. But
+it's going to, like all sorts of things,
+
+5060
+00:45:53,540 --> 00:46:02,760
+will produce the identity. And in the end,
+that's what I'll have. Yeah. So this is the
+
+5077
+00:46:02,760 --> 00:46:11,580
+one -sided true inverse, where the SVD,
+this formula is prepared to have neither
+
+5091
+00:46:11,580 --> 00:46:20,120
+side invertible. It's still, we know what
+sigma plus means. Anyway, so under the
+
+5105
+00:46:20,120 --> 00:46:27,540
+assumption of independent columns, Gauss works
+and gives the same answer as the pseudo -inverse.
+
+5120
+00:46:30,100 --> 00:46:43,460
+OK, three minutes. That's hardly time. But
+this being MIT, I feel I should use it. Oh
+
+5137
+00:46:43,460 --> 00:46:45,340
+my god, number three.
+
+5141
+00:46:48,020 --> 00:46:59,200
+So what's number three about? Number three
+has the same requirement as number two, the
+
+5156
+00:46:59,280 --> 00:47:06,320
+same requirement of no null space. But
+it says, if I could get orthogonal columns
+
+5171
+00:47:06,320 --> 00:47:14,340
+first, then this problem would be easy. So
+everybody knows that Gram -Schmidt is a
+
+5186
+00:47:14,340 --> 00:47:24,840
+way, a boring way, to get from these two
+columns to get two orthogonal columns.
+
+5201
+00:47:26,360 --> 00:47:31,380
+Actually, the whole idea of Gram -Schmidt
+is already there for 2 by 2. So I have two
+
+5219
+00:47:31,380 --> 00:47:40,180
+minutes, and we can do it. Let's do Gram
+-Schmidt on these two columns. Column A.
+
+5235
+00:47:40,760 --> 00:47:48,980
+Column I don't want to use u and v.
+Column y and z. OK. Suppose I want to
+
+5253
+00:47:48,980 --> 00:47:54,880
+orthogonalize those guys. What's the Gram
+-Schmidt idea? I take y. It's perfectly
+
+5266
+00:47:54,880 --> 00:48:05,240
+good. No problem with y. There is
+the y vector, all 1s. Then this guy is not
+
+5283
+00:48:05,240 --> 00:48:13,020
+orthogonal, probably, to that. It'll go
+off in this direction. Angle that's not 90
+
+5297
+00:48:13,020 --> 00:48:21,100
+degrees. So what do I do? I want to get
+orthogonal vectors. I'm OK with this first
+
+5314
+00:48:21,100 --> 00:48:28,680
+guy. But the second guy isn't orthogonal
+to the first. So what do I do? In this
+
+5331
+00:48:28,680 --> 00:48:32,560
+picture, how do I come up
+with a vector orthogonal to y?
+
+5343
+00:48:35,540 --> 00:48:42,980
+Project. I could take this z, and I take
+its projection. So z has a little piece.
+
+5360
+00:48:43,980 --> 00:48:50,420
+That z vector has a big piece already in
+the direction of y, which I don't want, and
+
+5378
+00:48:50,420 --> 00:48:56,420
+a piece orthogonal to it. That's my other
+piece. That's my other piece. So here's y,
+
+5394
+00:48:56,840 --> 00:49:07,360
+and here's the, this is, that is z minus a
+projection, let me just say. Whatever. I
+
+5411
+00:49:07,360 --> 00:49:11,400
+don't know if I even drew that picture
+right. Probably I didn't. Anyway, whatever.
+
+5425
+00:49:12,260 --> 00:49:19,180
+The Gram -Schmidt idea is just
+orthogonalize in the natural way. I'll come
+
+5438
+00:49:19,180 --> 00:49:25,520
+back to that at the beginning of next
+time and say a word about the fourth way.
+
+5455
+00:49:27,660 --> 00:49:36,620
+So this least squares is not deep learning.
+It's what people did a century ago and
+
+5471
+00:49:36,620 --> 00:49:42,700
+continue to do for good reason. OK. And
+I'll send out that announcement about the
+
+5486
+00:49:42,700 --> 00:49:48,920
+class. And you know the homework, and you
+know the new due date is Friday. Good. Thank you.
+

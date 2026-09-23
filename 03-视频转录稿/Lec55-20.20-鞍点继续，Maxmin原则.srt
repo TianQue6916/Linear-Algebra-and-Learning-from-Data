@@ -1,0 +1,2008 @@
+1
+00:00:01,620 --> 00:00:06,160
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,160 --> 00:00:10,700
+help MIT OpenCourseWare continue to offer
+high -quality educational resources for
+
+25
+00:00:10,700 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:20,500
+courses, visit MIT
+OpenCourseWare at ocw .mit .edu.
+
+47
+00:00:23,300 --> 00:00:30,020
+So I've got a little list of things I'm
+hoping to do today. I'll begin with a few
+
+65
+00:00:30,020 --> 00:00:36,560
+final words about saddle points. The reason
+I'm interested in saddle points is when we
+
+80
+00:00:36,560 --> 00:00:39,370
+get to this deep
+learning direction,
+
+86
+00:00:42,100 --> 00:00:52,600
+you know that the big step there is finding
+a minimum of the total cost function and
+
+103
+00:00:52,600 --> 00:00:58,080
+gradient descent, which we'll certainly
+discuss is the usual method, or stochastic
+
+115
+00:00:58,340 --> 00:01:06,000
+gradient descent. And all kinds of issues
+arise. What happens if you have a saddle
+
+130
+00:01:06,000 --> 00:01:06,320
+point?
+
+131
+00:01:09,160 --> 00:01:17,100
+Or a degenerate minimum? All these
+possibilities and the understanding of deep
+
+143
+00:01:17,120 --> 00:01:23,420
+learning is focusing more and more on
+what does that gradient descent algorithm
+
+156
+00:01:23,420 --> 00:01:25,810
+produce. I just thought,
+
+160
+00:01:28,100 --> 00:01:35,070
+minima and maxima we know about. Saddle
+points are kind of a little hazier, right?
+
+175
+00:01:35,920 --> 00:01:44,800
+So this is a perfect example, and I'll just
+say a few more words about it. Then I want
+
+194
+00:01:44,800 --> 00:01:56,820
+to talk about the lab 3 that I boldly
+posted on Stellar. And also about projects,
+
+210
+00:01:58,040 --> 00:02:09,039
+just to get us thinking about those. And
+then my real math topic for today and this
+
+227
+00:02:09,039 --> 00:02:17,480
+week is basic ideas of statistics,
+particularly the covariance matrix. I'm
+
+238
+00:02:17,580 --> 00:02:22,380
+sure you've met mean and variance. Those
+are the most used words, and we'll use them
+
+254
+00:02:22,380 --> 00:02:27,360
+again. But then I want to go on to
+covariance. OK, so that's what's coming
+
+269
+00:02:27,360 --> 00:02:36,760
+today. A few words on saddle points, a lot
+of words about the lab, and anything you
+
+286
+00:02:36,760 --> 00:02:45,200
+can want to ask about projects, and then
+some basic statistics. OK, saddle point. So
+
+301
+00:02:45,200 --> 00:02:49,940
+the example I'm taking
+is this Rayleigh quotient.
+
+309
+00:02:52,500 --> 00:02:58,240
+And I'm taking a simple matrix S. I might
+as well take a diagonal matrix, because
+
+325
+00:02:58,280 --> 00:03:04,380
+it's symmetric, of course. And any
+symmetric matrix, I could just change
+
+337
+00:03:04,420 --> 00:03:10,760
+variables by a Q matrix, an orthogonal
+matrix, to get to something like that. And
+
+352
+00:03:10,760 --> 00:03:19,280
+then the x, we're in 3D. So we've got a
+sort of manageable size here. And the x
+
+370
+00:03:20,340 --> 00:03:31,340
+vector is uvw. So this is the quotient.
+x transpose x, you see, is just exactly 5u
+
+387
+00:03:31,340 --> 00:03:39,880
+squareds, 3v squareds, and 1w squared. And
+I divide by the length to normalize things.
+
+402
+00:03:39,960 --> 00:03:45,560
+So what are the main facts that we know
+that I'm not going to prove? But what are
+
+420
+00:03:45,560 --> 00:03:54,360
+the main facts? What's the maximum value of
+r? What's the minimum value of r, of that
+
+437
+00:03:54,360 --> 00:04:00,420
+function? And is there a
+saddle point? So saddle
+
+446
+00:04:03,500 --> 00:04:10,940
+of r. OK, what's the maximum value? How
+large could you make that ratio, capital R?
+
+462
+00:04:11,500 --> 00:04:20,480
+I just think this isn't a standard topic
+in 1806. But with an example like this,
+
+478
+00:04:20,579 --> 00:04:25,220
+you'll see the whole point.
+OK, so how large could I make r?
+
+491
+00:04:27,280 --> 00:04:33,280
+Yeah, go ahead and say it. Sigma 1. But
+what is it here? Let's just do with these
+
+509
+00:04:33,280 --> 00:04:42,180
+numbers. How big can I make that ratio, r?
+And what choice of uvw makes it big? So how
+
+528
+00:04:42,180 --> 00:04:51,420
+big I can get it is? 5. That ratio can't be
+more than 5. You see it would be 5. Well,
+
+549
+00:04:51,420 --> 00:05:00,060
+how do I get to 5? Maximum of r is 5. And
+what is the uvw that at? So I'll say at.
+
+571
+00:05:01,120 --> 00:05:07,960
+What choice of uvw would give us 5
+here? You see it immediately, 1, 0, 0.
+
+587
+00:05:10,300 --> 00:05:15,100
+And what about the minimum of r? The
+minimum of this ratio. How do I make that
+
+604
+00:05:15,100 --> 00:05:22,260
+ratio small? Well, I load stuff onto w
+instead of loading it up onto u. Right?
+
+620
+00:05:22,260 --> 00:05:31,100
+It's clear. So what is the minimum value of
+r? 1. Because I'll load everything into w.
+
+637
+00:05:32,380 --> 00:05:38,100
+So the minimum value will be 1. And that
+will be at the vector 0, 0, 1. I've loaded
+
+656
+00:05:38,500 --> 00:05:45,420
+everything there. And then the point of
+this short discussion is, is there another
+
+670
+00:05:45,420 --> 00:05:53,440
+place where the derivatives, first
+derivatives, of r are all 0? That's where,
+
+683
+00:05:53,980 --> 00:06:02,680
+of course, the first derivatives are 0 at
+the max, at the min. But we have three
+
+700
+00:06:02,680 --> 00:06:09,000
+variables here. And we're going to find the
+third point. And what is that point? You
+
+716
+00:06:09,140 --> 00:06:16,400
+probably guess. And what will be the saddle
+value? So you have to see some kind of a
+
+734
+00:06:16,540 --> 00:06:25,600
+surface that, I guess, what are we in?
+4d. So we have vectors. We have base
+
+750
+00:06:25,760 --> 00:06:36,260
+coordinates uvw. And r goes vertically. And
+we plot that surface. And we don't really
+
+765
+00:06:36,260 --> 00:06:41,960
+understand it, unless we think a lot about
+it, which we haven't. But we can pretty
+
+781
+00:06:41,960 --> 00:06:48,800
+well guess what's what. So what do you
+think is the saddle value? And where is it
+
+798
+00:06:48,860 --> 00:06:55,460
+going to be reached? Everybody's going to
+tell me correctly. Saddle value would be 3
+
+813
+00:06:55,460 --> 00:06:57,990
+at this middle point.
+
+817
+00:07:01,120 --> 00:07:08,860
+OK. And what are these three with respect
+to the matrix? They're its eigenvectors.
+
+831
+00:07:10,260 --> 00:07:14,860
+What are these three numbers with respect
+to the matrix? These are its eigenvalues.
+
+845
+00:07:15,440 --> 00:07:20,540
+It's just like that's why that Rayleigh
+quotient is such an important function.
+
+858
+00:07:21,020 --> 00:07:25,580
+It's kind of a messy function. If you take
+its derivative, you know, you've got to use
+
+875
+00:07:25,580 --> 00:07:33,180
+a quotient rule or use a Lagrange
+multiplier to make it. That's the way to
+
+890
+00:07:33,180 --> 00:07:37,700
+make it more manageable. But it's kind of
+messy. But the results could not be better.
+
+906
+00:07:39,260 --> 00:07:45,620
+The values there are the eigenvalues.
+And the places where you reach them are the
+
+921
+00:07:45,620 --> 00:07:55,100
+eigenvectors. And so the max is the most
+important. So that's sigma 1. Here's sigma
+
+936
+00:07:55,100 --> 00:08:02,380
+3, or lambda and sigma, because the matrix
+is symmetric positive definite. And here in
+
+951
+00:08:02,380 --> 00:08:08,600
+the middle is sigma 2. And if
+we want to compute eigenvectors,
+
+963
+00:08:10,940 --> 00:08:16,560
+which I'm not planning to do today just to
+make this remark, computing eigenvectors,
+
+977
+00:08:17,420 --> 00:08:24,860
+getting the largest one or the smallest one
+is a lot quicker in general than getting
+
+993
+00:08:24,860 --> 00:08:37,640
+these ones in the middle. You have to use
+good codes and pay attention to computing
+
+1009
+00:08:37,640 --> 00:08:42,320
+those saddle point values. So is there
+anything nice I can do with saddle point?
+
+1024
+00:08:42,740 --> 00:08:51,860
+How does one think about saddle points?
+So again, saddle point is defined by first
+
+1039
+00:08:52,740 --> 00:08:53,480
+derivatives
+
+1040
+00:08:55,540 --> 00:09:00,140
+equals 0. And the
+second derivatives,
+
+1046
+00:09:03,980 --> 00:09:10,340
+OK, so that's a matrix. Here's a vector,
+the gradient vector. The derivative with
+
+1060
+00:09:10,400 --> 00:09:17,240
+respect to u, the derivative with respect
+to v, and dr, dw, just a vector. And all
+
+1077
+00:09:17,240 --> 00:09:22,780
+those components are 0. The gradient vector
+is 0. But what about second derivatives?
+
+1091
+00:09:24,200 --> 00:09:31,000
+Well, that's getting more. There are nine
+of those now, because I've got r, u, u,
+
+1107
+00:09:31,600 --> 00:09:37,680
+second derivative with respect to u,
+second. But I've got mixed derivatives,
+
+1119
+00:09:38,040 --> 00:09:46,340
+second derivative of r with respect to du,
+dv. So I have a 3 by 3 matrix. Fortunately,
+
+1137
+00:09:46,440 --> 00:09:54,020
+that matrix is symmetric, because we're
+blessed by that wonderful fact that the
+
+1150
+00:09:54,020 --> 00:10:00,580
+derivative with respect to u and then v
+is the same as v and then u. So we get a
+
+1170
+00:10:00,600 --> 00:10:01,340
+symmetric matrix.
+
+1172
+00:10:03,890 --> 00:10:18,680
+And it's, well, I won't write it down. But
+it's going to have a, you know, it's got
+
+1190
+00:10:18,720 --> 00:10:25,240
+the maximum, minimum, and saddle
+information built in. Here's this one
+
+1201
+00:10:25,240 --> 00:10:31,000
+additional thought that I want to
+communicate about saddle points.
+
+1211
+00:10:33,140 --> 00:10:40,660
+Because it's really nice to somehow get
+back to maxima and minima. So the idea of
+
+1227
+00:10:40,660 --> 00:10:48,500
+this idea for a saddle point is to be able
+to write it as the maximum of a minimum. In
+
+1247
+00:10:50,440 --> 00:10:55,260
+a way, yeah. So let me do
+that. And then I'm all done. OK.
+
+1261
+00:10:57,500 --> 00:11:06,440
+So that value is the maximum of over
+something of the minimum over something of
+
+1276
+00:11:06,440 --> 00:11:09,160
+x transpose of our function.
+
+1281
+00:11:13,240 --> 00:11:18,260
+OK. Now, of course, I have to tell you
+what you're maximizing over and what you're
+
+1297
+00:11:18,260 --> 00:11:25,240
+minimizing over. But that's the idea, is
+that one way to get into that middle place
+
+1313
+00:11:25,240 --> 00:11:31,800
+there where the saddles are sitting is to
+have a maximum of a minimum. And that
+
+1329
+00:11:31,800 --> 00:11:37,940
+leads, this what I'm about to complete
+here, would lead you, for example, very
+
+1343
+00:11:38,120 --> 00:11:46,340
+quickly to the interlacing theorem
+that I spoke about for eigenvalues and for
+
+1356
+00:11:46,340 --> 00:11:54,260
+singular values of when you perturb s or
+when you throw away a row and column of s.
+
+1374
+00:11:55,560 --> 00:12:03,740
+The eigenvalues go in between. That is the
+kind of conclusion that this max min stuff
+
+1390
+00:12:03,740 --> 00:12:09,780
+is set up to produce. So here, let me just
+tell you what it would be. I'm aiming to
+
+1409
+00:12:09,780 --> 00:12:21,320
+get lambda 2. OK. So I'm going to take a
+maximum over 2D, two -dimensional spaces,
+
+1425
+00:12:26,080 --> 00:12:29,780
+subspaces of R3. We're in 3D.
+
+1431
+00:12:32,000 --> 00:12:38,840
+So you can see that sort of like two
+-dimensional spaces. Let me give that
+
+1446
+00:12:41,460 --> 00:12:47,280
+subspace a name like v. Yeah, that'll do.
+Cap v, everybody can see that that's a cap
+
+1463
+00:12:47,280 --> 00:12:56,600
+v. And then this will be the
+minimum over v. So it's kind of tricky.
+
+1478
+00:12:58,760 --> 00:13:05,340
+So I take any subspace that's two
+-dimensional. And I'll take one in a
+
+1492
+00:13:05,340 --> 00:13:13,960
+moment. And I'll figure out the minimum.
+Well, suppose I take the subspace v, which
+
+1507
+00:13:14,000 --> 00:13:22,100
+is spanned by the first two. It's supposed
+to be a 2D subspace. Spanned by the first,
+
+1524
+00:13:22,900 --> 00:13:39,740
+suppose I try example here. Example. The
+span of 1, 0, 0 and 0, 1, 0. OK. In other
+
+1543
+00:13:39,740 --> 00:13:51,980
+words, all vectors u, v, 0. That's
+a 2D space. What is the minimum
+
+1557
+00:13:54,320 --> 00:14:01,340
+of that Rayleigh quotient over that two
+-dimensional space? So now I'm taking a
+
+1571
+00:14:01,340 --> 00:14:07,780
+minimum. I don't have to think about saddle
+points. So I'm in all. So I'm looking at
+
+1588
+00:14:07,780 --> 00:14:15,220
+the thing. But w is 0 now. Everybody sees
+that I've squeezed it down to 2D. So w is
+
+1607
+00:14:15,220 --> 00:14:24,160
+0. So what is the minimum now? So this
+thing would become, for this space, would
+
+1623
+00:14:24,160 --> 00:14:31,780
+become the 5u squared and the 3v squared
+over the u squared plus the v squared. But
+
+1640
+00:14:32,080 --> 00:14:41,120
+the w is 0. So what's the minimum of
+that? 3. 3. OK. The minimum is 3 for this
+
+1659
+00:14:41,340 --> 00:14:44,770
+particular space. Let
+me call it v special.
+
+1667
+00:14:46,920 --> 00:14:53,980
+For that particular space, the minimum is
+3. Correct? Everybody sees that. Because I
+
+1681
+00:14:53,980 --> 00:14:59,780
+just have u and v to play with, the 5 and
+the 3. So if I put everything into v, I get
+
+1703
+00:14:59,780 --> 00:15:08,240
+the 3. And now I take the maximum. So I've
+learned that this, so the maximum is at
+
+1721
+00:15:08,240 --> 00:15:16,660
+least 3. Because this particular choice of
+v gave me the answer 3. And now I'm taking
+
+1738
+00:15:16,660 --> 00:15:24,680
+the maximum of all possible 2D spaces.
+And I'll certainly, I got 3 for one of the
+
+1755
+00:15:24,680 --> 00:15:30,160
+possible spaces of v. And I might get
+higher than 3 for some other one. But
+
+1771
+00:15:30,160 --> 00:15:37,760
+actually, I don't. The truth is that this
+turns out to be 3, which is, of course,
+
+1788
+00:15:38,060 --> 00:15:45,660
+exactly what we wanted. So I'm saying that
+this particular 2 -dimensional space, the
+
+1802
+00:15:45,660 --> 00:15:54,200
+minimum over that, minimum, the minimum
+there is 3. And now I maximize over all
+
+1817
+00:15:54,200 --> 00:16:03,400
+others. And so the idea is that for any
+other one, the minimum value will be below
+
+1834
+00:16:03,400 --> 00:16:11,180
+3. And therefore, when I go for the max
+of the mins, I get 3. So I just repeat that
+
+1854
+00:16:11,180 --> 00:16:18,880
+and then be quiet about this whole subject.
+So it's a maximum over subspaces of a
+
+1870
+00:16:18,880 --> 00:16:24,400
+minimum of the Rayleigh quotient. If that
+subspace is exactly the perfect choice,
+
+1883
+00:16:25,360 --> 00:16:30,940
+this one, I get the value 3. And I'm
+claiming that's the biggest value I can
+
+1899
+00:16:30,940 --> 00:16:37,920
+get. Because if I pick any other subspace,
+what if I picked a subspace that, suppose,
+
+1915
+00:16:39,520 --> 00:16:46,240
+another v would
+be all vectors 0vw?
+
+1922
+00:16:50,080 --> 00:16:57,020
+What would be the minimum? What would I get
+for the minimum of this thing? But now w
+
+1940
+00:16:57,020 --> 00:17:02,080
+is in the picture. And u is not in the
+picture. What would I get for the minimum
+
+1958
+00:17:02,080 --> 00:17:08,880
+there? 1. I'd get 1. The minimum would be
+when I put everything into w and I got 1.
+
+1977
+00:17:09,319 --> 00:17:16,119
+And then when I take the max, it's not a
+winner. It's thrown out. The winner will be
+
+1995
+00:17:16,180 --> 00:17:23,700
+that space and the 3. So I guess I'm hoping
+that you sort of see in this small example
+
+2014
+00:17:24,339 --> 00:17:33,360
+that you can express this middle saddle
+value as a it's reasonable to think of it
+
+2030
+00:17:33,360 --> 00:17:38,860
+as a maximum in some directions and a
+minimum in another. Think of the, well, try
+
+2046
+00:17:38,860 --> 00:17:46,560
+to think of some surface which is going
+up in some directions. So it's a minimum in
+
+2063
+00:17:46,560 --> 00:17:51,840
+those directions. And it's going down
+in other directions. So it's a max in those
+
+2078
+00:17:51,840 --> 00:18:00,200
+directions. And the saddle point is perched
+in there at that, right at that place at
+
+2094
+00:18:00,340 --> 00:18:05,680
+the saddle point. You know, if you're
+like hiking from here to California or
+
+2108
+00:18:05,680 --> 00:18:11,100
+something, you're going to pass a saddle
+point. Actually, you see it on the mass.
+
+2123
+00:18:11,420 --> 00:18:19,560
+The Mass Pike has an amazing little sign.
+I don't know if you've noticed it. If you
+
+2140
+00:18:19,620 --> 00:18:26,100
+drive west on the Mass Pike, pretty
+far west of Boston, there's a little sign
+
+2155
+00:18:26,160 --> 00:18:31,880
+telling you the altitude or elevation,
+whatever. And it says there, this is the
+
+2169
+00:18:31,880 --> 00:18:39,600
+highest point until you reach the Rockies,
+basically. That seemed like, OK. Midwest is
+
+2183
+00:18:39,700 --> 00:18:40,860
+pretty flat, right?
+
+2186
+00:18:43,500 --> 00:18:49,500
+Because that's a long way away. You don't
+think of Massachusetts as like really in
+
+2201
+00:18:49,500 --> 00:18:55,260
+the big league with high spots. But there
+it is. It's the highest one until you get,
+
+2218
+00:18:55,740 --> 00:19:02,180
+and I think it tells you where the next one
+will be in Colorado. Anyway, those highest
+
+2235
+00:19:02,340 --> 00:19:09,840
+points are tend to be saddles. The
+very, very highest point, where is that? In
+
+2250
+00:19:09,880 --> 00:19:15,760
+Alaska or somewhere. That's a max, of
+course, by definition. But there are a lot
+
+2265
+00:19:15,760 --> 00:19:25,300
+of saddle points in other places. And those
+would be maxima of minima or minima of
+
+2281
+00:19:25,300 --> 00:19:33,680
+maxima. Good. I'm stopping there. We
+might see this again when we start gradient
+
+2295
+00:19:33,680 --> 00:19:34,280
+descent.
+
+2296
+00:19:36,540 --> 00:19:41,380
+But at least, because saddle points
+don't come up much in teaching calculus, I
+
+2310
+00:19:41,500 --> 00:19:43,640
+thought that was good. OK.
+
+2315
+00:19:46,340 --> 00:19:50,060
+Second point is models, lab 3,
+
+2321
+00:19:52,240 --> 00:19:58,640
+and projects, anything you'd like to
+ask about projects. So please, this is your
+
+2335
+00:19:58,640 --> 00:20:02,940
+chance to ask. You
+could also ask by email.
+
+2344
+00:20:06,200 --> 00:20:16,020
+Idea for a project, let me encourage you or
+a team to work on it or just yourself. And
+
+2363
+00:20:16,080 --> 00:20:22,280
+if you want to think, OK, shall I get some
+feedback of does this sound sensible, any
+
+2380
+00:20:22,280 --> 00:20:31,780
+suggestions, send me an email. Yeah. I'll
+be happy to. Because I'm a total beginner
+
+2395
+00:20:31,780 --> 00:20:35,040
+here, too. When I
+created this lab 3,
+
+2403
+00:20:37,240 --> 00:20:47,520
+I was desperate. Not for model 1. For model
+1, have you looked at the, it's online,
+
+2420
+00:20:47,940 --> 00:20:54,440
+it's reached stellar. And it's only one
+printed page. But people had a look at
+
+2435
+00:20:54,440 --> 00:21:06,460
+this. So I'll just repeat quickly. Model 1
+is an example of overfitting. And what's
+
+2450
+00:21:06,480 --> 00:21:10,100
+going on with model
+1? So model 1 says take
+
+2460
+00:21:14,580 --> 00:21:22,020
+5 would be enough. But I probably said 10
+or something. So I'll make it 6 points. And
+
+2478
+00:21:22,180 --> 00:21:32,820
+put approximate, put a curve through them.
+So if you put a curve, and the curve is
+
+2495
+00:21:32,840 --> 00:21:39,560
+going to be a polynomial. So
+we're going to fit by polynomial.
+
+2507
+00:21:41,860 --> 00:21:47,720
+Everybody knows polynomial
+is C0 plus C1x plus whatever.
+
+2516
+00:21:52,000 --> 00:21:54,400
+Ckx to the k, let's say.
+
+2522
+00:21:56,640 --> 00:22:03,800
+For k equals 0, well, I don't know if I
+even asked 0. That would be the best
+
+2540
+00:22:03,940 --> 00:22:09,580
+straight line. That would be run along
+the average. k equal to 1, that would be a
+
+2557
+00:22:09,580 --> 00:22:15,640
+straight line fit. And you would compute
+that by least squares. Because of course,
+
+2571
+00:22:16,980 --> 00:22:20,700
+no straight line is going to go through
+all the points. You're going to have some
+
+2587
+00:22:20,700 --> 00:22:29,180
+error by least squares. 2 would be fitting
+by a parabola. Again, you'll have some
+
+2602
+00:22:29,180 --> 00:22:37,060
+error, but smaller, since parabolas include
+straight lines. So we reduce the total sum
+
+2616
+00:22:37,060 --> 00:22:45,280
+of squares error by going to degree 2,
+degree 3, and up to how many points? So we
+
+2634
+00:22:45,280 --> 00:22:49,140
+take 1, 2. Let me just use
+the same letter I've used here.
+
+2647
+00:22:52,880 --> 00:23:00,140
+Probably have, oh. Well, the m is the
+number of points. But m varies between one
+
+2663
+00:23:00,140 --> 00:23:15,840
+point, I guess, and probably n. Points.
+Yeah. Or maybe k here. Up to n. Up to 6,
+
+2681
+00:23:16,260 --> 00:23:27,580
+let's say. OK. And I want to make a comment
+about 6. No, 5 would do it. Won't. Degree
+
+2700
+00:23:27,580 --> 00:23:35,660
+5 will fit the 6 points. We've got 6 points
+here. But if I stop at degree 5, I was
+
+2720
+00:23:35,940 --> 00:23:41,600
+better there. Because degree 5 polynomial
+also has a constant term. So it really has
+
+2735
+00:23:41,600 --> 00:23:48,240
+6 coefficients. So there's a degree.
+There's a 1 degree 5 polynomial with 6
+
+2749
+00:23:48,240 --> 00:23:55,980
+numbers, 6 coefficients, that goes through
+those 6 points. So it's a perfect fit. That
+
+2764
+00:23:55,980 --> 00:24:02,620
+would be an exact fit of the data. So
+here's the data. Create a polynomial of
+
+2780
+00:24:02,640 --> 00:24:09,000
+degree 5 that goes through those points
+exactly and look at the result. And what
+
+2795
+00:24:09,000 --> 00:24:15,180
+would you see if you look at the result?
+Would it be smooth? Of course. It's a
+
+2812
+00:24:15,180 --> 00:24:24,040
+polynomial. Would it be nice? No. It'll be
+horrible. To get through those points, did
+
+2827
+00:24:24,640 --> 00:24:31,700
+I get 6 points? Yeah. To get through those
+points, I'm guessing that that fifth degree
+
+2843
+00:24:31,700 --> 00:24:38,100
+polynomial, the perfect fit, is an example
+that occurs to practically everybody of
+
+2856
+00:24:38,100 --> 00:24:46,040
+overfitting. Because making that decision,
+perfect fit, learn the data, training data
+
+2868
+00:24:46,040 --> 00:24:53,260
+exactly, will send a polynomial. I don't
+know what it looks like. I don't want to.
+
+2884
+00:24:53,420 --> 00:24:56,920
+Well, I do want to know, but
+not right now. Anyway, craziness.
+
+2896
+00:25:00,610 --> 00:25:07,260
+Of course, I'm going to ask. It doesn't
+look like that, probably. I'm going to ask
+
+2912
+00:25:07,460 --> 00:25:13,140
+you to plot the results. What's the least
+squares error when you fit by a straight
+
+2928
+00:25:13,140 --> 00:25:19,880
+line, when you fit by a horizontal line, a
+constant, fit by a straight line, move up
+
+2945
+00:25:19,880 --> 00:25:26,500
+to parabolas, move up to cubics? But when
+you hit this, you're not making any error
+
+2961
+00:25:26,500 --> 00:25:34,240
+at all. You're not really needing to use
+least squares. You can solve Ax equal b, Ac
+
+2978
+00:25:34,240 --> 00:25:46,680
+equal b equals b. So this is the b thing.
+And c is the vector of coefficients. And
+
+2996
+00:25:46,680 --> 00:25:56,540
+the matrix A is bad news when it's 6 by
+6, when you get up to a complete fit. And I
+
+3017
+00:25:56,540 --> 00:26:04,460
+guess what I wanted just to see is, a lot
+of things I don't know. Suppose I change 6
+
+3036
+00:26:04,460 --> 00:26:12,880
+to 20 or something. Then I'm pretty sure
+that out there at 18, 19, 20, this thing is
+
+3054
+00:26:12,900 --> 00:26:14,590
+really off the map.
+And you could
+
+3061
+00:26:17,530 --> 00:26:24,460
+compute its max. And you'd see a very
+big number. But I don't know where. But of
+
+3078
+00:26:24,460 --> 00:26:30,640
+course, for a straight line, that would
+be pretty safe. The slope would be pretty
+
+3093
+00:26:30,640 --> 00:26:39,600
+moderate. And I don't know where you. So
+that's probably underfitting, to try to fit
+
+3108
+00:26:39,600 --> 00:26:46,660
+this by a straight line. It's not as close
+as you would want. But fitting by a full
+
+3126
+00:26:46,900 --> 00:26:51,920
+perfect fitting, it's a high degree
+polynomial, is certainly overfitting. Where
+
+3137
+00:26:51,920 --> 00:26:58,100
+is the boundary? I'm sure people know about
+this. But I think it is something we could
+
+3154
+00:26:58,100 --> 00:26:58,520
+learn from.
+
+3156
+00:27:00,860 --> 00:27:07,760
+So that's what that model 1 is about. And
+just to make one final comment, that matrix
+
+3173
+00:27:07,820 --> 00:27:15,180
+A has a name in the case where it's
+a square matrix, where you're fitting
+
+3188
+00:27:15,180 --> 00:27:22,600
+exactly, interpolating would
+be the word. So that exact fit,
+
+3198
+00:27:27,220 --> 00:27:30,160
+that corresponds
+to square matrix A.
+
+3204
+00:27:32,980 --> 00:27:36,760
+And the word for
+it is interpolation.
+
+3211
+00:27:42,080 --> 00:27:45,100
+And I guess it's Lagrange again,
+
+3217
+00:27:47,220 --> 00:27:54,840
+seeing that guy too often here. The
+Lagrange interpolation. But the matrix has
+
+3230
+00:27:54,840 --> 00:27:58,380
+a different name. And whose
+name is associated with that matrix?
+
+3241
+00:28:00,560 --> 00:28:07,580
+Vandermonde. Vandermonde. So this is the
+square matrix, which was, so let me write
+
+3255
+00:28:07,580 --> 00:28:10,020
+it. This is called a
+Vandermonde matrix.
+
+3262
+00:28:18,680 --> 00:28:26,980
+And it's a matrix that has a crazy large
+inverse. Because just as I'm saying, the C
+
+3279
+00:28:26,980 --> 00:28:32,000
+that comes out from the perfect fit, from
+the interpolation, from the square matrix,
+
+3293
+00:28:32,580 --> 00:28:41,540
+the C is going to be giant. And so you
+could write, you'll be able to, you will
+
+3311
+00:28:41,540 --> 00:28:49,400
+construct a matrix, of course, to do this.
+And it will be identical to the, so we've
+
+3328
+00:28:49,400 --> 00:28:54,800
+heard this word Vandermonde matrix
+in this class within the last week. Anybody
+
+3341
+00:28:54,800 --> 00:29:02,480
+remember where the word Vandermonde came
+up in class? It was in Professor Townsend's
+
+3355
+00:29:02,480 --> 00:29:02,720
+lecture.
+
+3356
+00:29:05,380 --> 00:29:12,220
+It was in his video, if you wanted, as an
+example of a matrix which had a horrible
+
+3374
+00:29:12,220 --> 00:29:18,820
+inverse, a giant matrix. The Hilbert matrix
+was another example. I think he did two
+
+3389
+00:29:18,820 --> 00:29:24,640
+examples, Vandermonde and Hilbert. So this
+Vandermonde matrix, I could write it down,
+
+3402
+00:29:24,660 --> 00:29:34,100
+but I'll leave that to you, has a big
+inverse. And its eigenvalues, well, no,
+
+3417
+00:29:34,100 --> 00:29:41,820
+singular values, it's not symmetric. Its
+singular values are way scattered. It has
+
+3430
+00:29:42,000 --> 00:29:48,100
+tiny little singular values, plus an
+ordinary size singular values. So that's
+
+3442
+00:29:48,100 --> 00:29:55,260
+the example that I just think you could go
+with. And as far as I can see, sending it
+
+3461
+00:29:55,300 --> 00:30:03,820
+to autograder as a Julia file, it'll be
+even worse than usual, sending it to
+
+3476
+00:30:03,820 --> 00:30:09,180
+autograder. They won't, I think it wouldn't
+know what to do, as far as I can see. So
+
+3494
+00:30:09,180 --> 00:30:16,840
+I'm thinking of some submissions coming to
+Gradescope. And I'm thinking of some plots
+
+3508
+00:30:16,840 --> 00:30:27,000
+to show what happens as k increases, and
+some tables of data, maybe, and then maybe
+
+3524
+00:30:27,000 --> 00:30:36,540
+a paragraph of conclusion, like what degree
+is safe. And when does it become risky,
+
+3539
+00:30:36,540 --> 00:30:45,220
+and when does it become disaster? So stuff
+like that. It's really, these are sort of
+
+3555
+00:30:45,220 --> 00:30:55,380
+open -ended labs, and you use any language.
+Questions about that example? Which is
+
+3569
+00:30:55,380 --> 00:31:07,320
+really, that's what I'm expecting to
+be ready, and quite a good example for
+
+3583
+00:31:07,960 --> 00:31:09,160
+Wednesday after the break.
+
+3587
+00:31:12,260 --> 00:31:21,040
+Question or, anyway, you could email
+me. You should probably see what the model
+
+3601
+00:31:21,040 --> 00:31:31,300
+looks like. Then the second one, I've taken
+a first jump into networks. Made a very
+
+3617
+00:31:31,300 --> 00:31:37,100
+simple network without a lot of, without
+any hidden layers at all, actually. And
+
+3631
+00:31:37,100 --> 00:31:45,380
+just wrote down what I think might work.
+But you may find that you want to modify
+
+3648
+00:31:45,380 --> 00:31:56,960
+model 2, go for it. I don't have any patent
+or personal stake in the way model 2 is
+
+3667
+00:31:56,960 --> 00:32:07,080
+written. But the idea is fit data. And
+well, start with data. But don't make it
+
+3683
+00:32:07,080 --> 00:32:15,380
+too perfect, because we don't want, we want
+some learning to happen here. And so it's
+
+3699
+00:32:15,380 --> 00:32:24,220
+the classification problem. So it won't be
+least squares with variables like u and v
+
+3714
+00:32:24,220 --> 00:32:31,840
+and w. It's just plus 1 or minus 1,
+or 1, 0, or cat and dog, whatever the
+
+3732
+00:32:31,880 --> 00:32:37,480
+classification is. So that's the basic,
+basic problem to start with in deep
+
+3745
+00:32:37,480 --> 00:32:43,440
+learning. For quite a long time, that's the
+natural problem. So it's a classification
+
+3759
+00:32:43,440 --> 00:32:52,000
+problem. And the description here suggests
+one way to set up the training data.
+
+3773
+00:32:55,600 --> 00:33:08,940
+And execute a neural net -like experiment,
+but without getting very far away from
+
+3787
+00:33:09,100 --> 00:33:16,720
+ordinary linear algebra. Yeah. So if you
+want to, as I say, if you want to change
+
+3804
+00:33:16,720 --> 00:33:18,780
+this, develop it further,
+
+3808
+00:33:21,920 --> 00:33:27,020
+get some ideas about it, that's what,
+that's what the whole point is here.
+
+3822
+00:33:29,640 --> 00:33:37,440
+Actually, the faculty meeting on this week,
+maybe today, what's today? Wednesday?
+
+3834
+00:33:38,560 --> 00:33:44,720
+Yeah, so it's this afternoon. Faculty
+doesn't come too much, but of course, it's
+
+3848
+00:33:44,820 --> 00:33:53,540
+late in the afternoon. But faculty meeting
+this afternoon is about MIT's plans for
+
+3862
+00:33:53,540 --> 00:34:01,560
+requirements or courses in computational
+thinking. And in a way, this course within
+
+3875
+00:34:01,560 --> 00:34:08,920
+the math department is among the ones that
+are in that direction. Of course, in other
+
+3891
+00:34:08,920 --> 00:34:12,659
+departments, those are
+further along. Anyway,
+
+3897
+00:34:17,310 --> 00:34:26,620
+when Raj Rao taught the course last spring,
+he had the Julia system better developed.
+
+3912
+00:34:27,040 --> 00:34:36,219
+And it was a chance to bring computers and
+bring laptops and do things in class. And
+
+3929
+00:34:36,320 --> 00:34:39,460
+you'll have that chance again
+when he visits in a month.
+
+3940
+00:34:41,860 --> 00:34:52,139
+OK, enough. And I'm open to questions about
+the project. Maybe ask you to email me a
+
+3957
+00:34:52,139 --> 00:34:58,760
+rough idea of a project. And tell me if
+you were in a group or if you would like to
+
+3977
+00:34:58,780 --> 00:35:06,440
+find a group of maybe two or three people.
+I'm not thinking of groups of 50. Two or
+
+3995
+00:35:06,460 --> 00:35:08,380
+three would be sensible.
+
+3999
+00:35:10,700 --> 00:35:18,420
+Questions about projects? I mean, I just
+introduced this idea of a project. And I
+
+4014
+00:35:18,440 --> 00:35:26,360
+apologize for it. Not bringing it up
+the first week. But I just couldn't see. I
+
+4030
+00:35:26,360 --> 00:35:32,120
+don't want to do exams on linear algebra.
+We've passed that point. So this seemed the
+
+4046
+00:35:32,120 --> 00:35:41,880
+right way to go. But I'm not looking for
+a PhD thesis here. Questions? Thoughts?
+
+4061
+00:35:44,300 --> 00:35:50,340
+I guess I hope you know you can ask. Yeah,
+oh, good. So could you maybe describe the
+
+4079
+00:35:50,340 --> 00:35:56,180
+scope of the project? The scope does not
+mean . GILBERT STRANGER. Right. How will I?
+
+4095
+00:35:58,460 --> 00:36:07,500
+I think, yeah, so the scope is connected to
+the time that you would devote to it. And
+
+4113
+00:36:09,140 --> 00:36:13,890
+what should I say about scope? Maybe the
+equivalent of three homeworks or something?
+
+4127
+00:36:21,700 --> 00:36:23,640
+Because I'd give an idea that
+
+4133
+00:36:25,920 --> 00:36:35,160
+it's not infinite, but it's not something
+tiny and trivial. Yeah, go ahead. Do you
+
+4148
+00:36:35,160 --> 00:36:39,920
+have any example projects? Or past years?
+GILBERT STRANGER. Well, that's the thing.
+
+4161
+00:36:40,080 --> 00:36:45,080
+There aren't really past
+years. We are the ones.
+
+4170
+00:36:49,620 --> 00:36:56,880
+So I will have next year if you
+contribute some good ideas.
+
+4182
+00:36:59,620 --> 00:37:08,020
+Maybe I should ask Professor Rao to maybe
+send us the projects he uses in Michigan.
+
+4198
+00:37:08,460 --> 00:37:15,940
+That would be some ideas. But remember
+that he hasn't, up to now anyway, moved the
+
+4214
+00:37:15,980 --> 00:37:23,100
+course toward deep learning. He did other
+topics, all of which would be fine. But
+
+4229
+00:37:23,120 --> 00:37:30,640
+then quite a few people have had some
+6036 or know something about convolutional
+
+4243
+00:37:30,640 --> 00:37:37,540
+neural nets. And I'm certainly excited to
+get to that topic. So the project could get
+
+4259
+00:37:37,540 --> 00:37:45,520
+there or it could not. Both totally fine.
+OK, that's a good idea. I'll ask Raj for
+
+4276
+00:37:45,760 --> 00:37:51,780
+just the projects and you'll recognize a
+couple because you've done a couple. But
+
+4290
+00:37:51,880 --> 00:37:59,040
+there are a bunch more. Yeah. Yeah, then
+there was another question or thought. And
+
+4305
+00:37:59,040 --> 00:38:06,660
+I'm remembering that there was, I think
+maybe everybody got an email or a stellar
+
+4320
+00:38:06,660 --> 00:38:13,000
+announcement that some members of the class
+took an initiative, which was wonderful,
+
+4333
+00:38:14,160 --> 00:38:20,700
+to open the possibility of people just
+showing up an evening a week in the Media
+
+4349
+00:38:20,700 --> 00:38:28,960
+Lab, was it? Or was there a location? And
+has it happened? Or is it a future event?
+
+4367
+00:38:29,820 --> 00:38:37,460
+It happened. It happened. OK. But people,
+I hadn't mentioned it in class. So probably
+
+4382
+00:38:37,460 --> 00:38:43,100
+you didn't have and were not really into
+projects yet. So it was probably a quiet
+
+4398
+00:38:43,100 --> 00:38:50,400
+evening. Yeah. Yeah. And that's productive
+but quiet. OK. So will it happen again?
+
+4412
+00:38:51,300 --> 00:38:56,540
+Sure. I think maybe now we'll be looking
+after spring break. After spring break. OK.
+
+4427
+00:38:57,060 --> 00:39:06,640
+So post again on Stellar the plan for the
+next meeting that people could come to. So
+
+4444
+00:39:06,640 --> 00:39:14,000
+this is David Anderton. So you'll recognize
+his name. And did you have the meeting in
+
+4460
+00:39:14,000 --> 00:39:20,520
+the Media Lab? Yeah, we had it on the
+Thursday and the Friday. OK. So with the
+
+4477
+00:39:20,520 --> 00:39:31,400
+break coming and spring hopefully coming
+after today's potential storm, yeah, when
+
+4489
+00:39:31,400 --> 00:39:39,200
+we come back, good. OK. Is that good? I
+hope some of that is helpful. You get an
+
+4507
+00:39:39,200 --> 00:39:44,680
+idea. You're seeing about as much as
+I know, which is model one is definitely
+
+4522
+00:39:44,680 --> 00:39:52,160
+doable. And very significant. And van
+der Maan matrices and so on are truly
+
+4536
+00:39:52,160 --> 00:39:56,150
+important. And their
+instability is a big issue.
+
+4544
+00:39:58,220 --> 00:40:07,620
+But then moving toward weights and training
+data and test data is where we want to go.
+
+4561
+00:40:08,440 --> 00:40:18,220
+Good. So do I have some time? I do. Just
+to speak about mean and variance, the two
+
+4579
+00:40:18,820 --> 00:40:26,840
+golden words of statistics, and covariance,
+the matrix, the intersection of linear
+
+4591
+00:40:26,840 --> 00:40:33,060
+algebra with statistics. And then some
+famous inequality. So I'll continue with
+
+4603
+00:40:33,060 --> 00:40:39,340
+this on Friday and post some of the
+material. So that's coming from a later
+
+4618
+00:40:39,760 --> 00:40:40,920
+section of notes. OK.
+
+4622
+00:41:12,360 --> 00:41:19,460
+So what is the mean? So I
+have n possible outcomes
+
+4633
+00:41:21,730 --> 00:41:23,560
+with those probabilities.
+
+4636
+00:41:25,920 --> 00:41:30,670
+And I can ask you
+about the sample mean.
+
+4645
+00:41:35,470 --> 00:41:42,220
+Or I can ask you about
+the expected mean. OK.
+
+4655
+00:41:45,380 --> 00:41:50,260
+So the sample means we've done an
+experiment. We've got some output. The
+
+4668
+00:41:50,260 --> 00:41:58,480
+expected mean means we know probabilities,
+but we haven't used them yet. So this uses
+
+4683
+00:41:58,480 --> 00:42:06,070
+actual output. And the sample
+mean is simply, shall I just say,
+
+4695
+00:42:09,440 --> 00:42:19,240
+m for mean? Well, these two are importantly
+different. One is something where you've
+
+4709
+00:42:19,240 --> 00:42:25,000
+done the experiment. And this is before
+you do the experiment. And the letters get
+
+4724
+00:42:25,000 --> 00:42:27,340
+maybe mu. I'll change to mu.
+
+4730
+00:42:29,780 --> 00:42:36,760
+I don't want to use s because s gets
+used with variance. OK. So it's just the
+
+4747
+00:42:36,760 --> 00:42:39,640
+average. Average
+output from the sample.
+
+4753
+00:42:43,580 --> 00:42:52,420
+So like I flipped a coin a million times,
+and the output was 0 or 1. So I got a
+
+4773
+00:42:52,420 --> 00:42:59,100
+million 1s and 0s. And I take the average.
+And I'm expecting a number like half a
+
+4790
+00:42:59,170 --> 00:43:06,020
+million because I'm thinking of a fair
+coin. And the law of large numbers would
+
+4805
+00:43:06,020 --> 00:43:16,660
+say that this sample mean does approach
+1 half. With probability 1 as the number of
+
+4821
+00:43:16,680 --> 00:43:22,620
+samples gets larger. So sample mean is
+straightforward. The expected mean means
+
+4833
+00:43:22,620 --> 00:43:27,160
+we, these are actual
+sample outputs.
+
+4839
+00:43:32,680 --> 00:43:39,660
+They happened. Whereas the expected
+mean is just the, and I'll use m for that.
+
+4854
+00:43:41,840 --> 00:43:47,940
+The probability of the first output times
+that output plus the probability of the
+
+4868
+00:43:47,940 --> 00:43:59,160
+second output times that output plus plus
+pn xn. OK. So it's the, that will approach
+
+4884
+00:43:59,220 --> 00:44:07,540
+that with probability 1 as this number,
+capital N. Notice the difference. Capital N
+
+4898
+00:44:07,720 --> 00:44:15,680
+here is the number of samples, the number
+of trials. And it gets big. We keep doing
+
+4915
+00:44:15,680 --> 00:44:20,400
+things more and more. This is just,
+this little n is the number of possible
+
+4930
+00:44:20,400 --> 00:44:25,760
+different outputs with their probabilities.
+And there you see it. And of course, in
+
+4944
+00:44:25,760 --> 00:44:30,480
+the continuous case, we would
+take the integral of x, p of x dx.
+
+4958
+00:44:33,790 --> 00:44:41,560
+So let me just, by analogy, you should know
+what the continuous version is and what
+
+4974
+00:44:42,200 --> 00:44:50,900
+the discrete version is. That's the mean.
+OK. Now for variance. Sample variance.
+
+4987
+00:44:55,940 --> 00:45:03,060
+And shall I say expected variance? I don't
+know. Just variance is what people would
+
+5002
+00:45:03,180 --> 00:45:03,480
+usually say.
+
+5004
+00:45:05,640 --> 00:45:10,500
+I don't know if I've remembered the right
+word there. Sample variance. It's a, what
+
+5019
+00:45:10,500 --> 00:45:22,480
+is that? I included this topic in the
+linear algebra book. Anyway, yeah. OK. So
+
+5034
+00:45:22,520 --> 00:45:23,780
+what's the sample variance?
+
+5038
+00:45:28,240 --> 00:45:38,620
+So I guess I'm, whew. Yeah. So what is the
+sample variance? What's the variance about,
+
+5054
+00:45:39,020 --> 00:45:46,480
+anyway? What's the key point of variance?
+It's the distance from the mean. So it'll
+
+5069
+00:45:46,480 --> 00:45:50,740
+be, this will be a distance from the sample
+mean. And this will be a distance from the
+
+5087
+00:45:50,900 --> 00:45:51,620
+expected mean.
+
+5089
+00:45:54,840 --> 00:46:02,320
+So not distance from 0, but distance from
+mu and m, from the center of the thing. OK.
+
+5107
+00:46:02,420 --> 00:46:09,620
+So the sample variance. So again, we have
+n samples. But for some wonderful reason in
+
+5123
+00:46:09,620 --> 00:46:17,760
+statistics, you divide by n minus 1 this
+time. And the reason has to do with the
+
+5140
+00:46:17,760 --> 00:46:26,940
+fact that you used 1. This will involve
+the mean. So this would be the first output
+
+5157
+00:46:27,000 --> 00:46:35,600
+minus mu squared up to the
+nth output minus mu squared.
+
+5168
+00:46:37,840 --> 00:46:44,760
+So it's the average distance from mu,
+average squared distance from mu, but with
+
+5182
+00:46:44,820 --> 00:46:50,240
+this little twist that, of course, when
+n is large, it's not a very significant
+
+5197
+00:46:50,240 --> 00:46:54,080
+difference between n and n
+minus 1. I think that's about right.
+
+5209
+00:46:56,180 --> 00:47:01,680
+All this is that I'm just doing one
+experiment over and over. Covariance,
+
+5222
+00:47:03,780 --> 00:47:09,780
+which is the deeper idea. The deeper idea
+is where linear algebra comes in. I have a
+
+5239
+00:47:09,780 --> 00:47:15,400
+matrix. Because why? Because I'm doing
+several, multiple experiments at the same
+
+5251
+00:47:15,400 --> 00:47:26,480
+time. I'm flipping two coins. I'm flipping
+15 coins. I'm doing other things. So that
+
+5266
+00:47:26,480 --> 00:47:32,920
+will be covariances, when I'm doing several
+experiments at once. That will involve
+
+5279
+00:47:32,920 --> 00:47:34,340
+matrices of that size.
+
+5283
+00:47:36,900 --> 00:47:43,760
+That's the variance. I should have given
+you the usual notation, the expected value
+
+5297
+00:47:43,760 --> 00:47:53,760
+of x. That's what's the mean. And here I'm
+looking at the expected value of what? So
+
+5314
+00:47:54,320 --> 00:48:00,520
+when I'm computing a variance using
+probabilities, so I'm using expectations,
+
+5325
+00:48:01,460 --> 00:48:09,960
+not trial runs. Expectations means use the
+probabilities. And what is the expectation
+
+5338
+00:48:09,960 --> 00:48:16,750
+of the distance from x
+to the mean squared?
+
+5347
+00:48:19,660 --> 00:48:28,420
+And that is, when I'm doing an expectation
+for a discrete set, I think of the
+
+5363
+00:48:28,420 --> 00:48:32,880
+probability, the first probability,
+that goes with an output x1
+
+5373
+00:48:35,660 --> 00:48:43,440
+and a second probability that goes with an
+output x2. And each time, I subtract from
+
+5389
+00:48:43,440 --> 00:48:50,900
+the mean and square. So that's the variance
+that everybody calls sigma squared.
+
+5402
+00:48:54,520 --> 00:49:05,440
+Now, two minutes left is enough to say two.
+A few more words about covariance. Oh, to
+
+5419
+00:49:05,440 --> 00:49:10,540
+get to covariance, I really have to speak
+about joint probabilities. That's a key
+
+5433
+00:49:10,540 --> 00:49:15,700
+idea, joint probabilities. So I'm
+doing two experiments at once.
+
+5443
+00:49:18,660 --> 00:49:29,580
+So each one has its own probabilities. But
+together, I have to ask, so here are two
+
+5460
+00:49:29,580 --> 00:49:36,440
+easy cases. Suppose I'm flipping two coins.
+So I might get heads, heads. I may get
+
+5476
+00:49:36,440 --> 00:49:41,320
+heads, tails, tails, heads, or tails,
+tails. Four possibilities, four possible
+
+5487
+00:49:41,320 --> 00:49:48,760
+outputs there, four possible pairs. And if
+you're flipping one coin and I'm flipping
+
+5501
+00:49:48,760 --> 00:49:55,000
+another one, those are independent results.
+Those are independent results. There won't
+
+5513
+00:49:55,000 --> 00:50:04,120
+be a covariance where some, where by
+knowing what my flip was, I would know more
+
+5529
+00:50:04,120 --> 00:50:05,220
+about your flip.
+
+5532
+00:50:07,560 --> 00:50:11,960
+But now, the other possibility
+would be to glue the coins together.
+
+5544
+00:50:14,780 --> 00:50:23,180
+Now, if I do a flip, they always come up,
+heads and heads or tails and tails. So the
+
+5563
+00:50:23,180 --> 00:50:30,180
+heads, tails combination is not possible.
+In fact, one output is totally dependent on
+
+5577
+00:50:30,180 --> 00:50:35,520
+the other output. So that's the other
+extreme. We have independent outputs with
+
+5590
+00:50:35,560 --> 00:50:42,440
+covariance 0. And we have totally dependent
+outputs when the things are just glued
+
+5604
+00:50:42,440 --> 00:50:48,900
+together, when one result tells us what the
+other result is. Then that situation where
+
+5619
+00:50:48,900 --> 00:50:56,460
+the covariance is a maximum. Couldn't
+be bigger than that. If you were polling a
+
+5634
+00:50:56,460 --> 00:51:08,550
+family, say political polling, well, there
+would be some covariance expected there.
+
+5646
+00:51:09,820 --> 00:51:16,420
+The two or three or five people living in
+the same house wouldn't be independent,
+
+5661
+00:51:17,160 --> 00:51:23,340
+entirely independent. But they, nor would
+they always say all five give the same
+
+5675
+00:51:23,340 --> 00:51:35,260
+answer. So the covariance matrix would be,
+have some off diagonal, but it would still
+
+5690
+00:51:35,260 --> 00:51:40,380
+be not invertible. And actually, what I
+want to tell you about next time at the
+
+5706
+00:51:40,580 --> 00:51:46,020
+start is that covariance matrix, which I
+have to define for you, will be symmetric
+
+5721
+00:51:46,020 --> 00:51:52,760
+positive definite. Or semi -definite.
+What's the semi -definite case? Of course,
+
+5733
+00:51:52,760 --> 00:52:00,760
+that's the case where the coins are glued
+together. OK, thanks. So you know what's
+
+5748
+00:52:00,760 --> 00:52:08,100
+coming Friday. I know that holiday is also
+coming Friday. And you'll make a good plan.
+
+5764
+00:52:08,220 --> 00:52:12,100
+And I'll move on
+after the break. Good.
+

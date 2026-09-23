@@ -1,0 +1,1970 @@
+1
+00:00:01,640 --> 00:00:06,140
+The following content is provided under a
+Creative Commons license. Your support will
+
+14
+00:00:06,140 --> 00:00:10,700
+help MIT OpenCourseWare continue to offer
+high -quality educational resources for
+
+25
+00:00:10,700 --> 00:00:15,180
+free. To make a donation or to view
+additional materials from hundreds of MIT
+
+39
+00:00:15,180 --> 00:00:27,680
+courses, visit MIT OpenCourseWare at ocw
+.mit .edu. OK. So basic probability ideas
+
+52
+00:00:27,680 --> 00:00:36,440
+today, because that's a part of the
+subject, part of deep learning as we get
+
+67
+00:00:36,440 --> 00:00:42,980
+there. And it's probably a good topic for
+the day before spring break, because lots
+
+82
+00:00:43,100 --> 00:00:50,140
+of you will have seen, of course, you will
+have seen the sample mean, the average of
+
+99
+00:00:50,140 --> 00:00:52,720
+the data. So we have,
+
+104
+00:00:56,300 --> 00:01:01,620
+and you'll know about the
+expected mean. Let me complete that.
+
+115
+00:01:04,239 --> 00:01:14,420
+What's the expected mean? So this is the
+expectation of the value x, where we get x1
+
+132
+00:01:14,420 --> 00:01:22,480
+with probability p1, along to xn with
+probability pn. So we just want to say,
+
+147
+00:01:22,620 --> 00:01:31,360
+what's our average output, average outcome?
+And we weight it by the probabilities. So
+
+161
+00:01:31,360 --> 00:01:41,220
+it's p1 x1 plus so on plus pn xn.
+So that's the expected value of x.
+
+177
+00:02:11,780 --> 00:02:16,020
+It involves square. And it's
+the distance from the mean.
+
+187
+00:02:18,180 --> 00:02:25,500
+So let me call this, say, m, maybe, just to
+have a smaller letter. But I could put it.
+
+206
+00:02:25,820 --> 00:02:33,220
+So it's the distance from the mean minus m.
+It's the expected value, the average value
+
+222
+00:02:33,220 --> 00:02:41,980
+of x minus m squared. And in general,
+of course, the expected, this covariance
+
+236
+00:02:42,060 --> 00:02:48,060
+matrix I could express with that e
+notation. But let me just stretch it as far
+
+252
+00:02:48,060 --> 00:02:53,760
+as, what would be the expected
+value of any function of x?
+
+264
+00:02:55,940 --> 00:03:07,320
+Well, we've got n possible outputs, x1
+to xn. We look at f of x1 up to f of xn. We
+
+285
+00:03:07,320 --> 00:03:13,160
+weight those by the probabilities that they
+happen. So this would be, let me make just
+
+301
+00:03:13,240 --> 00:03:21,840
+a little corner for this, e letter. So this
+would be the probability that that is f of
+
+319
+00:03:21,840 --> 00:03:33,900
+x1 times the value of f at x1. So this is
+the contribution from the x1 possibility.
+
+336
+00:03:34,480 --> 00:03:44,980
+And now we include them all. So it will be
+f output f of xn with probability pn. And
+
+355
+00:03:44,980 --> 00:03:53,340
+if that f of x is x minus m squared, then
+we get what we expect. And let me remember
+
+375
+00:03:53,340 --> 00:03:57,800
+that. So I just want to
+keep going with variance.
+
+385
+00:04:01,820 --> 00:04:08,660
+So it's the sum. It's the first probability
+times the first output. Minus the mean
+
+400
+00:04:08,660 --> 00:04:08,760
+squared.
+
+401
+00:04:12,140 --> 00:04:20,339
+The last probability times that last
+output, xn minus m squared. And everybody
+
+414
+00:04:20,339 --> 00:04:29,240
+should know a second expression, a second
+way to do that sum. If I just write out
+
+431
+00:04:29,340 --> 00:04:34,880
+those squares and combine them a little
+differently, I get a second expression,
+
+444
+00:04:35,240 --> 00:04:42,140
+which is really useful, often a little
+faster to compute. So can I just do that?
+
+460
+00:04:43,220 --> 00:04:54,640
+So that's x1 squared minus 2 x1 m1 plus m1
+squared, right? And then same thing here,
+
+477
+00:04:54,760 --> 00:05:01,580
+pn times xn squared minus
+2 xn m plus m squared.
+
+488
+00:05:03,740 --> 00:05:04,260
+Good with that?
+
+491
+00:05:11,740 --> 00:05:15,820
+Plus n. Oh, sorry.
+No, I mean, am I?
+
+500
+00:05:20,400 --> 00:05:29,380
+Oh, it's just an m. Correct. Thank you.
+Thank you. Just an m. Good. OK. Can we take
+
+518
+00:05:29,380 --> 00:05:38,920
+that sum? So I get p1 x1 squared
+if I take these, the first guys.
+
+533
+00:05:43,420 --> 00:05:59,940
+So I've accounted for this and this. Now
+I'll take minus 2 p1 x1 m. So p1 x1 m plus
+
+553
+00:06:01,360 --> 00:06:02,800
+pn
+
+554
+00:06:05,080 --> 00:06:06,640
+xn m.
+
+556
+00:06:10,460 --> 00:06:16,060
+I'm just writing it all out, and I'm going
+to recombine it. So now I have p1 m squared
+
+575
+00:06:16,460 --> 00:06:26,800
+plus p2 m squared plus pn m squared. So
+what do I have from the p1 m squared all
+
+594
+00:06:26,800 --> 00:06:37,780
+the way up to pn m squared? Are you with
+me? So m squared is in every term. So I'm
+
+614
+00:06:37,780 --> 00:06:48,000
+going to have an m squared. And what's it
+multiplied by? p1 here, p2 here, pn here. I
+
+632
+00:06:48,000 --> 00:06:55,720
+add those up, and I get? 1. So that's it.
+OK. And now I'll just simplify this thing.
+
+650
+00:06:55,820 --> 00:07:03,740
+So this is really the expected value of
+what? What am I seeing in this term?
+
+666
+00:07:06,360 --> 00:07:09,100
+The expected value
+of x squared, right.
+
+673
+00:07:12,060 --> 00:07:18,160
+Different from the expected value of x
+minus m squared, of course. This is just
+
+688
+00:07:18,340 --> 00:07:23,360
+the first term from here. But now what do
+I get for this second term? Well, the point
+
+706
+00:07:23,360 --> 00:07:32,480
+is that m comes out. So this is minus an
+m and a 2. And what do I have left? So I've
+
+728
+00:07:32,480 --> 00:07:39,400
+used up the m. I've used up the
+2. p1 x1 plus pn xn. What's that?
+
+744
+00:07:41,920 --> 00:07:46,800
+Everybody should just pay attention
+to this. Trivial. I mean, we're just doing
+
+757
+00:07:46,880 --> 00:07:55,840
+high school algebra. We're here. But p1
+x1 up to pn xn is m. So I have another m, m
+
+777
+00:07:55,940 --> 00:08:04,760
+squared there. And I have a plus m squared
+from the end. So you see that it is another
+
+796
+00:08:04,760 --> 00:08:14,660
+expression, the expected value of x squared
+minus m squared. Just algebra. But that is
+
+811
+00:08:14,660 --> 00:08:16,960
+the same as this.
+
+815
+00:08:19,700 --> 00:08:24,500
+So that if you happen to have a handy way
+to compute the expected value of x squared,
+
+833
+00:08:25,000 --> 00:08:30,820
+you would just subtract m squared,
+and you'd have the same as this. Yeah, it's
+
+848
+00:08:30,860 --> 00:08:40,679
+just algebra. OK. Can I? Let's go a little
+deeper with something here, if I can find
+
+865
+00:08:40,679 --> 00:08:48,500
+it. There are two great inequalities
+in statistics. And the first one is due to
+
+880
+00:08:48,500 --> 00:08:53,180
+Markov. And I don't know if
+you know Markov's inequality.
+
+890
+00:08:55,680 --> 00:09:07,340
+It comes out easily. In fact, too easily.
+I'm kind of happy with the discussion. Now
+
+906
+00:09:07,340 --> 00:09:17,000
+I've jumped to section 5 of the book.
+So I'll need to post section 5, which is
+
+923
+00:09:17,000 --> 00:09:23,660
+probability and statistics. And you'll see
+this Markov inequality. So it just involves
+
+936
+00:09:23,660 --> 00:09:30,020
+this stuff. So that's why I'll go
+do it now. Markov's inequality.
+
+948
+00:09:35,680 --> 00:09:44,340
+He was a great Russian mathematician,
+well, probably about 1900. And we will see
+
+962
+00:09:44,440 --> 00:09:50,400
+Markov chains and Markov processes. That's
+beautiful linear algebra. But this little
+
+974
+00:09:50,400 --> 00:10:03,280
+inequality is not matrices. It's just
+playing with these. And it applies to non
+
+988
+00:10:03,280 --> 00:10:14,880
+-negative events. So I'm going to, when,
+shall I say applies when? When all the x,
+
+1004
+00:10:15,260 --> 00:10:17,620
+all the outputs are
+greater or equal to 0.
+
+1013
+00:10:20,200 --> 00:10:25,520
+So it's going to be a, it's going to, I'm
+going to use that fact. So it doesn't apply
+
+1032
+00:10:25,520 --> 00:10:34,900
+to something like Gaussian. Because they're
+Gaussian. The outputs go all the way from
+
+1046
+00:10:34,900 --> 00:10:40,480
+minus infinity to infinity. It does
+apply to a lot of important ones.
+
+1059
+00:10:42,580 --> 00:10:48,240
+A simple one. So I'm just saying,
+let's suppose, I'll give the proof for this
+
+1074
+00:10:48,980 --> 00:10:54,910
+finite probability. And there would
+be a similar proof, similar discussion
+
+1085
+00:10:55,000 --> 00:11:01,760
+everywhere here for continuous probability.
+So what does Markov say? Let me be sure I
+
+1100
+00:11:01,760 --> 00:11:08,800
+get it right, because I'm not a pro at
+this. It's natural to want to estimate the
+
+1117
+00:11:08,800 --> 00:11:09,480
+probability
+
+1118
+00:11:15,340 --> 00:11:22,860
+that x is greater or equal some number a.
+Get some idea. What's the probability of x
+
+1135
+00:11:23,040 --> 00:11:28,240
+being greater or equal a? So what do we
+know? This is certainly a number between 0
+
+1152
+00:11:28,240 --> 00:11:28,900
+and 1.
+
+1154
+00:11:31,520 --> 00:11:35,900
+That number is going to get smaller as a
+increases, because we're going to be asking
+
+1170
+00:11:35,900 --> 00:11:48,540
+for more. If I take a to be, say, twice the
+mean. Yeah, suppose I take a to be twice
+
+1190
+00:11:49,040 --> 00:11:54,240
+the mean. Can I estimate what that
+probability could be? And that's what
+
+1203
+00:11:54,240 --> 00:12:01,220
+Markov has done. He says
+the probability of that is at least.
+
+1215
+00:12:05,240 --> 00:12:16,460
+At most. Sorry. Let's see. I used to have
+an eraser. At least. Sorry. At most. Yes.
+
+1232
+00:12:17,420 --> 00:12:27,700
+Got it? Got it? Is less or equal to the
+mean. x bar is another way to write the
+
+1251
+00:12:27,700 --> 00:12:39,700
+mean. Divided by a. And this is the mean
+over a. Or it's the expected value of x
+
+1269
+00:12:39,740 --> 00:12:43,200
+over a. We could see
+any of those notations.
+
+1278
+00:12:50,300 --> 00:12:53,130
+And as we expect,
+as a increases,
+
+1285
+00:12:55,180 --> 00:13:02,420
+the probability, this number goes down. The
+probability goes down of exceeding a. So
+
+1299
+00:13:02,420 --> 00:13:09,920
+that's a pretty simple estimate to get this
+probability just in terms of the number a,
+
+1315
+00:13:09,920 --> 00:13:16,680
+which has to come in, because it's part
+of the question, and the mean, x. So let me
+
+1333
+00:13:16,680 --> 00:13:20,200
+take an example as a equals 3.
+
+1340
+00:13:24,280 --> 00:13:30,260
+So I'm going to try. I'm going to just, for
+example, suppose a was 3. I want to show
+
+1359
+00:13:30,260 --> 00:13:41,400
+that the probability of x, x being greater
+than or equal to 3. Yeah. OK. So let's. We
+
+1377
+00:13:41,400 --> 00:13:46,480
+don't know. We don't have many facts to
+work with. So if we write those down, we
+
+1394
+00:13:46,480 --> 00:13:56,180
+should see the reason. OK. So I know
+that the mean is e of x. So let's see. Am I
+
+1414
+00:13:56,180 --> 00:14:07,720
+going to take? Yeah. I'm going to. For
+example. Let's take the mean to be 1. So
+
+1431
+00:14:07,720 --> 00:14:15,360
+I'm going to imagine that the mean is 1.
+And that I'm asking for what's the chance
+
+1448
+00:14:15,560 --> 00:14:26,160
+that x will be bigger than 3. And I'll get
+an estimate of 1 third. So I'm trying to
+
+1467
+00:14:26,160 --> 00:14:40,660
+show that the probability of x greater or
+equal 3 is less or equal to the mean. I'm
+
+1485
+00:14:40,660 --> 00:14:48,800
+saying is 1. a is 3. So it's less or equal
+1 third. Now, why is that true? That's what
+
+1505
+00:14:48,800 --> 00:14:55,180
+I have to show. OK. I think that if I
+write down what I know, I'll see it.
+
+1523
+00:14:58,000 --> 00:15:05,860
+All right. So let me just raise that a
+little so that I have room to write. So
+
+1541
+00:15:05,860 --> 00:15:06,500
+what do I know?
+
+1545
+00:15:08,820 --> 00:15:22,080
+I know the definition of the mean. So I
+know that x1 times p1 plus x2 p2 plus x3
+
+1564
+00:15:22,080 --> 00:15:33,640
+p3. Allow me to get carried
+away here. x5 p5, say, is what?
+
+1577
+00:15:36,320 --> 00:15:38,480
+So what I've written
+down there is the mean.
+
+1586
+00:15:40,790 --> 00:15:44,360
+1. So this is the
+fact that I know is 1.
+
+1597
+00:15:46,800 --> 00:15:53,280
+And what is it that I want to prove? I want
+to know the probability of being greater
+
+1615
+00:15:53,280 --> 00:16:00,440
+or equal 3. So what's the probability
+that the result will be greater or equal 3?
+
+1631
+00:16:03,820 --> 00:16:13,700
+It's p3. So this is saying that p3 plus p4.
+So these are the probabilities. These are
+
+1648
+00:16:13,700 --> 00:16:18,840
+the different ways that I might be greater
+or equal 3. And I'm claiming that that's
+
+1664
+00:16:18,840 --> 00:16:19,960
+less or equal 1 third.
+
+1669
+00:16:25,400 --> 00:16:35,460
+What I liked about this elementary approach
+is that I've stated these facts, these
+
+1683
+00:16:35,680 --> 00:16:42,060
+probability assumptions and conclusions.
+So I'm not going to go into the details of
+
+1697
+00:16:42,060 --> 00:16:45,480
+the probability assumptions directly in
+terms of numbers. So I just want to show
+
+1711
+00:16:45,940 --> 00:16:54,740
+that if this is true, then that's true.
+Let's see. I guess I'm thinking that the,
+
+1727
+00:16:55,280 --> 00:17:02,280
+I'm sorry, I even took a more special
+case. I'm taking the case where x1 is 1.
+
+1744
+00:17:10,700 --> 00:17:24,640
+x4 is 4. And x5 is 5. So that satisfies my
+condition that the outputs 1, 2, 3, 4, or 5
+
+1765
+00:17:24,700 --> 00:17:35,460
+are all Markov only applies when they're
+all greater or equal 0. So I had to take a,
+
+1783
+00:17:35,840 --> 00:17:41,300
+so I'm just imagining the special case
+where the possible outputs are 1, 2, 3, 4,
+
+1799
+00:17:41,300 --> 00:17:51,400
+5. Their probabilities are p1, p2, p3, p4,
+p5. The mean is 1. And what I want to show
+
+1818
+00:17:51,400 --> 00:18:00,120
+is that the probability of being greater
+than 3 is less or equal 1 third. And can
+
+1835
+00:18:00,120 --> 00:18:07,640
+you put together these two? Can you
+conclude, given this, we want to conclude
+
+1849
+00:18:07,640 --> 00:18:13,620
+that. Let me just step back a
+minute. So what do we know here?
+
+1863
+00:18:16,760 --> 00:18:22,840
+We know this, the first line. And we want
+to prove the second line. We know one more
+
+1881
+00:18:22,840 --> 00:18:23,160
+thing.
+
+1882
+00:18:25,860 --> 00:18:29,940
+All the probability, well, we know the
+probabilities add to 1. And we know they're
+
+1897
+00:18:29,940 --> 00:18:40,280
+all greater or equal 0. So let me put those
+facts in here too. We know that p1 plus p2
+
+1917
+00:18:40,760 --> 00:18:53,800
+plus p3 plus p4 plus p5 is 1. That we
+know. And we also know that all the p's are
+
+1937
+00:18:53,840 --> 00:18:59,980
+greater than or equal 0. OK. OK.
+
+1944
+00:19:03,620 --> 00:19:14,620
+So here we go. I think my idea is this is
+looking at 3 times p3 plus p4 plus p5. So
+
+1965
+00:19:14,620 --> 00:19:19,420
+I'm going to take 3p3
+plus 3p4 away from this.
+
+1975
+00:19:22,220 --> 00:19:40,800
+So this will say p1 plus 2p2 plus 3 of
+p3. 3 plus p4 plus p5. I'm just picking out
+
+1995
+00:19:40,940 --> 00:19:51,140
+three of those guys. Plus I have one more
+p4 to account for. And two more p5 gives 1.
+
+2014
+00:19:55,880 --> 00:19:59,120
+Good?
+
+2015
+00:20:01,440 --> 00:20:05,040
+Now this is what
+I'm trying to prove.
+
+2023
+00:20:07,080 --> 00:20:13,060
+So that is here. I'm trying to prove that
+this thing is, what am I trying to prove
+
+2041
+00:20:13,060 --> 00:20:19,160
+about that number? Sorry, I'm talking a
+lot. But now I've really come to the point.
+
+2057
+00:20:19,740 --> 00:20:27,380
+What is Markov telling me about that
+number that is less or equal to? 1. OK. I'm
+
+2074
+00:20:27,500 --> 00:20:33,730
+trying to prove that this is less or
+equal 1. That's what Markov tells me.
+
+2089
+00:20:36,800 --> 00:20:41,940
+But suppose it was greater than 1. Do you
+see the problem? Do you see why it can't be
+
+2108
+00:20:41,940 --> 00:20:43,280
+greater than 1? Because why?
+
+2113
+00:20:47,760 --> 00:20:55,200
+All the other terms are greater or equal
+0. Probabilities are greater or equal 0.
+
+2128
+00:20:55,260 --> 00:21:01,540
+These are all greater or equal 0. And the
+total thing adds to 1. So that this piece
+
+2146
+00:21:01,700 --> 00:21:11,380
+has to be less or equal 1. That's it. So
+a lot of talking there. Simple idea. And
+
+2164
+00:21:11,380 --> 00:21:20,800
+you'll see exactly this example written
+down in the notes. OK. And then you'll see
+
+2179
+00:21:20,800 --> 00:21:24,240
+a more conventional
+proof of Markov's inequality
+
+2186
+00:21:27,180 --> 00:21:33,220
+and simple inequality steps. But they're
+somehow more mysterious. For me, this was
+
+2199
+00:21:33,220 --> 00:21:42,760
+explicit. So that's Markov. Chebyshev is
+the other great Russian probabilist of the
+
+2212
+00:21:42,760 --> 00:21:47,060
+time. And he
+gets his inequality.
+
+2218
+00:21:57,620 --> 00:22:04,020
+So there are the two. There's Markov's
+inequality. Let me write it down again what
+
+2233
+00:22:04,020 --> 00:22:06,660
+it was. Here was
+Markov's inequality.
+
+2239
+00:22:10,000 --> 00:22:19,380
+And Markov's assumption. Chebyshev doesn't
+make that assumption. So now no assumption
+
+2251
+00:22:19,420 --> 00:22:31,560
+that the outputs are greater or equal 0. It
+doesn't come in. OK. Now what is Chebyshev
+
+2268
+00:22:32,900 --> 00:22:38,240
+trying to estimate? OK. Let's move
+to Chebyshev. And that's the last guy.
+
+2281
+00:22:45,420 --> 00:22:49,740
+So Chebyshev is
+interested in the probability
+
+2288
+00:22:53,250 --> 00:23:00,040
+that x minus the mean,
+m, can I use that for mean,
+
+2300
+00:23:03,300 --> 00:23:06,200
+is probably greater or equal
+
+2305
+00:23:09,320 --> 00:23:19,940
+to a, the probability of being sort of a
+distance a away from the mean. So again, as
+
+2323
+00:23:19,940 --> 00:23:26,360
+a increases, I'm asking more. I'm asking it
+to be further away from the mean. And the
+
+2340
+00:23:26,440 --> 00:23:32,960
+probability will drop. And then the
+question is, can we estimate this? So this
+
+2354
+00:23:32,960 --> 00:23:40,700
+is a different estimate, but it's a similar
+question. And what's Chebyshev's answer
+
+2367
+00:23:40,700 --> 00:23:49,120
+for this? So this is the probability of
+this. I have to put a big. That's all one
+
+2385
+00:23:49,120 --> 00:23:51,520
+mouthful. The
+probability of being.
+
+2390
+00:23:53,940 --> 00:24:02,640
+That this x minus m is greater or equal to
+a. And again, we're going to have is less
+
+2409
+00:24:02,640 --> 00:24:04,170
+or equal to
+
+2412
+00:24:06,280 --> 00:24:09,380
+sigma squared now
+comes in over a squared.
+
+2420
+00:24:11,920 --> 00:24:25,880
+So that's Chebyshev. And I just take time
+today to do these two, because they involve
+
+2436
+00:24:25,880 --> 00:24:33,360
+analysis. They're basic tools. It's sort
+of the first thing you think of if you're
+
+2451
+00:24:33,400 --> 00:24:41,400
+trying to estimate a probability. Does it
+fit Markov? And Markov only applies. So
+
+2465
+00:24:41,400 --> 00:24:49,300
+I'll put only applies when the x's are all
+greater or equal to 0. Here, does it fit
+
+2483
+00:24:49,300 --> 00:24:55,020
+Chebyshev? And now we're taking absolute
+values. So we're not concerned about the
+
+2496
+00:24:55,020 --> 00:25:01,500
+size of x. And we're taking the distance
+from m. So we're obviously in the world of
+
+2513
+00:25:01,500 --> 00:25:09,860
+variances. We're distances from m. OK. And
+the proof of Chebyshev comes directly from
+
+2527
+00:25:09,860 --> 00:25:18,600
+Markov. So I'm going to apply Markov.
+So good thing that Markov came first.
+
+2541
+00:25:22,880 --> 00:25:27,360
+To, now let me
+just say this right,
+
+2549
+00:25:31,500 --> 00:25:42,530
+to a new, let me call it y.
+This will be a new output.
+
+2563
+00:25:45,400 --> 00:25:46,020
+And it will
+
+2566
+00:25:49,620 --> 00:25:52,190
+be x minus m squared.
+
+2571
+00:25:55,290 --> 00:26:05,800
+So that's, of course, with the same
+probability. So yi is xi minus m, the mean,
+
+2587
+00:26:05,940 --> 00:26:14,060
+squared. And the same
+probability, same probabilities, pi.
+
+2595
+00:26:18,840 --> 00:26:26,380
+So I guess if I'm going to apply, I'm
+just going to take that, take the y's here
+
+2613
+00:26:26,380 --> 00:26:28,380
+instead of the x's here.
+
+2618
+00:26:30,960 --> 00:26:38,360
+And then apply Markov. So what is x bar?
+So if I want to apply Markov, I have to
+
+2637
+00:26:38,500 --> 00:26:45,280
+figure out the mean of x. Over here, I
+have to figure out the mean of y. What is
+
+2656
+00:26:47,580 --> 00:26:57,270
+the mean of y? The mean value,
+the sum of probabilities times y's.
+
+2669
+00:27:02,200 --> 00:27:08,020
+You're supposed to recognize
+it. This is the sum of probabilities.
+
+2680
+00:27:10,330 --> 00:27:16,920
+And my y's are the xi
+minus the mean squared.
+
+2690
+00:27:20,380 --> 00:27:29,120
+So this is the mean for this y thing that
+I've brought in. Has that formula. And we
+
+2708
+00:27:29,120 --> 00:27:36,000
+recognize what that quantity is. That is,
+that's sigma squared. Sigma squared for the
+
+2722
+00:27:36,000 --> 00:27:44,240
+original x's. So that's just, that's great.
+So the mean is sigma, is the old sigma
+
+2738
+00:27:44,240 --> 00:27:52,900
+squared. Those are exclamation marks. OK,
+so then I, do you see that now Markov is
+
+2754
+00:27:52,960 --> 00:28:00,740
+looking like, or Chebyshev is looking like
+Markov? Because here, over here will be
+
+2768
+00:28:00,740 --> 00:28:13,240
+the, now I want the expected value of y
+over the, let's see. Yeah. So the expected
+
+2785
+00:28:13,240 --> 00:28:19,420
+y is going to be that. And now what
+do I have to divide by? I want to know
+
+2804
+00:28:19,440 --> 00:28:26,260
+probabilities of something being bigger,
+of this thing being bigger than a. But now
+
+2818
+00:28:26,260 --> 00:28:34,560
+I'm looking at the y's. So the probability
+of, if x minus m is greater than or equal
+
+2836
+00:28:34,640 --> 00:28:47,100
+to a, then x minus xi minus m squared is
+greater or equal a squared. So my a over
+
+2855
+00:28:47,100 --> 00:28:55,100
+here for x is now turning in this problem,
+where I'm looking at probability greater or
+
+2871
+00:28:55,100 --> 00:28:57,900
+equal a, but squaring it, this
+
+2877
+00:28:59,980 --> 00:29:00,800
+is the a squared.
+
+2881
+00:29:02,940 --> 00:29:10,620
+So that's Markov applied to y. Here is
+Markov applied to x. And x had to be
+
+2898
+00:29:10,620 --> 00:29:16,220
+greater or equal 0. So over here, Chebyshev
+took a y, which was greater or equal 0,
+
+2915
+00:29:16,980 --> 00:29:24,560
+then just applied Markov, and recognized
+that what, that the mean was of his
+
+2929
+00:29:24,560 --> 00:29:34,860
+variable, x minus m squared, was exactly
+sigma squared. And it fell out. So again,
+
+2944
+00:29:36,970 --> 00:29:47,020
+here is a very simple proof for Markov.
+And then everybody agrees that Chebyshev
+
+2958
+00:29:47,020 --> 00:29:54,740
+follows right away from Markov. OK, so
+those are two basic inequalities. Now, the
+
+2972
+00:29:54,740 --> 00:30:02,900
+other topic that I wanted to deal with was
+covariance, covariance matrix. You have to
+
+2987
+00:30:02,940 --> 00:30:07,180
+get comfortable. What is
+that? What's the covariance?
+
+2995
+00:30:10,020 --> 00:30:17,560
+OK. So covariance.
+
+2998
+00:30:21,540 --> 00:30:22,340
+Covariance matrix.
+
+3000
+00:30:25,580 --> 00:30:34,820
+And it will be m by m when I
+have m, m, sorry, experiments, m
+
+3015
+00:30:37,320 --> 00:30:48,880
+at once. Now, let me take m equal to 2.
+You'll see everything for m equal to 2. So
+
+3034
+00:30:48,880 --> 00:30:51,880
+it's a, we're expecting
+to get a 2 by 2 matrix.
+
+3045
+00:30:54,080 --> 00:30:59,900
+What are we starting with? We're doing
+two experiments at once. So we have two
+
+3060
+00:30:59,900 --> 00:31:02,080
+outputs, two outputs,
+
+3063
+00:31:05,300 --> 00:31:07,580
+an x and a y.
+
+3068
+00:31:10,380 --> 00:31:17,220
+So the x's are the outputs from the x
+experiment. The y's are the output from a
+
+3085
+00:31:17,300 --> 00:31:23,920
+second experiment. We're flipping
+two coins. So let's take that example, two
+
+3097
+00:31:23,920 --> 00:31:24,570
+coins.
+
+3098
+00:31:26,600 --> 00:31:27,120
+Coin 1
+
+3100
+00:31:29,500 --> 00:31:37,980
+gets 0 or 1 with p equal
+to probability 1 half. Coin 2,
+
+3113
+00:31:41,300 --> 00:31:47,820
+0 or 1 with probability 1
+half. So they're fair coins.
+
+3124
+00:31:50,740 --> 00:31:52,660
+But what I haven't said is,
+
+3130
+00:31:54,700 --> 00:32:04,620
+is there a connection between the output?
+This is the x. This is the y. If I glue the
+
+3149
+00:32:04,620 --> 00:32:11,080
+coins together, then the two outputs are
+the same. I think for me, this is a model
+
+3166
+00:32:12,200 --> 00:32:14,900
+question that brings out
+the main point of covariance.
+
+3175
+00:32:18,060 --> 00:32:18,420
+Separately,
+
+3176
+00:32:20,440 --> 00:32:29,900
+quite independently, then there is no,
+I can't, I don't know more about y from
+
+3191
+00:32:29,900 --> 00:32:34,760
+knowing x. If I know the answer to one
+flip, it doesn't tell me anything about the
+
+3208
+00:32:35,020 --> 00:32:35,740
+second if they're independent.
+
+3212
+00:32:38,640 --> 00:32:47,040
+Uncorrelated. But if the two coins are
+glued together, then heads will come up for
+
+3227
+00:32:47,040 --> 00:32:52,240
+both coins. It'll be, I'll only have two
+possibilities. That'll be heads, heads or
+
+3241
+00:32:52,240 --> 00:32:59,860
+tails, tails. Let me write down those
+two different scenarios. So unglued,
+
+3253
+00:33:03,160 --> 00:33:07,860
+I never expected to write that
+word in the math class. Unglued.
+
+3265
+00:33:10,380 --> 00:33:14,500
+And what am I going to write
+down? I'm going to write down
+
+3278
+00:33:17,060 --> 00:33:28,780
+a matrix. With heads, tails for coin 1.
+And heads and tails for coin 2. So the
+
+3295
+00:33:28,800 --> 00:33:34,280
+possibilities are coin 1 gets heads and
+coin 2 gets heads. What's the probability
+
+3309
+00:33:34,280 --> 00:33:41,020
+of that? This is the unglued case. So I'm
+going to create a little probability matrix
+
+3325
+00:33:41,020 --> 00:33:50,140
+of joint probabilities. That's really the
+key word that I'm discussing here. Joint
+
+3338
+00:33:50,140 --> 00:33:50,480
+probabilities.
+
+3339
+00:33:54,280 --> 00:33:55,500
+So let's complete that matrix.
+
+3344
+00:33:57,700 --> 00:34:03,480
+So I have unglued coins, independent coins.
+I flip them both. What are the chances of
+
+3360
+00:34:03,500 --> 00:34:06,580
+getting heads on both? 1 fourth.
+
+3366
+00:34:08,699 --> 00:34:14,620
+What are the chances of, what do I put
+in here? This means heads on the first coin
+
+3384
+00:34:14,620 --> 00:34:21,960
+and tails on the second coin. And the
+probability of that is? 1 fourth. And 1
+
+3400
+00:34:22,000 --> 00:34:28,980
+fourth here and 1 fourth here. So I have
+the four possibilities, which I put into a
+
+3417
+00:34:28,980 --> 00:34:35,380
+2 by 2 matrix instead of a long vector. My
+four possibilities are heads, heads, heads,
+
+3433
+00:34:35,400 --> 00:34:41,159
+tails, tails, heads, and tails, tails. And
+they have equal probability 1 fourth. But
+
+3447
+00:34:41,159 --> 00:34:43,020
+now if they're glued,
+
+3451
+00:34:45,900 --> 00:34:53,860
+heads and tails on the first coin, heads
+and tails on the second, on the first coin,
+
+3468
+00:34:54,580 --> 00:35:02,320
+heads and tails on the second coin. OK. Now
+what do I put in there? So the two coins
+
+3487
+00:35:02,320 --> 00:35:05,920
+are glued together. What is the
+chance that they both come up heads?
+
+3500
+00:35:10,240 --> 00:35:16,660
+1 half. Right. 1 half. Because if one comes
+up heads, the other one is glued to it. It
+
+3519
+00:35:16,800 --> 00:35:23,460
+will also. What's the probability of heads,
+tails? Heads on one, tails on the other
+
+3534
+00:35:23,460 --> 00:35:31,160
+is, of course, 0. Thanks. And here, 0.
+And here, 1 half. So what I've created are
+
+3551
+00:35:31,160 --> 00:35:42,400
+those two different setups, two different
+scenarios of unglued and glued. And in this
+
+3565
+00:35:42,400 --> 00:35:51,280
+one, we have, but each experimental setup
+has its matrix of joint probabilities.
+
+3578
+00:35:53,260 --> 00:35:59,460
+That's the thing, that there are four
+numbers here, four numbers. We have all
+
+3592
+00:35:59,460 --> 00:36:08,760
+possibilities. We have any possible x
+and, at the same time, any possible y. So
+
+3607
+00:36:08,760 --> 00:36:15,410
+suppose we were running
+three experiments, and we had,
+
+3616
+00:36:18,520 --> 00:36:27,180
+well, so what would be the situation if I
+was running three experiments with three
+
+3631
+00:36:27,180 --> 00:36:35,040
+independent fair coins? So I'd be in this
+unglued picture, but I would have three
+
+3646
+00:36:36,420 --> 00:36:44,900
+different experiments that I'm running.
+Then what would I be looking at then? Just
+
+3660
+00:36:45,540 --> 00:36:56,060
+the whole idea is to see what is this joint
+probability. So suppose I have three coins
+
+3677
+00:36:56,060 --> 00:36:56,960
+unglued.
+
+3678
+00:37:01,280 --> 00:37:07,720
+Then I want to know the probability of
+getting heads on the first, heads on the
+
+3694
+00:37:07,720 --> 00:37:12,300
+second, heads on the third will
+be what? Just give me that number.
+
+3707
+00:37:14,540 --> 00:37:19,760
+Probability that all three of them
+independently come up heads? 1 eighth. OK.
+
+3720
+00:37:20,700 --> 00:37:30,640
+But now my question is, so what do I
+have? Then I have probability of heads, say
+
+3737
+00:37:30,640 --> 00:37:38,620
+tails, heads, heads. I've got three indices
+here, eventually down to probability of
+
+3750
+00:37:38,620 --> 00:37:43,440
+tails, tails, tails. Everybody sees that
+the numbers are going to be 1 eighth.
+
+3764
+00:37:45,540 --> 00:37:47,200
+So where do those fit in?
+
+3770
+00:37:49,960 --> 00:37:57,140
+They don't fit in a matrix, because I've
+got three indices here. So I guess what
+
+3786
+00:37:57,140 --> 00:38:03,140
+we're seeing, I sort of realized today,
+we're seeing for the first time a tensor. A
+
+3802
+00:38:03,180 --> 00:38:07,230
+tensor is a three
+-way structure,
+
+3808
+00:38:10,100 --> 00:38:13,570
+three -way matrix, you
+could say. So we have,
+
+3817
+00:38:15,760 --> 00:38:25,960
+I guess I think of this instead of a square
+like that, an ordinary matrix. I have to
+
+3835
+00:38:25,960 --> 00:38:36,720
+think of a cube, right? I have a cube with
+two rows, two columns, and two whatevers.
+
+3852
+00:38:39,980 --> 00:38:55,400
+Layers, somebody might say layers for that.
+Do you see that the matrix has become a
+
+3868
+00:38:55,500 --> 00:39:04,720
+three -way thing, a tensor? And the entries
+in that tensor, so it's 2 by 2 by 2.
+
+3886
+00:39:06,960 --> 00:39:12,480
+Instead of m by n for a matrix, I have to
+give you the number of rows, the number of
+
+3906
+00:39:12,480 --> 00:39:19,890
+columns, and the number of layers going
+into the board. So rows going one way,
+
+3921
+00:39:20,560 --> 00:39:27,840
+columns, rows, and then layers are going
+in deep. So it will have eight entries.
+
+3936
+00:39:29,960 --> 00:39:43,500
+And of course, in this simple case,
+each will be 1 8 in that unglued, totally
+
+3952
+00:39:43,500 --> 00:39:51,420
+independent way. But then you can imagine
+some dependence. So what would happen if I
+
+3967
+00:39:51,420 --> 00:39:53,500
+glued coins 1 and 3?
+
+3972
+00:39:56,960 --> 00:40:03,590
+I would still have a tensor, still have a 2
+by 2 by 2 tensor of all the possibilities.
+
+3991
+00:40:05,220 --> 00:40:10,860
+Now, but some of those are going to have
+probability 0, the joint probability. If
+
+4006
+00:40:10,860 --> 00:40:18,880
+I've glued coin 1 to coin 3, then the
+probability of jointly seeing heads on 1,
+
+4022
+00:40:19,600 --> 00:40:28,440
+whatever on 2, tails on 3 will be 0, right?
+Because that can't happen if I've glued
+
+4039
+00:40:28,580 --> 00:40:31,560
+coins 1 and 3. So I'll
+have eight entries in here.
+
+4050
+00:40:35,380 --> 00:40:36,160
+The unglued case.
+
+4053
+00:40:39,380 --> 00:40:42,680
+And then I could have a case
+where two coins are glued.
+
+4065
+00:40:45,780 --> 00:40:53,920
+And as I say, I think I would have
+one quarter four times, probably.
+
+4079
+00:41:25,300 --> 00:41:27,760
+So what will be the situation
+for three coins glued?
+
+4089
+00:41:31,660 --> 00:41:38,600
+What will be the entries in the matrix of
+joint probabilities? What will be the joint
+
+4105
+00:41:38,600 --> 00:41:43,900
+probability? So the probability of heads,
+heads, heads, of seeing heads from all
+
+4118
+00:41:44,020 --> 00:41:51,640
+three will be 1 half. 1 half, because
+I'm flipping this heavy mix of three coins
+
+4134
+00:41:51,640 --> 00:41:52,020
+together.
+
+4135
+00:41:54,060 --> 00:41:54,780
+1 half, twice.
+
+4138
+00:41:59,020 --> 00:42:09,240
+Actually, this is a good introduction to
+tensors in a way. Because the first step in
+
+4154
+00:42:09,240 --> 00:42:16,460
+understanding tensors is to think of three
+-way matrices. Think of three -way things.
+
+4168
+00:42:18,320 --> 00:42:24,920
+We just haven't done that. And now we have
+to do it. And of course, four -way or n
+
+4187
+00:42:25,800 --> 00:42:35,560
+-way tensors are now understood. So
+these are tensors with very special, simple
+
+4200
+00:42:35,560 --> 00:42:45,200
+things. So now I have to say, what is the
+covariance matrix? What's the covariance
+
+4215
+00:42:45,200 --> 00:42:52,120
+matrix? So now I'm ready for that. And I'll
+put it here. That's the final topic for
+
+4232
+00:42:52,120 --> 00:42:52,520
+today.
+
+4233
+00:42:56,100 --> 00:42:57,300
+So the covariance matrix.
+
+4237
+00:43:04,120 --> 00:43:10,280
+So I'm saying matrix, because I'm just
+going to have, yeah, the covariance matrix.
+
+4251
+00:43:10,620 --> 00:43:23,460
+Yeah, it's going to be 2 by 2, or for two
+coins. So it is a matrix. For three coins,
+
+4271
+00:43:23,520 --> 00:43:33,360
+it will be 3 by 3. But it is a matrix. OK.
+So how is it defined? And what am I going
+
+4293
+00:43:33,420 --> 00:43:40,020
+to call it? I think I'll call it v,
+because really the key idea is variance.
+
+4309
+00:43:41,540 --> 00:43:54,560
+Covariance is telling us that we're also
+interested in the joint outcome, an x and a
+
+4325
+00:43:54,560 --> 00:44:05,740
+y. OK. So it's a variance. So I'm
+going to add up over all possible i and j.
+
+4343
+00:44:08,840 --> 00:44:14,640
+Over all, sorry, all possible
+outcomes. Yeah, that's right.
+
+4352
+00:44:45,560 --> 00:44:54,880
+The guy in our 2 by 2 matrix, like that
+one or that one, depending on the gluing or
+
+4371
+00:44:54,880 --> 00:45:04,560
+not gluing. So pij, this is, let me say
+what it is. This is the probability that x
+
+4389
+00:45:06,960 --> 00:45:10,980
+is xi, and that the second
+output, that this is yj.
+
+4400
+00:45:13,900 --> 00:45:19,260
+And let me give you a second. An example
+to keep in mind. Suppose I'm looking at age
+
+4418
+00:45:19,260 --> 00:45:30,040
+and height. So suppose x is the age of the
+sample, the person, and y is the height.
+
+4436
+00:45:31,340 --> 00:45:31,440
+Then
+
+4437
+00:45:33,960 --> 00:45:40,740
+I want to know, so what fraction have
+a certain age and a certain height? It's
+
+4453
+00:45:40,740 --> 00:45:48,600
+every, I'm looking at every pair, age
+and height. Age 11, height 4 feet. Age 12,
+
+4469
+00:45:48,820 --> 00:45:56,920
+height 5 feet. Age 11, height 4, 5 feet.
+Each combination. So pij is the probability
+
+4485
+00:45:56,920 --> 00:45:58,640
+that these will both happen.
+
+4490
+00:46:05,800 --> 00:46:12,880
+So what could, just, I'm going to add more
+to it here. But that joint probability is
+
+4507
+00:46:13,020 --> 00:46:18,920
+really important. So I'm going to ask you
+more about that. Suppose that I take these
+
+4523
+00:46:18,920 --> 00:46:31,220
+pij's and that I add up p1j plus p2j plus
+p3j. In other words, I sum the pij's over
+
+4542
+00:46:31,220 --> 00:46:44,520
+i. So I'm looking at a rho, rho i of my
+matrix. So what, just, so let me ask the
+
+4562
+00:46:44,520 --> 00:46:47,920
+question. If I, maybe I have
+to put it somewhere else.
+
+4573
+00:46:50,680 --> 00:46:53,320
+What is, what means,
+
+4577
+00:46:56,460 --> 00:47:09,380
+what's the meaning of the sum of pij over
+the i's? What does that quantity look like?
+
+4594
+00:47:10,480 --> 00:47:15,900
+So that's a probability. pij is the
+probability of getting a certain i and a
+
+4609
+00:47:15,900 --> 00:47:24,600
+certain j. But now I'm including all the
+i's. So what am I seeing there? pj. Thanks.
+
+4626
+00:47:25,000 --> 00:47:27,540
+pj. This is pj.
+
+4630
+00:47:31,000 --> 00:47:36,520
+That's the probability of seeing j in the
+second guy. Because I had to see something.
+
+4646
+00:47:36,840 --> 00:47:42,480
+If I see j in the second one, I'm allowed
+to see anything here in the first one. But
+
+4665
+00:47:42,480 --> 00:47:48,240
+I'm adding those all up. So that's the
+point. Those would be called the marginals.
+
+4680
+00:47:48,860 --> 00:47:58,760
+In my matrices, I would be adding up along
+a row or adding up down a column. Those are
+
+4699
+00:47:58,760 --> 00:48:01,280
+called the marginals of
+
+4703
+00:48:03,980 --> 00:48:10,280
+the joint probabilities. So the marginals
+would be the individual probabilities, pi
+
+4715
+00:48:10,280 --> 00:48:18,380
+and pj, in the case of two experiments
+going on at the same time. Yeah. It's just
+
+4732
+00:48:18,380 --> 00:48:24,620
+like new ideas. Everything today has
+been sort of straightforward, but it's
+
+4744
+00:48:24,620 --> 00:48:29,940
+different. OK. Now I'm going to complete
+the, the definition of this covariance
+
+4757
+00:48:29,940 --> 00:48:32,560
+matrix. So it's going to be,
+
+4763
+00:48:35,060 --> 00:48:36,000
+I want to have a square.
+
+4769
+00:48:38,520 --> 00:48:48,560
+So it's going to be, and it should be, this
+is putting x and the mean of x. Mean 1, I
+
+4790
+00:48:48,560 --> 00:48:51,520
+could call it, or
+mean of x. And y,
+
+4799
+00:48:53,800 --> 00:49:02,120
+the distance from the mean of y, times, so
+it's going to be column times row. Same x
+
+4817
+00:49:02,340 --> 00:49:07,460
+minus the mean of x.
+y minus the mean of y.
+
+4828
+00:49:11,320 --> 00:49:12,260
+xi,
+
+4829
+00:49:15,860 --> 00:49:16,500
+yj.
+
+4830
+00:49:20,380 --> 00:49:20,620
+So
+
+4831
+00:49:23,300 --> 00:49:31,640
+can you look at this formula? Two
+experiments. Two experiments. Two coins.
+
+4843
+00:49:32,060 --> 00:49:32,280
+Two experiments.
+
+4845
+00:49:35,560 --> 00:49:42,160
+I get a 2 by 2 matrix. Everybody sees that.
+A column times a row, 2 by 2 matrix. And
+
+4865
+00:49:42,160 --> 00:49:51,040
+let's just see what would be the 1, 1 entry
+in that matrix. This is the covariance
+
+4882
+00:49:51,040 --> 00:49:54,940
+matrix. So what is the
+1, 1 entry in that matrix?
+
+4893
+00:49:57,760 --> 00:50:04,260
+That times that, which is that thing
+squared, times all the pijs. Add them up.
+
+4908
+00:50:04,440 --> 00:50:13,840
+What do you think I get for that? I get the
+variance of the x experiment. The standard
+
+4926
+00:50:13,840 --> 00:50:23,020
+variance of the x experiment. So v, I have
+to tell you what v is now here. v, this is
+
+4946
+00:50:23,020 --> 00:50:33,700
+v. 2 by 2 matrix. I get the variance of the
+x experiment. What do I get down here? The
+
+4966
+00:50:33,700 --> 00:50:39,480
+variance of the y experiment by itself,
+because it's y's times y's that give me the
+
+4982
+00:50:39,480 --> 00:50:47,900
+2, 2 entry. So this is just sigma y
+squared. Sigma y squared. OK, but the
+
+4998
+00:50:47,900 --> 00:50:55,420
+novelty is the 1, 2, and it'll be
+symmetric. So it's a symmetric matrix. So
+
+5013
+00:50:55,420 --> 00:51:03,420
+this is v transpose. I just have to see
+here. So I have pij times the distance of
+
+5031
+00:51:03,720 --> 00:51:11,840
+this guy times this guy. That's what's
+going to show up in the 1, 2 position.
+
+5047
+00:51:14,360 --> 00:51:22,020
+It'll be in row 1. It'll be in column 2.
+It's the x. It's the distances. So what
+
+5065
+00:51:22,020 --> 00:51:27,660
+will it be in the case of unglued
+coins, independent coins? Zero.
+
+5077
+00:51:29,820 --> 00:51:35,180
+I mean, I'm just feeling like 0. I haven't
+done the computation. But I know that when
+
+5094
+00:51:35,180 --> 00:51:40,880
+I have independent experiments, then this
+covariance, which everybody would write as
+
+5106
+00:51:40,880 --> 00:51:48,300
+sigma xy, and it's the same here. It's
+symmetric. Sigma yx, if you like. So those
+
+5122
+00:51:48,300 --> 00:51:57,020
+subscripts are telling me that the sum
+of the p's, joint probabilities, times the
+
+5136
+00:51:57,020 --> 00:52:03,360
+distance of x from its mean, the distance
+of y from its mean, added up over all the
+
+5154
+00:52:03,360 --> 00:52:10,720
+possibilities. So the case of unglued
+coins, the case of independent ones, in
+
+5167
+00:52:10,720 --> 00:52:19,420
+that case, those are 0. Maybe worth just
+writing that out. You would get 0. So you
+
+5184
+00:52:19,420 --> 00:52:25,500
+have a diagonal matrix. The diagonal matrix
+is just the separate variances, because
+
+5197
+00:52:25,500 --> 00:52:30,620
+that's all. You do independent. Experiments
+are independent. So all you can really
+
+5210
+00:52:30,920 --> 00:52:37,280
+expect information is sigma x squared and
+sigma y squared. But if the two coins are
+
+5226
+00:52:37,320 --> 00:52:38,140
+glued together,
+
+5228
+00:52:40,280 --> 00:52:46,160
+then what? If the two coins are glued
+together, well, let me just say, because
+
+5243
+00:52:46,260 --> 00:52:52,060
+time is up, this matrix will be singular.
+If the two coins were glued together, this
+
+5259
+00:52:52,140 --> 00:53:01,960
+would be, the determinant would be 0 here.
+The sigma xy in the glued case would be
+
+5276
+00:53:01,960 --> 00:53:07,480
+squared, would be the same as
+sigma x squared sigma y squared.
+
+5288
+00:53:09,930 --> 00:53:16,880
+Actually, we're probably getting all these
+1 quarters, and that would make sense. So
+
+5302
+00:53:16,880 --> 00:53:27,660
+the case of a, so I'll just end with
+this statement. This matrix is positive
+
+5317
+00:53:27,800 --> 00:53:35,560
+semidefinite always. Positive semidefinite
+always, because it's column times row. We
+
+5328
+00:53:35,560 --> 00:53:40,900
+know that's positive semidefinite. And it's
+multiplied by numbers greater or equal 0.
+
+5341
+00:53:41,420 --> 00:53:47,560
+So it's a combination of rank 1 positive
+semidefinite. So it's positive semidefinite
+
+5354
+00:53:47,800 --> 00:53:54,400
+or positive definite. It's certainly
+positive definite in the independent case
+
+5365
+00:53:54,480 --> 00:54:00,360
+when it's diagonal. And the totally
+dependent case, when the coins are
+
+5377
+00:54:00,360 --> 00:54:08,580
+completely stuck together, that will be the
+semidefinite case when these entries would
+
+5390
+00:54:08,580 --> 00:54:16,520
+all be the same, actually. So that's
+a first look at covariance matrices. It
+
+5404
+00:54:16,620 --> 00:54:21,540
+brought in tensors. It brought in joint
+probabilities. It brought in column times
+
+5417
+00:54:21,540 --> 00:54:29,260
+row. It kept symmetry. And we recognized
+positive definite or positive semidefinite.
+
+5429
+00:54:30,000 --> 00:54:34,800
+So in between, coins that were
+partly glued, partly independent but not
+
+5441
+00:54:35,020 --> 00:54:40,040
+completely independent experiments,
+then this number would be smaller. The
+
+5451
+00:54:40,040 --> 00:54:46,100
+determinant would be, this wouldn't be 0,
+but it would be smaller than these numbers.
+
+5466
+00:54:47,460 --> 00:54:54,720
+OK, we're, I've run four minutes
+over. You're very kind to say. So have a
+
+5481
+00:54:54,720 --> 00:55:00,000
+wonderful break. And I'll see you a
+week from Monday. Good. Thanks.
+

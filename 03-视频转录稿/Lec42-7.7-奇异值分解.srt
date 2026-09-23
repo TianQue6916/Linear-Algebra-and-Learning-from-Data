@@ -1,0 +1,3426 @@
+﻿1
+00:00:01,620 --> 00:00:04,820
+The following content is
+provided under a Creative Commons license.
+
+2
+00:00:05,360 --> 00:00:10,940
+Your support will help MIT OpenCourseWare continue
+to offer high quality educational resources for free.
+
+3
+00:00:11,620 --> 00:00:15,760
+To make a donation or to view additional
+materials from hundreds of MIT courses,
+
+4
+00:00:16,580 --> 00:00:20,920
+visit MIT
+OpenCourseWare at ocw .mit .edu.
+
+5
+00:00:23,500 --> 00:00:30,440
+So this is a big day mathematically
+speaking, because we come to this key idea,
+
+6
+00:00:31,380 --> 00:00:36,680
+which is a little bit like eigenvalues,
+well, a lot like eigenvalues, but different
+
+7
+00:00:37,320 --> 00:00:39,020
+because the matrix A
+
+8
+00:00:39,580 --> 00:00:39,960
+now
+
+9
+00:00:41,220 --> 00:00:43,660
+is usually rectangular.
+
+10
+00:00:44,620 --> 00:00:47,800
+So for a rectangular matrix, the whole idea
+of eigenvalues
+
+11
+00:00:48,420 --> 00:00:52,640
+is shot, because if I multiply A
+
+12
+00:00:53,440 --> 00:00:55,360
+times a vector x in n
+
+13
+00:00:56,320 --> 00:01:06,760
+dimensions, out will come something in m dimensions, and it's not going
+to equal lambda x. So Ax equal lambda x is not even possible if A is
+
+14
+00:01:06,760 --> 00:01:06,900
+rectangular.
+
+15
+00:01:08,680 --> 00:01:11,100
+And even if A is square,
+
+16
+00:01:11,700 --> 00:01:14,880
+what are the problems? Just thinking for a
+minute about eigenvalues.
+
+17
+00:01:16,240 --> 00:01:18,440
+The case I wrote up here
+
+18
+00:01:19,180 --> 00:01:23,480
+is the
+great case where I have a symmetric matrix,
+
+19
+00:01:24,420 --> 00:01:28,000
+and then it's got
+a full set of eigenvalues and eigenvectors,
+
+20
+00:01:28,860 --> 00:01:30,960
+and they're
+orthogonal, all good.
+
+21
+00:01:31,500 --> 00:01:34,080
+But for a general square matrix,
+
+22
+00:01:35,060 --> 00:01:43,840
+either the eigenvectors are complex, eigenvalues
+are complex, or the eigenvectors are not orthogonal.
+
+23
+00:01:44,840 --> 00:01:53,640
+So we can't stay with eigenvalues forever. That's
+what I'm saying. And this is the right thing to do.
+
+24
+00:01:55,380 --> 00:01:57,200
+Now, so what are these pieces?
+
+25
+00:01:58,100 --> 00:02:00,440
+So these are the left,
+
+26
+00:02:03,400 --> 00:02:07,040
+and these are the
+right singular vectors.
+
+27
+00:02:07,860 --> 00:02:10,280
+So this is the
+new word is singular.
+
+28
+00:02:16,280 --> 00:02:20,940
+And
+in between go not the eigenvalues, but the
+
+29
+00:02:21,920 --> 00:02:22,880
+singular values.
+
+30
+00:02:23,920 --> 00:02:27,060
+So we've got the whole
+point now. You've got to pick up on this.
+
+31
+00:02:27,800 --> 00:02:28,740
+There are two sets
+
+32
+00:02:29,560 --> 00:02:31,140
+of singular vectors, not one.
+
+33
+00:02:32,700 --> 00:02:34,800
+For eigenvectors, we just
+had one set,
+
+34
+00:02:35,440 --> 00:02:36,580
+the q's.
+
+35
+00:02:38,220 --> 00:02:40,800
+Now we have, for
+a rectangular matrix,
+
+36
+00:02:41,840 --> 00:02:47,340
+we've got one set of left eigenvectors in m
+dimensions,
+
+37
+00:02:47,980 --> 00:02:52,000
+and we've got another
+set of right eigenvectors in n dimensions.
+
+38
+00:02:53,100 --> 00:02:59,320
+And numbers in between are not eigenvalues,
+but singular values.
+
+39
+00:02:59,920 --> 00:03:00,840
+So these guys are,
+
+40
+00:03:01,460 --> 00:03:02,980
+let
+
+41
+00:03:03,580 --> 00:03:07,260
+me write what that looks
+like. This is, again, a diagonal matrix,
+
+42
+00:03:08,760 --> 00:03:10,640
+sigma 2 to sigma r,
+
+43
+00:03:11,140 --> 00:03:11,760
+let's say.
+
+44
+00:03:13,660 --> 00:03:16,000
+So it's, again, a diagonal
+matrix in the middle.
+
+45
+00:03:17,890 --> 00:03:18,740
+But
+
+46
+00:03:21,280 --> 00:03:24,280
+the
+numbers on that diagonal are all positive,
+
+47
+00:03:25,580 --> 00:03:25,980
+or 0.
+
+48
+00:03:26,780 --> 00:03:30,500
+And they're called singular values. So it's
+just a different world.
+
+49
+00:03:31,060 --> 00:03:31,300
+OK,
+
+50
+00:03:32,060 --> 00:03:38,770
+so really the first step I have to do, the
+math step, is to show that any matrix
+
+51
+00:03:39,720 --> 00:03:40,160
+can
+
+52
+00:03:41,620 --> 00:03:42,900
+be factored into
+
+53
+00:03:43,540 --> 00:03:45,620
+u times sigma times v transpose.
+
+54
+00:03:47,000 --> 00:03:55,220
+So that's the parallel to the spectral theorem that
+any symmetric matrix could be factored that way.
+
+55
+00:03:55,820 --> 00:03:56,820
+So you're good for that part.
+
+56
+00:03:58,480 --> 00:04:00,780
+We just have to do it
+to see what
+
+57
+00:04:01,800 --> 00:04:03,280
+are u and sigma and v.
+
+58
+00:04:04,340 --> 00:04:08,800
+What are those vectors
+and those singular values? OK, let's go.
+
+59
+00:04:09,980 --> 00:04:11,450
+So the key is
+
+60
+00:04:13,280 --> 00:04:15,040
+that A transpose A
+
+61
+00:04:15,600 --> 00:04:20,740
+is a great matrix. So that's the key to the
+math,
+
+62
+00:04:21,560 --> 00:04:22,780
+is A transpose A.
+
+63
+00:04:24,360 --> 00:04:28,620
+So what are the properties of
+A transpose A? This A is rectangular again.
+
+64
+00:04:29,200 --> 00:04:29,920
+So maybe
+
+65
+00:04:30,500 --> 00:04:31,340
+m by n.
+
+66
+00:04:33,640 --> 00:04:36,280
+A transpose
+is, so this was m by n.
+
+67
+00:04:37,060 --> 00:04:38,940
+This was n by m.
+
+68
+00:04:39,900 --> 00:04:42,480
+So we get a
+result that's n by n.
+
+69
+00:04:44,580 --> 00:04:47,380
+And what else can
+you tell me about A transpose A?
+
+70
+00:04:48,800 --> 00:04:50,720
+Symmetric. It's symmetric. That's
+a big deal.
+
+71
+00:04:51,740 --> 00:04:53,000
+And it's square.
+
+72
+00:04:53,640 --> 00:04:58,230
+And well, oh, yeah, you can tell me more
+now. Because we talked about something,
+
+73
+00:04:59,040 --> 00:05:00,370
+a topic that's
+
+74
+00:05:01,200 --> 00:05:03,200
+a little more than symmetric last
+time.
+
+75
+00:05:04,260 --> 00:05:07,260
+The matrix A transpose A will be
+
+76
+00:05:08,040 --> 00:05:12,640
+positive definite. Its
+eigenvalues are greater or equal 0.
+
+77
+00:05:14,120 --> 00:05:14,600
+And
+
+78
+00:05:15,100 --> 00:05:17,600
+that will mean that we
+can take their square roots.
+
+79
+00:05:18,280 --> 00:05:19,520
+And that's what we will do.
+
+80
+00:05:20,020 --> 00:05:23,980
+So A transpose A
+will have a factorization. It's symmetric.
+
+81
+00:05:25,100 --> 00:05:28,180
+It'll have like a
+q lambda q transpose.
+
+82
+00:05:28,960 --> 00:05:34,160
+But I'm going to call it v lambda.
+No, yeah, lambda. I'll still call it lambda
+
+83
+00:05:34,740 --> 00:05:35,160
+v transpose.
+
+84
+00:05:36,660 --> 00:05:42,080
+So these v's, what do we know about the eigenvectors?
+So these v's are eigenvectors of this guy.
+
+85
+00:05:43,160 --> 00:05:47,100
+Square, symmetric, positive
+definite matrix. So we're in good shape.
+
+86
+00:05:47,900 --> 00:05:54,560
+And what do we know about the eigenvalues
+of A transpose A? They are all positive.
+
+87
+00:05:55,560 --> 00:05:58,340
+So the eigenvalues
+are, well, are equal 0.
+
+88
+00:05:59,360 --> 00:06:00,480
+And these guys are orthogonal.
+
+89
+00:06:03,160 --> 00:06:04,820
+And these
+guys are greater or equal there.
+
+90
+00:06:05,580 --> 00:06:06,040
+And OK.
+
+91
+00:06:07,480 --> 00:06:08,260
+So that's good.
+
+92
+00:06:10,020 --> 00:06:20,140
+That's one of our, we'll depend a lot on that. But also,
+you've got to recognize that A A transpose is a different guy.
+
+93
+00:06:21,380 --> 00:06:21,880
+A A transpose.
+
+94
+00:06:24,220 --> 00:06:27,420
+So what's the
+shape of A A transpose?
+
+95
+00:06:28,440 --> 00:06:29,260
+How big is that?
+
+96
+00:06:30,320 --> 00:06:31,060
+Now I've got,
+
+97
+00:06:32,100 --> 00:06:36,520
+what do I have? M by
+N times N by M. So this will be what size?
+
+98
+00:06:37,740 --> 00:06:39,120
+M by M. Different shape.
+
+99
+00:06:41,620 --> 00:06:43,020
+But with the same eigenvalues.
+
+100
+00:06:44,540 --> 00:06:47,250
+The same eigenvalues. So
+it's going to have some other eigenvectors,
+
+101
+00:06:47,780 --> 00:06:52,190
+u. Of course, I'm going to call them u, because
+I'm going to go in over there. They'll be the same.
+
+102
+00:06:53,260 --> 00:06:56,280
+Well, the same, yeah,
+I shouldn't,
+
+103
+00:06:57,100 --> 00:06:58,360
+I have to say,
+
+104
+00:06:59,120 --> 00:07:00,460
+when I say the same,
+
+105
+00:07:02,040 --> 00:07:11,000
+I can't quite literally mean the very same, because this
+has got N eigenvalues, and this has got M eigenvalues.
+
+106
+00:07:12,800 --> 00:07:19,200
+But the missing guys, the ones that are in one of
+them and not in the other, depending on the sizes,
+
+107
+00:07:19,700 --> 00:07:20,260
+are 0s.
+
+108
+00:07:21,300 --> 00:07:22,680
+So really, the
+
+109
+00:07:23,180 --> 00:07:26,800
+heart of the thing, the
+non -zero eigenvalues are the same.
+
+110
+00:07:27,360 --> 00:07:27,360
+OK.
+
+111
+00:07:28,320 --> 00:07:29,680
+Now, well, actually,
+
+112
+00:07:32,300 --> 00:07:33,520
+I've pretty much revealed
+
+113
+00:07:35,140 --> 00:07:37,840
+what the SVD is going to use.
+
+114
+00:07:38,580 --> 00:07:40,380
+It's going to use the u's
+
+115
+00:07:41,380 --> 00:07:46,780
+from here and the v's from here. But that's
+the story. You've got to see that story.
+
+116
+00:07:49,320 --> 00:07:53,590
+So fresh start on the singular value
+decomposition. What are we looking for?
+
+117
+00:07:54,240 --> 00:07:55,670
+Well, as a factorization,
+
+118
+00:07:57,080 --> 00:07:58,100
+so we're looking for,
+
+119
+00:08:03,700 --> 00:08:05,840
+we want A,
+
+120
+00:08:06,780 --> 00:08:08,420
+we want vectors v,
+
+121
+00:08:10,360 --> 00:08:12,140
+so that when I multiply by v,
+
+122
+00:08:12,640 --> 00:08:16,280
+so if it was an
+eigenvector, it would be Av equal lambda v.
+
+123
+00:08:16,860 --> 00:08:21,460
+But now for A, it's rectangular. It hasn't
+got eigenvectors.
+
+124
+00:08:22,680 --> 00:08:26,060
+So Av is sigma,
+
+125
+00:08:26,960 --> 00:08:30,780
+the new singular value, times u.
+
+126
+00:08:33,559 --> 00:08:39,640
+So I'm going to take the first guy and the
+second guy and the rth guy. I'll stop at r,
+
+127
+00:08:40,960 --> 00:08:41,440
+the rank.
+
+128
+00:08:42,880 --> 00:08:43,039
+Oh, yeah.
+
+129
+00:08:46,180 --> 00:08:47,340
+Is that what I want?
+
+130
+00:08:51,060 --> 00:08:52,660
+Let me just see.
+
+131
+00:08:54,020 --> 00:08:58,000
+Av is sigma
+u. Yeah, that's good. OK.
+
+132
+00:08:58,740 --> 00:09:01,560
+So this is
+what takes the place of Ax equal lambda x.
+
+133
+00:09:02,840 --> 00:09:04,360
+A times one set
+
+134
+00:09:05,080 --> 00:09:11,360
+of singular vectors gives me a number times the other
+set of singular vectors. And why did I stop at r,
+
+135
+00:09:12,100 --> 00:09:12,460
+the rank?
+
+136
+00:09:13,300 --> 00:09:18,940
+Because after that, the sigmas are 0.
+So after that, I could have some more guys.
+
+137
+00:09:19,840 --> 00:09:21,000
+But they'll
+be in the null space,
+
+138
+00:09:23,560 --> 00:09:23,880
+0
+
+139
+00:09:24,840 --> 00:09:25,400
+on down
+
+140
+00:09:27,440 --> 00:09:28,340
+to vn.
+
+141
+00:09:29,160 --> 00:09:30,900
+So these are the important ones.
+
+142
+00:09:32,840 --> 00:09:33,880
+That's what I'm looking for.
+
+143
+00:09:35,980 --> 00:09:37,360
+Let me say it now in words.
+
+144
+00:09:38,760 --> 00:09:41,600
+I'm looking for a bunch
+of orthogonal vectors, v,
+
+145
+00:09:43,720 --> 00:09:45,780
+so that when
+I multiply them by A,
+
+146
+00:09:46,720 --> 00:09:48,860
+I get a bunch of
+orthogonal vectors u.
+
+147
+00:09:50,020 --> 00:09:51,340
+That is not
+
+148
+00:09:51,840 --> 00:09:56,580
+so clearly possible. But it is possible. It
+does happen.
+
+149
+00:09:57,460 --> 00:10:02,430
+I'm looking for one set of orthogonal
+vectors v in the input space, you could say,
+
+150
+00:10:03,100 --> 00:10:05,680
+so that the
+Av's in the output space
+
+151
+00:10:06,320 --> 00:10:07,060
+are also orthogonal.
+
+152
+00:10:08,960 --> 00:10:16,160
+In our picture of the big picture of linear
+algebra,
+
+153
+00:10:18,680 --> 00:10:20,500
+we have
+
+154
+00:10:21,020 --> 00:10:21,600
+v's
+
+155
+00:10:22,280 --> 00:10:23,500
+in this space
+
+156
+00:10:24,360 --> 00:10:25,820
+and then stuff in the
+null space.
+
+157
+00:10:31,600 --> 00:10:37,640
+Over here in the column space and
+some stuff in the null space over there.
+
+158
+00:10:38,160 --> 00:10:41,650
+And the idea is that I have orthogonal v's
+here.
+
+159
+00:10:42,880 --> 00:10:45,900
+And when I multiply by
+A, so multiply
+
+160
+00:10:47,300 --> 00:10:47,920
+by A,
+
+161
+00:10:49,080 --> 00:10:51,920
+then I get orthogonal
+u's over here.
+
+162
+00:10:53,260 --> 00:10:54,320
+Orthogonal to orthogonal.
+
+163
+00:10:54,920 --> 00:10:55,220
+That's
+
+164
+00:10:56,080 --> 00:10:56,700
+what makes
+
+165
+00:10:57,940 --> 00:10:59,540
+the v's and the u's special.
+
+166
+00:11:00,280 --> 00:11:00,380
+Right.
+
+167
+00:11:01,400 --> 00:11:06,440
+OK, that's the property. And then when we write
+down, well, let me write down what that would mean.
+
+168
+00:11:07,580 --> 00:11:10,460
+So
+I've just drawn a picture to go with this,
+
+169
+00:11:12,080 --> 00:11:12,380
+those equations.
+
+170
+00:11:13,650 --> 00:11:15,960
+That picture just goes
+with these equations.
+
+171
+00:11:16,640 --> 00:11:18,260
+And let me just write
+down what it means.
+
+172
+00:11:19,080 --> 00:11:19,700
+It means
+
+173
+00:11:20,240 --> 00:11:20,840
+in matrix,
+
+174
+00:11:21,520 --> 00:11:21,620
+so
+
+175
+00:11:22,880 --> 00:11:24,920
+I've
+written it, oh, yeah. I've written it here
+
+176
+00:11:26,540 --> 00:11:27,760
+in vectors one at a time.
+
+177
+00:11:28,900 --> 00:11:32,600
+But of course, you know I'm going to put
+those vectors into the columns of a matrix.
+
+178
+00:11:33,780 --> 00:11:39,200
+So A times
+v1 up to, let's say, vr
+
+179
+00:11:41,120 --> 00:11:42,760
+will equal,
+
+180
+00:11:44,200 --> 00:11:47,260
+oh, yeah, it
+equals sigma times u's.
+
+181
+00:11:47,940 --> 00:11:49,000
+So this is what I'm after,
+
+182
+00:11:49,720 --> 00:11:58,520
+is u1 up to
+ur multiplied by sigma 1 along to sigma r.
+
+183
+00:12:01,920 --> 00:12:08,400
+What I'm doing now is
+just to say I'm converting these individual
+
+184
+00:12:09,960 --> 00:12:11,000
+singular vectors,
+
+185
+00:12:11,640 --> 00:12:13,480
+each v going into a u,
+
+186
+00:12:14,140 --> 00:12:20,980
+to putting them all together into a matrix. And of
+course, what I've written here is Av equals u sigma.
+
+187
+00:12:21,780 --> 00:12:25,260
+Av equals u sigma.
+
+188
+00:12:27,680 --> 00:12:30,660
+That's what that amounts to.
+
+189
+00:12:32,720 --> 00:12:32,880
+Well,
+
+190
+00:12:33,980 --> 00:12:34,340
+then
+
+191
+00:12:35,360 --> 00:12:43,640
+I'm going to put a v transpose on this side. And
+I'm going to get to A equals u sigma v transpose,
+
+192
+00:12:44,660 --> 00:12:46,960
+multiplying both sides
+there by v transpose.
+
+193
+00:12:49,060 --> 00:12:55,460
+Kind of writing the same thing in different
+forms, matrix form, vector at a time form.
+
+194
+00:12:57,800 --> 00:12:58,940
+And now we
+
+195
+00:13:00,180 --> 00:13:03,260
+have to find them. Now I've
+
+196
+00:13:03,840 --> 00:13:07,240
+used up boards saying what we're after, but
+now we've got to get there.
+
+197
+00:13:08,620 --> 00:13:10,620
+So what are the v's
+and what are the u's?
+
+198
+00:13:12,820 --> 00:13:13,020
+Well,
+
+199
+00:13:16,140 --> 00:13:19,440
+the cool
+idea is to think of A transpose A.
+
+200
+00:13:20,840 --> 00:13:22,420
+So you're
+with me what we're for.
+
+201
+00:13:23,600 --> 00:13:25,780
+And now think about A
+transpose A.
+
+202
+00:13:26,280 --> 00:13:28,620
+So if this is what I'm
+hoping for,
+
+203
+00:13:29,840 --> 00:13:31,180
+what will
+
+204
+00:13:31,900 --> 00:13:33,720
+A transpose A turn out to be?
+
+205
+00:13:37,120 --> 00:13:37,960
+So big moment
+
+206
+00:13:39,100 --> 00:13:40,960
+that's going to reveal
+what the v's are.
+
+207
+00:13:41,960 --> 00:13:43,940
+So if I form A transpose A,
+
+208
+00:13:46,180 --> 00:13:49,240
+so A
+transpose, I've got to transpose this guy.
+
+209
+00:13:50,240 --> 00:13:55,600
+So A transpose is
+v sigma transpose u transpose, right?
+
+210
+00:13:57,480 --> 00:14:00,380
+And then comes A, which is this,
+
+211
+00:14:01,520 --> 00:14:04,080
+u sigma v transpose.
+
+212
+00:14:04,760 --> 00:14:05,780
+So why did I do that?
+
+213
+00:14:08,200 --> 00:14:14,100
+Why is it that A transpose A is the cool
+thing to look at to make the problem simpler?
+
+214
+00:14:14,660 --> 00:14:19,660
+Well, what
+becomes simpler in that line just written?
+
+215
+00:14:20,720 --> 00:14:22,240
+u transpose u is
+
+216
+00:14:23,500 --> 00:14:23,940
+the identity,
+
+217
+00:14:25,100 --> 00:14:28,940
+because I'm looking for
+orthogonal, in fact, orthonormal u's.
+
+218
+00:14:29,980 --> 00:14:32,000
+So that's the identity. So this
+
+219
+00:14:33,020 --> 00:14:33,600
+is v
+
+220
+00:14:34,380 --> 00:14:35,980
+sigma transpose sigma
+
+221
+00:14:37,240 --> 00:14:37,720
+v transpose.
+
+222
+00:14:39,500 --> 00:14:43,510
+And I'll put parentheses around that,
+because that's a diagonal matrix.
+
+223
+00:14:48,900 --> 00:14:49,700
+What does that tell me?
+
+224
+00:14:50,280 --> 00:14:51,710
+What does that tell all of us?
+
+225
+00:14:53,580 --> 00:15:02,720
+A transpose A has this form. Now, we've seen that form before. We know
+that this is a symmetric matrix, symmetric and even positive definite.
+
+226
+00:15:03,240 --> 00:15:04,400
+So what are the v's?
+
+227
+00:15:06,320 --> 00:15:07,280
+The v's are
+
+228
+00:15:08,760 --> 00:15:12,440
+the eigenvectors of A
+transpose A.
+
+229
+00:15:13,700 --> 00:15:19,740
+This is the q lambda q
+transpose for that symmetric matrix.
+
+230
+00:15:20,840 --> 00:15:23,500
+So we know the v's are
+the eigenvectors
+
+231
+00:15:27,020 --> 00:15:29,100
+of A transpose A.
+
+232
+00:15:31,820 --> 00:15:38,960
+And I guess we're also going to get the singular
+value. So the sigma transpose sigma, which will be
+
+233
+00:15:39,600 --> 00:15:40,960
+the sigma squareds,
+
+234
+00:15:41,600 --> 00:15:43,320
+are the eigenvalues
+
+235
+00:15:47,620 --> 00:15:49,200
+of A transpose A.
+
+236
+00:15:51,660 --> 00:15:51,800
+Good.
+
+237
+00:15:55,280 --> 00:16:05,100
+Sort of by looking for the correct thing, u sigma v transpose, and then
+just using the u transpose u equal identity, we got it back to something we
+
+238
+00:16:05,100 --> 00:16:05,980
+perfectly recognize.
+
+239
+00:16:07,940 --> 00:16:12,830
+A transpose A has that form. So now we know
+what the v's are. And if I do it the other way,
+
+240
+00:16:15,320 --> 00:16:16,380
+which what's the other way?
+
+241
+00:16:18,240 --> 00:16:22,980
+Instead of A transpose A,
+the other way is to look at A A transpose.
+
+242
+00:16:23,840 --> 00:16:25,360
+And if I write all that down,
+
+243
+00:16:26,680 --> 00:16:34,660
+A is the u sigma v transpose. And the A
+transpose is the v sigma transpose u transpose.
+
+244
+00:16:35,880 --> 00:16:41,000
+And this stuff goes away and leaves me with
+u
+
+245
+00:16:41,780 --> 00:16:47,380
+sigma sigma transpose u
+transpose. So I know what the u's are too.
+
+246
+00:16:47,920 --> 00:16:53,740
+They're the eigenvectors
+of A A transpose.
+
+247
+00:16:55,180 --> 00:16:57,380
+Isn't
+
+248
+00:16:59,065 --> 00:17:02,450
+that a beautiful symmetry?
+
+249
+00:17:06,119 --> 00:17:11,960
+And A A transpose are two different guys now. So they
+have each has its own eigenvectors. And we use both.
+
+250
+00:17:13,160 --> 00:17:14,040
+It's just right.
+
+251
+00:17:15,780 --> 00:17:20,040
+And I
+just have to take the final step. And we've
+
+252
+00:17:21,140 --> 00:17:22,280
+established the SVD.
+
+253
+00:17:23,859 --> 00:17:27,250
+So the final step is to
+remember what I'm going for here.
+
+254
+00:17:29,940 --> 00:17:33,000
+A times a v is supposed to be sigma times a
+u.
+
+255
+00:17:36,100 --> 00:17:41,320
+See, what I have to
+deal with now is I haven't quite finished.
+
+256
+00:17:42,060 --> 00:17:46,060
+It's just perfect as far as
+it goes, but it hasn't gone to the end yet.
+
+257
+00:17:46,700 --> 00:17:47,080
+Because
+
+258
+00:17:48,640 --> 00:17:54,380
+we could have double eigenvalues and triple
+eigenvalues and all those horrible possibilities.
+
+259
+00:17:56,720 --> 00:18:00,680
+And if I have triple eigenvalues or double
+eigenvalues,
+
+260
+00:18:01,420 --> 00:18:07,920
+then what's the deal with eigenvectors if I
+have double eigenvalues? Suppose a matrix has a,
+
+261
+00:18:08,740 --> 00:18:09,120
+say,
+
+262
+00:18:09,640 --> 00:18:11,620
+a symmetric matrix
+has a double eigenvalue.
+
+263
+00:18:12,820 --> 00:18:14,460
+Let me just take an example.
+
+264
+00:18:14,980 --> 00:18:20,380
+So symmetric matrix like,
+say, 1, 1, 5. Make it.
+
+265
+00:18:21,100 --> 00:18:21,320
+Why not?
+
+266
+00:18:23,720 --> 00:18:25,260
+What's the
+deal with eigenvectors
+
+267
+00:18:25,880 --> 00:18:25,980
+for
+
+268
+00:18:26,660 --> 00:18:28,240
+that matrix 1, 1, 5?
+
+269
+00:18:29,680 --> 00:18:32,860
+So 5 has
+got an eigenvector. You can see what it is.
+
+270
+00:18:33,840 --> 00:18:34,860
+0, 0, 1.
+
+271
+00:18:35,880 --> 00:18:37,760
+What about the eigenvectors that
+go
+
+272
+00:18:38,520 --> 00:18:40,600
+with lambda
+equal 1 for that matrix?
+
+273
+00:18:43,520 --> 00:18:47,000
+What would be eigenvectors for lambda equal
+1?
+
+274
+00:18:48,700 --> 00:18:51,580
+Unfortunately, there's
+a whole plane of them.
+
+275
+00:18:52,160 --> 00:18:53,000
+Any vector
+
+276
+00:18:53,820 --> 00:19:01,800
+of the form x, y, 0. Any vector in the x, y
+plane would produce x, y, 0.
+
+277
+00:19:06,040 --> 00:19:08,100
+And vectors. And
+I've got to pick two that
+
+278
+00:19:08,820 --> 00:19:14,160
+are orthogonal, which I can do. And
+then they have to be in the SVD.
+
+279
+00:19:14,780 --> 00:19:17,840
+Those two orthogonal guys have to go to two
+orthogonal guys.
+
+280
+00:19:18,420 --> 00:19:18,940
+In other words,
+
+281
+00:19:19,580 --> 00:19:20,620
+there's a little bit
+
+282
+00:19:21,760 --> 00:19:22,540
+of detail here.
+
+283
+00:19:23,740 --> 00:19:26,620
+A little getting into this
+
+284
+00:19:27,320 --> 00:19:28,320
+exactly what is.
+
+285
+00:19:28,880 --> 00:19:29,080
+Well,
+
+286
+00:19:30,000 --> 00:19:30,560
+actually,
+
+287
+00:19:34,460 --> 00:19:35,480
+let me. Let me
+
+288
+00:19:36,460 --> 00:19:37,140
+tell you the steps.
+
+289
+00:19:38,400 --> 00:19:38,420
+OK.
+
+290
+00:19:39,120 --> 00:19:45,440
+So I use this to conclude that the v's, the
+singular vectors, should be eigenvalues.
+
+291
+00:19:46,380 --> 00:19:51,600
+I concluded those guys from this step. Now,
+I'm not going to use this step so much.
+
+292
+00:19:52,260 --> 00:19:54,820
+Of course, it's in the back of my mind. But
+I'm not
+
+293
+00:19:55,340 --> 00:19:55,740
+using it.
+
+294
+00:19:56,460 --> 00:19:59,540
+I'm going to
+get the u's from here.
+
+295
+00:20:00,980 --> 00:20:05,060
+So u1 is a
+
+296
+00:20:05,760 --> 00:20:08,200
+v1 over sigma 1.
+
+297
+00:20:10,020 --> 00:20:16,380
+v, ur is a vr over sigma r.
+
+298
+00:20:17,280 --> 00:20:18,680
+You see what I'm doing here?
+
+299
+00:20:20,300 --> 00:20:21,380
+I'm picking
+
+300
+00:20:22,380 --> 00:20:24,040
+in a possible
+
+301
+00:20:25,220 --> 00:20:27,700
+plane of things the one I want,
+
+302
+00:20:28,660 --> 00:20:29,520
+the u's I want.
+
+303
+00:20:30,920 --> 00:20:32,840
+I've chosen the sigmas.
+
+304
+00:20:33,900 --> 00:20:34,300
+They are
+
+305
+00:20:35,920 --> 00:20:37,820
+fixed for A transpose A.
+
+306
+00:20:38,420 --> 00:20:39,840
+The eigenvectors are v's.
+
+307
+00:20:40,900 --> 00:20:43,080
+The eigenvalues are sigma
+squared.
+
+308
+00:20:43,920 --> 00:20:44,260
+OK.
+
+309
+00:20:44,880 --> 00:20:47,120
+And now, then,
+this is the u I want.
+
+310
+00:20:49,500 --> 00:20:50,140
+Are you with me?
+
+311
+00:20:51,120 --> 00:20:56,320
+So I had
+to give a, I want to get these u's correct.
+
+312
+00:20:56,940 --> 00:21:00,420
+And if I have a whole plane of possibilities,
+I've got to pick the right one.
+
+313
+00:21:01,720 --> 00:21:04,540
+OK. And now, finally,
+I have to show that it's the right one.
+
+314
+00:21:05,440 --> 00:21:07,400
+So what is left to show?
+
+315
+00:21:08,820 --> 00:21:13,940
+I should show that these
+u's are eigenvectors of A A transpose.
+
+316
+00:21:16,980 --> 00:21:20,340
+And I should show
+that they're orthogonal.
+
+317
+00:21:20,900 --> 00:21:25,700
+Right? That's the key, right? I would like
+to show that these are orthogonal.
+
+318
+00:21:27,560 --> 00:21:28,920
+And that's what
+goes in this picture.
+
+319
+00:21:30,580 --> 00:21:36,060
+The v's, I've got orthogonal guys, because
+they're the eigenvectors of a symmetric matrix.
+
+320
+00:21:36,580 --> 00:21:45,440
+Pick them orthogonal. But now, I'm multiplying by A. So I'm
+getting the u, which is A v over sigma for the basis vectors.
+
+321
+00:21:46,240 --> 00:21:47,820
+And I
+have to show they're orthogonal.
+
+322
+00:21:48,500 --> 00:21:50,900
+So this is
+like the final moment.
+
+323
+00:21:52,680 --> 00:21:54,340
+Does everything come together
+right?
+
+324
+00:21:57,540 --> 00:21:59,400
+If I've picked the v's
+
+325
+00:21:59,920 --> 00:22:02,480
+as the eigenvectors of
+A transpose A,
+
+326
+00:22:03,880 --> 00:22:06,660
+and then I take these
+for the u's,
+
+327
+00:22:07,340 --> 00:22:08,360
+are they orthogonal?
+
+328
+00:22:09,640 --> 00:22:13,200
+So I would like to think that we can check
+that fact and
+
+329
+00:22:13,700 --> 00:22:14,500
+that it will come out.
+
+330
+00:22:15,540 --> 00:22:17,660
+Could you just help me
+through this one?
+
+331
+00:22:18,680 --> 00:22:20,240
+I'll never
+ask for anything again.
+
+332
+00:22:21,220 --> 00:22:24,700
+Just get the SVD for me.
+
+333
+00:22:25,760 --> 00:22:26,360
+OK.
+
+334
+00:22:31,720 --> 00:22:33,140
+So I would like to show
+
+335
+00:22:33,920 --> 00:22:39,740
+that
+u1, that's so let me put up what I'm doing.
+
+336
+00:22:40,360 --> 00:22:45,400
+I'm trying to show that u1 transpose u2 is
+0.
+
+337
+00:22:47,740 --> 00:22:48,200
+They're orthogonal.
+
+338
+00:22:49,380 --> 00:22:53,940
+OK, so u1 is A v1
+
+339
+00:22:55,600 --> 00:22:56,720
+over sigma 1.
+
+340
+00:22:58,180 --> 00:22:59,940
+That's transpose. That's u1.
+
+341
+00:23:00,900 --> 00:23:04,820
+And u2 is A v2 over sigma 2.
+
+342
+00:23:06,080 --> 00:23:07,240
+And I want to get 0.
+
+343
+00:23:08,140 --> 00:23:11,080
+The whole conversation is
+
+344
+00:23:12,030 --> 00:23:12,660
+ending right here.
+
+345
+00:23:13,680 --> 00:23:15,600
+Why is that thing 0?
+
+346
+00:23:17,320 --> 00:23:18,840
+The v's are orthogonal.
+
+347
+00:23:19,480 --> 00:23:20,720
+We know the v's are orthogonal.
+
+348
+00:23:22,080 --> 00:23:31,050
+They're orthogonal eigenvectors of A transpose A. Let
+me repeat that. The v's are orthogonal eigenvectors
+
+349
+00:23:32,720 --> 00:23:34,620
+of A transpose A,
+
+350
+00:23:36,660 --> 00:23:44,340
+which I know we can find them. Then I chose the
+u's to be this. And I want to get the answer 0.
+
+351
+00:23:44,960 --> 00:23:45,940
+Are you ready to do it?
+
+352
+00:23:48,560 --> 00:23:51,700
+We want to compute that
+
+353
+00:23:52,440 --> 00:23:54,120
+and get 0. So what do I get?
+
+354
+00:23:56,720 --> 00:24:01,320
+We just have to do it.
+So I can see that the denominator is that.
+
+355
+00:24:02,360 --> 00:24:04,410
+So is it v1 transpose
+
+356
+00:24:05,620 --> 00:24:07,340
+A transpose, right,
+
+357
+00:24:08,040 --> 00:24:09,100
+times A v2?
+
+358
+00:24:15,000 --> 00:24:16,300
+And I'm hoping to get 0.
+
+359
+00:24:17,520 --> 00:24:19,160
+Do I get 0 here?
+
+360
+00:24:21,260 --> 00:24:22,120
+You hope so.
+
+361
+00:24:23,580 --> 00:24:28,420
+v1 is orthogonal to v2. But I've got
+A transpose A stuck in the middle there.
+
+362
+00:24:29,020 --> 00:24:31,840
+So what happens here?
+
+363
+00:24:33,300 --> 00:24:34,340
+How do I look at that?
+
+364
+00:25:05,420 --> 00:25:06,020
+I've got v2 squared
+
+365
+00:25:06,660 --> 00:25:10,440
+times v2,
+yep, divided by sigma 1 sigma 2.
+
+366
+00:25:16,540 --> 00:25:18,420
+So the A's are out of there now.
+
+367
+00:25:20,100 --> 00:25:20,450
+And do I?
+
+368
+00:25:21,480 --> 00:25:22,970
+So I've just got these numbers,
+
+369
+00:25:24,480 --> 00:25:29,800
+sigma 2 squared. So that would
+be sigma 2 over sigma 1. I've accounted for
+
+370
+00:25:30,500 --> 00:25:34,220
+these numbers here,
+times v1 transpose v2.
+
+371
+00:25:34,780 --> 00:25:35,680
+And now
+
+372
+00:25:38,580 --> 00:25:39,460
+what's up?
+
+373
+00:25:41,040 --> 00:25:41,700
+They're orthonormal.
+
+374
+00:25:43,200 --> 00:25:44,060
+We've got it.
+
+375
+00:25:44,580 --> 00:25:44,980
+That's 0.
+
+376
+00:25:45,720 --> 00:25:46,500
+That is 0 there.
+
+377
+00:25:48,220 --> 00:25:53,180
+Yeah. So not
+only are the v's orthogonal to each other,
+
+378
+00:25:53,900 --> 00:26:03,600
+but because they're eigenvectors of A transpose A, when I do this,
+I discover that the Av's are orthogonal to each other over in the
+
+379
+00:26:04,360 --> 00:26:05,940
+column space.
+
+380
+00:26:06,540 --> 00:26:09,160
+So orthogonal
+v's in the row space,
+
+381
+00:26:09,840 --> 00:26:18,000
+orthogonal Av's over in the column space.
+That was discovered long after eigenvectors.
+
+382
+00:26:19,380 --> 00:26:21,060
+And it's an interesting history.
+
+383
+00:26:22,660 --> 00:26:25,380
+And it just comes out right.
+
+384
+00:26:26,800 --> 00:26:32,040
+And then it was discovered, but
+not much used for, oh, 100 years probably.
+
+385
+00:26:33,690 --> 00:26:34,340
+And then
+
+386
+00:26:36,480 --> 00:26:45,640
+people saw that it was exactly the right thing. And data
+matrices became important, which are large rectangular matrices.
+
+387
+00:26:47,240 --> 00:26:52,780
+And we have not, oh, I better say a word,
+just a word here about actually computing
+
+388
+00:26:53,820 --> 00:26:56,600
+the v's and
+the sigmas and the u's.
+
+389
+00:26:58,520 --> 00:27:01,070
+So how would
+you actually find them?
+
+390
+00:27:02,760 --> 00:27:06,560
+Well, what most want to
+say is you would not go
+
+391
+00:27:07,240 --> 00:27:09,680
+this A transpose A route.
+
+392
+00:27:14,280 --> 00:27:22,580
+Why is it like a big mistake if you have a
+matrix A, say, 5 ,000 by 10 ,000?
+
+393
+00:27:23,560 --> 00:27:32,440
+Why is it a mistake to actually use A transpose A
+in the computation? We used it heavily in the proof.
+
+394
+00:27:34,000 --> 00:27:41,760
+And we could find another proof that wouldn't use
+it so much. But why would I not multiply these
+
+395
+00:27:42,640 --> 00:27:43,440
+two together?
+
+396
+00:27:45,400 --> 00:27:47,160
+It's very big, very expensive.
+
+397
+00:27:49,400 --> 00:27:54,520
+It adds in a
+whole lot of round off.
+
+398
+00:27:55,080 --> 00:27:57,200
+You have a matrix that's now,
+
+399
+00:27:58,500 --> 00:28:01,840
+its vulnerability to round
+off errors is squared.
+
+400
+00:28:02,660 --> 00:28:06,600
+That's called its condition number
+gets squared. And you just don't go there.
+
+401
+00:28:07,720 --> 00:28:08,540
+So the
+
+402
+00:28:09,260 --> 00:28:13,700
+actual computational methods are quite
+different. And we'll talk about those.
+
+403
+00:28:15,240 --> 00:28:20,200
+But the A transpose A,
+because it's symmetric positive definite,
+
+404
+00:28:21,090 --> 00:28:28,680
+made the proof so nice. That's what you've
+seen the nicest proof, I'd say, of the.
+
+405
+00:28:30,460 --> 00:28:32,400
+And now I
+should think about the geometry.
+
+406
+00:28:33,440 --> 00:28:38,900
+So
+what does A equal A equal u sigma? Maybe I
+
+407
+00:28:39,700 --> 00:28:41,660
+take another board, but it will
+
+408
+00:28:44,220 --> 00:28:44,540
+fill it.
+
+409
+00:28:45,520 --> 00:28:49,090
+But it's a good u sigma
+v transpose.
+
+410
+00:28:51,200 --> 00:28:54,740
+So it's got three factors there.
+
+411
+00:28:55,520 --> 00:28:58,760
+And I would like, and
+each factor is kind of a special matrix.
+
+412
+00:29:00,080 --> 00:29:01,880
+u and v are orthogonal matrix.
+
+413
+00:29:02,660 --> 00:29:03,680
+Those as rotations.
+
+414
+00:29:05,560 --> 00:29:08,700
+Sigma is a diagonal
+matrix. I think of it as stretching.
+
+415
+00:29:09,380 --> 00:29:10,660
+So now I'm just going
+to draw the picture.
+
+416
+00:29:11,520 --> 00:29:14,780
+So here's unit vectors.
+
+417
+00:29:17,760 --> 00:29:19,060
+And the first thing, so
+
+418
+00:29:20,660 --> 00:29:23,840
+if I multiply
+by x, this is the first thing that happens.
+
+419
+00:29:24,520 --> 00:29:25,480
+So that rotates.
+
+420
+00:29:26,760 --> 00:29:28,020
+Here's x's.
+
+421
+00:29:29,020 --> 00:29:32,640
+And v transpose x's,
+that's still a circle.
+
+422
+00:29:34,550 --> 00:29:38,780
+Length didn't change for those when
+I multiply by an orthogonal matrix.
+
+423
+00:29:39,580 --> 00:29:39,800
+But
+
+424
+00:29:40,640 --> 00:29:41,500
+the vectors turn.
+
+425
+00:29:44,060 --> 00:29:44,660
+It's a rotation.
+
+426
+00:29:46,400 --> 00:29:49,040
+Could be a reflection, but let's keep it as
+a rotation.
+
+427
+00:29:49,720 --> 00:29:50,800
+Now what does sigma do?
+
+428
+00:29:52,440 --> 00:29:56,320
+So I
+have this unit circle. I'm in 2D.
+
+429
+00:29:59,560 --> 00:30:01,520
+So I'm drawing a picture of the,
+
+430
+00:30:02,810 --> 00:30:05,760
+vectors,
+these are the unit vectors in 2D,
+
+431
+00:30:06,640 --> 00:30:06,980
+x, y.
+
+432
+00:30:08,220 --> 00:30:10,040
+They got turned by
+
+433
+00:30:10,720 --> 00:30:11,600
+the orthogonal matrix.
+
+434
+00:30:12,840 --> 00:30:15,980
+What does sigma do to
+that picture?
+
+435
+00:30:17,440 --> 00:30:25,400
+It stretches. It stretches. Because sigma multiplies by sigma 1 in the
+first component, sigma 2 in the second. So it stretches these guys.
+
+436
+00:30:26,480 --> 00:30:29,360
+And let's suppose this is number 1 and this
+is number 2.
+
+437
+00:30:29,980 --> 00:30:31,840
+This is number 1
+and this is number 2.
+
+438
+00:30:32,720 --> 00:30:42,820
+Sigma 1, our convention is sigma 1, we always take sigma 1 greater or
+equal sigma 2 greater or equal whatever greater or equal sigma rank.
+
+439
+00:30:43,880 --> 00:30:45,920
+And they're all positive.
+
+440
+00:30:49,240 --> 00:30:50,160
+And the rest are 0.
+
+441
+00:30:51,600 --> 00:31:00,600
+So sigma 1 will be bigger than sigma 2. So I'm expecting this ellipse,
+it'll change. A circle goes to an ellipse when you stretch the,
+
+442
+00:31:02,960 --> 00:31:06,460
+I didn't get it quite
+perfect, but not bad.
+
+443
+00:31:07,660 --> 00:31:09,840
+So this would be sigma
+
+444
+00:31:10,840 --> 00:31:13,560
+2 v2, sigma 1 v1.
+
+445
+00:31:15,360 --> 00:31:17,320
+And this would be sigma 2 v2.
+
+446
+00:31:17,980 --> 00:31:19,200
+And we now have an ellipse.
+
+447
+00:31:22,300 --> 00:31:24,540
+So we started
+with x's in a circle.
+
+448
+00:31:25,340 --> 00:31:26,100
+We rotated.
+
+449
+00:31:26,660 --> 00:31:26,900
+We stretched.
+
+450
+00:31:27,680 --> 00:31:33,140
+And now the final step
+is take these guys and multiply them by u.
+
+451
+00:31:33,800 --> 00:31:34,480
+So this was
+
+452
+00:31:35,060 --> 00:31:35,500
+the sigma
+
+453
+00:31:36,170 --> 00:31:37,020
+v transpose x.
+
+454
+00:31:38,320 --> 00:31:40,560
+And now I'm ready
+for the u part, which
+
+455
+00:31:41,160 --> 00:31:43,300
+comes last because it's
+at the left.
+
+456
+00:31:44,320 --> 00:31:46,340
+And what
+happens? What's the picture now?
+
+457
+00:31:50,160 --> 00:31:51,760
+What does u do to the ellipse?
+
+458
+00:31:52,780 --> 00:31:53,960
+It rotates it.
+
+459
+00:31:54,540 --> 00:31:56,300
+It's another orthogonal matrix.
+
+460
+00:31:56,980 --> 00:31:58,120
+It rotates it somewhere,
+
+461
+00:31:58,840 --> 00:31:59,360
+maybe there.
+
+462
+00:32:03,140 --> 00:32:03,860
+And now
+
+463
+00:32:06,220 --> 00:32:12,680
+we see the u's, u2 and u1.
+
+464
+00:32:14,760 --> 00:32:16,940
+Maybe they're there. Maybe I,
+
+465
+00:32:20,840 --> 00:32:23,070
+well, let me think about that.
+
+466
+00:32:24,140 --> 00:32:26,500
+Basically, that's not,
+that's right.
+
+467
+00:32:28,820 --> 00:32:32,760
+So this SVD is telling
+us something quite remarkable,
+
+468
+00:32:34,120 --> 00:32:35,040
+that every
+
+469
+00:32:35,540 --> 00:32:42,090
+linear transformation, every matrix
+multiplication factors into a rotation
+
+470
+00:32:42,600 --> 00:32:45,120
+times a stretch times
+a different rotation,
+
+471
+00:32:46,660 --> 00:32:47,780
+possibly different.
+
+472
+00:32:50,200 --> 00:32:51,860
+Actually, when would
+
+473
+00:32:52,920 --> 00:33:03,580
+the u be the same as the v? Here's a good question. When is u the same as
+v? When are the two singular vectors just the same? a is square. GILBERT
+
+474
+00:33:03,580 --> 00:33:05,250
+STRANGER.
+Because a would have to be square.
+
+475
+00:33:06,320 --> 00:33:12,820
+And we want this to be the same as q lambda
+q transpose,
+
+476
+00:33:13,820 --> 00:33:15,160
+if they're the same.
+
+477
+00:33:15,880 --> 00:33:21,480
+So the u's would be the same as the
+v's when the matrix is symmetric.
+
+478
+00:33:22,280 --> 00:33:26,750
+And actually, we need
+it to be positive definite. Why is that?
+
+479
+00:33:28,760 --> 00:33:32,320
+Because the convention is these
+guys are greater or equal to 0. These guys,
+
+480
+00:33:32,840 --> 00:33:34,730
+if it's going to be the same,
+
+481
+00:33:35,360 --> 00:33:35,740
+then
+
+482
+00:33:36,240 --> 00:33:39,660
+so for a
+positive definite symmetric matrix,
+
+483
+00:33:43,810 --> 00:33:49,710
+the s that we started
+with is the same as the a on the next line.
+
+484
+00:33:50,260 --> 00:33:54,900
+Yeah. The q is
+the u. The q transpose is the v transpose.
+
+485
+00:33:55,500 --> 00:33:56,620
+The lambda is the sigma.
+
+486
+00:33:58,760 --> 00:34:05,860
+The sewn Those are these good matrices. And they're the ones that you can't
+improve, basically. They are so good you can't make a positive definite
+
+487
+00:34:06,280 --> 00:34:08,800
+symmetric matrix better
+than it is. Well, maybe
+
+488
+00:34:09,420 --> 00:34:10,719
+diagonalize it or something.
+
+489
+00:34:12,139 --> 00:34:13,500
+Now,
+
+490
+00:34:14,540 --> 00:34:17,380
+I think I would like one question
+here.
+
+491
+00:34:18,340 --> 00:34:21,580
+It helps me anyway to
+
+492
+00:34:22,560 --> 00:34:24,199
+keep this figure straight.
+
+493
+00:34:29,500 --> 00:34:29,820
+the
+
+494
+00:34:31,400 --> 00:34:31,880
+parameters
+
+495
+00:34:32,920 --> 00:34:34,040
+in
+
+496
+00:34:35,460 --> 00:34:36,460
+this factorization.
+
+497
+00:34:38,570 --> 00:34:39,600
+So I'm 2 by 2.
+
+498
+00:34:41,120 --> 00:34:41,639
+I'm 2 by 2.
+
+499
+00:34:43,460 --> 00:34:43,940
+So A
+
+500
+00:34:45,080 --> 00:34:45,500
+has
+
+501
+00:34:46,340 --> 00:34:48,100
+four numbers, A, B, C, D.
+
+502
+00:34:53,040 --> 00:34:56,060
+Then I guess I feel that
+four numbers should appear
+
+503
+00:34:57,120 --> 00:34:57,820
+on the right -hand side.
+
+504
+00:34:59,800 --> 00:35:02,620
+Somehow the u and the
+sigma and the v transpose
+
+505
+00:35:03,440 --> 00:35:14,140
+should use up a total of four numbers. So we have a nice counting match
+between the left side that's got four numbers, A, B, C, D, and the right side
+
+506
+00:35:14,140 --> 00:35:16,700
+that's
+got four numbers buried in there somewhere.
+
+507
+00:35:18,560 --> 00:35:20,030
+So can we dig them out?
+
+508
+00:35:21,620 --> 00:35:23,120
+How many numbers in sigma?
+
+509
+00:35:23,620 --> 00:35:24,900
+That's pretty clear.
+
+510
+00:35:28,540 --> 00:35:28,660
+Two.
+
+511
+00:35:29,500 --> 00:35:30,400
+Sigma 1 and sigma 2.
+
+512
+00:35:31,840 --> 00:35:32,460
+The two eigenvalues.
+
+513
+00:35:34,760 --> 00:35:37,180
+How many
+numbers in this rotation?
+
+514
+00:35:39,620 --> 00:35:40,000
+So if
+
+515
+00:35:40,880 --> 00:35:45,230
+I had a different color chalk, I would put
+2 for the number of
+
+516
+00:35:46,080 --> 00:35:52,040
+things accounted for by sigma. How many
+parameters does a 2 by 2 rotation require?
+
+517
+00:35:53,440 --> 00:35:53,540
+1.
+
+518
+00:35:54,120 --> 00:35:56,500
+And what's a
+good word for that 1?
+
+519
+00:36:00,540 --> 00:36:02,040
+That 1 parameter.
+
+520
+00:36:03,080 --> 00:36:08,340
+It's like I have a cos theta, sine theta, minus
+sine theta, cos theta. There's a number theta.
+
+521
+00:36:09,470 --> 00:36:10,940
+It's the angle it rotates.
+
+522
+00:36:12,360 --> 00:36:16,100
+So
+that's one guy to tell the rotation angle,
+
+523
+00:36:17,520 --> 00:36:20,770
+two guys to
+tell the stretchings, and
+
+524
+00:36:23,000 --> 00:36:26,320
+one more to
+tell the rotation from u,
+
+525
+00:36:27,280 --> 00:36:28,120
+adding up to 4.
+
+526
+00:36:29,200 --> 00:36:36,680
+So those match up with the four numbers, A, B, C,
+D, that we start with. Of course, it's a complicated
+
+527
+00:36:37,820 --> 00:36:42,600
+relation between those
+four numbers and rotations and stretches.
+
+528
+00:36:43,560 --> 00:36:45,140
+But it's 4 equals 4 anyway.
+
+529
+00:36:48,980 --> 00:36:52,000
+And I guess
+if you did 3 by 3s, oh,
+
+530
+00:36:53,200 --> 00:36:55,940
+3 by 3s, what would happen then?
+
+531
+00:36:56,840 --> 00:36:59,380
+So let
+me take 3. Do you want to care for 3 by 3s?
+
+532
+00:37:01,720 --> 00:37:04,120
+It's sort of satisfying
+to get 4 equal 4.
+
+533
+00:37:04,840 --> 00:37:05,640
+But now,
+
+534
+00:37:06,300 --> 00:37:07,800
+what do we get 3 by 3?
+
+535
+00:37:10,780 --> 00:37:12,380
+We got how many numbers here?
+
+536
+00:37:13,240 --> 00:37:13,740
+9.
+
+537
+00:37:22,530 --> 00:37:25,660
+GILBERT STRANGER. 9 numbers. Well, how many
+here? That's usually the easy.
+
+538
+00:37:26,300 --> 00:37:27,340
+3. GILBERT STRANGER. 3.
+
+539
+00:37:28,600 --> 00:37:30,620
+So what's your guess for the
+
+540
+00:37:31,760 --> 00:37:32,660
+how many in a rotation?
+
+541
+00:37:33,440 --> 00:37:37,520
+In a 3D rotation, you
+take a sphere and you rotate it.
+
+542
+00:37:38,620 --> 00:37:41,860
+How many
+numbers to tell you what's what?
+
+543
+00:37:42,500 --> 00:37:43,700
+To tell you what you did?
+
+544
+00:37:44,260 --> 00:37:48,660
+3. We hope
+3. Yeah, it's going to be 3, 3, and 3. For
+
+545
+00:37:49,460 --> 00:37:51,300
+the
+
+546
+00:37:51,820 --> 00:38:02,840
+three -dimensional world that we live in, so people who do rotations
+for a living understand that a rotation in 3D, but how do you see this?
+
+547
+00:38:03,740 --> 00:38:03,760
+Roll, pitch, and yaw.
+
+548
+00:38:04,360 --> 00:38:09,020
+GILBERT STRANGER. Sorry? Roll, pitch, and yaw. GILBERT STRANGER.
+Roll, pitch, and yaw. That sounds good. I mean, it's three words,
+
+549
+00:38:09,620 --> 00:38:10,840
+and we've got it, right?
+
+550
+00:38:11,540 --> 00:38:14,550
+OK. Yeah, roll, pitch,
+and yaw. Yeah, I guess a pilot,
+
+551
+00:38:15,380 --> 00:38:16,180
+hopefully,
+
+552
+00:38:17,040 --> 00:38:17,760
+knows about those.
+
+553
+00:38:18,460 --> 00:38:18,560
+3.
+
+554
+00:38:19,220 --> 00:38:19,380
+Yeah.
+
+555
+00:38:20,440 --> 00:38:24,020
+Yeah. Yeah, which is roll,
+when you're sort of like forward and back?
+
+556
+00:38:29,500 --> 00:38:30,760
+Roll, pitch, and yaw?
+
+557
+00:38:31,940 --> 00:38:37,380
+No, you guys don't know. Pitch is the up and down
+one. GILBERT STRANGER. Pitch is the up and down one.
+
+558
+00:38:38,220 --> 00:38:46,400
+Roll is like, it's like a barrel hole. GILBERT STRANGER. Yes. And yaw is
+your side side. GILBERT STRANGER. Oh, yaw, you stay in a plane, and you.
+
+559
+00:38:47,040 --> 00:38:47,860
+OK, beautiful.
+
+560
+00:38:48,440 --> 00:38:49,180
+Right, right.
+
+561
+00:38:50,120 --> 00:38:52,880
+And
+that leads us to our four, four dimensions.
+
+562
+00:38:54,400 --> 00:38:55,960
+What's your guess on 4D?
+
+563
+00:38:56,930 --> 00:39:05,440
+Well, we could do the count again. If it was 4 by 4, we would have 16
+numbers there. And in the middle, we always have an easy time with that.
+
+564
+00:39:06,220 --> 00:39:06,480
+That would
+
+565
+00:39:07,300 --> 00:39:15,960
+be 4. So we've got 12 left to share out.
+So 6, somehow, 6 angles in four dimensions.
+
+566
+00:39:17,820 --> 00:39:19,170
+Well, we'll leave it there.
+
+567
+00:39:19,840 --> 00:39:20,380
+Yeah, yeah, yeah.
+
+568
+00:39:22,320 --> 00:39:22,580
+OK,
+
+569
+00:39:23,360 --> 00:39:25,900
+so there's
+the SVD, but without an example.
+
+570
+00:39:28,040 --> 00:39:28,040
+Examples,
+
+571
+00:39:28,540 --> 00:39:34,440
+you know, I would have to compute A transpose
+A and find it. So the text will do that,
+
+572
+00:39:35,200 --> 00:39:36,700
+does it for a particular matrix.
+
+573
+00:39:37,820 --> 00:39:37,940
+Oh,
+
+574
+00:39:39,240 --> 00:39:44,560
+yeah, the text does it
+for a matrix 3, 4, 0, 5 that
+
+575
+00:39:45,160 --> 00:39:46,260
+came out pretty well.
+
+576
+00:39:47,830 --> 00:39:53,680
+GILBERT STRANGER. A few facts we could learn, though.
+So if I multiply all the eigenvalues together,
+
+577
+00:39:54,520 --> 00:39:56,980
+then
+I, for a matrix A, what do I get?
+
+578
+00:39:58,100 --> 00:39:58,840
+I get the determinant.
+
+579
+00:39:59,940 --> 00:40:03,320
+What
+if I multiply the singular values together?
+
+580
+00:40:04,480 --> 00:40:08,940
+Well, again, I get the determinant. You
+can see it right away from the big formula.
+
+581
+00:40:10,340 --> 00:40:11,060
+Take determinants.
+
+582
+00:40:13,980 --> 00:40:14,580
+Take determinants.
+
+583
+00:40:15,080 --> 00:40:18,480
+Well, assuming the matrix
+A is square, so it's got a determinant.
+
+584
+00:40:19,120 --> 00:40:24,140
+Then I take determinants. The determinant of this
+product, I can take the separate determinants.
+
+585
+00:40:24,780 --> 00:40:28,840
+That has determinant equal to 1,
+
+586
+00:40:30,020 --> 00:40:30,940
+an orthogonal matrix.
+
+587
+00:40:36,000 --> 00:40:38,520
+The determinant is 1.
+
+588
+00:40:39,360 --> 00:40:40,160
+And similarly here.
+
+589
+00:40:40,860 --> 00:40:42,180
+So the product of
+
+590
+00:40:42,800 --> 00:40:44,220
+the sigmas is also
+
+591
+00:40:44,880 --> 00:40:46,640
+the determinant. Yeah, yeah.
+
+592
+00:40:47,880 --> 00:40:52,480
+Sigma is also the determinant. The
+product of the sigmas here will be 15. But
+
+593
+00:40:53,240 --> 00:40:56,880
+you'll find
+that sigma 1 is smaller
+
+594
+00:40:58,240 --> 00:40:59,180
+than lambda 1.
+
+595
+00:40:59,840 --> 00:41:01,470
+So here are the eigenvalues.
+
+596
+00:41:02,320 --> 00:41:03,950
+Lambda 1 less
+or equal to lambda 2,
+
+597
+00:41:04,640 --> 00:41:05,060
+say.
+
+598
+00:41:06,020 --> 00:41:06,160
+But
+
+599
+00:41:06,980 --> 00:41:11,780
+the singular
+values are outside them.
+
+600
+00:41:12,980 --> 00:41:14,640
+Yeah. But they still multiply.
+
+601
+00:41:15,360 --> 00:41:18,520
+Sigma 1 times sigma 2
+will still be 15.
+
+602
+00:41:19,420 --> 00:41:23,300
+And
+that's the same as lambda 1 times lambda 2.
+
+603
+00:41:24,100 --> 00:41:24,100
+Yeah.
+
+604
+00:41:26,380 --> 00:41:38,320
+But overall, computing the examples of the SVD take more
+time because, well, yeah, you just compute A transpose A.
+
+605
+00:41:39,160 --> 00:41:45,940
+And you've got the V's. And you're on your way. And
+you have to take the square roots of the eigenvalues.
+
+606
+00:41:47,820 --> 00:41:50,180
+So that's the SVD as
+
+607
+00:41:52,460 --> 00:41:53,500
+a piece of pure math.
+
+608
+00:41:54,620 --> 00:41:58,260
+But of course, what we'll
+do next time, starting right away,
+
+609
+00:41:58,840 --> 00:42:00,440
+is use SVD.
+
+610
+00:42:01,140 --> 00:42:07,180
+And let me tell you even
+today the most important
+
+611
+00:42:10,110 --> 00:42:14,860
+pieces of the SVD. So what do I mean
+by pieces of the SVD? I've got one
+
+612
+00:42:15,420 --> 00:42:16,780
+more blackboard still
+to write on.
+
+613
+00:42:17,820 --> 00:42:18,100
+Here we go.
+
+614
+00:42:21,080 --> 00:42:27,480
+So let me write out A is the u's
+
+615
+00:42:27,980 --> 00:42:29,620
+times the sigmas,
+
+616
+00:42:30,700 --> 00:42:34,560
+sigmas 1 to r times the V's,
+
+617
+00:42:35,500 --> 00:42:40,980
+V transpose, V1 transpose
+down to Vr transpose. So those are across.
+
+618
+00:42:43,340 --> 00:42:43,640
+Yeah, actually,
+
+619
+00:42:45,640 --> 00:42:45,780
+what
+
+620
+00:42:48,040 --> 00:42:48,980
+I've written here,
+
+621
+00:42:52,720 --> 00:42:56,250
+so you could say there
+is a large, big economy.
+
+622
+00:42:56,800 --> 00:43:02,160
+There's a smaller size SVD
+that has the real stuff that really counts.
+
+623
+00:43:02,800 --> 00:43:06,100
+And then there's
+a larger SVD that has a whole lot of zeros.
+
+624
+00:43:06,940 --> 00:43:08,900
+So this would be
+the smaller one,
+
+625
+00:43:09,620 --> 00:43:10,620
+m by r.
+
+626
+00:43:13,400 --> 00:43:16,860
+This would
+be r by r. And these would all be positive.
+
+627
+00:43:17,680 --> 00:43:19,460
+And this would be r by n.
+
+628
+00:43:24,460 --> 00:43:29,260
+So that's only
+using the r non -zeros.
+
+629
+00:43:29,840 --> 00:43:31,760
+All these
+guys are greater than 0.
+
+630
+00:43:33,520 --> 00:43:34,380
+Then the other one,
+
+631
+00:43:35,740 --> 00:43:36,920
+we could fill out
+
+632
+00:43:38,200 --> 00:43:39,430
+to get a square
+
+633
+00:43:40,920 --> 00:43:42,000
+orthogonal matrix,
+
+634
+00:43:44,520 --> 00:43:45,000
+the sigmas,
+
+635
+00:43:46,060 --> 00:43:50,660
+and square
+V's, V1 transpose to Vn transpose.
+
+636
+00:43:52,140 --> 00:43:53,440
+So what are the shapes now?
+
+637
+00:43:54,120 --> 00:43:55,900
+This shape is m by m.
+
+638
+00:43:56,440 --> 00:43:58,980
+It's a proper orthogonal matrix.
+
+639
+00:43:59,500 --> 00:44:06,240
+This one also, n by n. So this guy has to be,
+this is the sigma now. So it has to be what size?
+
+640
+00:44:07,460 --> 00:44:10,230
+m
+by n. That's the remaining space.
+
+641
+00:44:10,940 --> 00:44:12,580
+So it starts with the sigmas.
+
+642
+00:44:14,000 --> 00:44:15,240
+And then it's all zeros,
+
+643
+00:44:17,080 --> 00:44:19,610
+accounting for null space stuff.
+
+644
+00:44:22,780 --> 00:44:27,760
+Yeah, so you should really
+see that these two are possible.
+
+645
+00:44:29,220 --> 00:44:32,020
+That all these zeros,
+when you multiply out,
+
+646
+00:44:34,280 --> 00:44:40,340
+just give nothing. So that really, the
+only thing that non -zero is in these bits.
+
+647
+00:44:41,420 --> 00:44:47,210
+But there is a complete one. So what
+are these extra u's there in the null space
+
+648
+00:44:48,520 --> 00:44:53,240
+of A transpose or
+A transpose A? Yeah, so two sizes,
+
+649
+00:44:54,600 --> 00:44:58,760
+the
+large size and the small size. But then the
+
+650
+00:44:59,700 --> 00:45:02,620
+things that
+count are all in there.
+
+651
+00:45:03,680 --> 00:45:03,900
+OK.
+
+652
+00:45:06,300 --> 00:45:11,150
+GILBERT STRANG So I was going to
+do one more thing. And let me see what
+
+653
+00:45:12,560 --> 00:45:13,020
+it was.
+
+654
+00:45:17,300 --> 00:45:20,560
+So this is section 1 .8
+of the notes.
+
+655
+00:45:21,220 --> 00:45:23,140
+And you'll see examples there.
+
+656
+00:45:25,520 --> 00:45:31,280
+And you'll see a second
+approach to
+
+657
+00:45:32,380 --> 00:45:34,340
+the finding
+the u's and V's and sigmas.
+
+658
+00:45:36,390 --> 00:45:43,460
+And I can tell you what that is. But maybe
+just to
+
+659
+00:45:44,660 --> 00:45:46,420
+do something nice at the end,
+
+660
+00:45:47,520 --> 00:45:48,780
+let me
+
+661
+00:45:50,080 --> 00:45:51,360
+tell you about
+
+662
+00:45:52,080 --> 00:45:54,640
+another factorization of A
+
+663
+00:45:55,320 --> 00:45:56,300
+that's famous
+
+664
+00:45:57,180 --> 00:45:58,820
+in engineering.
+
+665
+00:45:59,500 --> 00:46:01,080
+And it's famous in
+
+666
+00:46:05,480 --> 00:46:07,480
+geometry.
+
+667
+00:46:09,600 --> 00:46:13,520
+So this is NEA is a u
+sigma V transpose. We've got that.
+
+668
+00:46:14,280 --> 00:46:23,320
+Now, the other one that I'm thinking of, I'll tell you
+its name. It's called the polar decomposition of a matrix.
+
+669
+00:46:26,460 --> 00:46:30,980
+And all I want you to
+see is that it's virtually here.
+
+670
+00:46:31,540 --> 00:46:32,720
+So a polar means,
+
+671
+00:46:33,440 --> 00:46:38,580
+what's polar?
+And for a complex number, what's the polar
+
+672
+00:46:39,460 --> 00:46:41,160
+form of a complex number?
+
+673
+00:46:42,160 --> 00:46:44,860
+e to
+the i theta. It's e to the i theta times r.
+
+674
+00:46:45,540 --> 00:46:51,580
+Yeah. A real guy. So the real guy, r, will
+translate into a symmetric guy.
+
+675
+00:46:52,600 --> 00:46:54,300
+And the e to the i theta will
+
+676
+00:46:54,840 --> 00:46:55,460
+translate into?
+
+677
+00:46:58,000 --> 00:47:00,050
+So what does e say?
+What kind of a matrix
+
+678
+00:47:00,800 --> 00:47:02,890
+reminds you of e to the i theta?
+
+679
+00:47:03,560 --> 00:47:03,680
+Orthogonal.
+
+680
+00:47:04,240 --> 00:47:05,720
+Orthogonal. Size 1.
+
+681
+00:47:07,020 --> 00:47:07,480
+So orthogonal.
+
+682
+00:47:10,840 --> 00:47:13,140
+So that's a very nice.
+
+683
+00:47:14,680 --> 00:47:18,360
+Every matrix factors
+into a symmetric matrix
+
+684
+00:47:18,900 --> 00:47:20,460
+times an orthogonal matrix.
+
+685
+00:47:20,960 --> 00:47:22,340
+And I have, of course,
+
+686
+00:47:23,900 --> 00:47:25,690
+described these
+as the most important
+
+687
+00:47:26,460 --> 00:47:30,230
+classes of matrices. And here, we're saying
+every matrix is
+
+688
+00:47:31,240 --> 00:47:32,160
+a s times a q.
+
+689
+00:47:33,460 --> 00:47:38,280
+And I'm also saying
+that I can get that quickly out of the SVD.
+
+690
+00:47:39,360 --> 00:47:41,430
+So I just want to do it.
+
+691
+00:47:43,280 --> 00:47:46,360
+So I want to find an s and find a q out of
+this.
+
+692
+00:47:47,660 --> 00:47:48,660
+So to get an s,
+
+693
+00:47:49,340 --> 00:47:52,140
+so let me
+just start it. u sigma.
+
+694
+00:47:52,860 --> 00:47:54,360
+But now I'm looking for an s.
+
+695
+00:47:55,600 --> 00:47:57,280
+So what shall I take?
+
+696
+00:47:57,880 --> 00:47:58,340
+Put in now.
+
+697
+00:47:59,960 --> 00:48:01,840
+I better put in,
+
+698
+00:48:02,540 --> 00:48:07,840
+if I've got u sigma something and
+I want it to be symmetric, I should put in?
+
+699
+00:48:10,780 --> 00:48:12,340
+u transpose would do it.
+
+700
+00:48:13,510 --> 00:48:16,860
+But then if
+I put in u transpose, I've got to put in u.
+
+701
+00:48:17,640 --> 00:48:23,930
+So now I've got u sigma. u transpose u is the
+identity. Now I've got to get v transpose.
+
+702
+00:48:26,620 --> 00:48:34,240
+And have I got what the polar decomposition
+is asking for in this line?
+
+703
+00:48:35,500 --> 00:48:37,340
+So yeah, I think,
+what have I got here?
+
+704
+00:48:38,500 --> 00:48:46,020
+Where's the s in this? So you see, I took
+the SVD and I just put the identity in there.
+
+705
+00:48:46,600 --> 00:48:50,900
+Just shifted things a little.
+And now where is the s that I can read off?
+
+706
+00:48:53,800 --> 00:48:56,080
+First rate.
+
+707
+00:48:56,720 --> 00:48:57,180
+GILBERT STRANGSKI. That's an s.
+
+708
+00:48:58,720 --> 00:49:00,220
+That's a symmetric matrix.
+
+709
+00:49:01,180 --> 00:49:05,220
+And where's the q? Well, I guess we can see
+where the q has to be.
+
+710
+00:49:05,900 --> 00:49:06,520
+It's here.
+
+711
+00:49:09,000 --> 00:49:09,300
+Yeah.
+
+712
+00:49:11,080 --> 00:49:15,800
+Yeah, so just by sticking u transpose u and
+looking and putting the parentheses right,
+
+713
+00:49:16,640 --> 00:49:19,560
+I recover that
+
+714
+00:49:20,420 --> 00:49:22,220
+decomposition of a matrix,
+
+715
+00:49:23,680 --> 00:49:29,280
+which in mechanical
+engineering language tells me that any
+
+716
+00:49:30,100 --> 00:49:31,380
+strain can be,
+
+717
+00:49:32,500 --> 00:49:35,700
+which is
+like stretching of an elastic thing,
+
+718
+00:49:37,520 --> 00:49:46,740
+has a symmetric kind of
+a stretch and an internal twist.
+
+719
+00:49:50,440 --> 00:49:51,780
+So that's good.
+
+720
+00:49:52,280 --> 00:49:58,520
+Well, this was a
+lot of 3, 6, 9 boards filled with matrices.
+
+721
+00:49:59,740 --> 00:50:06,740
+Well, it is
+1806 -5, so maybe that's all right. But the
+
+722
+00:50:07,980 --> 00:50:11,100
+idea is to use them on
+a matrix of data.
+
+723
+00:50:12,040 --> 00:50:15,120
+And I'll just
+tell you the key fact.
+
+724
+00:50:16,360 --> 00:50:19,280
+The key fact. If I have
+a big matrix of data,
+
+725
+00:50:22,120 --> 00:50:22,480
+A,
+
+726
+00:50:27,360 --> 00:50:31,160
+and if I want to
+pull out of that matrix the important part.
+
+727
+00:50:32,780 --> 00:50:37,820
+So that's what data science
+has to be doing. Out of a big matrix,
+
+728
+00:50:38,940 --> 00:50:43,040
+some part
+of it is noise. Some part of it is signal.
+
+729
+00:50:43,640 --> 00:50:46,160
+I'm looking for the most important part of
+the signal here.
+
+730
+00:50:46,960 --> 00:50:49,220
+So I'm looking
+for the most important part of the matrix.
+
+731
+00:50:52,720 --> 00:50:54,420
+In a way, the biggest numbers.
+
+732
+00:50:55,080 --> 00:50:55,080
+But
+
+733
+00:50:55,680 --> 00:50:59,040
+of
+course, I don't look at individual numbers.
+
+734
+00:51:00,980 --> 00:51:03,000
+So what's the biggest
+part of the matrix?
+
+735
+00:51:04,340 --> 00:51:08,760
+What are the principal
+components? Now we're really getting in.
+
+736
+00:51:09,300 --> 00:51:10,100
+If this is a,
+
+737
+00:51:10,880 --> 00:51:15,780
+you know, it could be data, and we want to
+do statistics, or we want to see
+
+738
+00:51:16,600 --> 00:51:23,080
+what has high variance, what has low variance,
+we'll do these connections with statistics.
+
+739
+00:51:24,420 --> 00:51:27,300
+But what's the important
+part of the matrix? Well,
+
+740
+00:51:28,960 --> 00:51:36,270
+let me look at the u sigma
+v transpose here. Yeah. Let me look at it.
+
+741
+00:51:37,780 --> 00:51:41,940
+So what's
+the one most important part of that matrix?
+
+742
+00:51:43,640 --> 00:51:47,620
+The rank 1.
+It's a rank 1 piece. So when I say a part,
+
+743
+00:51:48,460 --> 00:51:54,460
+of course, it's going to be a matrix part. So the
+simple matrix building block is like a rank 1 matrix.
+
+744
+00:51:55,360 --> 00:51:56,580
+A something, something
+transpose.
+
+745
+00:51:57,920 --> 00:52:05,060
+And what should I pull out of that as being the
+most important rank 1 matrix that's in that product?
+
+746
+00:52:06,440 --> 00:52:11,090
+So I'll erase the
+1 .8 while you think, what do I do
+
+747
+00:52:12,020 --> 00:52:12,820
+to pick out
+
+748
+00:52:13,720 --> 00:52:14,200
+the big deal,
+
+749
+00:52:15,280 --> 00:52:17,980
+the thing
+that the data is telling me first?
+
+750
+00:52:19,380 --> 00:52:23,320
+Well, these are orthonormal.
+
+751
+00:52:24,520 --> 00:52:30,140
+No one is bigger than another one. These are
+orthonormal. No one is bigger than another one. But
+
+752
+00:52:31,120 --> 00:52:33,760
+here I look here.
+Which is the most important number?
+
+753
+00:52:34,640 --> 00:52:36,020
+Sigma 1. Sigma 1.
+
+754
+00:52:37,280 --> 00:52:44,020
+Sigma 1. So the part I pick out is this
+biggest number times its row times its column.
+
+755
+00:52:45,280 --> 00:52:50,100
+So it's u 1
+sigma 1 v 1 transpose
+
+756
+00:52:50,760 --> 00:52:52,340
+is the
+
+757
+00:52:52,880 --> 00:53:03,720
+top principal part of the matrix A. It's the leading part of the matrix
+A. It's the rank 1, the biggest rank 1 part of the matrix is there.
+
+758
+00:53:04,220 --> 00:53:09,600
+So computing those three guys is the first
+step to understanding the data.
+
+759
+00:53:10,400 --> 00:53:12,460
+Yeah.
+So that's what's coming next is.
+
+760
+00:53:13,380 --> 00:53:14,220
+And I guess tomorrow
+
+761
+00:53:15,340 --> 00:53:17,800
+since they moved MIT
+
+762
+00:53:18,460 --> 00:53:18,740
+declared
+
+763
+00:53:21,240 --> 00:53:22,280
+Tuesday to be Monday.
+
+764
+00:53:24,520 --> 00:53:29,640
+They didn't change
+Wednesday. So I'll see you tomorrow for the
+
+765
+00:53:30,540 --> 00:53:31,720
+principal components.
+
+766
+00:53:32,740 --> 00:53:32,840
+Good.
+

@@ -1,7 +1,7 @@
 # Gilbert Strang《Linear Algebra and Learning From Data》part004 双语翻译
 
 > <span style="color:#7f8c8d;">**范围**：书页 147–197（OCR 页 151–200，共 50 页）。**§II.4 Randomized Linear Algebra 收尾**（随机采样 / 随机投影 / 四步分解）→ **Part III Low Rank and Compressed Sensing**（§III.1 扰动下 $A^{-1}$ 的变化与 Sherman–Morrison–Woodbury → §III.2 特征值交错与低秩信号 → §III.3 快速衰减的奇异值 → §III.4 分裂算法 ADMM / prox / 软阈值 → §III.5 压缩感知与矩阵补全）。
-> **格式**：行内双语（中文主体 + `English term（中文翻译）` 行内嵌入），习题题干保留英文原文；公式行内 `$...$`、块级 ```` ```math ```` 围栏（无 `$$`）。
+> **格式**：行内双语（中文主体 + `English term（中文翻译）` 行内嵌入），习题题干保留英文原文；公式行内 `$...$`、块级 ```` ```math ```` 围栏（无 \$\$）。
 > **页映射**：page_151–160 = 书页 147–156（偏移 −4）；page_161 = 书页 157（Part III 章首标题页）；page_162 = 书页 159（书页 158 为空白背面，未入扫描）；page_163–200 = 书页 160–197（偏移 −3）。映射由 17 个印页码锚点实测确定。
 > **本合并文件由 50 个分页文件拼合而成**，每页以 `<!-- page NNN -->` 注释起始，页间以 `---` 分隔；单页原文见 `pages/page_NNN.bilingual.md`。</span>
 
@@ -11,13 +11,9 @@
 
 > <span style="color:#7f8c8d;">本页为书页 147，属 §II.4 Randomized Linear Algebra（随机化线性代数）正文；页眉与页码为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## 4. Randomized Linear Algebra（随机化线性代数）
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正与术语准备）：**</span> 本页 OCR 把矩阵 $A$ 误识为 `蓋`、`风`，把 `from` 误识为 `什 om`，把求和号 $\sum$ 误识为 `乥`，把下标 $k$ 误识为 `0`，把 $s_k^2$ 误识为 `sz`，把 $s$ 误识为 `5`，把 $v=(a,b)$ 误识为 `= @， b)`；`Our two-sample experiment was …` 一句句末无法辨认，按上下文补出。式 (2) 按“一列乘一行”的语境重建为分块外积，编号与原文一致。此外请先记住三个全文通用的词：**thin（薄）**指矩阵的行数远多于列数，形如“高而窄”的长条；**rank-one（秩一）**指形如 $uv^{T}$ 的矩阵，它的每一列都是同一个向量 $u$ 的倍数，所以整张矩阵的信息量只相当于两个向量；**preconditioner（预条件子）**指一个容易求逆的辅助矩阵 $M$，用来把难解方程组 $Ax=b$ 换成“条件数更好”的 $M^{-1}Ax=M^{-1}b$，使迭代法收敛更快。这三个词在本章后面会被反复使用，读者现在只需建立直觉，不必掌握构造方法。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### 1. Column-row sampling（列-行采样）
 
@@ -62,8 +58,6 @@ AB=\sum_{k=1}^{n} a_k b_k^{T}.
 
 最后要提醒一个容易误解的地方：$\sum_k s_k^2 a_kb_k^{T}$ 与 $AB$ 一般不相等，$CR$ 只是 $AB$ 的一个**随机估计**。它的价值在于“期望正确”：若第 $k$ 列被选中的概率为 $p_k$，并取 $s_k=1/\sqrt{sp_k}$（下文将给出），则 $E[CR]=AB$，即无偏（unbiased）。这就是随机化线性代数区别于普通近似（如截断 SVD 的有偏低秩逼近）的关键：它不是丢掉小奇异值，而是用随机抽样的方式，让“平均而言”还原真值。至于抽样带来的偏差有多大，则由方差控制，本章后续会给出集中不等式。这与概率论中“用样本均值估计总体均值”完全同构，读者在《概率论与数理统计》课上学的“无偏估计”“估计的方差”正是这套语言的原型。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### 2. Sampling by random projections（用随机投影采样）
 
 矩阵 $S$ 仍然是 thin（薄）的，所以 $AS$ 的列数远少于 $A$ 的列数。
@@ -90,8 +84,6 @@ AB=\sum_{k=1}^{n} a_k b_k^{T}.
 术语上还有三点需要读者提前分清，否则读英文文献时极易混淆。第一，$C(A)$ 是 **column space（列空间）**，即 $A$ 的所有列的线性组合构成的集合，也叫值域（range），不要与“行空间”混用；$C(A)$ 的维数就是 $A$ 的秩。第二，**preconditioner（预条件子）**不是用来求精确解的，而是用来**加速**迭代：把 $Ax=b$ 改写为 $M^{-1}Ax=M^{-1}b$ 后，迭代法（如共轭梯度法）收敛速度主要由 $M^{-1}A$ 的条件数决定，一个便宜且“接近 $A^{-1}$”的 $M$ 就能显著减少迭代步数；随机投影之所以有用，是因为它能在 $O(ns)$ 级别的代价下造出这样的 $M$。第三，**graph clustering（图聚类）**指把图的顶点分成若干组，使组内连接紧密、组间连接稀疏；它的代数形式依赖于图的邻接矩阵或拉普拉斯矩阵的低秩结构，所以低秩逼近与随机化方法能直接降低这一任务的计算代价。这句话原文只是“may reduce the computational cost”，中文也保留“可能”，不宜写成确定结论。
 
 跨课程的连接可以精确地记成这样一条路径：《线性代数》中“列空间—秩—线性组合”的概念 → 把列空间用随机矩阵压缩到低维 → 在低维空间里做乘法与分解 → 把结果映回原空间得到 $AB$ 的近似。与《数值分析》里的“矩阵分解 + 误差分析”相比，这里的误差不再是确定性的界，而是**高概率的界**（with high probability），这是随机数值线性代数最本质的方法论转变：接受“极小概率失败”，换取数量级更快的算法。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Practice with Computing Mean and Variance（计算均值与方差的练习）
 
@@ -213,8 +205,6 @@ $AB$ 的均值仍然保持正确。
 
 最后提醒读者注意本节的编号与引用位置。原文说“见本节末的 Problem 7”，指的是 §II.4 的习题部分（见页末引用行所标的 Strang §II.4, p. 148），而不是第 7 节的某个结论；本节习题保留了英文题干，便于读者掌握术语的原文表述。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Random Matrix Multiplication with the Correct Mean AB（均值 $AB$ 正确的随机矩阵乘法）
 
 $n \times s$ 的采样矩阵 $S$ 将含有 $s$ 列，$S$ 的每一列只有一个非零元。
@@ -304,8 +294,6 @@ p_1\,\frac{(\text{column 1 of } A)(\text{row 1 of } B)}{s p_1} + \dots + p_n\,\f
 
 跨课程连接一：概率论与数理统计里的无偏估计与最小方差估计，连接路径是把随机化算法看成估计量 → 无偏性对应 $E[\hat{X}]=AB$ → 有效性（方差最小）对应下面对 $p_j$ 的优化，区别在于统计课通常假定样本独立同分布，而这里每次试验从有限个秩一项中按自定义分布抽取，分布本身还是我们要设计的变量。跨课程连接二：Strang 线性代数与 18.065 中的 SVD 低秩近似，连接路径是$AB$ 写成秩一项之和 → 每项能量 $c_j$ → 抽样方差 $\sum_j c_j/p_j$；区别在于 SVD 是确定性截断，保留最大的几项、丢掉其余，而抽样近似是随机保留全部项、只是让大项出现得更频繁，因此估计仍然无偏。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Norm-squared Sampling Minimizes the Variance（范数平方采样使方差最小）
 
 范数平方采样（norm-squared sampling）选取的概率 $p_j$ 正比于数 $\|\text{column } j \text{ of } A\|\,\|\text{row } j \text{ of } B\|$，其中 $a_j$ 是 $A$ 的第 $j$ 列，$b_j$ 是 $B$ 的第 $j$ 行。
@@ -331,8 +319,6 @@ p_j = \frac{1}{C}\|\text{column } j \text{ of } A\|\,\|\text{row } j \text{ of }
 > <span style="color:#7f8c8d;">本页为书页 150，仍属 §III.4 Randomized Linear Algebra；节内小标题 Computations with Large Matrices 依原文保留并译出。</span>
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 校正）：**</span> 本页扫描损毁较重，校正如下：`叻（习g the bab “叻i忉e the variance （6丿` 依语境重建为概率 $p_j$ 的取值决定方差 (6)；`Ä` 重建为拉格朗日乘子 $\lambda$；`IIAB112F` 重建为 $\|AB\|_F^{2}$；`乥巧`、`引`、`cl 丨 丰` 依上下文分别重建为求和号 $\sum_j$、下标 $j$ 与常数 $C$；`X, = b / 5`、`廾 / 5` 中的 `5` 均为字母 $s$ 的误识，还原为 $X_i=a_j b_j^{T}/(s p_j)$ 与 $(X_i)_{kl}=a_{kj}b_{j\ell}/(s p_j)$；目标函数首项漏印的因子 $\frac{1}{s}$ 与约束项漏印的 $-1$ 依式 (6)(7) 的量纲补回。公式 (6)(7) 按方差的标准推导还原，编号与原文一致。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Computations with Large Matrices（大矩阵上的计算）
 
@@ -424,8 +410,6 @@ L(p_1,\ldots,p_n,\lambda) = \sum_{j=1}^{n}\frac{\|a_j\|^{2}\,\|b_j^{T}\|^{2}}{s\
 
 > <span style="color:#7f8c8d;">本页为书页 151，属 §II.4 Randomized Linear Algebra（随机化线性代数）；页眉 11.4 Randomized Linear Algebra 与印页码 151 为重复元素，不译、不收录，节号按原文标出。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## §II.4 Randomized Linear Algebra（随机化线性代数）（续）
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页 OCR 噪声密集。`蓋`、`互`、`儿` 三形都是 $A$；`月`、`咒`、`磊`、`朊` 都是 $R$，`C 咒` 即 $CR$；`亻` 是连接因子、混合矩阵 $M$；`什 0 m`、`忉`、`什` 都是英文介词 from；`CII 丆 月` 与 `CNfR` 是 $CMR$。`Norm-squared sampling` 与 `length-squared sampling` 原文以等号相连，意思是**同一个采样的两个名字**：按行、列的**平方长度**赋概率，故下文两句并入一句译出。六条参考文献按原文照录，仅把 OCR 拆散的卷期页码还原：SIAM Review 53 (2011) 217–288、Acta Numerica 26 (2017) 95–135、PNAS 104 (2007) no. 51, 20167–20172、arXiv:1608.04481、arXiv:1503.07152、Foundations and Trends in Theoretical Computer Science 10 (2014) 1–157。凡带 arXiv: 的编号都是**论文预印本编号**，不含页码，检索时直接把它粘进浏览器或 arXiv 站内搜索框即可，不要拆成卷号和期号。
@@ -442,11 +426,11 @@ L(p_1,\ldots,p_n,\lambda) = \sum_{j=1}^{n}\frac{\|a_j\|^{2}\,\|b_j^{T}\|^{2}}{s\
 > 具体算一遍就明白 $C$ 为什么是全局量。取 $A=B=\begin{pmatrix}1&1\\1&1\end{pmatrix}$，$2\times2$，$m=k=n=2$。每列长度 $\lVert\text{column }j\rVert=\sqrt{1^2+1^2}=\sqrt2$，每行长度同样 $\lVert\text{row }j\rVert=\sqrt2$。于是
 >
 > ```math
-\begin{aligned}
-C&=\sum_{j=1}^{2}\lVert\text{column }j\rVert\,\lVert\text{row }j\rVert=\sqrt2\cdot\sqrt2+\sqrt2\cdot\sqrt2=4,\\
-p_1&=p_2=\frac{2}{4}=\frac12 .
-\end{aligned}
-```
+> \begin{aligned}
+> C&=\sum_{j=1}^{2}\lVert\text{column }j\rVert\,\lVert\text{row }j\rVert=\sqrt2\cdot\sqrt2+\sqrt2\cdot\sqrt2=4,\\
+> p_1&=p_2=\frac{2}{4}=\frac12 .
+> \end{aligned}
+> ```
 > 第一遍只做归约：算每列、每行的长度并累加成 $C$，不做乘法；第二遍才按配额抽签，用累积分布找出随机数落在哪一列，把该外积除以 $p_j$ 累加。读两遍不是实现偷懒，而是结构必然：分母依赖全体数据，任何单遍流式算法都拿不到它。
 >
 > 先手算验证无偏性。全 1 矩阵下两个外积完全相同，$AB=2X_j$；取 $r=1$，抽中哪列的概率都是 $1/2$，估计量恒等于 $AB$，方差为零——方差量的是外积之间的差异，不是抽样次数。换成 $A=\begin{pmatrix}3&0\\0&1\end{pmatrix}$、$B=I$：两项能量为 $9$ 与 $1$，$C=4$，$p_1=3/4$、$p_2=1/4$；$r=1$ 时最优配额的方差是 $9/(3/4)+1/(1/4)-10=6$，均匀抽样是 $9/(1/2)+1/(1/2)-10=10$。方差降四成，代价是先扫完整个矩阵才知道 $p_1$ 不是 $1/2$。
@@ -474,8 +458,6 @@ p_1&=p_2=\frac{2}{4}=\frac12 .
 
 随后（在 RAM 内部）求出各个概率 $p_j$，并选出 $s$ 列与 $s$ 行用于采样。
 第二遍则把采样近似 $CR$ 送入快速内存。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Applications of Randomized Matrix Multiplication（随机化矩阵乘法的应用）
 
@@ -527,8 +509,6 @@ D. P. Woodruff, Sketching as a tool for numerical linear algebra. *Foundations a
 <!-- page 156: 书页 152 -->
 
 > <span style="color:#7f8c8d;">本页为书页 152，页眉 Computations with Large Matrices 与印页码 152 为重复元素，不译、不收录；正文仍属 §II.4 Randomized Linear Algebra。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Best $M$ in $A \approx CMR$: Frobenius Norm and $L^2$ Norm（$A \approx CMR$ 中的最佳 $M$：Frobenius 范数与 $L^2$ 范数）
 
@@ -612,8 +592,6 @@ Frobenius 范数分别处理这些矩阵每个分块中的每一个元素。
 但它把 $L^2$ 范数降低到 $\|[\,Y\;\; Z\,]\|$ 与 $\|[\,X^{T}\;\; Z^{T}\,]\|$ 中较大的那一个——而在 (10) 中，更小的 $L^2$ 范数显然是不可能的。
 在这个例子中，最小的 $L^2$ 范数是由那个取 $-1$（**而非取 $0$**）的子矩阵达到的。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Randomized Matrix Factorizations（随机化矩阵分解）
 
 现在我们来到本主题的总结。正交矩阵是 $A = QR$ 与 $A = U\Sigma V^{T}$ 追求的目标。矩阵 $A$ 太大，无法做精确分解——也许大到无法读取每一个元素 $a_{ij}$。如果我们从一个 $(m \times k)(k \times n)$ 的近似 $A \approx CB$ 出发，那么 Halko–Martinsson–Tropp 就能快速而准确地求出 $QR$ 与 $U\Sigma V^{T}$ 分解。
@@ -630,15 +608,11 @@ Frobenius 范数分别处理这些矩阵每个分块中的每一个元素。
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 与权威原文核对后，上述第二步分解的对象应为 $R_1B$ 而非 $B$，即由 $C = Q_1R_1$ 起，把 $R_1B$ 分解为 $Q_2R_2$（或 $U_2\Sigma V^{T}$），从而 $A \approx (Q_1Q_2)R_2$ 与 $A \approx U\Sigma V^{T}$。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## （续）Randomized Linear Algebra（随机化线性代数）
 
 下面就是各种快速分解，它们都从一个随机化分解 $A \approx CB$ 出发：把 $C$ 分解为 $Q_1R_1$，再把 $R_1B$ 分解为 $Q_2R_2$，于是得到 $A \approx (Q_1Q_2)R_2$，这用到的只是正交矩阵与三角矩阵。
 
 而由 $C = Q_1R_1$ 出发，把 $R_1B$ 分解为 $U_2\Sigma V^{T}$，并取 $U = Q_1U_2$，就得到 $A \approx U\Sigma V^{T}$。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Projections $J$ and Projection Matrices $P$（投影 $J$ 与投影矩阵 $P$）
 
@@ -663,8 +637,6 @@ P = J^{T}J = \begin{bmatrix} \cos^2\theta & \cos\theta\sin\theta \\ \cos\theta\s
 ```
 
 一个对称矩阵 $P$ **正交地**投影到自己的列空间上；在这里，那个列空间就是 $\mathbf{C}(J^{T})$。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Random Projections（随机投影）
 
@@ -728,8 +700,6 @@ Johnson 与 Lindenstrauss 研究的是 $\mathbf{R}^m$ 中 $n$ 个点的*随机* 
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 一处订正：本项目所用教材的印刷式为 $m$ by $k$ factor $Y=AG$、以及 $k>2800$、$k=2700$，故本页正文中的 $m\times k$、$m>2800$、$m=2700$ 一并改为 $k$。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Randomized Linear Algebra（随机化线性代数）（续）
 
 关键在于：维数 $k$ 必须按 $(\log n)/\varepsilon^{2}$ 的量级增长。证明中有一个令人惊叹的步骤说明：随机取一个 $k\times m$ 的投影 $J$，它极有可能把 $n$ 个点彼此分开。
@@ -745,8 +715,6 @@ Johnson 与 Lindenstrauss 研究的是 $\mathbf{R}^m$ 中 $n$ 个点的*随机* 
 18.065 有一个课程项目选了这样一个例子：其中 Lemma 要求 $k>2800$。而当 $k=2700$ 时，距离 $\|x_{i}-x_{j}\|$ 的精度确实失效了。
 
 同样有意思的是：即使距离算错了，各点的聚类（clustering）结构依然保留了下来。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Randomized Matrix Approximation（随机化矩阵逼近）
 
@@ -807,8 +775,6 @@ Johnson 与 Lindenstrauss 研究的是 $\mathbf{R}^m$ 中 $n$ 个点的*随机* 
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 又一处订正：Problem 8 末尾提示的题号，权威原文为 Problem II.2.11 on page 135；Problem 6 中关于方差的不等式，权威原文为 $\|AB\|_F^2 \le \left(\sum \|a_j\|\|b_j^T\|\right)^2$。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Problem Set II.4（习题集 II.4）
 
 <span style="color:#2471a3;">**[problem]**</span> **1** Given positive numbers $a_1, \dots, a_n$ find positive numbers $p_1 \dots, p_n$ so that
@@ -863,29 +829,17 @@ Problem 7 returns to the example in the text of sampling $(a, b)$ to get $(a, 0)
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 原 OCR 的 `蓋 一 1` 为 $A^{-1}$，`№ 蓋` 为 in $A$，`111.2`–`111,5` 为节号 III.2–III.5，`+ 1` 为 $\ell_1$；左右两栏曾被 OCR 交错读出，此处按语义重新排序。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Part III — Low Rank and Compressed Sensing（第三部分——低秩与压缩感知）
 
 本部分依次展开五节，逐层处理低秩（low rank）与压缩感知（compressed sensing）的核心问题。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### III.1 Changes in $A^{-1}$ from Changes in $A$（$A$ 变化时 $A^{-1}$ 的变化）
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### III.2 Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### III.3 Rapidly Decaying Singular Values（快速衰减的奇异值）
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### III.4 Split Algorithms for $\ell^2+\ell^1$（$\ell^2+\ell^1$ 的分裂算法）
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### III.5 Compressed Sensing and Matrix Completion（压缩感知与矩阵补全）
 
@@ -937,8 +891,6 @@ Problem 7 returns to the example in the text of sampling $(a, b)$ to get $(a, 0)
 
 > <span style="color:#7f8c8d;">本页为书页 160，属 Part III 开篇正文；页眉与页码为重复元素，不译。OCR 噪声较密，`蓋` 与 `亻` 均对应 $A$，`什 om` 为 from，`一 1`、`¯I`、`¯1` 一律为 $-1$；`鬱` 为 $u$，孤立的 `T` 为 $v^{T}$（故 `鬱 T` 即 $uv^{T}$，`T` 单独出现时为 $v^{T}u$）；`化 ature` 为 feature，`il s` 为 fails。公式按数学语境重建。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 **III.1 Changes in $A^{-1}$ from Changes in $A$（$A$ 的扰动对 $A^{-1}$ 的影响）**
 
 假设我们从 $A$ 中减去一个 low rank matrix（低秩矩阵）。下一节将估计特征值的变化以及奇异值的变化，本节则要找出 $A^{-1}$ 变化量的精确公式。这个公式被一些作者称为 matrix inversion lemma（矩阵求逆引理），在另一些人那里它更著名的名字是 Sherman-Morrison-Woodbury formula（谢尔曼-莫里森-伍德伯里公式）。这些来自工程与统计学的名字，在 numerical analysis（数值分析）中对应的正是 updating and downdating formulas（更新与降阶更新公式）。
@@ -989,8 +941,6 @@ D = 1 − v^{T}u.
 
 > <span style="color:#7f8c8d;">本页为书页 161，是 §III.1 的续页；页眉与页码为重复元素，不译。OCR 噪声同样较密：`什 om` 为 from，`¯I`/`¯1`/`一 1` 为 $-1$；`刀`、`鬱` 皆为 $u$，孤立的 `T` 为 $v^{T}$；`皿 ul a` 为 formula，`i de n ti ty` 为 identity，`垄` 为 $M^{-1}$ 之误，`产` 为 $(I_k − V^{T}U)^{-1}$ 之残迹，`叭` 为 $U$。公式按数学语境重建。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 **III.1 Changes in $A^{-1}$ from Changes in $A$（续）**
 
 第二种途径是把 $E$ 的第 2 行乘以 $u$ 后从它的第 1 行中减去：
@@ -1006,8 +956,6 @@ D = 1 − v^{T}u.
 ```
 
 左上的 $(1,1)$ 块告诉我们 $M^{-1} = I + uD^{-1}v^{T}$。这正是公式 (1)，其中 $D = 1 − v^{T}u$。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 **The Inverse of $M = I − UV^{T}$（$M = I − UV^{T}$ 的逆）**
 
@@ -1081,8 +1029,6 @@ UV^{T} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 0 & 0 \end{bmatrix}\begin{bmatrix} 0 
 
 > <span style="color:#1e8449;">**[note] 译者注（例 2：低秩修正为什么省力）：**本页扫描件的符号损坏较多，译文按数学语境重建：`蓋`、`风`、`鬱` 都指矩阵 $A$，`¯I` 表示上标 $-1$（即求逆），`丆` 是单位矩阵 $I$，`什 om`、`wnting` 分别是 from 与 writing 的误识，公式 (9)、(10) 的编号沿用原书。读例 2 时，请把它当成一次“用小矩阵撬动大矩阵”的演练。你在大一《线性代数》里已经会算 $2 \times 2$ 矩阵的逆：先算行列式 $ad-bc$，再交换 $a$ 与 $d$、给 $b$ 与 $c$ 变号，最后除以行列式；本页要用的正是这门手艺。例中 $M = I − UV^{T}$ 是 $3 \times 3$ 的，可真正需要动手求逆的只有 $2 \times 2$ 的 $I − V^{T}U$，其余只是矩阵乘法。省力的原因藏在维度里：$U$ 是 $3 \times 2$，$V^{T}$ 是 $2 \times 3$，两者相乘虽然排出一个 $3 \times 3$ 的矩阵，秩却至多为 $2$，它携带的信息只有两列那么多。《线性代数》里的“秩”在这里恰好成了“代价”的度量：秩为 $k$ 的修正只需付一个 $k \times k$ 的逆，而不必付 $n \times n$ 的逆。请动手核对两件事。第一，把上面的 $U$ 与 $V^{T}$ 相乘，确认结果确实是那个 $3 \times 3$ 矩阵，并想清楚 $V^{T}U$ 为什么只有 $2 \times 2$。第二，把求得的 $M^{-1}$ 与 $M = I − UV^{T} = \begin{bmatrix} 1 & −1 & −1 \\ 0 & 1 & −1 \\ 0 & 0 & 1 \end{bmatrix}$ 相乘，看乘积是否为单位矩阵；自己乘一遍，比读十遍更能记住这个恒等式。《计算方法》或《数值分析》课里也讲“不要贸然求逆”，动机与本页一致，区别在关注点：那边担心浮点误差与运算量，本页关心的是代数结构能否把大问题化小。《程序设计》课里的算法复杂度分析则给出另一种视角：在 $A^{-1}$ 已经算好的前提下，直接算 $n \times n$ 的逆大约要 $n^{3}$ 次乘法，而按本页公式先求 $C^{-1}$（$k \times k$）、再乘三个小矩阵，量级降到 $n^{2}k$ 一档；那边数的是操作次数，本页证的是恒等式，两者合起来才说明低秩修正确实划算。最后留一个问题：如果 $U$ 是 $n \times 1$、$V^{T}$ 是 $1 \times n$，也就是秩 $1$ 的情形，本页公式会退化成什么样子？</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 **Perturbing any Invertible Matrix $A$（扰动任意可逆矩阵 $A$）**
 
 到此为止，我们都是从单位矩阵 $I = I_n$ 出发的。我们把它改成 $I − uv^{T}$，随后又改成 $I − UV^{T}$，先做秩 $1$ 的改动，再做秩 $k$ 的改动。为了完整享用 Sherman-Morrison-Woodbury（谢尔曼-莫里森-伍德伯里）思想带来的好处，我们现在再进一步：从 $A$ 开始，而不是从 $I$ 开始。
@@ -1130,8 +1076,6 @@ M^{-1} = (A − UV^{T})^{-1} = A^{-1} + A^{-1}U(I − V^{T}A^{-1}U)^{-1}V^{T}A^{
 <!-- page 166: 书页 163 -->
 
 > <span style="color:#7f8c8d;">本页为书页 163，属 §III.1「Changes in $A^{-1}$ from Changes in $A$」正文；页眉与页码为重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 **§III.1 Changes in $A^{-1}$ from Changes in $A$（$A$ 变化时 $A^{-1}$ 的变化）**
 
@@ -1182,8 +1126,6 @@ B^{-1} − A^{-1} = B^{-1}(A − B)A^{-1}. \tag{11}
 
 > <span style="color:#7f8c8d;">本页为书页 164，属 §III.1 正文；页眉与页码为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Updating Least Squares（最小二乘的更新）
 
 第 II.2 节讨论了最小二乘方程 $A^{\mathrm{T}} A\widehat{x} = A^{\mathrm{T}} b$——即用来最小化 $\|b − Ax\|^2$ 的 normal equations（正规方程）。假设新来一个方程：$A$ 多出一个新行 $r$（$1 \times n$），并且多出一个新测量值 $b_{m+1}$，以及一个新的 $\widehat{x}$：
@@ -1201,8 +1143,6 @@ B^{-1} − A^{-1} = B^{-1}(A − B)A^{-1}. \tag{11}
 为了快速求出 $c$，我们只需要解一次旧方程 $(A^{\mathrm{T}} A) y = r^{\mathrm{T}}$。
 
 习题 4 将把最小二乘解 $\widehat{x}_{\text{new}}$ 写成对 $\widehat{x}$ 的更新。当 $A$ 新增 $M$ 行而不只是新增一行时，同样的想法依然成立。这就是 **recursive least squares（递归最小二乘）**。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## The Kalman Filter（卡尔曼滤波）
 
@@ -1244,8 +1184,6 @@ K = \text{Kalman gain matrix} \qquad \widehat{x}_{\text{new}} = \widehat{x}_{\te
 
 对于 GPS 应用，我们与 Kai Borre 合著的教材提供了多得多的细节：*Algorithms for Global Positioning*（Wellesley-Cambridge Press）。其目标是估计 GPS 测量的精度：对 tectonic plates（构造板块）的测量精度极高，对卫星的精度较低，而对你汽车位置的精度则低得多。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Quasi-Newton Update Methods（拟牛顿更新方法）
 
 在求解 $f(x) = 0$ 的近似 Newton 方法中，出现了一种完全不同的更新。这些是关于 $n$ 个未知量 $x_1, \ldots, x_n$ 的 $n$ 个方程。经典的 Newton's method（牛顿法）使用 Jacobian matrix（雅可比矩阵）$J(x)$，它包含 $f$ 的每个分量的一阶导数：
@@ -1281,8 +1219,6 @@ K = \text{Kalman gain matrix} \qquad \widehat{x}_{\text{new}} = \widehat{x}_{\te
 <!-- page 169: 书页 166 -->
 
 > <span style="color:#7f8c8d;">本页为书页 166，属 Part III「低秩与压缩感知」（Low Rank and Compressed Sensing）中 §III.1 的习题页（Problem Set III.1）；页眉为 Part 题名与页码，属重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Problem Set III.1（习题集 III.1）
 
@@ -1390,8 +1326,6 @@ Bill Hager's paper on *Updating the Inverse of a Matrix* was extremely useful in
 
 > <span style="color:#7f8c8d;">本页为书页 168，属 §III.2 Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）；页眉与页码为重复元素，不译、不收录。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## §III.2 Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）
 
 上一节考察的是：矩阵 $A$ 发生变化时，$A^{-1}$ 会怎样改变。那里既允许无穷小变化 $dA$，也允许有限变化 $\Delta A=-UV^T$，得到的结论是逆矩阵的无穷小变化与有限变化：
@@ -1485,8 +1419,6 @@ z_1 \ge \lambda_1 \ge z_2 \ge \lambda_2 \ge \cdots \ge z_n \ge \lambda_n. \tag{2
 <!-- page 172: 书页 169 -->
 
 > <span style="color:#7f8c8d;">本页为书页 169，属 §III.2 Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）；页眉与页码为重复元素，不译、不收录。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## The Derivative of an Eigenvalue（特征值的导数）
 
@@ -1610,8 +1542,6 @@ y_2^T = \begin{bmatrix} 1 & -\frac{1}{2} \end{bmatrix}, \qquad x_2 = \begin{bmat
 
 > <span style="color:#7f8c8d;">本页为书页 170；页眉与印页码为重复元素，不译、不收录。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## The Derivative of a Singular Value（奇异值的导数）
 
 非重根（non-repeated）奇异值（singular value）$\sigma(t)$ 的导数 $d\sigma/dt$ 有一个类似的公式，它来自 $Av=\sigma u$：
@@ -1666,8 +1596,6 @@ u^T(t)A(t)\frac{dv}{dt}=\sigma(t)v^T(t)\frac{dv}{dt}=0. \tag{8}
 C. Davis and W. M. Kahan, *Some new bounds on perturbation of subspaces*, *Bull. Amer. Math. Soc.* **75** (1969) 863–868.
 
 J. Eldridge, M. Belkin, and Y. Wang, *Unperturbed: Spectral analysis beyond Davis-Kahan*, arXiv: 1706.06516v1, 20 Jun 2017.
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## A Graphical Explanation of Interlacing（交错性质的图形解释）
 
@@ -1749,13 +1677,13 @@ u=\sum c_k q_k \quad \text{leads to} \quad
 > 顺带说清退化情形：若 $u$ 与某个 $q_j$ 正交，则 $\lambda_j$ 原封不动地留在 $S+\theta uu^T$ 的谱里，久期方程在那个极点处没有对应的根；此时要么把该特征值单独记下来，要么给 $u$ 一个微小扰动、再用连续性取极限。把这两步想透，式 (12) 就不只是「约分的结果」，而是一条把矩阵问题降成一维标量问题的桥梁：矩阵求逆只要作用在两个向量之间，就退化成一个求和。
 
 > <span style="color:#1e8449;">**[note] 译者注（极点括根法：把特征值问题变成求根问题）：**</span>
-> 式 (14) 把特征值问题变成求根问题，这是本节最实用的转化：特征值没有闭式解，而求根有成熟算法。把右端记为 $g(z)=\sum_{k=1}^n\frac{(u^Tq_k)^2}{z-\lambda_k}$，它在每个 $z=\lambda_k$ 处有极点：从右侧趋近时 $g\to+\infty$，从左侧趋近时 $g\to-\infty$。在相邻两个极点之间的开区间上，每一项 $\frac{(u^Tq_k)^2}{z-\lambda_k}$ 都随 $z$ 增大而减小（分子是不为零的常数，分母是系数为正的一次式），所以 $g$ 连续且严格单调下降。左端 $1/\theta$ 是一条水平线，于是按 $\lambda_1>\lambda_2>\cdots>\lambda_n$ 排序时，每个区间 $(\lambda_k,\lambda_{k-1})$ 内恰有一个交点，它就是 $z_k$；区间 $(\lambda_1,+\infty)$ 上还有一个交点 $z_1$；区间 $(-\infty,\lambda_n)$ 上没有交点，因为那里 $g<0<1/\theta$。这就是交错：$\lambda_k<z_k<\lambda_{k-1}$（$k\ge2$），而 $z_1>\lambda_1$。可以把它命名成「极点括根法（poles give brackets）」——极点的位置自动把根一层层括起来。
+> 式 (14) 把特征值问题变成求根问题，这是本节最实用的转化：特征值没有闭式解，而求根有成熟算法。把右端记为 $g(z)=\sum_{k=1}^n\frac{(u^Tq_k)^2}{z-\lambda_k}$，它在每个 $z=\lambda_k$ 处有极点：从右侧趋近时 $g\to+\infty$，从左侧趋近时 $g\to-\infty$。在相邻两个极点之间的开区间上，每一项 $\frac{(u^Tq_k)^2}{z-\lambda_k}$ 都随 $z$ 增大而减小（分子是不为零的常数，分母是系数为正的一次式），所以 $g$ 连续且严格单调下降。左端 $1/\theta$ 是一条水平线，于是按 $\lambda_1>\lambda_2>\cdots>\lambda_n$ 排序时，每个区间 $(\lambda_k,\lambda_{k-1})$ 内恰有一个交点，它就是 $z_k$；区间 $(\lambda_1,+\infty)$ 上还有一个交点 $z_1$；区间 $(-\infty,\lambda_n)$ 上没有交点，因为那里 $g<0<1/\theta$。这就是交错：$\lambda_k\lt z_k<\lambda_{k-1}$（$k\ge2$），而 $z_1>\lambda_1$。可以把它命名成「极点括根法（poles give brackets）」——极点的位置自动把根一层层括起来。
 >
 > 先说这一步在解决什么设计问题。直接对本征方程 $(S+\theta uu^T)x=zx$ 求解，等于要一个没有闭式解的代数方程；数值方法的第一原则是「把问题搬到已有成熟工具的形式上」，而求根（尤其是带符号变化的求根）是整个数值分析里工具最全、最可控的一类问题。式 (14) 正是这个搬运：它把一个「不知道定义在哪、也不知道有几个解」的特征值问题，压缩成一张一维函数图与一条水平线的交点计数问题。第一性原理上，为什么极点能自动给出区间？因为每一项 $\frac{(u^Tq_k)^2}{z-\lambda_k}$ 在分母为零时爆掉，爆掉的方向由分子定：分子 $(u^Tq_k)^2\ge0$，所以 $z$ 从右靠近 $\lambda_k$ 时该项冲向 $+\infty$，从左靠近时冲向 $-\infty$。相邻两极点一个「从 $+\infty$ 落下来」、一个「落向 $-\infty$」，中间连续且单调，一条水平线必然被穿过恰好一次——这就是括号的由来，也是「单调性补齐介值定理」的用法。
 >
 > 机制也可以说透：由矩阵行列式引理，$\det(S+\theta uu^T-zI)=\det(S-zI)\left(1-\theta\sum_k\frac{(u^Tq_k)^2}{z-\lambda_k}\right)$，所以当 $z$ 不是 $S$ 的特征值时，「行列式为零」与式 (14) 完全等价；也就是说，久期方程不是凭空的配方，而是特征多项式在秩一更新下的因式分解。这个等价还顺手说明了两件事：其一，括号里那个函数恒等于特征多项式除以原特征多项式，因此它的零点集合就是新谱；其二，$\theta\to0$ 时括号趋于 $1$，零点回到 $\lambda_k$，与「无扰动时谱不动」的直觉吻合，这也是一条自检。
 >
-> 手算一个可复算的三阶例子。取 $S=\mathrm{diag}(3,2,1)$，$u=(1,1,1)^T$（三个分量都不为零），$\theta=1$，于是 $g(z)=\frac{1}{z-3}+\frac{1}{z-2}+\frac{1}{z-1}$，方程是 $g(z)=1$。两两相乘展开：$(z-2)(z-1)+(z-3)(z-1)+(z-3)(z-2)=(z-3)(z-2)(z-1)$，左端为 $3z^2-12z+11$，右端为 $z^3-6z^2+11z-6$，解得 $z^3-9z^2+23z-17=0$。按括号结论，根应满足 $z_1>3$、$2<z_2<3$、$1<z_3<2$。逐步手算定号：$g(3^+)=+\infty$ 而 $g(4)=1/1+1/2+1/3=1.833>1$，故 $(3,4)$ 内有根；$g(2.5)=1/(-0.5)+1/0.5+1/1.5=-2+2+0.667=0.667<1$，说明 $z_2\in(2.5,3)$；$g(1.5)=1/(-1.5)+1/(-0.5)+1/0.5=-0.667-2+2=-0.667<1$，而 $g(1^+)=+\infty$，说明 $z_3\in(1,1.5)$。再做一步二分：区间 $(3,4)$ 中点 $3.5$ 处 $g=0.5+0.667+0.4=1.567>1$，于是根缩到 $(3,3.5)$；这一步只花三次除法加两次加法，一共 $n=3$ 次项的计算。顺便验一下括号确实没漏根：$z=4$ 代回 $g>1$，$z\to+\infty$ 时 $g\to0<1$，所以在 $(4,+\infty)$ 上 $g$ 从 $1.83$ 掉到 $0$，必然又穿过 $1$ 一次——那正是 $z_1$，它落在 $\lambda_1=3$ 的右侧，与结论一致；而 $z<1$ 时三项全负，$g<0<1$，确实无根。
+> 手算一个可复算的三阶例子。取 $S=\mathrm{diag}(3,2,1)$，$u=(1,1,1)^T$（三个分量都不为零），$\theta=1$，于是 $g(z)=\frac{1}{z-3}+\frac{1}{z-2}+\frac{1}{z-1}$，方程是 $g(z)=1$。两两相乘展开：$(z-2)(z-1)+(z-3)(z-1)+(z-3)(z-2)=(z-3)(z-2)(z-1)$，左端为 $3z^2-12z+11$，右端为 $z^3-6z^2+11z-6$，解得 $z^3-9z^2+23z-17=0$。按括号结论，根应满足 $z_1>3$、$2\lt z_2<3$、$1\lt z_3<2$。逐步手算定号：$g(3^+)=+\infty$ 而 $g(4)=1/1+1/2+1/3=1.833>1$，故 $(3,4)$ 内有根；$g(2.5)=1/(-0.5)+1/0.5+1/1.5=-2+2+0.667=0.667<1$，说明 $z_2\in(2.5,3)$；$g(1.5)=1/(-1.5)+1/(-0.5)+1/0.5=-0.667-2+2=-0.667<1$，而 $g(1^+)=+\infty$，说明 $z_3\in(1,1.5)$。再做一步二分：区间 $(3,4)$ 中点 $3.5$ 处 $g=0.5+0.667+0.4=1.567>1$，于是根缩到 $(3,3.5)$；这一步只花三次除法加两次加法，一共 $n=3$ 次项的计算。顺便验一下括号确实没漏根：$z=4$ 代回 $g>1$，$z\to+\infty$ 时 $g\to0<1$，所以在 $(4,+\infty)$ 上 $g$ 从 $1.83$ 掉到 $0$，必然又穿过 $1$ 一次——那正是 $z_1$，它落在 $\lambda_1=3$ 的右侧，与结论一致；而 $z<1$ 时三项全负，$g<0<1$，确实无根。
 >
 > 跨课程连接：《算法设计与分析》（对应 MIT 6.006 Introduction to Algorithms）里的二分法，概念是「连续函数在区间两端取值异号，则区间内有根」，连接路径是「先用单调性证明根唯一，再二分缩区间」；区别在于 6.006 的二分只依赖介值定理，不要求单调，因此不能保证根唯一，而这里的单调性额外保证每个区间只有一个根，于是二分一定收敛到当前区间里的那个特征值，不会跑到别的极点区间去。再往别的课延伸一条更精确的：《离散数学》（6.042J）里的「等价关系与偏序」，概念是「用一组分离性条件把集合分层」，连接路径与上面同构——极点把实轴切成若干开区间、根被唯一地分配进各层，等价类的代表元就是 $z_k$；区别在于 6.042J 关心的是分类是否存在与唯一，属于证明层面，而这里还多要一步「如何实际找到代表元」，于是单调性与二分成为必备工具。再往《概率论与数理统计》延伸：$\theta$ 可以看成观测权重或噪声方差倒数，$g(z)=1/\theta$ 的右端随 $\theta$ 变小而变大，根随之远离极点、向大特征值一侧移动，这与「权重越大谱越被拉向更新方向」的直觉一致。
 >
@@ -1772,7 +1700,7 @@ u=\sum c_k q_k \quad \text{leads to} \quad
 > <span style="color:#1e8449;">**[note] 译者注（数值验算与两个极限）：**</span>
 > 先说这段在解决什么设计问题。我们想知道：给对称矩阵 $S$ 加一个秩一项 $\theta uu^T$ 之后，谱会跑到哪里去；但又不想每次都对整个矩阵重新对角化——那要 $O(n^3)$ 的工作量，而在迭代算法里这种「加一撮再问谱」的动作要做几十上百次。久期方程正是为此设计的「廉价探针」：它只用到 $S$ 的已知谱 $\lambda_k$ 和 $u$ 在各特征方向上的投影 $(u^Tq_k)^2$，把求特征值这件事化归成在实轴上找 $n$ 个单调函数的零点。从第一性原理看，做法是把 $(\lambda I-S-\theta uu^T)v=0$ 改写成 $(\lambda I-S)v=\theta uu^Tv$，再用 $(u^Tq_k)^2$ 把这组耦合方程逐个消元，于是「谱」这个全局量被压缩成一条一维有理方程——每一维只需一次求值，代价从立方降到平方（若还知道 $Su$ 则更低），这才是它值得存在的原因。
 >
-> 用一组具体数字把久期方程走一遍，顺便检查交错区间。取 $S=\operatorname{diag}(5,3,1)$、$\theta=1$、$u=\frac{1}{\sqrt3}(1,1,1)^T$，则 $(u^Tq_k)^2=\frac13$，式 (14) 变成 $\frac13\left(\frac{1}{z-5}+\frac{1}{z-3}+\frac{1}{z-1}\right)=1$。在 $(5,\infty)$ 上二分：$z=5.5$ 给出 $0.874<1$，$z=5.4$ 给出 $1.048>1$，根夹在两者之间；继续夹得 $z=5.43$ 给出 $0.9876$、$z=5.424$ 给出 $0.9990$，最终 $z_1\approx5.4235$。它落在交错允许的范围 $5<z_1<5+\theta=6$ 之内，却离上界还有 $0.5765$——原因是 $u$ 不是 $S$ 的特征向量，$\theta$ 的推力被三个方向分摊了。另外两个特征值也动了：由迹恒等式 $\sum_k(z_k-\lambda_k)=\theta$ 可知三个增量之和恰好是 $1$，实际约为 $0.42$、$0.32$、$0.26$。
+> 用一组具体数字把久期方程走一遍，顺便检查交错区间。取 $S=\operatorname{diag}(5,3,1)$、$\theta=1$、$u=\frac{1}{\sqrt3}(1,1,1)^T$，则 $(u^Tq_k)^2=\frac13$，式 (14) 变成 $\frac13\left(\frac{1}{z-5}+\frac{1}{z-3}+\frac{1}{z-1}\right)=1$。在 $(5,\infty)$ 上二分：$z=5.5$ 给出 $0.874<1$，$z=5.4$ 给出 $1.048>1$，根夹在两者之间；继续夹得 $z=5.43$ 给出 $0.9876$、$z=5.424$ 给出 $0.9990$，最终 $z_1\approx5.4235$。它落在交错允许的范围 $5\lt z_1<5+\theta=6$ 之内，却离上界还有 $0.5765$——原因是 $u$ 不是 $S$ 的特征向量，$\theta$ 的推力被三个方向分摊了。另外两个特征值也动了：由迹恒等式 $\sum_k(z_k-\lambda_k)=\theta$ 可知三个增量之和恰好是 $1$，实际约为 $0.42$、$0.32$、$0.26$。
 >
 > 为了能徒手复算，再走一个 $2\times2$ 的小账。取 $S=\begin{pmatrix}2&0\\0&1\end{pmatrix}$、$\theta=1$、$u=\frac{1}{\sqrt2}(1,1)^T$，于是 $(u^Tq_1)^2=(u^Tq_2)^2=\frac12$，久期方程是 $\frac{1}{2}\left(\frac{1}{z-2}+\frac{1}{z-1}\right)=1$，通分得 $z^2-3z+1=0$，两根为 $\frac{3\pm\sqrt5}{2}\approx1.3820,\ 2.6180$。两个增量恰好是 $(3-\sqrt5)/2\approx0.3820$ 与 $(\sqrt5-1)/2\approx0.6180$，和为 $1$，与迹恒等式吻合；也可以反过来把 $z_1=2.6180$ 代回方程检验：$\frac{1}{2}\left(\frac{1}{0.6180}+\frac{1}{1.6180}\right)=\frac{1}{2}(1.6180+0.6180)=1.1180$ 并不等于 $1$，这说明手算时一定要用精确根或把 $(\sqrt5-1)/2$ 的倒数关系 $\frac{1}{\phi}=\phi-1$ 用上，否则误差会在两个分母上同时放大。更干净的做法是直接验证韦达定理：两根之积 $=1=\det(S)+\theta u^T\operatorname{adj}$ 型的量、两根之和 $=3=\operatorname{tr}(S)+\theta$，这正说明 $\theta uu^T$ 只把迹抬高 $\theta$，是一个必须记住的检验式：**秩一扰动的谱和只涨不跌，涨幅总和恰为 $\theta$**。
 >
@@ -1782,7 +1710,7 @@ u=\sum c_k q_k \quad \text{leads to} \quad
 >
 > 跨课程连接补两条。其一，Strang 线性代数与 18.065 里的对称矩阵正交对角化 $S=Q\Lambda Q^T$ 与谱定理，是本注所有式子的前提：正因为 $\{q_k\}$ 是一组标准正交基，$u$ 才能被唯一分解成 $u=\sum_k(u^Tq_k)q_k$，秩一项才被拆成对各特征方向独立的推力；而 18.065 讲低秩更新、 Sherman–Morrison 公式与 QR 迭代，与久期方程是同一件事的两个入口——前者给矩阵层面的恒等式，后者给逐个特征值的可解方程，区别在于久期方程假定 $S$ 已经对角化、只处理「一撮扰动」这一个特例。其二，数值分析（与 CSAPP 里浮点表示相关的部分）中的二分法、割线法在这里直接落地：久期方程的左端在每个区间内单调，所以二分保证收敛；但浮点误差会使得在 $z$ 极靠近某个 $\lambda_k$ 时分母溢出，实际实现里要在 $|z-\lambda_k|<\varepsilon$ 处做保护分支，这正是 CSAPP 讲的浮点有效位损失在数值线性代数里的具体形态，而不是抽象警告。可以给这套流程起个名字：**投影摊派 — 区间二分 — 迹恒等式对账**，三步走完，既得到数值又能自检。
 
-> <span style="color:#7f8c8d;">图内横轴上自左至右依次标注 $0<\lambda_4<z_4<\lambda_3<z_3<\lambda_2<z_2<\lambda_1<z_1$。</span>
+> <span style="color:#7f8c8d;">图内横轴上自左至右依次标注 $0<\lambda_4\lt z_4<\lambda_3\lt z_3<\lambda_2\lt z_2<\lambda_1\lt z_1$。</span>
 
 **图 III.1：**$S+\theta uu^T$ 的特征值 $z_i$；$1/\theta$ 直线与式 (14) 中的曲线相交之处。
 
@@ -1793,8 +1721,6 @@ Raj Rao Nadakuditi, *When are the most informative components for inference also
 ---
 
 <!-- page 175: 书页 172 -->
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## The Largest Eigenvalue of \(S+T\)（\(S+T\) 的最大特征值）
 
@@ -1849,8 +1775,6 @@ $S+T$ 的这个特征向量 $v$ 使第一个比值取到最大，但它未必使
 \text{\bf Weyl upper bounds} \qquad \lambda_{i+j-1}(S+T)\le\lambda_i(S)+\lambda_j(T). \tag{16}
 ```
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Saddle Points from Lagrange Multipliers（来自拉格朗日乘子的鞍点）
 
 与鞍点相比，计算 $F(x)$ 的最大值或最小值要相对容易。当我们有一个近似解 $\widehat{x}$ 时，我们知道 $F(\widehat{x})$ 不低于最小值、也不高于最大值——*这是由定义决定的*。但我们并不知道 $F(\widehat{x})$ 是*高于还是低于*某个鞍点值。类似地，$F$ 的二阶导数矩阵 $H(x)$ 在最小值处是正定（或半正定）的，在最大值处是负定的。
@@ -1862,8 +1786,6 @@ $S+T$ 的这个特征向量 $v$ 使第一个比值取到最大，但它未必使
 <!-- page 176: 书页 173 -->
 
 <span style="color:#7f8c8d;">173 Interlacing Eigenvalues and Low Rank Signals</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## III.2. Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）
 
@@ -1915,8 +1837,6 @@ H\begin{bmatrix}x\\ \lambda\end{bmatrix}
 ```
 
 一个很小的例子是 $H=\begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}$，其行列式为 $-1$：它的两个特征值符号相反。习题集将证实方程（17）中这个「KKT matrix」（KKT 矩阵）是不定的。该解 $(x,\lambda)$ 是拉格朗日函数 $L$ 的一个鞍点。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Saddle Points from Rayleigh Quotients（来自瑞利商的鞍点）
 
@@ -1971,8 +1891,6 @@ R(2x)=\frac{(2x)^T S (2x)}{(2x)^T (2x)}=\frac{4\,x^T S x}{4\,x^T x}=\frac{x^T S 
 <!-- page 177: 书页 174 -->
 
 > <span style="color:#7f8c8d;">本页为书页 174，属 §III.2 Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）；页眉与页码为重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## 2. Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）
 
@@ -2033,8 +1951,6 @@ $S$ 的中间那些特征向量 $q_2,\dots,q_{n-1}$ 都是商 $x^{T}S x/x^{T}x$ 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页 OCR 噪声较重，已按数学语境重建：`th e`→the、`symmetnc`→symmetric、`WeyI`→Weyl、`interl acing`→interlacing、`matnx`→matrix、`hogonal`→orthogonal、`colu 画`→column、`SinguIar`→Singular；例中的 $2\times2$ 子矩阵第二行第一列是 $-2$（OCR 把负号吞掉了），取 $+2$ 时特征值为 $(3\pm\sqrt{17})/2$，与正文给出的 $3,1$ 不符；公式 (23)(24) 与 (26)(27) 的下标、指标范围均已按 Weyl 不等式的标准形式还原。
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 对照原书扫描页复核后，本页以下记号按权威原文改正：交错定理中的 $z_i$ 应为 $S+T$ 的特征值（原文写 $z$），奇异向量记 $u_i,v_i$、隐蔽的秩一信号记 $\beta xy^{T}$，并补入印刷的编号 (23)(24)(25)(26)(27) 与三矩阵交错示例（对角线元全为 $2$、非对角元全为 $-1$）。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## 2. Interlacing Eigenvalues and Low Rank Signals（特征值交错与低秩信号）
 
@@ -2133,8 +2049,6 @@ $S$ 的中间那些特征向量 $q_2,\dots,q_{n-1}$ 都是商 $x^{T}S x/x^{T}x$ 
 <!-- page 179: 书页 176 -->
 
 > <span style="color:#7f8c8d;">本页为书页 176，属 Part III「Low Rank and Compressed Sensing（低秩与压缩感知）」中 Problem Set III.2（习题集 III.2）的第 1–8 题；页首重复出现的「Problem Set III,2 / Low Rank and Compressed Sensing / 1 2 3 …」为编号与页眉元素，不译。按习题页先例，题干保留英文原文。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Problem Set III.2（习题集 III.2）
 
@@ -2242,8 +2156,6 @@ $S$ 的中间那些特征向量 $q_2,\dots,q_{n-1}$ 都是商 $x^{T}S x/x^{T}x$ 
 
 > <span style="color:#7f8c8d;">本页为书页 177，前半为 §III.2 正文「The Law of Inertia（惯性定律）」的定义与证明思路，后半为 Problem Set III.2 的第 9–12 题（保留英文原题）；页眉「Interlacing Eigenvalues and Low Rank Signals」与页码为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### The Law of Inertia（惯性定律）
 
 <span style="color:#2471a3;">**[definition]**</span>
@@ -2276,15 +2188,15 @@ H = \begin{bmatrix} S & A^{T} \\ A & 0 \end{bmatrix}
 
 $H$ comes from minimizing $\frac{1}{2}x^{T}Sx - x^{T}b$ (positive definite) with $m$ constraints $Ax = b$. Elimination on $H$ begins with $S$. We know its pivots are all positive. Then elimination multiplies $S^{-1}$ times $[\,S\ \ A^{T}\,]$ and subtracts from $[\,A\ \ 0\,]$ to get $[\,0\ \ -AS^{-1}A^{T}\,]$. That Schur complement $-AS^{-1}A^{T}$ is negative definite. Why? Then the last $m$ pivots of $H$ (coming from $-AS^{-1}A^{T}$) are negative.
 
-> <span style="color:#1e8449;">**[note] 译者注（Schur 补为什么负定）：**</span> 第 11 题的核心是那个「Why?」，答案就藏在 $A$ 的行满秩里。设 $A$ 是 $m\times n$ 且 $m<n$（$m$ 个独立约束），对任意非零 $y\in\mathbb{R}^m$ 考察二次型 $y^{T}(AS^{-1}A^{T})y$：令 $w=A^{T}y$，则它等于 $w^{T}S^{-1}w$。因为 $S$ 正定，$S^{-1}$ 也正定，所以这个数 $\ge0$；又因为 $A^{T}$ 列满秩，$y\ne0$ 时 $w=A^{T}y\ne0$，于是 $w^{T}S^{-1}w>0$ 严格成立。这就证明了 $AS^{-1}A^{T}$ 正定，取负号后 $-AS^{-1}A^{T}$ 负定——所以它贡献的 $m$ 个主元全为负，加上 $S$ 贡献的 $n$ 个正主元，$H$ 恰有 $n$ 个正特征值与 $m$ 个负特征值（由题 9 的惯性定律，主元符号即特征值符号）。这里要分清两个矩阵的身份：$S$ 是**正定**的，出现在 KKT 系统的左上块；$-AS^{-1}A^{T}$ 是**负定**的，出现在消元后的右下块，二者符号相反正是 $H$ 被称为 indefinite（不定）的原因。一个常见误判是把「消元得到 $-AS^{-1}A^{T}$」读成「$H$ 与 $-AS^{-1}A^{T}$ 合同」——不对，整个 $H$ 合同于分块对角阵 $\operatorname{diag}(S,\,-AS^{-1}A^{T})$，惯性指数是两块之和，不能只留一块。跨课程连接：约束优化课用这套推导说明为什么拉格朗日乘子法与 KKT 条件给出的鞍点系统会有负特征值，从而需要「鞍点求解器」而不是普通共轭梯度法；数据科学课讲带约束最小二乘与正则化（如等式约束的岭回归）时，同样的分块矩阵决定了解的稳定性。
+> <span style="color:#1e8449;">**[note] 译者注（Schur 补为什么负定）：**</span> 第 11 题的核心是那个「Why?」，答案就藏在 $A$ 的行满秩里。设 $A$ 是 $m\times n$ 且 $m\lt n$（$m$ 个独立约束），对任意非零 $y\in\mathbb{R}^m$ 考察二次型 $y^{T}(AS^{-1}A^{T})y$：令 $w=A^{T}y$，则它等于 $w^{T}S^{-1}w$。因为 $S$ 正定，$S^{-1}$ 也正定，所以这个数 $\ge0$；又因为 $A^{T}$ 列满秩，$y\ne0$ 时 $w=A^{T}y\ne0$，于是 $w^{T}S^{-1}w>0$ 严格成立。这就证明了 $AS^{-1}A^{T}$ 正定，取负号后 $-AS^{-1}A^{T}$ 负定——所以它贡献的 $m$ 个主元全为负，加上 $S$ 贡献的 $n$ 个正主元，$H$ 恰有 $n$ 个正特征值与 $m$ 个负特征值（由题 9 的惯性定律，主元符号即特征值符号）。这里要分清两个矩阵的身份：$S$ 是**正定**的，出现在 KKT 系统的左上块；$-AS^{-1}A^{T}$ 是**负定**的，出现在消元后的右下块，二者符号相反正是 $H$ 被称为 indefinite（不定）的原因。一个常见误判是把「消元得到 $-AS^{-1}A^{T}$」读成「$H$ 与 $-AS^{-1}A^{T}$ 合同」——不对，整个 $H$ 合同于分块对角阵 $\operatorname{diag}(S,\,-AS^{-1}A^{T})$，惯性指数是两块之和，不能只留一块。跨课程连接：约束优化课用这套推导说明为什么拉格朗日乘子法与 KKT 条件给出的鞍点系统会有负特征值，从而需要「鞍点求解器」而不是普通共轭梯度法；数据科学课讲带约束最小二乘与正则化（如等式约束的岭回归）时，同样的分块矩阵决定了解的稳定性。
 >
 > 补一层机制：上面的二次型只回答了「符号对不对」，没有回答「消元之后为什么只剩下这两块」。把 KKT 系统写成 $\begin{bmatrix} S & A^{T}\\ A & 0\end{bmatrix}\begin{bmatrix} x\\ \lambda\end{bmatrix}=\begin{bmatrix} b\\ c\end{bmatrix}$，第一行给出 $x=S^{-1}(b-A^{T}\lambda)$，代进第二行 $Ax=c$，就得到 $\lambda$ 必须满足的 $m\times m$ 方程，其系数矩阵正是 $-AS^{-1}A^{T}$。所以 Schur 补不是凭空出现的符号，而是「把 $x$ 消掉之后 $\lambda$ 自己必须服从的方程」：原始变量 $x$ 有 $n$ 个自由度，由 $S$ 提供 $n$ 个正主元；对偶变量 $\lambda$ 有 $m$ 个自由度，由这个负定块提供 $m$ 个负主元。
 >
 > 再看「合同」这一步为什么合法。取 $E=\begin{bmatrix} I & 0\\ -AS^{-1} & I\end{bmatrix}$，可验证 $EHE^{T}=\operatorname{diag}(S,\,-AS^{-1}A^{T})$，而 $E$ 可逆，所以这是合同而非相似；Sylvester 惯性定律说合同保持惯性，于是惯性是两块之和，不能只留一块。顺手可用的自检：$\det(H)=(-1)^{m}\det(S)\det(AS^{-1}A^{T})$。
 >
-> 把设计问题补全：为什么要在这道题上追问「为什么」。因为 KKT 系统的惯性直接决定能用哪种求解器——左上块 $S$ 正定，单看它会以为可以上 Cholesky 或共轭梯度；但整个 $H$ 不定，这两种方法的前提（正定性带来的能量范数下降方向）就不成立，必须换成 MINRES 这类允许负曲率的 Krylov 方法，或者干脆消到 Schur 补上，在一个 $m\times m$ 的稠密负定系统里做文章。$m<n$ 这个条件也不是装饰：它保证约束数少于变量数，可行域才有 $n-m$ 维自由度，两块的惯性才能像上面那样干净相加。
+> 把设计问题补全：为什么要在这道题上追问「为什么」。因为 KKT 系统的惯性直接决定能用哪种求解器——左上块 $S$ 正定，单看它会以为可以上 Cholesky 或共轭梯度；但整个 $H$ 不定，这两种方法的前提（正定性带来的能量范数下降方向）就不成立，必须换成 MINRES 这类允许负曲率的 Krylov 方法，或者干脆消到 Schur 补上，在一个 $m\times m$ 的稠密负定系统里做文章。$m\lt n$ 这个条件也不是装饰：它保证约束数少于变量数，可行域才有 $n-m$ 维自由度，两块的惯性才能像上面那样干净相加。
 >
-> 代入具体数字验算。取 $S=I_{2}$、$A=\begin{bmatrix}1 & 1\end{bmatrix}$，满足 $m=1<n=2$ 且 $A$ 行满秩。先走注里的二次型：$y$ 是标量，$A^{T}y=\begin{bmatrix}y\\ y\end{bmatrix}$，于是 $y^{T}AS^{-1}A^{T}y=y^{2}+y^{2}=2y^{2}>0$，Schur 补为 $-2<0$，与负定结论一致。再直接算 $H=\begin{bmatrix}1&0&1\\0&1&1\\1&1&0\end{bmatrix}$：特征多项式 $\det(\lambda I-H)=\lambda^{3}-2\lambda^{2}-\lambda+2=(\lambda-2)(\lambda-1)(\lambda+1)$，特征值是 $2,1,-1$，两个正一个负，正好是 $n=2$ 个正加 $m=1$ 个负；行列式自检 $2\cdot1\cdot(-1)=-2$，与 $(-1)^{1}\det(S)\det(AS^{-1}A^{T})=-2$ 对上。还能显式看到负特征向量 $v=\frac{1}{\sqrt{6}}(1,1,-2)^{T}$：它满足 $Av=0$，也就是约束零空间方向上的曲率为负，这正是 $H$ 不定性的几何来源。
+> 代入具体数字验算。取 $S=I_{2}$、$A=\begin{bmatrix}1 & 1\end{bmatrix}$，满足 $m=1\lt n=2$ 且 $A$ 行满秩。先走注里的二次型：$y$ 是标量，$A^{T}y=\begin{bmatrix}y\\ y\end{bmatrix}$，于是 $y^{T}AS^{-1}A^{T}y=y^{2}+y^{2}=2y^{2}>0$，Schur 补为 $-2<0$，与负定结论一致。再直接算 $H=\begin{bmatrix}1&0&1\\0&1&1\\1&1&0\end{bmatrix}$：特征多项式 $\det(\lambda I-H)=\lambda^{3}-2\lambda^{2}-\lambda+2=(\lambda-2)(\lambda-1)(\lambda+1)$，特征值是 $2,1,-1$，两个正一个负，正好是 $n=2$ 个正加 $m=1$ 个负；行列式自检 $2\cdot1\cdot(-1)=-2$，与 $(-1)^{1}\det(S)\det(AS^{-1}A^{T})=-2$ 对上。还能显式看到负特征向量 $v=\frac{1}{\sqrt{6}}(1,1,-2)^{T}$：它满足 $Av=0$，也就是约束零空间方向上的曲率为负，这正是 $H$ 不定性的几何来源。
 >
 > 再补一个数值上的坑：主元符号等于特征值符号的前提是消元过程中不做行交换；一旦为了数值稳定选主元换了行，读出来的主元符号就不再直接是惯性，这时应改用对称主元分解或直接算行列式序列来复核。
 >
@@ -2301,8 +2213,6 @@ $H$ comes from minimizing $\frac{1}{2}x^{T}Sx - x^{T}b$ (positive definite) with
 <!-- page 181: 书页 178 -->
 
 <span style="color:#7f8c8d;">本页为书页 178，属 Part III 中 §III.3 的开篇页；页眉与页码为重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## §III.3 Rapidly Decaying Singular Values（快速衰减的奇异值）
 
@@ -2376,8 +2286,6 @@ $Y_i$ 与 $Z_i$ 都是 $N$ 乘 $N$ 的对角矩阵，其主对角线上分别是
 
 <span style="color:#7f8c8d;">本页为书页 179，是 §III.3 的续页；页眉与页码为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Sample Points $x_j$ near $j/N$（靠近 $j/N$ 的采样点）
 
 在这种轻微扰动的情形下，我们可以把不等间距的采样点 $x_j$ 与等间距的分数 $j/N$（$0 \le j < N$）一一对应起来。对于 $U$ 的每个元素，$A_{jk}$ 都是对 $F_{jk}$ 的一个修正：
@@ -2429,8 +2337,6 @@ Townsend 对矩阵 $A$ 的这种处理方式，使 Ruiz-Antolin 与 Townsend 证
 <!-- page 183: 书页 180 -->
 
 <span style="color:#7f8c8d;">本页为书页 180，属 §III.3 正文；页眉与页码为重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## The Sylvester Equation（Sylvester 方程）
 
@@ -2488,8 +2394,6 @@ C = \begin{bmatrix} 0 & 0 & 0 & x_1^n + 1 \\ 0 & 0 & 0 & x_2^n + 1 \\ 0 & 0 & 0 
 
 <span style="color:#7f8c8d;">本页为书页 181，属 §III.3 正文；页眉与页码为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## §III.3 快速衰减的奇异值（Rapidly Decaying Singular Values，续）
 
 那些矩阵 $A$ 与 $B$ 当然是正规矩阵（normal matrix）。（这一要求本可以减弱，但此处没有必要。）$B$ 的特征值等间距地分布在单位圆（unit circle）上。这些 $\lambda$ 位于角度 $\pi/n, 3\pi/n, \ldots, (2n − 1)\pi/n$ 处，因此只要 $n$ 为偶数，它们就不是实数。于是它们不会与 $A$ 的实特征值（real eigenvalues）$x_1, \ldots, x_n$ 相碰。而 $C$ 的秩为 $1$。所以 $A, B, C$ 检验已通过。
@@ -2511,8 +2415,6 @@ C = \begin{bmatrix} 0 & 0 & 0 & x_1^n + 1 \\ 0 & 0 & 0 & x_2^n + 1 \\ 0 & 0 & 0 
 > 跨课程连接一条。6.042J 的循环群、同余与单位根代数，穿过 18.06 的 $F_n$ 对角化，再到本节：共同点是都在做「换基使算子简单」这件事，区别在于 6.042J 只关心单位根的代数性质（乘幂回到 $1$、$w^{j+n}=w^j$ 的周期性），18.06 关心对角化与快速变换，而本节关心的是这些对角元**是否与 $A$ 的谱相交**——判定目标从「变换本身」升级成「两族谱的互斥性」。再补一个反例对话：若取 $A=B$ 或 $A=B^T$，则 $\sigma(A)$ 恰好含有单位根，Sylvester 算子奇异，方程 $AX-XB=C$ 只对满足相容条件的 $C$ 有解；这在实空间里就是周期边界条件下稳态方程必须满足零均值相容条件，与常微分方向上的 Fredholm 二择一结构同型。可命名的模板：**单位根碰撞检验法**——先算出 $B$ 的谱是不是 $\{z:z^n=1\}$，再判断它与 $\sigma(A)$ 是否有交；注意换基永远救不了谱退化，所以这个检验只需在谱上做一次，不必真的构造 $F_n$。
 
 > 于是两种情况分道扬镳。傅里叶情形：$A$ 的特征值是 $1,2,\ldots,n$，$B$ 的特征值是单位根，二者都含有 $1$，谱发生重叠，Sylvester 检验的前提被破坏——这正是 $F$ 的全部奇异值彼此相等、没有一点衰减的谱解释（$F$ 的列两两正交且长度相同，所以奇异值全部相等）。实节点情形：$B$ 仍是移位阵，特征值全为 $0$，$A$ 的特征值为 $1,2,\ldots,n$，两组谱相距至少 $1$，良好分离，检验通过，$V$ 的奇异值按指数速率衰减。一句话：**决定衰减快慢的不是节点本身，而是两组谱的最小间隙**；节点是否为实数只是改变这个间隙的一个开关。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### 改进的 Sylvester 检验（An Improved Sylvester Test）
 
@@ -2570,8 +2472,6 @@ Townsend 找到了这样的定理：$C$ 的 log-rank（对数秩）性质可导�
 
 > <span style="color:#7f8c8d;">第 182 页 · 书眉：低秩与压缩感知（Low Rank and Compressed Sensing）· 本节：§III.3 快速衰减的奇异值</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## ADI 与 Zolotarev 问题（ADI and the Zolotarev Problem）
 
 用短短一段话，就能指出两个让 $X$ 的奇异值快速衰减的想法。第一个是求解 Sylvester 方程 $AX − XB = C$ 的 ADI 迭代（ADI iteration），交替方向隐式算法（Alternating Direction Implicit algorithm）给出了计算上高效的解法。第二个想法把 $A$ 与 $B$ 的特征值（前提是两组特征值不重叠）与有理逼近（rational approximation）中的一个问题联系起来。
@@ -2582,8 +2482,6 @@ Townsend 找到了这样的定理：$C$ 的 log-rank（对数秩）性质可导�
 
 所谓 Zolotarev 问题（Zolotarev problem），就是要找一个多项式之比 $r(x) = p(x)/q(x)$，使 $r(x)$ 在 $A$ 的特征值处很小、在 $B$ 的特征值处很大。用有理函数 $r(x)$ 来逼近，效果可以比用多项式逼近好得多——好到指数级；纽曼（Newman）对绝对值函数 $|x|$ 的逼近就是一个著名的例子。$r(x)$ 的指数级精度，就这样与 $X$ 的奇异值的指数衰减联系了起来。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## 用 ADI 求解 $AX − XB = C$（ADI solves $AX − XB = C$）
 
 ```math
@@ -2593,8 +2491,6 @@ X_{j+1/2}(B − p_jI) = C − (A − p_jI) X_j
 ```math
 (A − q_jI)X_{j+1} = C − X_{j+1/2}(B − q_jI)
 ```
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## 矩阵 $X_{j+1/2}$ 与 $X_{j+1}$（Matrices $X_{j+1/2}$ and $X_{j+1}$）
 
@@ -2618,8 +2514,6 @@ X_{j+1/2}(B − p_jI) = C − (A − p_jI) X_j
 <!-- page 186: 书页 183 -->
 
 > <span style="color:#7f8c8d;">第 183 页 · 书眉：快速衰减的奇异值（Rapidly Decaying Singular Values）· 本节：Problem Set III.3（习题 1–9，题干保留英文原文）</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Problem Set III.3（习题集 III.3）——§III.3 快速衰减的奇异值（Rapidly Decaying Singular Values）
 
@@ -2875,8 +2769,6 @@ $F_1$ 涉及 $\ell^1$ 型范数，$F_2$ 涉及 $\ell^2$ 型范数。它们的凸
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页 OCR 噪声密集（`什 om` = from，`m p 况 e 襯` = min-max problem，`刀` = $L$，`蓋` = $A$，`g 而 n` = argmin，`¯I` = 上标 $-1$，`ÄB` = $A_i c_i$，`y-denvatives` = $y$-derivatives），公式 (6)(7)(8) 与行内乱码均已按数学语境重建为 LaTeX。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Steepest Increase of $m(y)$（$m(y)$ 的最速上升）
 
 要最大化函数 $m(y)$，我们要找一个点 $y^*$，使所有偏导数都为零。换言之，梯度为零：$\nabla m = (\partial m/\partial y_1,\ldots,\partial m/\partial y_m) = 0$。本问题对 $m$ 的这些 $y$-导数有一个干净的公式：$\nabla m = Ax^* − b$。
@@ -2896,8 +2788,6 @@ y_{k+1} = y_k + s_k\left(Ax_{k+1} − b\right) \tag{7}
 那个数 $s_k$ 就是 stepsize（步长）。它决定我们沿着上坡方向 $\nabla m$ 走多远。我们并不指望一步就命中 $m$ 的最大值！我们只是小心地一步步向上走。经验表明，最初几步总是成功的，而往后的步子只带来 $m$ 的微小增加。在 financial mathematics（金融数学）中，那个对偶变量 $y$ 常常代表 prices（价格）。
 
 注意，方程 (6) 中的 argmin 就是使该函数 $L$ 取到最小值的那个点 $x$。这里引入对偶性——在 $x$ 上最小化、在 $y$ 上最大化，两种顺序可以互换——并非一时的冲动。理由紧接着给出。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Dual Decomposition（对偶分解）
 
@@ -2955,8 +2845,6 @@ y^{k+1} = y^{k} + s_k\left(Ax^{k+1} − b\right)
 
 由 (9) 得到的 $N$ 个新分量 $x_i^{k+1}$ 在 (10) 中被汇集为 $Ax^{k+1}$。随后得到的 $y^{k+1}$ 被分发给 $N$ 个处理器，它们在 (9) 的下一次迭代中各自执行独立的最小化。当 $f(x)$ 不可分离时，与做一次大型最小化 (6) 相比，这种做法能带来巨大的节省。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## Augmented Lagrangians（增广拉格朗日函数）
 
 为了使迭代 (9)—(10) 更加 robust（稳健）——也就是当 $f(x)$ 不是 strictly convex（严格凸）时帮助它们收敛——我们可以用一个带可变因子 $\rho$ 的 penalty term（惩罚项）来增广 $f(x)$：
@@ -2971,8 +2859,6 @@ L_{\rho}(x, y) = f(x) + y^{T}\left(Ax − b\right) + \frac{1}{2}\rho\left\|Ax �
 这就是在约束 $Ax = b$ 之下最小化 $f(x) + \frac{1}{2}\rho\|Ax − b\|^{2}$ 的 Lagrangian（拉格朗日函数）。同样的步骤仍然导向与 (6)—(7) 中相同的最大化问题。而惩罚常数 $\rho$ 恰好成为一个合适的步长 $s$。我们可以证明，每一个新的 $(x_{k+1}, y_{k+1})$ 都满足 $\nabla f(x_{k+1}) + A^{T}y_{k+1} = 0$。但是，加上带 $\rho$ 的惩罚项却有一个很大的缺点：**增广后的 $L_{\rho}$ 不再可分离——即使 $f(x)$ 本身是可分离的！**
 
 我们还需要再走一步，才能既保住可分离性带来的好处（导致 $N$ 个更简单的最大化问题被并行求解），又保住引入惩罚项 $\frac{1}{2}\rho\|Ax − b\|^{2}$ 所带来的更大安全性。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## ADMM: Alternating Direction Method of Multipliers（ADMM：交替方向乘子法）
 
@@ -3010,8 +2896,6 @@ L_{\rho}(x, z, y) = f(x) + g(z) + y^{T}\left(Ax + By − c\right) + \frac{1}{2}\
 > <span style="color:#7f8c8d;">本页为书页 188，属 Part III Low Rank and Compressed Sensing（低秩与压缩感知）中 §III.4 Split Algorithms for $A^{+}$（$A^{+}$ 的分裂算法）的续页；页眉与印页码为重复元素，不译。</span>
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页 OCR 噪声按数学语境重建：`Lp` 恢复为 $L_{\rho}$，`Zk' Yk`、`@k+l`、`ACk+1` 恢复为 $z_k, y_k$、$x_{k+1}$、$Ax_{k+1}$，`矿` 恢复为 $A^{\mathrm{T}}y^{*}$，`Vf`、`Vg`、`Df`、`Dg` 恢复为 $\nabla f, \nabla g, \partial f, \partial g$，`000 ng`、`0 n`、`trmning`、`HaJinezhad`、`GIob` 分别修正为 looking、often、training、Hajinezhad、Global；此外 (19)、(20) 的「梯度／次微分」两行在原书中左右并列，这里按原文补齐并列结构的标签。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## ADMM（交替方向乘子法）
 
@@ -3286,8 +3170,6 @@ Boyd 等人还指出：把罚项 $\|x\|_1 = \sum |x_i|$ 换成 $\|Fx\|_1 = \sum 
 
 > <span style="color:#7f8c8d;">本页为书页 191；页眉「III.4 Split Algorithms for $\ell^2 + \ell^1$」（$\ell^2 + \ell^1$ 的分裂算法）与页码为重复元素，不译。本页正文出现标题「Matrix Splitting and Proximal Algorithms」（矩阵分裂与近端算法）。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ## 矩阵分裂与近端算法（Matrix Splitting and Proximal Algorithms）
 
 把 $Ax = b$ 与 ADMM 联系起来的第一条线索，来自把矩阵 $A$ 分裂为 $A = B + C$。
@@ -3387,8 +3269,6 @@ Parikh 与 Boyd 指出，**Prox** 在「最小化一个函数」与「不要走�
 
 > <span style="color:#7f8c8d;">（原图无法翻译：左图为光滑曲线与它在各点处唯一的切线，右图为带尖点的曲线与尖点处若干条由次梯度给出的切线。）</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### 布雷格曼距离（Bregman Distance）
 
 本书中第一次出现 Bregman 这个名字。
@@ -3420,8 +3300,6 @@ D_f(u, v) = f(u) − f(v) − \bigl\langle \nabla f(v),\, u − v \bigr\rangle \
 > **多维时它是集合的笛卡尔积。** 对 $\ell_1$ 范数 $f(x)=\sum_i|x_i|$，在原点 $\partial f(0)=[-1,1]^n$，是 $n$ 维立方体而非某个向量；在 $x=(0,5)$ 这类混合点，$\partial f(x)=[-1,1]\times\{1\}$，只有真正取零的那些坐标才贡献区间。代进本页问题 $\min_x \frac{1}{2}\|x-b\|_2^2+\lambda\|x\|_1$ 检验：最优性条件是 $0\in (x-b)+\lambda\partial\|x\|_1$。取 $b=(3,0.5)$、$\lambda=2$ 与候选 $x=(2,0)$，第一坐标残差为 $-1$，$x_1=2>0$ 光滑，需 $-1+2\cdot 1=1\ne0$？注意此处 $\ell_1$ 项系数与目标配比给出的是 $x_1-b_1+\lambda\operatorname{sign}(x_1)=2-3+2=1$——不满足，说明 $\lambda$ 与 $b_1$ 的搭配没到最优；改取 $x=(1,0)$ 得 $1-3+2=0$，第二坐标残差为 $-0.5$，其绝对值 $0.5\le\lambda=2$，由 $\partial$ 提供 $-0.5$ 使条件成立。于是 $x^\star=(1,0)$：第二个坐标被区间吸收而恰好置零，第一个坐标停在等式条件上。这正是基追踪里 $\ell_1$ 不可微时 KKT 只能写成次梯度形式的原因——判据从等式升级为包含关系，零解那一支才被允许存在。
 >
 > **跨课程连接（精确到路径）。** 18.06 里判断 $Ax=b$ 有解用的是$b$ 落在 $A$ 的列空间内，判据里 $A$ 不必可逆；6.042J 里把相等放宽成等价关系下的同类，都属于同一个动作：用更宽的包含/同类关系替换严格的等号，从而把边界情形纳入同一套语言。区别在于：列空间是线性子空间，判定是无损的硬条件；次微分是集值映射，它给的是一组合法斜率，因此判据本身变成存在性命题——只要集合里有一个元素能被抵消就够了。把这套动作命名下来，可叫 **等号升级法**：凡遇某量等于零的判据，先问它是否由某量属于某集合退化而来；若是，则在尖点处保留集合、只把点取成区间，结论自动延续。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### 分裂 Bregman 与分裂 Kaczmarz（Split Bregman and Split Kaczmarz）
 
@@ -3518,7 +3396,7 @@ y_{k+1} = x_k − s_k a_i \quad \text{and} \quad x_{k+1} = S(y_{k+1}). \tag{34}
 
 > 跨课程连接三：CLRS 与 6.006 的分治/复杂度视角，以及 6.042J 的 Chernoff 界。前者的连接点是：一次性直接法（如 LU 或 QR）的复杂度是 $O(n^3)$ 量级且必须看到整个 $A$，而 Kaczmarz 把问题切成 $O(1/\rho)$ 次 $O(n)$ 的行级操作，属于典型的“用多次廉价操作换取无需全局”的权衡；区别在于分治追求的是把 $O(n^3)$ 的指数压下来，这里追求的是让在线、单遍的场景可行。后者则是最后那段高概率升级的来源：单步损失的随机性来自“抽到哪一行”，各轮独立，于是 $\log$ 之后的求和恰好落在 Chernoff 界的适用前提上，把期望收缩翻译成“这一次运行大概率收缩”。
 
-> 命名模板：**期望收缩 → 乘积形式 → 集中不等式**。使用时按三步走：第一步写出 $\mathbb{E}[Z_k]\le1-\rho$ 这样的单步期望收缩；第二步把多步误差写成 $\|e_k\|_2^2=\|e_0\|_2^2\prod_{j<k}Z_j$，取 $\log$ 化成随机变量之和；第三步对这个和用 Chernoff 界（本质是对独立随机变量和做指数矩估计），得到以 $1-\delta$ 的概率把误差压到 $\epsilon_0$ 以下只需 $k=O\!\left(\frac{1}{\rho}\log\frac{1}{\epsilon_0\delta}\right)$ 步。这套模板的适用条件必须记牢：单步收缩因子要有与当前误差无关的期望上界、各轮随机性独立、且有 $\log$ 可乘性。只要这三条成立，任何“每步随机、整体收敛”的迭代都能套用，这也是为什么随机数值线性代数与压缩感知的定理总是以“以压倒性的概率”收尾。
+> 命名模板：**期望收缩 → 乘积形式 → 集中不等式**。使用时按三步走：第一步写出 $\mathbb{E}[Z_k]\le1-\rho$ 这样的单步期望收缩；第二步把多步误差写成 $\|e_k\|_2^2=\|e_0\|_2^2\prod_{j\lt k}Z_j$，取 $\log$ 化成随机变量之和；第三步对这个和用 Chernoff 界（本质是对独立随机变量和做指数矩估计），得到以 $1-\delta$ 的概率把误差压到 $\epsilon_0$ 以下只需 $k=O\!\left(\frac{1}{\rho}\log\frac{1}{\epsilon_0\delta}\right)$ 步。这套模板的适用条件必须记牢：单步收缩因子要有与当前误差无关的期望上界、各轮随机性独立、且有 $\log$ 可乘性。只要这三条成立，任何“每步随机、整体收敛”的迭代都能套用，这也是为什么随机数值线性代数与压缩感知的定理总是以“以压倒性的概率”收尾。
 
 把这段推导代入一组小数字，你会更容易感到随机化不是装饰。取 $A=\begin{pmatrix}1&0\\1&1\end{pmatrix}$，$b=\begin{pmatrix}2\\3\end{pmatrix}$，真解 $x^*=(2,1)^{T}$，从 $x_0=(0,0)^{T}$ 出发交替扫第 1、2 行：$x_1=(2,0)^{T}$，$x_2=(2.5,0.5)^{T}$，$x_3=(2,0.5)^{T}$，误差平方从 5 一路降到 1、0.25，每两步减半；而按上面的公式，$\|A\|_F^2=3$、$\sigma_{\min}^2\approx0.382$，给出的收缩因子 $\rho\approx0.127$，即期望误差平方每步乘以约 0.873，两步约 0.76——理论上界明显比这次实际轨迹保守，这正是集中不等式要接管的地方。
 
@@ -3529,8 +3407,6 @@ y_{k+1} = x_k − s_k a_i \quad \text{and} \quad x_{k+1} = S(y_{k+1}). \tag{34}
 > <span style="color:#7f8c8d;">脚注 2：W. Yin、S. Osher、D. Goldfarb 与 J. Darbon，*Bregman iterative algorithms for $\ell_1$-minimization with applications to compressed sensing*，SIAM J. Imaging Sciences 1 (2008) 143–168。</span>
 
 > <span style="color:#7f8c8d;">脚注 3：Y. Lei 与 D.-X. Zhou，*Learning theory of randomized sparse Kaczmarz method*，SIAM J. Imaging Sciences 11 (2018) 547–574。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Bounded Variation: $L^1$ Norm for the Gradient（有界变差：梯度的 $L^1$ 范数）
 
@@ -3551,8 +3427,6 @@ y_{k+1} = x_k − s_k a_i \quad \text{and} \quad x_{k+1} = S(y_{k+1}). \tag{34}
 <!-- page 197: 书页 194 -->
 
 > <span style="color:#7f8c8d;">本页为书页 194，是 §III.4 Problem Set（习题 III.4），配套 §III.4 Split Algorithms for $A^+$（$A^+$ 的分裂算法）。按本系列惯例，习题题干保留英文原文；题干中的 OCR 乱码按数学语境重建为 LaTeX，并以绿色 note 说明。页眉（Low Rank and Compressed Sensing）、印页码 194 与左侧竖排题号噪声不译、不收录。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## §III.4 Problem Set（习题 III.4）
 
@@ -3672,7 +3546,7 @@ y_{k+1} = x_k − s_k a_i \quad \text{and} \quad x_{k+1} = S(y_{k+1}). \tag{34}
 >
 > **跨课程连接（CLRS 与 6.006 + Strang 线性代数）。** 连接路径是：ADMM 的 $x$ 步在 $P$ 对角时退化为逐分量求解，复杂度从一般稠密求解的 $O(n^3)$ 降到 $O(n)$，这正是 CLRS 与 6.006 里「用结构换复杂度」的分治/摊销思路在数值算法里的翻版——区别在于分治靠递归切分问题规模，而对角化靠问题自身的解耦结构，不切规模只切耦合。另一条路径接到 Strang 线性代数：$(P + \rho M)$ 的可解性由正定性保证，而正定性又与 Cholesky 分解、最小二乘的正规方程同源；区别是线性代数课里 $P$ 常被当成给定数据，这里 $P$ 却是建模时被我们亲手选定的设计变量。
 >
-> **命名模板：结构解耦检验法。** 拿到任何一个分裂算法的子步，先问三句：这一步在解什么线性系统？系数矩阵有什么结构（对角、三对角、可快速变换）？这个结构能不能把 $O(n^3)$ 压成 $O(n)$ 或 $O(n\log n)$？三句答完，子步的代价与可行性就都清楚了。</span>
+> **命名模板：结构解耦检验法。** 拿到任何一个分裂算法的子步，先问三句：这一步在解什么线性系统？系数矩阵有什么结构（对角、三对角、可快速变换）？这个结构能不能把 $O(n^3)$ 压成 $O(n)$ 或 $O(n\log n)$？三句答完，子步的代价与可行性就都清楚了。
 
 **Problem 11.** A neat coarea formula expresses the BV norm of $u$ as the integral of the lengths of the level sets $L(t)$, where $\mathrm{grad}\,u \ne 0$:
 
@@ -3690,7 +3564,7 @@ y_{k+1} = x_k − s_k a_i \quad \text{and} \quad x_{k+1} = S(y_{k+1}). \tag{34}
 >
 > **跨课程连接（在学概率论 Bertsekas + 凸优化 Boyd）。** 连接路径一：Boyd 凸优化里的强凸性与 Lipschitz 梯度，决定了 $\operatorname{prox}_F$ 是单值且非扩张的映射；本题 $F(z) = \frac{1}{2}\|z\|_2^2 − 1$ 的二次项系数为正，强凸常数是 $1$，所以 $\operatorname{prox}_F$ 的 Lipschitz 常数不超过 $1/(1+1) = 1/2$——这与直接算出的 $c \mapsto c/2$ 完全一致。区别在于：Boyd 给的是对一般 $F$ 的界，本题给的是等号成立的精确值。连接路径二：Bertsekas 概率论里的条件期望 $E[X\mid Y]$ 同样把「随机变量函数」压成一个只依赖 $Y$ 的新变量，且满足正交性（残差与 $Y$ 可测函数正交）；近端算子把「任意函数」压成只依赖 $c$ 的新函数，且在一阶条件处同样呈现正交残差结构 $c - \operatorname{prox}_F(c) \in \partial F$。区别是：条件期望的正交性来自 Hilbert 空间投影定理，近端算子的正交性来自凸分析的一阶最优性条件，前者是线性投影，后者是非线性（甚至集值）的。
 >
-> **命名模板：哑变量消去法。** 凡是看到 $\arg\min$ 或 $\arg\max$，就执行三步：第一步，把被优化的变量圈成哑变量，宣布它只能在极值点取值；第二步，对哑变量求一阶条件，把它解成其余数据的表达式；第三步，把表达式代回，检查结果里是否还残留哑变量——残留就是错的。本题第三步的输出是 $c/2$，只含 $c$，检验通过。</span>
+> **命名模板：哑变量消去法。** 凡是看到 $\arg\min$ 或 $\arg\max$，就执行三步：第一步，把被优化的变量圈成哑变量，宣布它只能在极值点取值；第二步，对哑变量求一阶条件，把它解成其余数据的表达式；第三步，把表达式代回，检查结果里是否还残留哑变量——残留就是错的。本题第三步的输出是 $c/2$，只含 $c$，检验通过。
 
 **Problem 12.** Example. Compute both sides of the coarea formula for a bowl: $u = x^2 + y^2$.
 
@@ -3723,8 +3597,6 @@ On the right side, the level set where $u = t$ is the circle $x^2 + y^2 = t$ wit
 > 给一个可以手算的**验算**。取一小段真实文本 $s$：`the entries of`，共 $15$ 个字符（含空格）。假设扫描时每个字符独立地以概率 $p$ 被替换，那么整段无错的概率是 $(1-p)^{15}$。代入 $p = 0.1$，得 $(0.9)^{15} \approx 0.206$；也就是说，**近八成的短片段里至少有一个字符是错的**——这解释了为什么整页 OCR 之后「每行都有噪声」是常态而不是异常。再看反向：如果已知一段 $n = 15$ 的观测里恰好有 $k = 4$ 个错误（本例中 `fie`、`expl 田 n`、`ex ac tly`、`recovere d` 恰好四处），那么「错误位置」的组合数是 $\binom{15}{4} = 1365$，而每种位置组合还对应若干候选字符。要在这 $1365 \times$ 候选空间里挑一个，靠穷举不可行，靠字形打分也不稳，真正压缩搜索空间的是**公式一致性**：$\varphi$、$w$、$W$、$\ell_1$、$\ell_2$ 这几个符号一旦被正确锚定，周围的字就几乎被唯一确定。这也正是我们敢说「公式与编号 (1) 均按压缩感知的标准记号重建」的依据。
 >
 > **跨课程连接**（6.042J 离散数学 → 概率论（Bertsekas）→ CSAPP）。在 6.042J 里你会学到等价关系与「用不变量压缩搜索空间」的思想；放到这里，$\varphi \leftrightarrow$ 表示基、$w \leftrightarrow$ 探测列 就是一种等价类划分，每个类只留一个代表元，译码器的状态数因此从「所有汉字」降到「十来个数学符号」。再把上面的 $(1-p)^n$ 展开：$\ln(1-p) \approx -p - p^2/2$，所以 $\ln P(\text{无错}) \approx -np$，误差个数近似服从均值 $np$ 的分布，这与 Bertsekas 里独立伯努利试验的期望、方差 $np(1-p)$ 完全一致；若把「一段话里错误过多」当成稀有事件，就得到 Chernoff 型上界，用来判断「这页 OCR 是否值得逐字修」。与 CSAPP 的连接在于**同一份比特、不同的解释**：CSAPP 讲浮点格式时反复强调「位模式本身没有类型，是解释赋予了它意义」，OCR 修正做的正是相反方向的同一件事——观测到的位模式对应多个可能字符，我们用公式结构这个「类型标注」把解释固定下来。**区别**也要点明：CSAPP 的位模式歧义由 IEEE 754 这类确定性规范裁决，而 OCR 的歧义是统计性的，只能用概率最大化加语境先验来裁决，没有唯一正确答案，只有「最可能」的答案。所以这份清单不是权威判据，而是一份**语境约束下的最大似然解**，遇到与公式冲突的读法，永远以公式为准。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## §III.5 Compressed Sensing and Matrix Completion（压缩感知与矩阵补全）
 
@@ -3813,8 +3685,6 @@ Donoho 这篇文章的目的，是要表明经费、合作、理论与实验（�
 <!-- page 200: 书页 197 -->
 
 > <span style="color:#7f8c8d;">本页为书页 197，属 §III.5 的正文续页；页眉与页码为重复元素，不译。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ## Matrix Completion in the Nuclear Norm（核范数下的矩阵补全）
 

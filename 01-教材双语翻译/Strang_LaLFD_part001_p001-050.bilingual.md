@@ -84,27 +84,27 @@ Minimization（最小化）和 factorization（分解）表达了 fundamental ap
 
 对于矩阵 $A=\begin{bmatrix}2&3\\2&4\\3&7\end{bmatrix}$ 和向量 $x=\begin{bmatrix}1\\2\end{bmatrix}$，计算 $Ax$：
 
-$$
+```math
 Ax = \begin{bmatrix}2&3\\2&4\\3&7\end{bmatrix}\begin{bmatrix}1\\2\end{bmatrix}
-$$
+```
 
 **By rows（按行）方式** 产生三个 inner products（内积）：
 
-$$
+```math
 \begin{aligned}
 \text{row 1}\cdot x:&\quad\begin{bmatrix}2&3\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix}=2(1)+3(2)=8 \\
 \text{row 2}\cdot x:&\quad\begin{bmatrix}2&4\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix}=2(1)+4(2)=10 \\
 \text{row 3}\cdot x:&\quad\begin{bmatrix}3&7\end{bmatrix}\cdot\begin{bmatrix}1\\2\end{bmatrix}=3(1)+7(2)=17
 \end{aligned}
-$$
+```
 
 因此 $Ax=\begin{bmatrix}8\\10\\17\end{bmatrix}$。
 
 这些 inner products（内积）也被称为 "dot products（点积）"，因为使用了 dot notation（点记号）：
 
-$$
+```math
 \text{row}\cdot\text{column} = (2,3)\cdot(1,2)=2(1)+3(2)=8
-$$
+```
 
 这是找到 $Ax$ 的三个 separate components（独立分量）的方式。
 
@@ -128,9 +128,9 @@ $a_1$ 和 $a_2$ 的一个 linear combination（线性组合）包括两个步骤
 
 在我们的例子中，$x_1=1$，$x_2=2$，所以：
 
-$$
+```math
 Ax = 1\cdot a_1 + 2\cdot a_2 = \begin{bmatrix}2\\2\\3\end{bmatrix} + \begin{bmatrix}6\\8\\14\end{bmatrix} = \begin{bmatrix}8\\10\\17\end{bmatrix}
-$$
+```
 
 $Ax$ 是矩阵 $A$ 的 columns（列）的一个 linear combination（线性组合）。这是 <span style="color:#00838f;">fundamental（基础性的）</span>。
 
@@ -186,9 +186,9 @@ Solution（解）显示了如何将 right side（右端项）$b$ 表达为 colum
 
 <span style="color:#2471a3;">**[example]**</span> **Example 2.** $b=(1,1,1)$ 不在 $C(A)$ 中。
 
-$$
+```math
 \begin{bmatrix}2&3\\2&4\\3&7\end{bmatrix}\begin{bmatrix}c_1\\c_2\end{bmatrix}=\begin{bmatrix}1\\1\\1\end{bmatrix}
-$$
+```
 
 前两个方程给出 $2c_1+3c_2=1$ 和 $2c_1+4c_2=1$。
 
@@ -202,10 +202,10 @@ $$
 
 <span style="color:#2471a3;">**[example]**</span> **Example 3.** 三个矩阵的 column spaces（列空间）各是什么？
 
-$$
+```math
 A_2=\begin{bmatrix}2&3&5\\2&4&6\\3&7&10\end{bmatrix},\qquad
 A_3=\begin{bmatrix}2&3&1\\2&4&1\\3&7&1\end{bmatrix}
-$$
+```
 
 **解：** $A_2$ 的 column space（列空间）与之前相同。
 
@@ -285,26 +285,26 @@ $C$ 的 columns（列）（尽可能多地保留）将是 "independent（独立�
 例子将说明这一点。
 
 <span style="color:#2471a3;">**[example]**</span> **Example 4.** 
-$$
+```math
 A=\begin{bmatrix}1&3&8\\1&2&6\\0&1&2\end{bmatrix},\quad 
 C=\begin{bmatrix}1&3\\1&2\\0&1\end{bmatrix},\quad r=2
-$$
+```
 
 Column 3 of $A$ 是 2(column 1) + 2(column 2)。将它排除在 $C$ 的 basis（基）之外。
 
 <span style="color:#2471a3;">**[example]**</span> **Example 5.**
-$$
+```math
 A=\begin{bmatrix}1&2&3\\0&4&5\\0&0&6\end{bmatrix},\quad
 C=A,\quad r=3
-$$
+```
 
 这个矩阵是 invertible（可逆）的。其 column space（列空间）是整个 $\mathbb{R}^3$。保留所有3列。
 
 <span style="color:#2471a3;">**[example]**</span> **Example 6.**
-$$
+```math
 A=\begin{bmatrix}1&2&5\\1&2&5\\1&2&5\end{bmatrix},\quad
 C=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad r=1
-$$
+```
 
 数字 $r$ 是 $A$ 的 "rank（秩）"。它也是 $C$ 的秩。它统计 independent columns（独立列）的数量。
 
@@ -326,12 +326,12 @@ $$
 
 我可以在上面的 Example 4 中展示这个 "factorization（分解）"：
 
-$$
+```math
 \begin{bmatrix}1&3&8\\1&2&6\\0&1&2\end{bmatrix}
 = \begin{bmatrix}1&3\\1&2\\0&1\end{bmatrix}
 \begin{bmatrix}1&0&2\\0&1&2\end{bmatrix}
 = CR
-$$
+```
 
 当 $C$ 乘以 $R$ 的第一列 $\begin{bmatrix}1\\0\end{bmatrix}$，我们得到 $C$ 的 column 1：即 $A$ 的 column 1。
 
@@ -353,12 +353,12 @@ Example 5 中 $C=A$，然后 $R=I$（identity matrix（单位矩阵））。
 
 Example 6 中 $C$ 只有一列，所以 $R$ 只有一行：
 
-$$
+```math
 \begin{bmatrix}1&2&5\\1&2&5\\1&2&5\end{bmatrix}
 = \begin{bmatrix}1\\1\\1\end{bmatrix}
 \begin{bmatrix}1&2&5\end{bmatrix}
 = CR
-$$
+```
 
 所有三个矩阵的 rank（秩）都是 $r=1$。
 
@@ -388,10 +388,10 @@ $A$ 的 column space（列空间）和 row space（行空间）都有 dimension�
 
 **一个注记：** 为什么 $R$ 有 independent rows（独立行）？再看 Example 4。
 
-$$
+```math
 A=\begin{bmatrix}1&3&8\\1&2&6\\0&1&2\end{bmatrix},\quad
 R=\begin{bmatrix}1&0&2\\0&1&2\end{bmatrix}
-$$
+```
 
 正是 $R$ 中的那些 ones（1）和 zeros（0）告诉我：没有一行是其他行的 combination（组合）。
 
@@ -419,17 +419,17 @@ $A$ 的行乘以 $B$ 的列，产生 $C$ 中的每个 entry（元素）。
 
 $A$ 的 row 2（第2行）和 $B$ 的 column 3（第3列）给出 $C$ 中的 $c_{23}$：
 
-$$
+```math
 c_{23} = a_{21}b_{13} + a_{22}b_{23} + a_{23}b_{33} = \sum_{k=1}^{n} a_{2k}b_{k3}
-$$
+```
 
 这是 dot product（点积）$C_{23} =$（row 2 of $A$）$\cdot$（column 3 of $B$）。
 
 用 summation notation（求和符号）写为：
 
-$$
+```math
 c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}
-$$
+```
 
 这就是我们通常计算 $AB=C$ 中每个 number（数字）的方式。
 
@@ -447,7 +447,7 @@ $$
 
 <span style="color:#2471a3;">**[example]**</span> **Outer product（外积）示例：**
 
-$$
+```math
 \begin{bmatrix}2\\2\\1\end{bmatrix}
 \begin{bmatrix}3 & 4 & 6\end{bmatrix}
 = \begin{bmatrix}
@@ -455,7 +455,7 @@ $$
 6 & 8 & 12 \\
 3 & 4 & 6
 \end{bmatrix}
-$$
+```
 
 这个矩阵 $uv^T$ 被称为 "outer product（外积）"。
 
@@ -485,14 +485,14 @@ Column space（列空间）的 dimension（维数）（即 independent columns�
 
 在这个例子中，我们对 $uv^T$ 取 transpose（转置）（将行与列交换），得到矩阵 $vu^T$：
 
-$$
+```math
 vu^T = \begin{bmatrix}3\\4\\6\end{bmatrix}\begin{bmatrix}2&2&1\end{bmatrix}
 = \begin{bmatrix}
 6 & 6 & 3 \\
 8 & 8 & 4 \\
 12 & 12 & 6
 \end{bmatrix}
-$$
+```
 
 注意 $vu^T$ 的所有 columns（列）都是 $v$ 的 multiples（倍数），所有 rows（行）都是 $u^T$ 的 multiples（倍数）。
 
@@ -500,19 +500,19 @@ $$
 
 <span style="color:#2471a3;">**[theorem]**</span> 矩阵乘法 $AB$ 可以写为 $n$ 个 rank one matrices（秩一矩阵）的和：
 
-$$
+```math
 AB = \sum_{k=1}^{n} (\text{column } k \text{ of } A)(\text{row } k \text{ of } B)
-$$
+```
 
 这里是一个 2×2 的例子，展示 $n=2$ 个 pieces（column × row）之和：
 
-$$
+```math
 AB = \begin{bmatrix}1&3\\0&1\end{bmatrix}\begin{bmatrix}2&2\\0&5\end{bmatrix}
 = \begin{bmatrix}1\\0\end{bmatrix}\begin{bmatrix}2&2\end{bmatrix}
 + \begin{bmatrix}3\\1\end{bmatrix}\begin{bmatrix}0&5\end{bmatrix}
 = \begin{bmatrix}2&2\\0&0\end{bmatrix} + \begin{bmatrix}0&15\\0&5\end{bmatrix}
 = \begin{bmatrix}2&17\\0&5\end{bmatrix}
-$$
+```
 
 两种方式（inner products vs outer products）涉及完全相同的 multiplications（乘法）$a_{ik}b_{kj}$，只是顺序不同。
 
@@ -562,9 +562,9 @@ Factoring（分解）是 multiplying（乘法）$CR=A$ 的逆向过程。
 
 $S$ 和 $Q$ 是线性代数中的 kings 和 queens。
 
-$$
+```math
 S = Q\Lambda Q^T = \sum_{k=1}^{n} \lambda_k q_k q_k^T
-$$
+```
 
 每个 eigenvalue（特征值）$\lambda_k$ 和每个 eigenvector（特征向量）$q_k$ 贡献一个 rank one piece（秩一组成部分）$\lambda_k q_k q_k^T$ 给 $S$。
 
@@ -653,10 +653,10 @@ Row space（行空间）中仍然只有一个 $v$。Rank（秩）仍然是 $r=1$
 
 当 $n=3$ 且只有 $r=1$ 个独立方程时，$Bx=0$ 将有 $3-1=2$ 个 independent solutions（独立解）$x_1$ 和 $x_2$。所有解都进入 nullspace（零空间）。
 
-$$
+```math
 B = \begin{bmatrix}1&-2&-2\\3&-6&-6\end{bmatrix},\quad
 Bx=0 \text{ 的解：} x_1 = \begin{bmatrix}2\\1\\0\end{bmatrix},\quad x_2 = \begin{bmatrix}2\\0\\1\end{bmatrix}
-$$
+```
 
 在我之前的教科书《Introduction to Linear Algebra》中，这些向量被称为 "special solutions（特解）"。
 
@@ -683,7 +683,7 @@ $q_2$ 和 $q_3$ 轴互相成 90° 角，并且与 $q_1$ 也成 90° 角。
 
 Incidence matrix（关联矩阵）：
 
-$$
+```math
 A = \begin{bmatrix}
 -1 & 1 & 0 & 0 \\
 0 & -1 & 1 & 0 \\
@@ -691,7 +691,7 @@ A = \begin{bmatrix}
 0 & -1 & 0 & 1 \\
 0 & 0 & -1 & 1
 \end{bmatrix}
-$$
+```
 
 Edge 1：$-x_1 + x_2 = b_1$，Edge 2：$-x_2 + x_3 = b_2$，等等。
 
@@ -778,7 +778,7 @@ Statement 4：$A$ 和 $B$ 有 rank $r$。$A^TA$ 和 $BB^T$ 有 rank $r$（由 St
 
 **4.** 如果 $\text{row space of } A = \text{column space of } A$ 且 $N(A) = N(A^T)$，$A$ 是对称的吗？
 
-**5.** 将 $Ax=b$ 的四种可能性（$r<m$、$r=n$ 等）与四个矩阵匹配。（提示：$r<m,r=n$ → 对每个 $b$ 有唯一解；$r=m,r<n$ → 0 或 $\infty$ 个解等）
+**5.** 将 $Ax=b$ 的四种可能性（$r\lt m$、$r=n$ 等）与四个矩阵匹配。（提示：$r\lt m,r=n$ → 对每个 $b$ 有唯一解；$r=m,r\lt n$ → 0 或 $\infty$ 个解等）
 
 **6.** 证明 $A^TA$ 和 $A$ 有相同的 nullspace（零空间）。(a) 若 $Ax=0$ 则 $A^TAx=0$。(b) 若 $A^TAx=0$ 则 $x^TA^TAx = \|Ax\|^2 = 0$，所以 $Ax=0$。因此 $N(A^TA) = N(A)$。
 
@@ -793,6 +793,17 @@ Statement 4：$A$ 和 $B$ 有 rank $r$。$A^TA$ 和 $BB^T$ 有 rank $r$（由 St
 **11.** 对于 $A$ 和 $B$ 的 nullspace（零空间）和 row space（行空间），$\begin{bmatrix}A\\B\end{bmatrix}$ 的 nullspace（零空间）是 $N(A) \cap N(B)$。
 
 ---
+> <span style="color:#1e8449;">**[note] 五种分解其实是一张「用正交性换适用范围」的价目表：**</span> 这五种 factorizations 不是五个彼此无关的技巧，而是把同一句话 $A=\sum_k u_k v_k^T$（写成外积和）在不同程度上强制「两侧的向量正交」所得到的五个出口。逐个看它在哪一侧让步、换回什么：
+> - $A=CR$：**零正交**。$C$ 就是 $A$ 的 pivot columns（主元列）原样搬过去，$R$ 是 rref（简化行阶梯形）的非零行，两者都不正交。它换回的不是数值精度，而是 rank 的证书：取一个 $4\times3$、rank $r=2$ 的矩阵实测，$C$ 是 $4\times2$、$R$ 是 $2\times3$，一共 14 个数，比 $A$ 自己的 12 个数还多 —— 所以 $CR$ 从来不是 compression（压缩存储），它证明的是「这 12 个数只由 2 条独立信息生成」。§I.1 的 Column Rank = Row Rank 正是用 $C$ 的列独立加 $R$ 的行独立拼出来的。
+> - $A=LU$：**无正交**，只要 $L$ 是 unit lower triangular（单位下三角）。代价是所有 leading principal minors（顺序主子式）非零，否则必须先乘一个 $P$（见下一节 note）。
+> - $A=QR$：**一侧正交**。$Q^TQ=I$ 的代价是 $R$ 的对角元等于 Gram-Schmidt 每一步 residual（残差）的 norm（范数）——秩满的 $4\times3$ 例子实测为 $\sqrt3$、$\sqrt{15}/3$、$\sqrt{35}/5$；$A$ 的列越接近 linear dependence（线性相关），这些数越小，除以它们的放大就越凶。
+> - $S=Q\Lambda Q^T$：**两侧同时正交**，所以 $Q^{-1}=Q^T$，根本不用求逆。代价是必须 $S=S^T$。
+> - $A=X\Lambda X^{-1}$：条件最弱，只要 $n$ 个 independent eigenvectors（独立特征向量）；代价是 $X^{-1}$ 要真算，而 $X$ 在特征值接近时可以极度 ill-conditioned（病态）。$3\times3$ 的 Jordan 块 $J=\begin{bmatrix}3&1&0\\0&3&1\\0&0&3\end{bmatrix}$ 满足 $\operatorname{rank}(J-3I)=2$，几何重数 1 小于代数重数 3，这条分解对它**不存在**（实测 sympy 抛 `MatrixError: Matrix is not diagonalizable`）。
+> - SVD $A=U\Sigma V^T$ 是唯一对任意矩阵两侧都正交的一条，代价是要同时求 $A^TA$ 与 $AA^T$ 的 eigenpairs（特征对），工作量翻倍。
+>
+> 这张价目表的形状很有信息量：**正交性越强，适用面越窄**。而「片数」是同一把尺子：上面那个 rank 2 的矩阵，$CR$ 要 2 片才精确，SVD 用 2 片重构误差 $5.3\times10^{-15}$，只用最大的 1 片误差就到 0.2332。于是 §I.9 的 best low rank approximation（最佳低秩逼近，PCA 的内核）不过在「$CR$ 挑哪两列」和「SVD 挑哪两片」之间选了后者 —— 因为后者按 $\sigma$ 降序排列，截断自动最优。
+>
+> 往后翻，这五条各自有落点：$QR$ 在 §I.5 展开成 orthogonalization（正交化）与 projection（投影），SVD 在 §I.8，PCA 在 §I.9；§IV.8 Completing Rank One Matrices 直接用 $uv^T$ 填补缺失项；§V.4 的 covariance matrix（协方差矩阵）$V=\sum_{ij}P_{ij}uu^T$ 就是「rank one 片之和」的概率版；§VII.1 度量深度网络的表达力时数的 flat pieces（平坦片）个数的，仍是复合线性映射能折出多少张平面 —— 根子还是这里的外积。
 
 <span style="color:#7f8c8d">*§I.3 逐句翻译完成。逐句对照OCR原文，无概括无遗漏。覆盖：四个子空间定义（Example 1）、Example 2（不同尺寸矩阵）、Incidence Matrix（图论解释、KVL/KCL）、Big Picture、秩的五条事实及证明、Problem Set 1.3（11道习题）。*</span>
 
@@ -836,12 +847,12 @@ $A=LU$ 是没有行交换的消元法的矩阵描述。
 
 <span style="color:#2471a3;">**[example]**</span> **2×2 例子：**
 
-$$
+```math
 \begin{cases}
 2x_1 + 3x_2 = 9 \\
 x_1 - 2x_2 = 1
 \end{cases}
-$$
+```
 
 矩阵形式：$A = \begin{bmatrix}2&3\\1&-2\end{bmatrix}$，$b = \begin{bmatrix}9\\1\end{bmatrix}$。
 
@@ -851,13 +862,13 @@ $$
 
 **Column picture（列图像）：** $Ax$ 是列的组合。$A$ 的列向量是 $a_1=(2,1)$ 和 $a_2=(3,-2)$。方程 $Ax=b$ 要求找到列的组合以匹配 $b$。正确的组合（解）具有与行图像中相同 $x_1=3$ 和 $x_2=1$：
 
-$$
+```math
 Ax = \begin{bmatrix}2\\1\end{bmatrix}x_1 + \begin{bmatrix}3\\-2\end{bmatrix}x_2 = \begin{bmatrix}9\\1\end{bmatrix}
-$$
+```
 
 将 3 倍 column 1 加到 1 倍 column 2 上，得到 $b$ 作为列的组合。
 
-**图 1.5：** Column picture：3 倍 (column 1) + 1 倍 (column 2) 给出 $b$。
+**图 I.5：** Column picture：3 倍 (column 1) + 1 倍 (column 2) 给出 $b$。
 
 对于 $n=2$，row picture（行图像）看起来很容易。但对于 $n=3$，column picture（列图像）胜出。画三个列向量比画三个平面更好！
 
@@ -901,19 +912,19 @@ $$
 
 **关键思想：** Step 1 移除了 $l_1$（row 1），其中 $l_1 = (1,l_{21},l_{31},l_{41})$。
 
-$$
+```math
 A = l_1(\text{row 1}) + A_2
-$$
+```
 
 我们做了什么？右侧的第一个矩阵是从 $A$ 中移除的。那个移除的矩阵是列向量 $l_1$ 乘以 row 1。它是一个 rank one matrix（秩一矩阵）$l_1$（row 1）。
 
 **3×3 例子：**
 
-$$
+```math
 A = \begin{bmatrix}1&2&3\\2&5&7\\3&7&8\end{bmatrix},\quad 
 \text{Step 1: } A = \begin{bmatrix}1\\2\\3\end{bmatrix}\begin{bmatrix}1&2&3\end{bmatrix} + A_2,\quad
 A_2 = \begin{bmatrix}0&0&0\\0&1&1\\0&1&-1\end{bmatrix}
-$$
+```
 
 下一步处理剩余矩阵 $A_2$ 的第2列。新的 row 2 是 $(0,1,1)$，$l_{32}=1$ 是第二个 pivot row 的乘数。
 
@@ -925,10 +936,10 @@ $$
 
 矩阵乘法 $LU$ 始终是 $L$ 的列乘以 $U$ 的行的和：
 
-$$
+```math
 A = \begin{bmatrix}1\\l_{21}\\l_{31}\\l_{41}\end{bmatrix}\text{(pivot row 1)} + 
 \begin{bmatrix}0\\1\\l_{32}\\l_{42}\end{bmatrix}\text{(pivot row 2)} + \cdots = LU
-$$
+```
 
 消元法将 $A$ 分解为下三角 $L$ 乘以上三角 $U$。
 
@@ -936,15 +947,15 @@ $$
 
 这个证明与我的教科书《Introduction to Linear Algebra》中的不同。那里的思路是考察 $U$ 的行而不是 $A$ 的列。Row 3 of $U$ 等于 row 3 of $A$ 减去 pivot rows 1 和 2 的倍数：
 
-$$
+```math
 \text{Row 3 of }U = (\text{row 3 of }A) - l_{31}(\text{row 1 of }U) - l_{32}(\text{row 2 of }U)
-$$
+```
 
 重写此方程可以看出 $[l_{31},l_{32},1]$ 正在乘以矩阵 $U$：
 
-$$
+```math
 \text{Row 3 of }A = l_{31}(\text{row 1 of }U) + l_{32}(\text{row 2 of }U) + 1(\text{row 3 of }U)
-$$
+```
 
 所以 row 3 of $A$ = row 3 of $LU$。关键在于被减去的行是 pivot rows（主元行），已经在 $U$ 中。在没有行交换的情况下，我们再次得到 $A=LU$。
 
@@ -973,6 +984,15 @@ $$
 第一个 pivot 是 $a_{11}$。第二个 pivot 是 $A_2$ 的角落。第三个 pivot 在 1×1 矩阵 $A_3$ 中。这些数字最终位于 $U$ 的主对角线上。
 
 ### Row Exchanges (Permutations)（行交换 / 置换）
+> <span style="color:#1e8449;">**[note] pivot 为什么既是行列式的因子、又是主子式的比值：**</span> 「$\det A=\prod u_{kk}$」不是就此背下来的一条行列式性质，而是消元只使用了两种对 $\det$ 极友好的行运算的结果：行 $i$ 减去 $l$ 倍行 $k$ 是 $\det=1$ 的变换，行交换是 $\det=\pm1$ 的变换。于是除了 $L$ 的单位对角与 $P$ 的符号，整个 $\det$ 只能落在 $U$ 的对角线上。书中 $3\times3$ 例子实测：$L=\begin{bmatrix}1&0&0\\2&1&0\\3&1&1\end{bmatrix}$，$U=\begin{bmatrix}1&2&3\\0&1&1\\0&0&-2\end{bmatrix}$，对角元 $1,1,-2$ 的乘积 $-2$ 正是 $\det A$。
+>
+> 更强的一句是逐个成立：$u_{kk}=\det A_k/\det A_{k-1}$，其中 $A_k$ 是左上 $k\times k$ 子矩阵。同一例子实测 $1/1$、$1/1$、$-2/1$ 与 $U$ 的对角元一一对上。机制在于消元是**按列从左到右**推进的：处理前 $k$ 列只动前 $k$ 行，所以 $A_k$ 的分解恰好就是 $L$、$U$ 的左上 $k\times k$ 块，于是 $\det A_k=\prod_{j\le k}u_{jj}$，相邻两式相除就把前面的因子约掉。这条式子顺手交出了 $A=LU$（无行交换）的存在判据：所有 $A_k$ 非奇异。反例 $B=\begin{bmatrix}0&1\\1&1\end{bmatrix}$ 的 $\det=-1$ 明明可逆，但 $\det A_1=0$，乘数 $l_{21}=a_{21}/a_{11}=1/0$ 无定义 —— 这就是 §I.4 习题 10 的答案。
+>
+> 有行交换时结论改成符号版：实测 $D=\begin{bmatrix}0&0&2\\1&2&3\\2&1&1\end{bmatrix}$ 配 $P=\begin{bmatrix}0&0&1\\0&1&0\\1&0&0\end{bmatrix}$，得 $\prod u_{kk}=2\cdot\tfrac32\cdot2=6$，而 $\det P=-1$、$\det A=-6$，正确的写法是 $\det A=\det P\prod u_{kk}$。而 $L$ 里「乘数原样落座」也带着顺序前提：实测 $E_{32}E_{31}E_{21}A=U$，所以 $L=(E_{32}E_{31}E_{21})^{-1}=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$；若误按 $E_{21}E_{31}E_{32}$ 求逆，$L$ 的 $(3,1)$ 元会变成 5 而不是 3。把消元步按发生顺序相乘、取逆时再反过来写，这两步是 $A=LU$ 能一次成型的全部秘密。
+>
+> 成本账也要记：实测 $n=32$ 时 LU 需要 21328 次乘加除（$\approx0.65n^3$，极限 $\tfrac23n^3$），Cholesky 只需 11968（$\approx0.37n^3$，极限 $\tfrac13n^3$）。一次 $n^3$ 量级的固定投入，换来每个新右端项 $b$ 只花 $n^2$ 的回代 —— 这就是为什么解多个 $b$ 时从不重复消元。
+>
+> 跨章：pivot 的**符号**在 §I.7 就是 positive definite（正定）的判据（Sylvester），本书随即用它证明正定 $\Rightarrow$ Cholesky 存在；§VI.2 对 KKT 矩阵 $M=\begin{bmatrix}S&A\\A^T&0\end{bmatrix}$ 做块消元，右下的 Schur complement $-A^TS^{-1}A$ 会算出 $n$ 个正 pivot 与 $m$ 个负 pivot，这组正负号正是 Lagrangian 有 saddle point（鞍点）的代数印记；§VI.4 讨论 gradient descent 的 zig-zag（之字形）收敛速率时，控制它的条件数 $\lambda_1/\lambda_n$ 也不过是 pivot 极端比值换了个名字。
 
 当 $a_{11}=0$ 时怎么办？Zero（零）不能是第一个 pivot。如果第1列下方某处有非零数字，它的行可以是 pivot row（主元行）。好的代码会选择最大的数字作为 pivot——即使 $a_{11}$ 不是零也会这样做，以减少误差。
 
@@ -982,9 +1002,9 @@ $$
 
 最终的矩阵 $U$ 是上三角，但 $L$ 矩阵不是。此时的 pivot order（主元顺序）是 3,1,2。如果我们希望 pivot rows 是 1,2,3，我们必须将 $A$ 的 row 3 移到顶部：
 
-$$
+```math
 PA = \begin{bmatrix}0&0&1\\1&0&0\\0&1&0\end{bmatrix}A
-$$
+```
 
 当 $Ax=b$ 的两边都乘以 $P$ 时，顺序恢复，且 $PA=LU$。
 
@@ -1058,9 +1078,9 @@ Hadamard conjecture（哈达玛猜想）声称：只要 $4$ 整除 $n$，就存�
 
 **关键事实：** $\mathbb{R}^n$ 的每个子空间都有一个 orthogonal basis（正交基）。考虑三维空间 $\mathbb{R}^3$ 中的一个平面。该平面有两个独立向量 $a$ 和 $b$。为了得到正交基，从 $b$ 中减去它在 $a$ 方向上的分量：
 
-$$
+```math
 c = b - \frac{a^Tb}{a^Ta}a
-$$
+```
 
 那么 $a^Tc = a^Tb - a^Tb = 0$。这个"正交化"思想适用于任意数量的基向量：一个基变为一个正交基。这就是 Gram-Schmidt 的思想（见 Section II.2）。
 
@@ -1070,31 +1090,31 @@ $$
 
 从 $A^Ty=0$ 可类似推出：$A$ 的列与 $y$ 正交。它们的组合（整个 column space）也与 $y$ 正交。所以 $A$ 的 column space（列空间）与 $A^T$ 的 nullspace（左零空间）正交。
 
-这产生了"线性代数的大图景"（Figure 1.6）。
+这产生了"线性代数的大图景"（Figure I.6）。
 
 注意维度：行空间维度 $r$，零空间维度 $n-r$，加起来等于 $n$。每个 $\mathbb{R}^n$ 中的向量都有一个行空间分量 $v_r$ 和一个零空间分量 $v_n$：$v = v_r + v_n$。行空间基（$r$ 个向量）与零空间基（$n-r$ 个向量）一起构成 $\mathbb{R}^n$ 的一个基（共 $n$ 个向量）。
 
-**Figure 1.6：** 两对正交子空间。维度加起来等于 $n$ 和 $m$。这是大图景——$\mathbb{R}^n$ 中的两个子空间和 $\mathbb{R}^m$ 中的两个子空间。
+**Figure I.6：** 两对正交子空间。维度加起来等于 $n$ 和 $m$。这是大图景——$\mathbb{R}^n$ 中的两个子空间和 $\mathbb{R}^m$ 中的两个子空间。
 
-我将提到一个重大改进——来自 Singular Value Decomposition（奇异值分解）。SVD 是数据科学中最重要的定理。它为 $A$ 的 row space 找到标准正交基 $v_1,\dots,v_r$，为 column space 找到标准正交基 $u_1,\dots,u_r$。Gram-Schmidt 也可以做到。但 SVD 的特殊基具有额外性质：每对 $v_i$ 和 $u_i$ 通过 $Av_i = \sigma_i u_i$ 连接。在 Figure 1.6 中，想象左边的 $v$ 和右边的 $u$。对于 SVD 的基，乘以 $A$ 将 $v$ 的正交基映射到 $u$ 的正交基。
+我将提到一个重大改进——来自 Singular Value Decomposition（奇异值分解）。SVD 是数据科学中最重要的定理。它为 $A$ 的 row space 找到标准正交基 $v_1,\dots,v_r$，为 column space 找到标准正交基 $u_1,\dots,u_r$。Gram-Schmidt 也可以做到。但 SVD 的特殊基具有额外性质：每对 $v_i$ 和 $u_i$ 通过 $Av_i = \sigma_i u_i$ 连接。在 Figure I.6 中，想象左边的 $v$ 和右边的 $u$。对于 SVD 的基，乘以 $A$ 将 $v$ 的正交基映射到 $u$ 的正交基。
 
 **4. Tall thin matrices $Q$ with orthonormal columns（具有标准正交列的高瘦矩阵）：** $Q^TQ = I$。
 
 这里有三个可能的 $Q$，从 3×1 到 3×2 到正交矩阵 $Q_3$。
 
-$$
+```math
 Q_1 = \begin{bmatrix}1\\0\\0\end{bmatrix},\quad
 Q_2 = \begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix},\quad
 Q_3 = \begin{bmatrix}0&0&1\\0&1&0\\1&0&0\end{bmatrix}
-$$
+```
 
 每一矩阵都有 $Q^TQ = I$。所以 $Q^T$ 是 $Q$ 的一个左逆。只有最后一个矩阵有 $QQ^T = I$，此时 $Q^T$ 也是右逆。$Q_3$ 同时是对称和正交的——既是国王又是王后，真正的皇家矩阵。
 
 注意所有矩阵 $P = QQ^T$ 都有 $P^2 = P$：
 
-$$
+```math
 P^2 = (QQ^T)(QQ^T) = Q(Q^TQ)Q^T = QQ^T = P
-$$
+```
 
 中间我们消去了 $Q^TQ = I$。方程 $P^2 = P$ 标志着一个 projection matrix（投影矩阵）。$P^2 = P = P^T$ 时，$Pb$ 是 $b$ 在 $Q$ 的 column space 上的正交投影。
 
@@ -1110,15 +1130,15 @@ $$
 
 这些 $Q$ 真正重要。对于 2×2 矩阵，它们是平面的旋转或反射。当整个平面绕 $(0,0)$ 旋转时，长度不变，向量间的角度不变。$Q$ 的列是正交单位向量，$\cos^2\theta + \sin^2\theta = 1$：
 
-$$
-Q_{\text{rotate}} = \begin{bmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{bmatrix} \text{（旋转 $\theta$ 角度）}
-$$
+```math
+Q_{\text{rotate}} = \begin{bmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{bmatrix} \text{（旋转 }\theta\text{ 角度）}
+```
 
 如果我将一列乘以 $-1$，两列仍然是正交且长度为1的：
 
-$$
+```math
 Q_{\text{reflect}} = \begin{bmatrix}\cos\theta & \sin\theta\\ \sin\theta & -\cos\theta\end{bmatrix} \text{（关于某条线的反射）}
-$$
+```
 
 现在 $Q$ 将每个向量在一条线上反射。这是一个反射矩阵，行列式为 $-1$，而不是行列式为 $+1$ 的旋转。平面旋转或平面翻转。
 
@@ -1126,17 +1146,17 @@ $$
 
 **正交基 = 正交轴：** 假设 $n\times n$ 正交矩阵 $Q$ 有列 $q_1,\dots,q_n$。这些单位向量是 $\mathbb{R}^n$ 的一个基。每个向量 $v$ 可以写为：
 
-$$
+```math
 v = c_1q_1 + c_2q_2 + \cdots + c_nq_n
-$$
+```
 
 $c_1q_1$、$c_2q_2$ 等是 $v$ 沿各轴的分量。它们是 $v$ 在轴上的投影。
 
 每个系数 $c_1$ 到 $c_n$ 都有简单公式：
 
-$$
+```math
 c_1 = q_1^T v,\quad c_2 = q_2^T v,\quad\dots,\quad c_n = q_n^T v
-$$
+```
 
 向量证明：对 $v = \sum c_k q_k$ 取与 $q_1$ 的点积：$q_1^T v = c_1(q_1^T q_1) + \cdots + c_n(q_1^T q_n) = c_1\cdot 1 + 0 = c_1$。因此 $q_k^T v = c_k$。
 
@@ -1150,13 +1170,13 @@ $$
 
 <span style="color:#2471a3;">**[example]**</span> 选择 $u = (1,1,1)/\sqrt{3}$：
 
-$$
+```math
 H_3 = I - 2uu^T = \frac{1}{3}\begin{bmatrix}
 1 & -2 & -2 \\
 -2 & 1 & -2 \\
 -2 & -2 & 1
 \end{bmatrix}
-$$
+```
 
 $H$ 显然是对称的。两次反射给出 $H^2 = I$，因为 $uu^T uu^T = u(u^Tu)u^T = u\cdot 1\cdot u^T = uu^T$，所以 $H^2 = I - 4uu^T + 4uu^T = I$。
 
@@ -1186,9 +1206,9 @@ $A^k x = \lambda^k x$ 对所有 $k=1,2,3,\dots$ 成立。并且 $A^{-1}x = (1/\l
 
 在这种情况下，每个 $n$ 维向量 $v$ 可以写为特征向量的组合：
 
-$$
+```math
 v = c_1x_1 + \cdots + c_nx_n
-$$
+```
 
 乘以 $A$：$Av = c_1\lambda_1x_1 + \cdots + c_n\lambda_nx_n$。
 
@@ -1230,9 +1250,9 @@ $$
 
 <span style="color:#2471a3;">**[theorem]**</span> 如果 $A$ 有 $n$ 个独立特征向量，将它们放入 $X$ 的列中，相应的特征值放入 $\Lambda$ 的对角线：
 
-$$
+```math
 A = X\Lambda X^{-1},\quad A^k = X\Lambda^k X^{-1}
-$$
+```
 
 ### Not Diagonalizable（不可对角化）
 
@@ -1304,6 +1324,15 @@ $\bar{x}^T Sx = S_{11}|x_1|^2 + \cdots$ 也是实数。由于 $\bar{x}^T x > 0$�
 谱定理 $S = Q\Lambda Q^T = \sum \lambda_k q_k q_k^T$ 展示了每个 $\lambda_k$ 和 $q_k$ 贡献一个秩一组成部分给 $S$。
 
 ---
+> <span style="color:#1e8449;">**[note] 正定为什么保证 Cholesky 一定存在 —— 一条不需要新定理的证明：**</span> 把链条横过来看只有三步：$S$ 正定 $\Rightarrow$ 消元全程不必做行交换、每个 pivot 都大于零 $\Rightarrow$ $S=LDL^T$ 里的 $D=\operatorname{diag}(\text{pivots})$ 对角全正 $\Rightarrow$ $\sqrt{D}$ 是实的，于是 $S=(L\sqrt{D})(L\sqrt{D})^T$。所以 Cholesky 不是新造的一条分解，它只是 $LDL^T$ 加一次**实数**开方；全部风险都压在「pivot 不会变负」这一件事上。
+>
+> 为什么正定就保证 pivot 为正：$u_{kk}=\det A_k/\det A_{k-1}$，而 Sylvester 判据说正定等价于所有 leading principal minors（顺序主子式）$>0$，于是每个 pivot 是正数除正数。再看一步，消元后的 $A_2$ 仍是 symmetric positive definite（对称正定）——它就是 $S$ 在「前 $k$ 列取 0 的方向」上的限制，能量 $x^TSx$ 没变，所以归纳下去永不撞上零 pivot。实测三个 $3\times3$ 可以看清这是一条链而不是三条独立判据：$\begin{bmatrix}2&1&0\\1&2&1\\0&1&2\end{bmatrix}$ 的 eigenvalues（特征值）$2,0.5858,3.4142$、pivots $2,\tfrac32,\tfrac43$、主子式 $2,3,4$，三种数同时为正；把 $(3,3)$ 元改成 1，得 eigen $0.1981,1.555,3.247$、pivots $2,\tfrac32,\tfrac13$、主子式 $2,3,1$，仍同时为正；换成 $\begin{bmatrix}1&2&0\\2&1&0\\0&0&1\end{bmatrix}$，eigen 冒出 $-1$、pivots 冒出 $-3$、主子式冒出 $-3$，三者又同时翻脸。
+>
+> 具体到矩阵里长什么样：$S=\begin{bmatrix}2&4&2\\4&11&7\\2&7&6\end{bmatrix}$ 实测得 $L=\begin{bmatrix}1&0&0\\2&1&0\\1&1&1\end{bmatrix}$、$D=\operatorname{diag}(2,3,1)$，而那三个数正是 $\det A_1/1$、$\det A_2/\det A_1$、$\det A_3/\det A_2$（主子式 $2,6,6$）；把 $\sqrt{D}$ 折进 $L$，得到 $\begin{bmatrix}\sqrt2&0&0\\2\sqrt2&\sqrt3&0\\\sqrt2&\sqrt3&1\end{bmatrix}$，对角元的平方逐个还原成 pivots。
+>
+> 反向证据同样直接：$\begin{bmatrix}1&2\\2&1\end{bmatrix}$ 的 pivots 是 $1,-3$，第二步要开 $\sqrt{-3}$，`numpy.linalg.cholesky` 报 `LinAlgError: Matrix is not positive definite`。注意它并不先判正定，而是算到开方那一步才撞上负号——这正是「存在性等于每个 pivot 可开方」的直白含义。浮点的边界要另算：Hilbert 矩阵理论上对一切 $n$ 正定，实测算到 $n=13$ 仍成功（对角元最小 $8.25\times10^{-8}$），$n=14$ 直接崩（cond 约 $9.3\times10^{17}$）。定理保证存在，不等于这一版数值能算出来，§I.9 的条件数会把这条裂缝量化。
+>
+> 成本与去向：Cholesky 只要 LU 的一半工作量（实测 $n=32$ 时 11968 对 21328 次乘加除），省下来的正是「对称的另一半不必再算一遍」。$S=Q\Lambda Q^T$ 把 $S$ 沿特征方向切成 $n$ 片 $\lambda_kq_kq_k^T$（实测每片 rank 1），$S=LL^T$ 则沿消元方向切成 $n$ 片三角形列，两条路切法不同、片数相同。于是 §I.9 的 PCA 走前者（按 $\lambda$ 排序后截断），而 §V.4 证明 covariance matrix（协方差矩阵）至少是半正定、§V.5 正是靠这份正定性才敢写 $\sqrt{\det V}$ 并用 $Q\Lambda^{-1}Q^T$ 把多元高斯的二次型拆成 $M$ 个独立的一维积分；到了 §VI.1，同一判据换上优化语言就叫「Hessian 正定 $\Rightarrow$ 严格凸 $\Rightarrow$ 极小点唯一」。
 
 <span style="color:#7f8c8d">*§I.6–§I.7 逐句翻译完成。覆盖：特征值/特征向量、迹与行列式性质、微分方程、对角化、谱定理与证明、正定矩阵四种检验、Cholesky。*</span>
 

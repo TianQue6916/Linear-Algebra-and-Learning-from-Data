@@ -473,7 +473,7 @@ $\ell^1$ 与 sparsity（稀疏性）之间的联系，画在 §I.11 开头的那
 
 这个组合非常有力。
 
-> <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> LASSO 与 elastic net 的目标式在 OCR 中残作 "LASSO Minimize 一 2 + `" 与 "Minimize llAc 一 blI?2 + 1 + 硎 c 腭"，已按标准定义重建为 $\frac{1}{2}\|Ax-b\|_2^2+\lambda\|x\|_1$ 与 $\frac{1}{2}\|Ax-b\|_2^2+\lambda_1\|x\|_1+\lambda_2\|x\|_2^2$（常系数与正则参数记号以原书为准）。"splits $\ell^1$ from ..." 一句的宾语在 OCR 中缺失（残作 "splits 乏 1 什 om"），按 ADMM 把非光滑 $\ell^1$ 项与光滑二次项分离的机制补足。
+> <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> LASSO 与 elastic net 的目标式在 OCR 中残作 "LASSO Minimize 一 2 + \`" 与 "Minimize llAc 一 blI?2 + 1 + 硎 c 腭"，已按标准定义重建为 $\frac{1}{2}\|Ax-b\|_2^2+\lambda\|x\|_1$ 与 $\frac{1}{2}\|Ax-b\|_2^2+\lambda_1\|x\|_1+\lambda_2\|x\|_2^2$（常系数与正则参数记号以原书为准）。"splits $\ell^1$ from ..." 一句的宾语在 OCR 中缺失（残作 "splits 乏 1 什 om"），按 ADMM 把非光滑 $\ell^1$ 项与光滑二次项分离的机制补足。
 
 相关的两篇文献如下：
 
@@ -734,7 +734,6 @@ T_{ijk} = a_i b_j c_k \tag{12}
 
 （公式 12）就是一个秩一（rank-one）的 3-way tensor（三路张量），记为 $T = a \otimes b \otimes c$。
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR 残作 "UEVT"、"Tij k = OibjCk"、"3-way tensor T = 0 0 b 0 c Of rank one"。"UEVT" 依术语表重建为 $A = U\Sigma V^T$；"OibjCk" 依外积定义重建为 $T_{ijk} = a_i b_j c_k$，故三个向量依序应为 $a, b, c$（OCR 首向量字母已被吞）；符号 "0" 是张量积 $\otimes$ 的噪声（"0 0 b 0 c" 即 $a \otimes b \otimes c$）。公式编号 (12) 依后文 "(12)" 归位，OCR 中第 (11)、(12) 两个编号均出现于 (9)、(10) 之后的正确顺序。
 
 这个 outer product 由这三个向量中总共 $m + p + q$ 个数字所定义。
@@ -765,7 +764,6 @@ $T$ 看起来具有秩 3；但它却是一串秩 2 张量 $T_\epsilon$（rank-2 
 
 **
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 原书 (13) 中 $T$ 的三个秩一分量系数及 $T_\epsilon$ 的显式表达式在 OCR 中几乎全部损毁（仅残留孤立数字 1、0、0）。此处依据正文叙述——「貌似秩 3 的张量是若干秩 2 张量的极限」——作示意性重建，以展示张量秩的「不封闭」现象。
 
 为什么这种事绝不会发生在矩阵身上？
@@ -778,7 +776,6 @@ $T$ 看起来具有秩 3；但它却是一串秩 2 张量 $T_\epsilon$（rank-2 
 
 不过接下来的段落表明我们仍要尝试——因为在计算中我们需要 $T$ 的一个良好低秩近似；两个可选方案是 CP 与 Tucker（Tucker 分解）。
 
-<span style="color:#2471a3;">**[section]**</span>
 ### 张量的 CP 分解（The CP Decomposition of a Tensor）
 
 在 tensor analysis（张量分析）与 fast tensor computations（快速张量计算）中，一个根本性问题是用若干秩一张量之和逼近给定张量 $T$，即寻找一种 approximate factorization（近似分解）。
@@ -833,7 +830,6 @@ Lim 与 Hillar 证明了：许多听起来更简单的张量问题也属于 NP-h
 
 **
 
-
 ---
 
 > <span style="color:#7f8c8d;">Strang §I.12, p.104</span>
@@ -862,7 +858,6 @@ Lim 与 Hillar 证明了：许多听起来更简单的张量问题也属于 NP-h
 
 于是 (15) 就全是矩阵运算了。
 
-<span style="color:#2471a3;">**[section]**</span>
 ### 张量的矩阵化形式（Matricized Form of a Tensor）
 
 设 $A$、$B$、$C$ 是以 (14) 中的向量 $\mathbf{a}_r$、$\mathbf{b}_r$、$\mathbf{c}_r$ 为列的矩阵，每个都有 $R$ 列。
@@ -895,7 +890,6 @@ $T$ 的 matrix unfolding（矩阵展开）可以是 $3 \times 8$、$4 \times 6$ 
 
 **
 
-
 ```math
 \mathcal{T}_{(1)} =
 \begin{bmatrix}
@@ -909,7 +903,6 @@ $T$ 的 matrix unfolding（矩阵展开）可以是 $3 \times 8$、$4 \times 6$ 
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 原书 (16) 的三幅数字阵列在 OCR 中散落（残片如「4 7 10 13 …」「5 8 11 14 …」「6 9 12 15 …」，恰为下表各行去掉首元素）。上面的 $3 \times 8$ 表按 $3 \times 4 \times 2$ 张量（元素按列主序编号 1–24）的模态 1 展开约定重建；$4 \times 6$ 与 $2 \times 12$ 两种展开在译文中只保留尺寸关系。
 
-<span style="color:#2471a3;">**[section]**</span>
 ### Khatri-Rao 积 $C \odot B$（The Khatri-Rao Product $C \odot B$）
 
 第 3 节将引入矩阵 $A$ 与 $B$ 的 Kronecker product（克罗内克积）$K = A \otimes B$。
@@ -929,7 +922,6 @@ $T$ 的 matrix unfolding（矩阵展开）可以是 $3 \times 8$、$4 \times 6$ 
 ## page_111（书页 106：Khatri-Rao 定义 (17)、(18)(19) 矩阵化恒等式、(20) 最小二乘子问题）
 
 **
-
 
 ---
 
@@ -956,7 +948,6 @@ $T$ 的 matrix unfolding（矩阵展开）可以是 $3 \times 8$、$4 \times 6$ 
 ## page_112（书页 107：伪逆恒等式 (21)、更新式 (22)、Tucker 分解 (23)(24)、HOSVD）
 
 **
-
 
 小结（Summary）：张量 $T$ 由式（14）的和式近似，即 $T \approx \sum_{i=1}^{R} a_i \circ b_i \circ c_i$。
 
@@ -1020,7 +1011,6 @@ T_1 = A (C \odot B)^T, \qquad T_2 = B (C \odot A)^T, \qquad T_3 = C (B \odot A)^
 
 **
 
-
 请注意：$A$ 并不处在最小二乘通常的位置 $Ax = b$——$A$ 的行才是未知数（unknowns）！
 
 系数矩阵是 $C \odot B$（而不是 $A$ 本身）；我们期望该矩阵满列秩（full column rank），因此要求 $JK \ge R$。
@@ -1065,7 +1055,6 @@ T_1 = A (C \odot B)^T, \qquad T_2 = B (C \odot A)^T, \qquad T_3 = C (B \odot A)^
 
 **
 
-
 取转置后，固定 $B$ 与 $C$ 的最小二乘问题（20）由下列矩阵（22）求解：
 
 ```math
@@ -1090,14 +1079,13 @@ Tucker 分解允许 $P$ 个列向量 $a_p$、$Q$ 个列向量 $b_q$ 与 $R$ 个�
 
 它只允许 $PQR$ 个秩一张量（rank-one tensors）$a_p \circ b_q \circ c_r$ 出现。
 
-> <span style="color:#1e8449;">**[note] 译者注（跨课程连接：SVD/PCA 结构对照）:**</span> CP 与 Tucker 之差，用你已滚瓜烂熟的 SVD 一句话讲清：矩阵 A=$U\SigmaV^{T}$ 若只允许「秩一 × 对角核」，就是 SVD 形态 ∑$\sigma_{i}u_{i}$∘$v_{i}$——第 i 个左奇异向量只与同号第 i 个右奇异向量配对；若把 $\Sigma$ 换成任意矩阵 M（满核），A=$UMV^{T}$ 就允许任意 $u_{i}$ 与任意 $v_{j}$ 配对、权重 $m_{ij}$。张量版对应：CP(14) 是「共享因子 + 对角核心张量」，第 r 个 a 只和同号 r 的 b、c 组合，只有 R 项；Tucker(23) 的核心张量 G 是完全的三路数组，a_p 可与任意 b_q、任意 c_r 组合，最多 PQR 项，且 P、Q、R 可互不相同。多出的自由度换来什么？换来 a、b、c 可以各自正交——核能「吸收」因子间的冗余相关性（正如 $\Sigma$ 之外 U、V 可正交），由此得到 HOSVD：对每个方向分别做一次截断/主成分提取，堪称张量版 PCA。代价是参数更多、G 未必可解释；CP 的 R 个分量更像「主题/主成分」、可解释性强，但计算 NP-hard。选型法则可记：要可解释选 CP，要数值稳定与压缩选 Tucker/HOSVD。
+> <span style="color:#1e8449;">**[note] 译者注（跨课程连接：SVD/PCA 结构对照）:**</span> CP 与 Tucker 之差，用你已滚瓜烂熟的 SVD 一句话讲清：矩阵 A=$U\Sigma V^{T}$ 若只允许「秩一 × 对角核」，就是 SVD 形态 ∑$\sigma_{i}u_{i}$∘$v_{i}$——第 i 个左奇异向量只与同号第 i 个右奇异向量配对；若把 $\Sigma$ 换成任意矩阵 M（满核），A=$UMV^{T}$ 就允许任意 $u_{i}$ 与任意 $v_{j}$ 配对、权重 $m_{ij}$。张量版对应：CP(14) 是「共享因子 + 对角核心张量」，第 r 个 a 只和同号 r 的 b、c 组合，只有 R 项；Tucker(23) 的核心张量 G 是完全的三路数组，a_p 可与任意 b_q、任意 c_r 组合，最多 PQR 项，且 P、Q、R 可互不相同。多出的自由度换来什么？换来 a、b、c 可以各自正交——核能「吸收」因子间的冗余相关性（正如 $\Sigma$ 之外 U、V 可正交），由此得到 HOSVD：对每个方向分别做一次截断/主成分提取，堪称张量版 PCA。代价是参数更多、G 未必可解释；CP 的 R 个分量更像「主题/主成分」、可解释性强，但计算 NP-hard。选型法则可记：要可解释选 CP，要数值稳定与压缩选 Tucker/HOSVD。
 
 ---
 
 ## page_113（书页 108：小结——tensor train、CURT、随机化分解）
 
 **
-
 
 维数为 $P \times Q \times R$ 的核心张量（core tensor）$G$ 决定这些组合中的系数：
 
@@ -1147,7 +1135,6 @@ T_1 = A G_1 (C \otimes B)^T, \qquad T_2 = B G_2 (C \otimes A)^T, \qquad T_3 = C 
 
 **
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR "t0 handle way tensors" 缺词，依 tensor train（张量列）分解处理高维张量的动机重建为"高阶张量"；"a 田 n Of 3-way tensors ... tensor trai n format" 中的 "田 n" 依上下文重建为 train（串/链）。
 
 #### 2. CURT decompositions（CURT 分解，Song、Woodruff 与 Zhong）
@@ -1159,7 +1146,6 @@ T_1 = A G_1 (C \otimes B)^T, \qquad T_2 = B G_2 (C \otimes A)^T, \qquad T_3 = C 
 该算法以接近最优的步数逼近目标，即步数与 $T$ 中 nonzero（非零元）的个数成正比。它使用了 randomized factorization（随机化分解）——处理超大规模计算的有力工具（见 §II.4）。可以说，tensor（张量）正处在 numerical linear algebra（数值线性代数）研究的最前沿（frontier）。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 Bertsekas 概率 / CLRS 随机算法）:**</span> CURT 的两个设计动机值得点破。(1) 可解释性：SVD 的奇异向量是全数据线性组合出的「合成特征」，丢掉原始语义；CUR（列-行逼近，见 §II.3）直接挑选原张量里的真实列与行，逼近误差仍受 Eckart-Young 型最优界框住，却保留「哪些原始维度重要」的可读性——数据科学里这叫代表性样本（Mahoney 等的工作正源于此）。(2) 随机化：超大规模下给每列算一遍精确权重太贵，于是用随机投影或随机采样估计列的重要度（常见代理是列范数加权抽样），再按概率抽列。这里的误差分析正是你正在学的概率论：抽样是一次随机试验、期望给出无偏估计；「万一抽偏」的概率要用尾界控制（6.042 与 Bertsekas 概率中的 Chebyshev/Chernoff 型不等式），最终以高概率给出 (1+$\epsilon$) 相对误差——Song–Woodruff–Zhong 的标题 Relative Error 正指此。算法步数按 T 中非零元计数，呼应「稀疏 = 便宜」：只扫一遍非零元，逼近信息论下界。这是 CLRS §35「牺牲最优、换取可行」的近似哲学在数值线性代数前沿的翻版，也是 NMF/稀疏正定这些「正定与稀疏」主题背后的动机。
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR "The algorithm comes near the goal of z steps: equal to the number of nonzeros in T" 中 "z steps" 依算法复杂度语义重建为"步数与 $T$ 中非零元个数成正比"；交叉引用 "Section 11.4" 按罗马数字解读为 §II.4。
 
@@ -1319,8 +1305,6 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 
 <!-- page 117: 书页 113, OCR page 17 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Part II 总览：Computations with Large Matrices（大规模矩阵的计算）
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页为 Part II 总览正文页，OCR 噪声较重。`风`/`盖`/`兒` 均为矩阵 $A$，`乥` 为 $\Sigma$，`UEVT` 为 $A=U\Sigma V^T$，`蓋` 为 $A^+$；节号 `Section 11.2 / 1,4 / IIe2e` 是罗马数字编号被误读的结果，分别重建为 §II.2、§I.4、§II.2。此类符号与交叉引用修复以下不再逐一重复标注。
@@ -1365,9 +1349,6 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 
 > <span style="color:#7f8c8d;">本页为书页 114，是 Part II 总览正文的续页（第 3~6 类困难情形）；页眉 "Computations with Large Matrices" 与页码 114 为重复元素，不译。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本页 `风` 亦为 $A$，`叻` 为范数记号之误，$A^+b$、$A^TA$、$\delta^2$、$\ell_1$ 等公式均按数学语境重建。
 
 **3.** 假设 $m < n$。
@@ -1379,8 +1360,7 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 这个解常常是稀疏的（sparse，即多数分量为零），因而非常理想。
 它来自 §III.4 的基追踪（basis pursuit）。
 
-> <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 你在前作《线性代数导论》§4.2–4.3 认识的最小二乘解 $x^+=A^+b$ 极小化的是 $\ell_2$ 范数；这里与它对比的是另一把"尺子"$\ell_1=\sum_i|x_i|$。为什么 $\ell_1$ 偏爱稀疏解？看等高面形状：$\|x\|_2\le 1$ 是光滑球面，$\|x\|_1\le 1$ 是顶点全落在坐标轴上的菱形（多面体）。欠定方程组 $Ax=b$（$m<n$）的解集是一个仿射子空间，把 $\ell_1$ 球"吹大"到刚好碰到该解集时，接触点极易落在多面体的角上——角点只有极少数坐标非零，于是多数分量恰好为 0。这正是 Boyd《凸优化》§6.3 正则化（$\ell_1$ 换 $\ell_2$）与压缩感知基追踪（正文指向 §III.4）的几何内核。关键差异：$x^+$ 是闭式解（一次矩阵乘法），稀疏解却必须用迭代优化求解——"形状更好"的解往往要付出计算代价，这是学习 §II.4 前先建立的心理预期。
-
+> <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 你在前作《线性代数导论》§4.2–4.3 认识的最小二乘解 $x^+=A^+b$ 极小化的是 $\ell_2$ 范数；这里与它对比的是另一把"尺子"$\ell_1=\sum_i|x_i|$。为什么 $\ell_1$ 偏爱稀疏解？看等高面形状：$\|x\|_2\le 1$ 是光滑球面，$\|x\|_1\le 1$ 是顶点全落在坐标轴上的菱形（多面体）。欠定方程组 $Ax=b$（$m\lt n$）的解集是一个仿射子空间，把 $\ell_1$ 球"吹大"到刚好碰到该解集时，接触点极易落在多面体的角上——角点只有极少数坐标非零，于是多数分量恰好为 0。这正是 Boyd《凸优化》§6.3 正则化（$\ell_1$ 换 $\ell_2$）与压缩感知基追踪（正文指向 §III.4）的几何内核。关键差异：$x^+$ 是闭式解（一次矩阵乘法），稀疏解却必须用迭代优化求解——"形状更好"的解往往要付出计算代价，这是学习 §II.4 前先建立的心理预期。
 
 **4.** 假设 $A$ 的各列处于不良状态。
 此时比值 $\sigma_1/\sigma_n$ 太大（条件数过大），解 $x$ 便无法被很好地确定——正如 §III.3 中高阶插值（high-order interpolation）的情形。
@@ -1405,10 +1385,9 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 通常我们是已知系统（例如 electrical network（电网）），再去求它的输出（电流与电压）。
 反问题则从输出出发（例如 CT 或 MRI 的扫描影像）。重建系统是病态的（ill-conditioned）。
 
-> <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 为什么加 $\delta^2 I$ 就能救活近似奇异的 $A^TA$？用特征值看最清楚：$A^TA$ 对称半正定，其特征值恰为奇异值的平方 $\sigma_1^2\ge\dots\ge\sigma_n^2\ge 0$。病态意味着 $\sigma_n\approx 0$，于是 $A^TA$ 的最小特征值以"平方"方式趋零、几乎不可逆。加上 $\delta^2 I$ 后每个特征值被抬高为 $\sigma_i^2+\delta^2$，最小者不小于 $\delta^2$，条件数被压到 $(\sigma_1^2+\delta^2)/\delta^2$ 以下——可逆性有保证，求逆也不再"爆炸"。$\delta^2$ 还同时解决第 3 种情形（$m<n$ 欠定）：此时 $A^TA$ 奇异是因为零空间方向对应 $\sigma=0$，加 $\delta^2$ 等于自动给这些方向一个温和的权，免去显式处理零空间。这条"在 0 附近填一个微扰"的策略在反问题、统计岭回归（ridge）与 Boyd §6.3 正则化中是同一个动作，后文 page_136 会证明 $\delta\to0$ 时解恰趋近伪逆解 $A^+b$。
+> <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 为什么加 $\delta^2 I$ 就能救活近似奇异的 $A^TA$？用特征值看最清楚：$A^TA$ 对称半正定，其特征值恰为奇异值的平方 $\sigma_1^2\ge\dots\ge\sigma_n^2\ge 0$。病态意味着 $\sigma_n\approx 0$，于是 $A^TA$ 的最小特征值以"平方"方式趋零、几乎不可逆。加上 $\delta^2 I$ 后每个特征值被抬高为 $\sigma_i^2+\delta^2$，最小者不小于 $\delta^2$，条件数被压到 $(\sigma_1^2+\delta^2)/\delta^2$ 以下——可逆性有保证，求逆也不再"爆炸"。$\delta^2$ 还同时解决第 3 种情形（$m\lt n$ 欠定）：此时 $A^TA$ 奇异是因为零空间方向对应 $\sigma=0$，加 $\delta^2$ 等于自动给这些方向一个温和的权，免去显式处理零空间。这条"在 0 附近填一个微扰"的策略在反问题、统计岭回归（ridge）与 Boyd §6.3 正则化中是同一个动作，后文 page_136 会证明 $\delta\to0$ 时解恰趋近伪逆解 $A^+b$。
 
 ---
-
 
 **6.** 假设 $A$ 实在太大，大到装不进快速内存（fast memory）。
 我们可以请求查看少量几列，却无法继续做消元。
@@ -1434,8 +1413,6 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 
 <!-- page 119: 书页 115, OCR page 19 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### II.1 Numerical Linear Algebra（数值线性代数）
 
 本节概括（经典）numerical linear algebra（数值线性代数）的核心思想。
@@ -1446,7 +1423,6 @@ A $2 \times 2 \times 2$ tensor $T$ times a vector in $\mathbb{R}^{2}$ should pro
 > <span style="color:#1e8449;">**[note] 译者注（算法效率视角）:**</span> 为什么大矩阵要"迭代"而不直接消元？用 6.006/CLRS 的复杂度语言：高斯消元约 $\frac23 n^3$ 次浮点运算，且主元行的**填入（fill-in）**会把稀疏矩阵逐步变稠密；而"矩阵乘向量 $Av$"只需扫一遍非零元（稀疏矩阵约 $O(\text{nnz})$）。当 $n=10^4\sim10^6$ 且 $A$ 稀疏（有限差分、图、网络）时，$O(n^3)$ 不可行，每步 $O(\text{nnz})$ 的迭代却可行——CSAPP 第 6 章存储器层次结构进一步说明：稀疏数据按压缩格式（只存非零元）逐块读入缓存，一次迭代只做一次完整扫描，访存友好。本页的分裂 $A=S-T$ 是迭代法的母版：$S$ 要"既接近 $A$ 又容易求逆"（如取对角或三角），收敛条件则由 page_120 的误差方程 $\|S^{-1}T\|<1$ 给出。此处的"重复简单步骤逼近难解"模式，与你学过的牛顿法迭代求根（每步一次求值+一次除）是同一哲学：**迭代次数×每步代价**才是总代价。
 
 ---
-
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> OCR 中此句方程残缺为 `solve = b or Ac = ,\c or =`，已依上文语义重建为求解 $Ax = b$、$Ax = \lambda x$（后文尚有其他问题形式）。
 
@@ -1520,8 +1496,6 @@ $Ax = b$ 与 $Ax = \lambda x$ 都是严肃的问题（serious problems）。
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 本段 OCR 破损较重（`det （ 一 (I) = 0`、`the matrix T`、`large T`、`= and 鬱 = 0`、`For = 104`、`Section 11.4` 等），已依数学语境重建为 $\det(A - \lambda I) = 0$、$A^{T}A$、$Ax = b$ 与 $Ax = \lambda x$、$n = 10^{4}$ 以及交叉引用 §II.4。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Krylov Subspaces and Arnoldi Iteration（Krylov 子空间与 Arnoldi 迭代）
 
 关键思想（key idea）：matrix-vector multiplication（矩阵-向量乘法）$Ab$ 很快，尤其当 $A$ 是 sparse（稀疏）矩阵时。
@@ -1531,7 +1505,6 @@ $Ax = b$ 与 $Ax = \lambda x$ 都是严肃的问题（serious problems）。
 我们就在这个子空间内部寻找目标解的一个足够接近的近似。
 
 > <span style="color:#1e8449;">**[note] 译者注（算法效率视角）:**</span> "绝不要去计算 $A^2$，只计算向量"是一条极重要的工程纪律。$A^2$ 作为矩阵要花 $O(n^3)$ 乘出来，而且即使 $A$ 稀疏，$A^2$ 也会大量填入非零元（稀疏结构在乘方下迅速变稠密——类似消元中的 fill-in）；而 $A\cdot b$ 只需 $O(\text{nnz})$。更深一层：序列 $b,Ab,A^2b,\dots$ 的每一项都可视为"对数据 $b$ 沿矩阵结构做一步信息传播"。若 $A$ 是图（邻接/拉普拉斯），$(A^kb)_i$ 就是 $k$ 步内到达节点 $i$ 的信息总量——与 6.006 中 BFS 按层扩展、邻接表只扫邻居的直觉完全同构；区别在于 BFS 用 $0/1$ 逻辑而这里用实线性组合。Krylov 方法的全部威力，来自"只乘向量"就足以在 $k$ 维子空间内逼近 $n$ 维问题的解。
-
 
 第一个问题是找一组远比这些向量 $b,\ Ab,\ \ldots,\ A^{n-1}b$ 更好的 basis（基）。
 通常 orthogonal basis（正交基）$q_1, \ldots, q_n$ 才是最佳选择！
@@ -1550,7 +1523,6 @@ Gram-Schmidt（格拉姆-施密特）的思想——从 $Aq_k$ 中减去它在�
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> Arnoldi 就是把 Gram-Schmidt 搬到 Krylov 空间里重演一遍：取 $q_1=b/\|b\|$，每次把 $Aq_k$ 对已得基 $\{q_1,\dots,q_k\}$ 做投影并减去，剩下的正交部分归一化为 $q_{k+1}$。矩阵关系 $AQ_k=Q_{k+1}H_{k+1}$ 的**最后一列**读作：$Aq_k$ 只是 $q_1,\dots,q_{k+1}$ 的线性组合（系数 $h_{1k},\dots,h_{k+1,k}$）。这保证了 $A$ 把第 $k$ 个 Krylov 空间映进第 $k+1$ 个——**Krylov 不变性** $A\,\mathcal K_k\subseteq\mathcal K_{k+1}$。$H_{k+1}$ 之所以是上 Hessenberg（仅第一子对角线以下为零），正是这条不变性的矩阵翻译：第 $k$ 列在 $q_{k+1}$ 以下的位置系数天然为 0。若 $A$ 对称，可进一步压到三对角（page_122 的 Lanczos）。这一步"从算法动作读出矩阵稀疏结构"的读法，是理解全书迭代法的通用钥匙。
 
 ---
-
 
 你必须用矩阵语言来看清这一过程。
 $AQ_k = Q_{k+1}H_{k+1}$ 的最后一列说明：$Aq_k$ 是 $q_1$ 到 $q_{k+1}$ 的一个线性组合。
@@ -1601,7 +1573,6 @@ AQ_k = Q_{k+1}H_{k+1}
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 为什么 Krylov 过程先"看见"极端特征值？把初始向量按 $A$ 的特征向量展开 $b=\sum_i c_iv_i$（正规矩阵可正交对角化，来自前作谱定理），则 $A^kb=\sum_i c_i\lambda_i^kv_i$：$k$ 次乘幂让 $|\lambda_i|$ 大的项以 $|\lambda_i/\lambda_{\max}|^k$ 的指数优势压过其余项。因此 $b,Ab,\dots,A^{k-1}b$ 张成的空间几乎落在"最大模特征值对应的特征向量"所张成的低维子空间里，投影 $H_k=Q_k^TAQ_k$ 的特征对 $(y_i,\theta_i)$ 就是 Rayleigh-Ritz 逼近：$x=Q_ky_i$，$\theta_i=\dfrac{x^TAx}{x^Tx}$，$\theta_i$ 逐次逼近外层的 $\lambda$。这也解释了为何对**非对称**矩阵要当心：正文提到的伪谱（pseudospectrum）本质是问"对 $A$ 做一个小扰动 $\varepsilon$ 后特征值会跑到多大范围"——非正规矩阵对扰动的敏感度远高于对称矩阵，光看谱会误导（这与 CSAPP 第 2 章"浮点误差随扰动放大"是同一关切，只是放大倍数由矩阵的"非正规度"决定）。此机制在 page_122 的 Lanczos 数值例子中会再次精确显现。
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原文此句 OCR 为 `emphas ize for 刀 e tric`，按上下文重建为 “for nonsymmetric matrices”（对非对称矩阵）。
 
 Trefethen 与 Bau 强调：对非对称矩阵，我们可能从一开始就不想要 $A$ 的特征值！
@@ -1636,7 +1607,6 @@ $H_{k+1,k}$ 在第一子对角线以下全部为 0，正是这些 0 让 GMRES �
 
 ---
 
-
 ---
 
 > <span style="color:#7f8c8d;">Strang §II.1, p.117</span>
@@ -1660,7 +1630,6 @@ $H_{k+1,k}$ 在第一子对角线以下全部为 0，正是这些 0 让 GMRES �
 **事实 2**：$H_k$ 是三对角的（tridiagonal）：因为只存在一条下对角线，所以也只存在一条上对角线。
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 对称性把 Hessenberg 压成三对角，数值后果极为深远：Arnoldi 每步要对**所有** $k$ 个已得向量做内积与减法（$O(k)$ 项、总开销 $O(nk^2)$），而 Lanczos 每步只需保留最近三项——算法中 $w=Sq_k-a_kq_k-b_{k-1}q_{k-1}$ 只有两项减法，一次内积 $a_k=q_k^TSq_k$。为什么对称时"更早的投影自动为零"？用 Krylov 不变性 $S\mathcal K_k\subseteq\mathcal K_{k+1}$ 加上 $S=S^T$ 可证 $q_i^TSq_k=0$（$i\le k-2$）——这正是你熟悉的"对称矩阵特征向量正交"在子空间层次的重演。于是每次迭代代价与 $k$ 无关（只需一次 $Sq_k$），这是把"谱区间信息"压缩进三条对角线三项递推的胜利。可以期待：这个三对角递推结构马上会孕育出共轭梯度法（page_125）与 QR 迭代（page_123），一鱼三吃。
-
 
 三对角矩阵 $H$ 带来成本上的大幅节省——Arnoldi 迭代（iteration）只需一步正交化（orthogonalization step）。
 
@@ -1748,7 +1717,6 @@ Lanczos 很有价值，但在实践中必须格外小心才能让所有 $q$ 都�
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> QR 迭代为什么收敛？它其实是**幂法的推广**。回想一维幂法：$x_{k+1}=Ax_k/\|Ax_k\|$ 反复乘并归一化，$x_k$ 收敛到模最大的特征向量，收敛率由 $|\lambda_2/\lambda_1|$ 决定。QR 迭代 $T_k=Q_kR_k,\ T_{k+1}=R_kQ_k$ 是"同时"对全部列做这件事：$Q_k$ 的各列逼近 $T_0$ 按模排序的特征向量，$R_kQ_k=Q_k^TT_kQ_k$ 只是把谱"重新聚集"——因为 $Q_k^T T_k Q_k=Q_k^T(Q_kR_k)Q_k=R_kQ_k$，这正是正交相似变换（特征值不变，正文已述）。随 $k$ 增大，特征向量方向被逐块锁定，$T_k$ 的非对角元从底端开始衰减，对角化逐步完成，最先剥离的是模最小的特征值（出现在末位）。用你的特征值直觉：一个收敛到对角形的相似矩阵，对角线必然给出全部特征值。所谓"惊人想法"其实是把一维幂法升级为"同时的多向量幂法+正交归一"。
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原 OCR 句「翁 是 豆 襯 历 ago 刀 (ProbIem 1)」为符号噪声，依上下文重建为「新的 $T_1$ 仍为三对角矩阵（见 Problem 1）」。
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原 OCR「＝ QTSQ = Q-ISQ」重建为 $T = Q^TSQ = Q^{-1}SQ$；「0f / t0 / th e / 行 om」等为字形噪声，均已按语境修正。
 
@@ -1788,7 +1756,6 @@ T_{k+1} = R_kQ_k + s_kI
 
 ---
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原 OCR 尾行「take only 0 3 / ） flops for accuracy」符号残缺；按三对角 QR 每步 $O(n)$、总计约 $O(n^2)$ 次运算的常规复杂度重建为「只需约 $O(n^2)$ 次 flops」。
 
 ---
@@ -1825,7 +1792,6 @@ Q_0 = \begin{bmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{b
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 为什么对称矩阵只能化简到三对角、而一般矩阵可以化简到双对角？本质是**可用的自由度不同**。$n\times n$ 正交矩阵由 $n(n-1)/2$ 个旋转参数决定；相似变换 $Q^TSQ$ 必须保持对称（转置即自身），而"对称 Hessenberg 只能是三对角"——你再想多消一个零，就需要让 $Q$ 的某列真正成为 $S$ 的特征向量，而求特征向量没有有限步算术（见 page_134 的阿贝尔论证），只能交给 page_123 的迭代法。所以数值上正确的分工是：**有限步只负责化简到最稀的规范形（三对角/双对角），迭代负责在规范形上榨出谱**。一般 $A$ 则有两个独立正交矩阵 $Q_1,Q_2$（左、右奇异向量可以各行其是），自由度翻倍，足以把 $A$ 化简到只留两条对角线的双对角形——两个对角带恰好对应 $A^TA$ 的三对角结构。这个"自由度预算"视角能帮你理解全章的约化策略，比死记算法步骤有用得多。
 
-
 ```math
 Q^{-1}SQ = \begin{bmatrix} a_1 & b_1 & 0 \\ b_1 & a_2 & b_2 \\ 0 & b_2 & a_3 \end{bmatrix}
 ```
@@ -1844,7 +1810,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 这句是全书最重要的数值警示之一。$A^TA$ 的特征值 = 奇异值平方 $\sigma_i^2$，于是 $\mathrm{cond}(A^TA)=\mathrm{cond}(A)^2$。CSAPP 第 2 章告诉我们：双精度机器精度约 $\varepsilon\approx2.2\times10^{-16}$（约 16 位十进制有效数字），而求解线性方程时误差按条件数放大——条件数 $10^8$ 的 $A$，经 $A^TA$ 会变成 $10^{16}$，解的有效数字几乎丢光。这正是 Golub-Kahan 算法**直接对 $A$ 双对角化**、从不显式构造 $A^TA$ 的原因。同样的逻辑在 §II.2 反复出现（page_128 正规方程 vs QR），可以说"**能不乘出 $A^TA$ 就不乘**"是数值线性代数第一戒律。代价方面：第 1 步双对角化 $O(mn^2)$、后续 $O(n^2)$，对中等规模矩阵完全可以接受——所以正文才强调 SVD 是"可计算的"，只是"不能动辄做几千次"。
 
 ---
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原 OCR 在步骤 1 中写作「as in (8)」，与本页公式 (7) 的编号不一致（可能为原书排版编号或 OCR 误读），此处统一按本页出现的编号 (7) 处理。
 
@@ -1869,7 +1834,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 
 ### 用共轭梯度法解 $Sx = b$（Conjugate Gradients for $Sx = b$）
 
-<span style="color:#2471a3;">**[section]**</span>
 本节介绍的算法即 conjugate gradient algorithm（共轭梯度算法，简称 CG），它专门适用于 symmetric positive definite matrices（对称正定矩阵）$S$，用来求解方程 $Sx = b$。
 理论上它至多 $n$ 步即给出 exact solution（精确解），只是这些步骤比 elimination（消元）更慢。
 实践中，对 large matrices（大型矩阵），它远在 $n$ 步之前就已给出 excellent results（出色的结果）。
@@ -1884,7 +1848,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 此时 $x^{T}Sx$ 给出一个相当合适的 norm（范数）用来度量误差，即 S-norm（$S$ 范数），用以衡量迭代若干步之后的误差。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 解 $Sx=b$ 与极小化二次函数 $\varphi(x)=\tfrac12x^TSx-x^Tb$ 是同一件事：$\nabla\varphi=Sx-b$ 恰是残差（负梯度方向），而正定保证 $\varphi$ 是开口向上的椭球面（Boyd §4.2 的最优性条件 $\nabla\varphi=0$ 在此就是正规方程）。这给出两条重要连接。其一，CG 是**极小化算法**，因此可推广到非二次问题——Boyd §9 的梯度法/最速下降会遇到的锯齿（zigzag）振荡，正是因为它每次只沿当前梯度方向搜索；CG 的修补是让搜索方向两两 $S$-正交（$d_i^TSd_j=0$），在 $S$ 内积下"每步走完一个新维度"，从而 $\varphi$ 沿这些方向被精确极小化。其二，证明"至多 $n$ 步精确"用的是 6.042J 的维数论证：残差 $r_0,r_1,\dots$ 两两正交（$\varphi$ 极小 ⟹ 残差与新方向正交），$n$ 维空间里最多 $n$ 个非零两两正交向量，故第 $n$ 步必得 $r_n=0$。$S$-范数 $\|x\|_S^2=x^TSx$ 正是误差的"能量"，几何上是椭圆度量下点到解的距离。
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 原 OCR "cTSc" 实为 $x^{T}Sx$（$x$ 被误识为 $c$）；"appropnate n orm" 重建为 appropriate norm（适当范数）。
 
@@ -1921,7 +1884,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 
 ---
 
-
 ```math
 \|x - x_k\|_S \le \left( \frac{\lambda_{\max} - \lambda_{\min}}{\lambda_{\max} + \lambda_{\min}} \right)^{\!k} \|x - x_0\|_S \tag{8}
 ```
@@ -1941,7 +1903,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 
 ### 解 $Ax = b$ 的预处理（Preconditioning for $Ax = b$）
 
-<span style="color:#2471a3;">**[section]**</span>
 预处理 preconditioning（预处理）的基本思想，是寻找一个 nearby（邻近的）问题，使其能被快速求解。
 解释这个思想非常容易，真正的难题在于选出好的 preconditioner（预条件子）$P$。
 对给定矩阵 $A$，思路是选取一个更简单、却又与 $A$ 接近的矩阵 $P$。
@@ -1949,7 +1910,6 @@ Q_1^TAQ_2 = \begin{bmatrix} c_1 & d_1 & 0 \\ 0 & c_2 & d_2 \\ 0 & 0 & c_3 \end{b
 由于与 $P^{-1}$ 打交道速度更快，我们转而求解预处理方程 $P^{-1}Ax = P^{-1}b$，以代替原来的 $Ax = b$：
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 预处理的思想一句话：**迭代的难度不在 $A$ 本身，而在 $A$ 的谱形状**（CG 依赖 $\kappa$，分裂迭代依赖 $\rho(S^{-1}T)$，page_120 的误差方程是模板）。左乘 $P^{-1}$ 相当于换坐标系，让 $P^{-1}A$ 的谱"聚拢到 1 附近"——谱越像单位阵，迭代越快。因此选 $P$ 有两条互相矛盾的要求：$P$ 要**像** $A$（$P^{-1}A\approx I$），又要**便宜可逆**（每步只解 $P$ 系统）。正文四种选择正是在这条光谱上取点：对角 $P$ 最便宜但修正弱（Jacobi），三角 $P$ 稍贵但捕捉更多结构（Gauss-Seidel），ILU 用"不完整消元"逼近 $LU$（放弃 fill-in 换稀疏），多重网格则用"粗网格问题"作廉价近似。注意这个"用更简单对象近似难对象、把残差校正掉"的模式，与你见过的**牛顿法用局部线性化近似非线性**、6.006 中"近似数据结构/多级方法"同构。还可以预埋伏笔：page_138 的统计"白化" $C^{-1/2}$ 是同一招在噪声协方差上的应用——**换个度量让难看的对象变好看**是贯穿数值与统计的通用策略。
-
 
 ```math
 P^{-1}Ax = P^{-1}b \tag{9}
@@ -1996,7 +1956,6 @@ a_i \cdot x_{k+1} = b_i \tag{10}
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> Kaczmarz 迭代每步做一件事：把当前点正交投影到第 $i$ 个方程所代表的超平面 $a_i^Tx=b_i$ 上，从而**一步就让这个方程精确满足**。顺序循环遍历方程必收敛，但收敛率分析困难；随机版每步按 $\|a_i\|^2$ 加权概率选行，得到漂亮的期望界：若 $A$ 有 $r$ 个非零奇异值，则每步期望平方距离乘以固定因子 $(1-\sigma_r^2/\|A\|_F^2)$——即**期望指数收敛**，且因子只含"最坏方向与总能量的比"。为何权重取 $\|a_i\|^2$？可视为按超平面"法向量强度"抽样，使期望中的几何平均恰好落在谱量上——这正是 §II.4 将系统化的范数平方采样。它还是**随机梯度下降解线性方程**的实例：普通梯度下降要用全部 $m$ 行的梯度（成本 $O(m)$），随机版一次只取一行（成本 $O(1)$ 个内积），用随机性换每步廉价——Bertsekas 概率中的期望/方差语言是分析它的工具。与其纠结"随机怎么保证收敛"，不如记住：$k$ 步后以高概率落在离真解期望距离 $<(\text{因子})^k$ 的球内，这与 6.006 随机化算法的"高概率保证"一脉相承。
 
 ---
-
 
 <span style="color:#2471a3;">**[note]**</span>
 Kaczmarz 迭代（Kaczmarz iteration）是随机梯度下降（stochastic gradient descent）的一个重要例子——称其 "stochastic（随机）"，是因为第 $k$ 步所取的方程是随机选择。
@@ -2108,7 +2067,6 @@ Kaczmarz 迭代（Kaczmarz iteration）是随机梯度下降（stochastic gradie
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 这一句把 §II.1 埋下的数值地雷在最小二乘语境引爆：直接解正规方程 $A^TAx=A^Tb$ 的条件数是 $\mathrm{cond}(A^TA)=\mathrm{cond}(A)^2$（因为奇异值平方），相对误差按 $\varepsilon\cdot\mathrm{cond}(A)^2$ 放大，而本页马上介绍的 QR 途径把放大降到 $\varepsilon\cdot\mathrm{cond}(A)$。CSAPP 第 2 章讲的是**单个浮点数的舍入**，这里看到的是它的放大版：同样的代数公式在实数与浮点上"数值等价但不稳定等价"——$A^TAx=A^Tb$ 与 $Rx=Q^Tb$ 数学上同解，数值上却是两个世界。正文指出 $A^TA$ "可逆对称但尺寸可能是问题"之外，真正要命的正是这个平方。这也是"四种方法"的排序逻辑：SVD 最稳最贵、QR 居中、正规方程最便宜但只在 $\mathrm{cond}(A)$ 小（well-posed）时可用、带惩罚项的方法为病态而生。若你之后用 MATLAB 做 $A\backslash b$ 或 `pinv(A)*b`，本页就是它们内部在四种路线之间权衡的说明书。
 
-
 我们可以正交化 $A$ 的列，也可以使用它的 SVD。对于真正的大规模问题，我们则通过把 $A$ 乘上随机向量（random vectors）来**采样（sample）** $A$ 的列空间（column space of $A$）。这似乎正成为超大规模计算（very big computations）的潮流：成功概率很高（a high probability of success）。
 
 首先，请允许我们强调 $A^TA$ 与 $A^TCA$ 的重要性。矩阵 $C$ 常为**正对角矩阵（positive diagonal matrix）**：它给出刚度（stiffnesses）或电导（conductances）或边的容量（edge capacities）或逆方差（inverse variances）$1/\sigma^2$——这些来自科学、工程或统计学、定义了我们的具体问题的常数，即加权最小二乘（weighted least squares）中的「权重（weights）」。下面是 $A^TA$ 与 $A^TCA$ 在应用数学中现身的一批样例：
@@ -2116,7 +2074,6 @@ Kaczmarz 迭代（Kaczmarz iteration）是随机梯度下降（stochastic gradie
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 同一矩阵 $A^TA$ 在力学叫刚度矩阵、在电路叫电导矩阵、在图论叫（加权）拉普拉斯、在纯数学叫 Gram 矩阵——这不是巧合，而是**最小二乘就是这些系统的平衡方程**。若 $A$ 是"边×点"的关联矩阵（无向图上每行对应一条边：$A_{ei}$ 取 $+1/-1$），则 $A^TA$ 恰是图拉普拉斯 $D-W$，6.006/CLRS 学图时遇见的度矩阵与邻接矩阵在这里以"边平方"的形态重聚；加上对角权重 $C$（电导、刚度、逆方差 $1/\sigma^2$）后的 $A^TCA$，把每条边按"信任程度"加权。机械势能、电路功率、随机游走平滑度、统计误差能量——最小二乘极小化的 $\|b-Ax\|_C^2=(b-Ax)^TC(b-Ax)$ 在不同学科都是同一句"能量最小"。正因如此，Part II 的主题"大矩阵计算"才值得单独成篇：**数值算法的进展直接迁移到所有用 $A^TA$ 写方程的学科**。这也是为什么 Strang 反复强调"这些矩阵太重要、却反而不要显式计算它们"。
 
 ---
-
 
 - 在机械工程（mechanical engineering）中，$A^TA$（或 $A^TCA$）是刚度矩阵（stiffness matrix）；
 - 在电路理论（circuit theory）中，$A^TA$（或 $A^TCA$）是电导矩阵（conductance matrix）；
@@ -2153,7 +2110,6 @@ $A^+$ 的零空间（nullspace）就是 $A^T$ 的零空间：它包含 $\mathbb{
 
 ---
 
-
 总而言之，$A^+A$ 在一切可能之处反演 $A$。全部要点在于：当 $A$ 没有逆矩阵时，仍然要产出一个合适的“伪逆”。
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 上述段落 OCR 噪声密集：`蓋`/`风`/`兒`→$A$，`十`→$A^+$，`T = 0`→$A^Ty = 0$，`Restncted`→Restricted，`0f`→of，`th e`→the 等，均已按伪逆的数学语境重建。
@@ -2163,7 +2119,6 @@ $A^+$ 的零空间（nullspace）就是 $A^T$ 的零空间：它包含 $\mathbb{
 **规则 1（Rule 1）** 若 $A$ 有独立列（independent columns），则 $A^+ = (A^TA)^{-1}A^T$，从而 $A^+A = I$。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 规则 1 与规则 2 对你并不陌生：前作《线性代数导论》§4.2–4.3 的最小二乘解 $\hat x=(A^TA)^{-1}A^Tb$ 与投影矩阵 $P=A(A^TA)^{-1}A^T$ 就是规则 1 的现身；规则 2 只是把问题"转置"看待（$AA^T$ 可逆 ⟺ 行独立 ⟹ 左乘转置解）。伪逆的贡献在于用 SVD 把两种情形统一成第三条规则：先换到奇异向量坐标系（乘 $V^T$），在每个坐标上**独立**地对 $\sigma_i$ 取倒数——因为对角矩阵的各坐标完全解耦，规则 3 正是 $A^+=V\Sigma^+U^T$ 的逐坐标版本：非零 $\sigma_i$ 求倒数、零 $\sigma_i$（信息已丢失的方向）写 0。于是最小二乘解 $x^+=A^+b$ 可三步读：把 $b$ 旋转进 $U$ 坐标系→逐坐标除以奇异值（或置零）→旋转回 $V$ 坐标系。这个"旋转–逐坐标处理–旋转回"的三明治，在后面 page_130、page_136 的证明里会反复出现，值得现在刻进脑子。
-
 
 **规则 2（Rule 2）** 若 $A$ 有独立行（independent rows），则 $A^+ = A^T(AA^T)^{-1}$，从而 $AA^+ = I$。
 
@@ -2213,7 +2168,6 @@ $A^+$ 的零空间（nullspace）就是 $A^T$ 的零空间：它包含 $\mathbb{
 
 > <span style="color:#1e8449;">**[note] 译者注（证明策略模板）:**</span> 这里示范一个可反复套用的证明骨架——**正交分解 + 勾股**。第一步（性质 1）：把 $b$ 分解成 $p\in C(A)$ 与 $e\perp C(A)$，那么对任意 $x$，$Ax$ 只在 $C(A)$ 里"移动"，由勾股 $\|b-Ax\|^2=\|e\|^2+\|p-Ax\|^2$，最小值当且仅当 $Ax=p$ 取到——于是"极小残差"被翻译成"$Ax$ 必须等于 $b$ 的列空间投影"，这正是 page_131 将证的正规方程 $A^T(b-Ax)=0$ 的几何版。第二步（性质 2）：所有极小解构成仿射子空间 $\{x^++z:z\in N(A)\}$（零空间方向任意加，不改变 $Ax$）。而 $x^+$ 恰落在行空间——前作 §4.1 的**正交补**事实 $\mathbb R^n=C(A^T)\oplus N(A)$ 保证它垂直于所有 $z$，勾股再给 $\|x^++z\|^2=\|x^+\|^2+\|z\|^2$，最短者必取 $z=0$。注意本例对角矩阵让几何退化到坐标轴，正好拿来手工验证两条性质：$z=(0,0,t)$ 任意加不改变误差 $64$，但最短的就是第三分量取 0 的那个。**"极小点集 = 特解 + 零空间；最短元 = 与零空间正交的分量"** 这个模板，在约束优化、伪逆、以及日后学习凸优化对偶时都会反复遇到。
 
-
 **性质 2（Property 2）** 若另有向量 $\hat{x}$ 也达到这个最小值，则 $\|x^+\| < \|\hat{x}\|$（除非 $\hat{x} = x^+$），即 $x^+$ 是最小范数解（minimum norm solution）。
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：**</span> 原行 `日 + 日 < 日 |` 的范数记号与候选向量名残缺，按“$x^+$ 是所有达到最小二乘误差的解中最短者”的语义重建为 $\|x^+\| < \|\hat{x}\|$。
@@ -2260,7 +2214,6 @@ x^{+} = A^{+}b = \begin{bmatrix} 2 \\ 2 \\ 0 \end{bmatrix}.
 
 ---
 
-
 ```math
 c^{+} = V^T x^{+} = \Sigma^{+}U^Tb, \qquad V^T = V^{-1} \ \Longrightarrow\  x^{+} = V\Sigma^{+}U^Tb = A^{+}b . \tag{3}
 ```
@@ -2281,8 +2234,6 @@ c^{+} = V^T x^{+} = \Sigma^{+}U^Tb, \qquad V^T = V^{-1} \ \Longrightarrow\  x^{+
 
 <!-- page 131: 书页 127, OCR page 31 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### §II.2 Least Squares: Four Ways（最小二乘：四种方法）
 
 #### When is $A^T A$ invertible（何时 $A^T A$ 可逆）?
@@ -2291,7 +2242,6 @@ c^{+} = V^T x^{+} = \Sigma^{+}U^Tb, \qquad V^T = V^{-1} \ \Longrightarrow\  x^{+
 若 $A^T A x = 0$，则必有 $x = 0$。
 
 > <span style="color:#1e8449;">**[note] 译者注（证明策略模板）:**</span> 本页定理 $N(A^TA)=N(A)$ 的证明只用了一招：**把二次形式改写成范数平方**。若 $A^TAx=0$，两边左乘 $x^T$ 得 $x^TA^TAx=(Ax)^T(Ax)=\|Ax\|^2=0$，于是 $Ax=0$——一个"可能无解"的线性系统断言被"非负量之和为零"逼出结论。这个模板的威力在于可逆方向反复使用：证明某个矩阵零空间小 ⟺ 证明相应二次型正定；证明 $\|Ax\|=0\Rightarrow x=0$ 恰好就是"$A$ 有独立列"的定义。反向包含 $N(A)\subseteq N(A^TA)$ 平凡，两级包含合起来就是零空间相等。推论链很漂亮：$A^TA$ 可逆 ⟺ $A$ 列满秩 ⟺ $A^TA$ 正定（正定=对称+特征值全正=零空间只有 0），而正定性又保证解唯一。这是 6.042J"双包含证相等"证明风格在矩阵论中的标准亮相，也是"$A^TA$ 的病态根源是 $A$ 的列接近相关"这句话的严格版本。
-
 
 $A$ 与 $A^T A$ 恒具有相同的 nullspace（零空间）！这是因为 $A^T A x = 0$ 总能推出 $x^T A^T A x = (Ax)^T (Ax) = \|Ax\|^2 = 0$。
 于是 $Ax = 0$，也就是说 $x$ 属于 $N(A)$。
@@ -2319,7 +2269,6 @@ N(A^T A) = N(A) \quad \text{and} \quad C(A^T A) = C(A^T) \quad \text{and} \quad 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 正规方程有三个等价入口，值得并排记忆。**几何**：$e=b-A\hat x$ 必须垂直于列空间 $C(A)$（直角三角形的直角边），垂直 ⟺ 与每个 $Ac$ 内积为 0 ⟺ $A^Te=0$。**代数**：$\|b-Ax\|^2$ 是 $x$ 的二次凸函数，最优处梯度为零，而梯度恰是 $2A^T(Ax-b)$（用链式法则：$\partial/\partial x_j\sum_i(\sum_k a_{ik}x_k-b_i)^2$）——这正是 Boyd 凸优化中可微凸函数最优性条件 $\nabla f(x^*)=0$ 的第一次显式使用，也是"求导=正规方程"的来源（page_128 页首"极小意味着导数取零"）。**统计**：误差向量 $e$ 与所有解释变量 $A$ 的列不相关（$A^Te=0$），即回归残差正交于特征——这也是机器学习中"残差里不再有可提取的线性信息"的说法。投影矩阵 $P=A(A^TA)^{-1}A^T$（本页式 7）满足 $P^2=P$ 与 $P^T=P$，是"把 $b$ 扔到平面上"的解析表达。三视角将来分别通向最小二乘的 QR 版、凸优化版与统计版。
 
 ---
-
 
 - $e = b - P$ 是 error vector（误差向量）；
 - $P$ 是 $b$ 在 column space（列空间）中的 projection（投影）。
@@ -2375,8 +2324,6 @@ P^2 = P \tag{8}
 
 <!-- page 132: 书页 128, OCR page 32 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Computations with Large Matrices（与大矩阵有关的计算）
 
 此刻 $A$ 已具有独立列：$\mathrm{rank} = n$。
@@ -2393,14 +2340,11 @@ projection matrix（投影矩阵）$P$ 具有特殊性质 $P^2 = P$：当我们�
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> $P^2=P$（幂等）与对称 $P^T=P$ 一起精确刻画"正交投影"：投影是"到子空间里找最近点"的算子，最近点已在子空间内，再投一次当然不动——$P^2=P$ 就是把这句话写成代数。第 131 页的验证只是把矩阵链 $(A(A^TA)^{-1}A^T)^2$ 中部的 $A^TA$ 与 $(A^TA)^{-1}$ 抵消掉。更深一层：**任何"解方程组"的算法（消元、QR、SVD）本质上都在计算同一个投影** $P=AA^+$，差别只在数值路径。$e=b-P$ 则落在 $N(A^T)$，配合 $\mathbb R^m=C(A)\oplus N(A^T)$ 的正交分解，你就拥有图 11.2 之外完全不用画图的代数表达。这条幂等性质在 page_138 加权情形还会以 $P_w=A(A^TC^{-1}A)^{-1}A^TC^{-1}$ 出现（仍幂等，只是换成 $C^{-1}$ 度量下的"斜投影"）——认识原型，变体就只是换内积。
 
-
 ```math
 P^2 = A(A^T A)^{-1}A^T A (A^T A)^{-1}A^T = A(A^T A)^{-1}A^T = P
 ```
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR 行首的「尹 2」重建为 $P^2$，「风」「蓋」重建为 $A$，矩阵链 $A(A^T A)^{-1}A^T A (A^T A)^{-1}A^T = A(A^T A)^{-1}A^T = P$ 系按 $P^2 = P$ 的标准约化重建。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### The Third Way to Compute $\hat{x}$: Gram-Schmidt（计算 $\hat{x}$ 的第三种方法：Gram-Schmidt）
 
@@ -2422,10 +2366,7 @@ $Q$ 的两个范数都等于 $1$，于是 $\|Q\| \cdot \|Q^{-1}\| = 1$，所以 
 
 ---
 
-
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 源 OCR 将 $\|Q^{-1}\| = 1$、$\|Q\| \cdot \|Q^{-1}\| = 1$ 读成乱码（「日 0 日」「豆 况 巳」），此处按正交矩阵范数恒为 $1$ 的标准事实重建。
-
-<span style="color:#2471a3;">**[section]**</span>
 
 ### Gram-Schmidt（格拉姆-施密特正交化）
 
@@ -2498,8 +2439,7 @@ Gram-Schmidt 从相互独立的列 $a_1, \ldots, a_n$ 产生标准正交（ortho
 
 若 $j < i$，即 $a_j$ 并不参与更早产生的 $q_i$，故 $r_{ij} = q_i^T a_j = 0$，这正是 $R$ 上三角的原因。
 
-> <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> "$R$ 为什么上三角"的证明其实是一次"按时间顺序看结构"的论证：$r_{ij}=q_i^Ta_j$ 是第 $j$ 个原始列在第 $i$ 个基方向上的投影。若 $j<i$，列 $a_j$ 早于 $q_i$ 被"处理"——$a_j$ 展开时只用 $q_1,\dots,q_j$（page_132 末的等式是 $j$ 项截断），与后来才出生的 $q_i$（$i>j$）正交，内积必为 0。这类"构造顺序决定稀疏模式"的论证在消元中也有孪生兄弟：LU 分解里主元 $i$ 之后的行不再含 $j<i$ 列的信息。更妙的是 $A^TA=R^TR$ 这一行：$R$ 是上三角且对角元为正（$r_{jj}=\|a_j^o\|>0$），而对称正定矩阵的 Cholesky 分解是唯一的——所以 **$R$ 正是 $A^TA$ 的 Cholesky 因子**。换言之，Gram-Schmidt/QR 悄悄完成了"对 $A^TA$ 做 Cholesky"这件事，却全程只用 $A$ 的列做内积，从未乘出 $A^TA$，因此绕开了 page_128 的条件数平方。这是"代数恒等、数值迥异"最漂亮的案例。
-
+> <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> "$R$ 为什么上三角"的证明其实是一次"按时间顺序看结构"的论证：$r_{ij}=q_i^Ta_j$ 是第 $j$ 个原始列在第 $i$ 个基方向上的投影。若 $j\lt i$，列 $a_j$ 早于 $q_i$ 被"处理"——$a_j$ 展开时只用 $q_1,\dots,q_j$（page_132 末的等式是 $j$ 项截断），与后来才出生的 $q_i$（$i>j$）正交，内积必为 0。这类"构造顺序决定稀疏模式"的论证在消元中也有孪生兄弟：LU 分解里主元 $i$ 之后的行不再含 $j\lt i$ 列的信息。更妙的是 $A^TA=R^TR$ 这一行：$R$ 是上三角且对角元为正（$r_{jj}=\|a_j^o\|>0$），而对称正定矩阵的 Cholesky 分解是唯一的——所以 **$R$ 正是 $A^TA$ 的 Cholesky 因子**。换言之，Gram-Schmidt/QR 悄悄完成了"对 $A^TA$ 做 Cholesky"这件事，却全程只用 $A$ 的列做内积，从未乘出 $A^TA$，因此绕开了 page_128 的条件数平方。这是"代数恒等、数值迥异"最漂亮的案例。
 
 并且由于 $Q^T Q = I$，有 $A^T A = R^T Q^T Q R = R^T R$。
 
@@ -2524,7 +2464,6 @@ Gram-Schmidt 从相互独立的列 $a_1, \ldots, a_n$ 产生标准正交（ortho
 > <span style="color:#1e8449;">**[note] 译者注（算法效率视角）:**</span> 列主元是消元法中"部分主元"的镜像：消元靠**行**交换保证主元 $u_{ii}$ 不接近 0（$PA=LU$），Gram-Schmidt 靠**列**交换保证每一步取剩余列中范数最大者（$AP=QR$）。为什么要范数最大？因为 $r_{jj}=\|a_j^o\|$（正交化后剩余列长）正是"主元"，主元太小意味着该列与已选方向近乎线性相关——把它硬选进来会让 $R$ 病态、解被舍入误差摧毁（CSAPP：除一个近零数是灾难）。两个关键洞见值得拎出。其一，**把工作提前不增加总量**：新做法"一得到 $q_{j-1}$ 就立即对全部剩余列做正交化"，表面上每步更忙，实则无论早晚每个剩余列都要减掉 $(a_j^Tq_{j-1})q_{j-1}$——这是 6.006/CLRS 式的平摊论证：总工作量不变，但换来"每一步结束所有剩余列都已与已选基正交"的状态，于是下一步能自由挑最大列。其二，对照 $PA=LU$ 与 $AP=QR$：置换矩阵放左边还是右边，决定你交换的是行还是列——**主元策略 = 给自由度排序的贪心**。
 
 ---
-
 
 类似地，Gram-Schmidt 的每一步都应当从一个新列开始，使它尽可能独立于已经处理过的那些列。
 
@@ -2620,7 +2559,6 @@ Gram-Schmidt 从相互独立的列 $a_1, \ldots, a_n$ 产生标准正交（ortho
 
 > <span style="color:#1e8449;">**[note] 译者注（算法效率视角）:**</span> 伪代码的精髓在第 j 步的三连招：选最大范数列 → 归一化得 $q$ → 用**秩一更新** $A_j=A_{j-1}-q_jr_j$ 把该列方向从所有剩余列中"剥掉"。秩一更新（减去一个外积）意味着每一列只做一次 $O(m)$ 的向量更新，于是第 $j$ 步总代价 $O(mn)$，全程 $O(mn^2)$——与 page_124 双对角化同阶。这个写法还让两件事透明化：第一，"第 1 步选出的最大列排在最前时 $R$ 才上三角"，所以输出必须附带置换向量 $p$（记录 $1,\dots,n$ 的重排）才能重建 $R$——存储置换与存储矩阵同样重要，是"数据结构"意识；第二，秩一更新天然与**修正 Gram-Schmidt** 等价：经典 Gram-Schmidt 先算完全部投影系数再统一减，在浮点下灾难性抵消更重，而"每产生一个新方向立即刷新所有列"让减法操作数更均衡——CSAPP 的误差分析告诉我们减法顺序决定舍入命运。算法层面还能看到 Householder 为什么更受欢迎：列主元 GS 需要在每列上反复减投影，而 Householder 一次反射整块消零，后文 page_135 详述。
 
-
 当循环结束时，我们得到 $Q$ 与 $R$，并且 $A = QR$。
 
 这个 $R$ 是上三角矩阵的一个（含列重排的）版本。
@@ -2659,7 +2597,6 @@ $U$ 的各列是 $AA^T$ 的特征向量（eigenvectors）。
 
 ---
 
-
 并不存在求五次方程（quintic）之根的公式，这正是阿贝尔定理（Abel）的内容。
 
 Gram-Schmidt 只需要内积与平方根（square roots），因此 $Q$ 必然不同于 $U$。
@@ -2678,10 +2615,8 @@ Gram-Schmidt 只需要内积与平方根（square roots），因此 $Q$ 必然�
 
 <!-- page 135: 书页 131, OCR page 35 -->
 
-<span style="color:#2471a3;">**[section]**</span>
 ### §II.2 Least Squares: Four Ways（最小二乘：四种方法）
 
-<span style="color:#2471a3;">**[section]**</span>
 #### Another Way to Q: Householder Reflections（求 Q 的另一途径：Householder 反射）
 
 <span style="color:#2471a3;">**[note]**</span>
@@ -2707,7 +2642,6 @@ H=I-\frac{2uu^{\top}}{u^{\top}u}
 ```
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 分解几何：$Hx=x-2\dfrac{u^Tx}{u^Tu}u$，即把 $x$ 沿 $u$ 方向的投影取两次——这是关于"以 $u^\perp$ 为镜面"的**反射**：垂直于镜面的 $u$ 分量被反向，镜面内的分量原样保留。三个性质的来源一目了然：沿 $u$ 方向 $H$ 把分量乘 $-1$、垂直方向乘 $+1$（所以 $H$ 的特征值为 $1$ 重复 $n-1$ 次与 $-1$ 一次），因此 $H$ 对称、正交、且自逆（$H^2=I$），(16) 只是把这个分解写成代数。为什么反射比逐步减法的 Gram-Schmidt 稳？经典 Gram-Schmidt 的减法在"新向量与已选方向几乎平行"时遭遇灾难性抵消（两个近乎相等的大数相减，CSAPP 第 2 章的经典坑），误差随列数累积；Householder 用**一次**全局反射把整列映射到坐标轴上，没有逐列累积的减法链，误差只来自存储 $u$ 时的舍入。选 $u=a\pm\|a\|e_1$ 的 $\pm$ 号也服务于同一目的：要让 $u$ 的两个相加项不互相抵消（$\|u\|$ 尽量大），例子中 $a=(3,4)$ 选 $+5e_1$ 得 $u=(8,4)$、$\|u\|=\sqrt{80}$ 就比选 $-5e_1$（得 $u=(-2,4)$）大得多。**用一个整体变换代替一串增量修正**——这是根治累积误差的通用处方。
-
 
 <span style="color:#2471a3;">**[note]**</span>
 其中 $u$ 为所取的向量（OCR 噪声 `刀@日` 实为 $uu^{\top}/u^{\top}u$ 之误）。于是 $H^{\top}H=I$，即 $H$ 既 symmetric（对称）又 orthogonal（正交）：
@@ -2748,7 +2682,6 @@ OCR `1 is the original matnx` 即 $A_1$ 为原始矩阵；`becomes QTA = R` 即�
 
 ---
 
-
 ```math
 x=(QR)^{-1}Q^{\top}b=R^{-1}Q^{\top}b .
 ```
@@ -2777,7 +2710,6 @@ H=I-\frac{2uu^{\top}}{u^{\top}u}
 
 <!-- page 136: 书页 132, OCR page 36 -->
 
-<span style="color:#2471a3;">**[section]**</span>
 #### Least Squares with a Penalty Term（带惩罚项的最小二乘）
 
 <span style="color:#2471a3;">**[note]**</span>
@@ -2787,7 +2719,6 @@ H=I-\frac{2uu^{\top}}{u^{\top}u}
 **Penalty term（惩罚项）**：极小化残差平方加惩罚平方项：
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 这就是统计学/机器学习中的岭回归（ridge），也是 Boyd 凸优化 §6.3 的正则化最小二乘。它和前作所学的无约束最小二乘只差一个 $\delta^2I$：$A^TA$ 奇异或近奇异时（相关列、欠定、病态），$A^TA+\delta^2I$ 的所有特征值被抬高至少 $\delta^2$，正定可逆——与 page_118 情形 5 的补救遥相呼应。理解它有两个视角。**谱视角**：解里每个奇异方向被乘以 $\sigma_i/(\sigma_i^2+\delta^2)$（本页 1×1 分析），大 $\sigma$ 方向几乎不动、小 $\sigma$ 方向被压到约 $1/\delta^2$ 的温和放大——正则化等于给"不可信的小奇异值方向"装了个保险丝。**统计视角**：$\delta^2\|x\|^2$ 把解拉向 0（收缩），付出一点偏差换取方差的大幅下降——Bertsekas 概率里 $MSE=(\text{bias})^2+\text{variance}$ 在此精确上演：$\delta$ 是你在两者间拨动的旋钮。正文预告 $\delta\to0$ 时解收敛到最小范数解 $A^+b$（下一注讲证明），这与 §III.4 的 $\ell_1$ 惩罚（换 $\|x\|_1$ 则得稀疏解而非最短解）形成本书两条正则化主线的第一次并轨。
-
 
 ```math
 \min_{x}\;\|Ax-b\|_{2}^{2}+\delta^{2}\|x\|_{2}^{2} ,
@@ -2838,7 +2769,6 @@ OCR 碎片 `is 1 by 1 Now let --+ 0`、`This is exactly 蓋 + = zero or 一`、`
 
 ---
 
-
 ```math
 A^{\top}A+\delta^{2}I
 = V\Sigma^{\top}U^{\top}U\Sigma V^{\top}+\delta^{2}I
@@ -2877,8 +2807,6 @@ OCR 末段 `V [ （ 习 T 习 + 硭 I ） 一 1 习 T ] UT = VE+uT = 蓋 +` 重�
 
 <!-- 结构清单：节页眉 2 · Four Ways；正文段（计算 Sigma^+ 的困难 / Sigma^+ 对角元与不连续性 / 小矩阵示例）；伪逆规则段（(AB)^+ 不等于 B^+A^+，两条成立规则）；示例 A=[1 0]、B=[1;1]；(CR)^+ = R^+C^+ 及其意义；A=CR 推理（C、R 给出基、左逆与右逆、A^+=R^+C^+）；舍入误差与秩突降、0^+=0；(BA)^+ 验证；Moore-Penrose 逆与 pinv(A)。 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### 2. Four Ways（四种方法）
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 页眉 OCR 为“2 、 忪 t · FO u r Ways”，其中“忪 t”字形损坏不可辨识；结合本页伪逆与奇异值触及零的内容及书页 133 位于 §II.2（Least Squares: Four Ways）的事实，重建为本节页眉“2 · Four Ways”。
@@ -2886,7 +2814,6 @@ OCR 末段 `V [ （ 习 T 习 + 硭 I ） 一 1 习 T ] UT = VE+uT = 蓋 +` 重�
 计算 $\Sigma^+$ 的困难在于判断某个奇异值（singular value）到底是零，还是仅仅非常小。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 这句话点破了伪逆数值层面的真正痛点。函数 $\sigma\mapsto 1/\sigma$ 在 $\sigma=0$ 处有断崖：$\sigma$ 从 $10^{-8}$ 变到 $0$，$1/\sigma$ 从 $10^8$ 骤变为 $0$——所以伪逆不是 $\Sigma$（或 $V$）的连续函数，微小的数据扰动（哪怕只是 CSAPP 讲的舍入误差）可以在"视为零"与"不视为零"之间横跳，让 $A^+$ 面目全非。机器无法从数值上区分"精确的零"与"极小的非零"：双精度下 $10^{-8}$ 完全可以表示，但它对应的 $1/\sigma=10^8$ 会把任何误差放大 $10^8$ 倍，答案毫无意义。工业界的解法是**阈值截断**：MATLAB `pinv` 默认把小于 $\mathrm{tol}=\max(m,n)\cdot\varepsilon\cdot\sigma_{\max}$ 量级的奇异值当零处理（$\varepsilon\approx2.2\times10^{-16}$），即"小到可信度以下就当它不存在"。这与 page_136 的 $\delta^2$ 正则化形成对比：正则化把 $1/\sigma$ 替换成 $\sigma/(\sigma^2+\delta^2)$——一个处处连续的近似，而截断是在不连续点上直接"抽刀"。秩估计在本质上是 ill-posed 的（病态），这正是本书反复把"惩罚项、随机化、阈值"摆上桌面的共同根源。
-
 
 而 $\Sigma^+$ 的对角元要么是零、要么极大！$\Sigma^+$ 与 $A^+$ 都远不是 $\Sigma$ 与 $V$ 的连续函数（continuous function）。
 
@@ -2911,7 +2838,6 @@ OCR 末段 `V [ （ 习 T 习 + 硭 I ） 一 1 习 T ] UT = VE+uT = 蓋 +` 重�
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）:**</span> 为什么可逆矩阵的规则 $(AB)^{-1}=B^{-1}A^{-1}$ 一到伪逆就失效？根源是**秩在乘法中只会下降**：$\mathrm{rank}(AB)\le\min(\mathrm{rank}\,A,\mathrm{rank}\,B)$，乘积可能把某些方向压平，而信息一旦丢失就无法恢复——伪逆只能"反演没丢的部分"。反例 $A=[1\ 0]$、$B=\binom11$：$A$ 丢弃第二坐标，$B$ 又把标量嵌入"$+1$"方向，$AB=[1]$ 幸存，但 $B^+A^+$ 沿两条不同路径各丢一次信息，结果 $1/2\neq1$。反之 $A=CR$（C 列满秩、R 行满秩）时 $(CR)^+=R^+C^+$ 成立，因为此时 $C^+C=I_r$（C 有左逆）、$RR^+=I_r$（R 有右逆），各自无信息丢失——这是规则 1、2 的用武之地。任意秩 $r$ 矩阵可写 $A=CR$，$C$ 是列空间基、$R$ 是行空间基，于是理论上可**不借 SVD、不碰任何特征值**地算伪逆；正文特意强调前提是"确切知道秩 $r$"——结合上一注，精确的秩恰恰是浮点下不可知的东西。这段把"伪逆为什么难、为什么仍有救"讲透了：Moore-Penrose 伪逆的一切怪脾气，都来自秩亏损时方向空间的不可逆性。
 
 ---
-
 
 设 $A = \begin{bmatrix} 1 & 0 \end{bmatrix}$、$B = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$，则 $(AB)^+$ 不等于 $B^+A^+$：
 
@@ -2961,8 +2887,6 @@ B^+A^+ = \begin{bmatrix} 1/2 \end{bmatrix} \neq (AB)^+ = \begin{bmatrix} 1 \end{
 
 <!-- 结构清单：Part II 大标题 Computations with Large Matrices（书页眉 OCR 为 “Computations with Large Matnces”）；小节 Weighted Least Squares（加权最小二乘）；正文段（隐含等方差假设 / 假设不成立时按最小方差加权）；除以 sigma_k 归一化到单位方差；白化说明；(21) 加权正规方程；Example 2（两次独立噪声测量、加权最小二乘、加权平均 (22)）。本页为纯正文页，无习题。 -->
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### Computations with Large Matrices（大矩阵的计算）— Weighted Least Squares（加权最小二乘）
 
 <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR 将标题识别为 “Computations with Large Matnces”，词 “Matnces” 依数学语境重建为 “Matrices”；其下的 “Weighted Least Squares” 为当前小节标题，两者一并列为标题。
@@ -2984,7 +2908,6 @@ B^+A^+ = \begin{bmatrix} 1/2 \end{bmatrix} \neq (AB)^+ = \begin{bmatrix} 1 \end{
 自然的做法是把 $e_k$ 除以 $\sigma_k$，使 $e_k / \sigma_k$ 的方差变为 1。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接）:**</span> 本页给最小二乘装上统计的眼睛。不加权 LS 隐含假设所有测量同方差；当第 $k$ 个测量的噪声标准差为 $\sigma_k$ 时，把残差除以 $\sigma_k$（归一到单位方差）再极小化，等于"信任精度高（$\sigma$ 小）的数据多一点"。例 2 的结果值得亲手验证：$\hat x=(\sigma_2^2b_1+\sigma_1^2b_2)/(\sigma_1^2+\sigma_2^2)$ 是权重与精度 $1/\sigma^2$ 成正比的加权平均，若 $b_1,b_2$ 独立（Bertsekas：独立随机变量方差可加），则 $\mathrm{Var}(\hat x)=\sigma_1^2\sigma_2^2/(\sigma_1^2+\sigma_2^2)<\min\{\sigma_1^2,\sigma_2^2\}$——**两次独立测量的合并比任何单次都准**。这个"精度加权合并"是最优线性无偏估计（BLUE/Gauss-Markov 定理）的最小例子：在零均值、独立、方差已知的线性高斯噪声下，加权最小二乘 $A^TC^{-1}Ax=A^TC^{-1}b$ 给出最小方差的无偏估计。把 $C=\mathrm{diag}(\sigma_1^2,\dots)$ 换成一般正定矩阵 $C$，就覆盖了相关噪声（协方差非零）的情形——这正是正文预告 §V.1 方差、§V.4 协方差的原因。
-
 
 这样所有观测都被归一化（normalized）到相同的单位方差。
 
@@ -3009,7 +2932,6 @@ B^+A^+ = \begin{bmatrix} 1/2 \end{bmatrix} \neq (AB)^+ = \begin{bmatrix} 1 \end{
 ---
 
 **说明**：全部 20 个正文页（page_118–138，跳过习题页 127）共插入 39 条译者注；每条均从读者已掌握的 CSAPP 浮点/缓存、6.006/CLRS 复杂度与图、Strang 前作投影与 SVD、Bertsekas 概率、Boyd 凸优化等概念搭脚手架，未引入群论/拓扑/泛函等未学概念；页内节号已跟随各页用法（§II.1、§11.1、§11.2 等）。未修改任何文件。
-
 
 此时要最小化的量不再是 $\|b - A\hat{x}\|_2$——那个误差应当用 $C^{-1}$ 来加权。
 
@@ -3263,7 +3185,6 @@ The averages of the $t$'s and $b$'s are $\bar{t} = 2$ and $\bar{b} = 9$. Show th
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 + 第一性原理）：**</span> "$A^{T}A$ 把条件数平方"是法方程组灾难的浓缩。回看 Strang 前作《线性代数导论》§4.3：解最小二乘曾用正规方程 $A^{T}A$ x̂ = $A^{T}b$，代数上干净、数值上却最危险。用 SVD 一句话就能看懂：$A^{T}A$ 的特征值恰是 $\sigma_{1}^{2}$,…,$\sigma_{n}^{2}$，故 cond($A^{T}A$)=$\sigma_{1}^{2}$/$\sigma_{n}^{2}$=[cond(A)]$^{2}$。后果用 CSAPP 2.4 学过的 IEEE 双精度来度量：线性求解的相对误差量级约 $\kappa$·$\epsilon$_mach（$\epsilon$_mach≈2.2×$10^{-16}$）。若 $\kappa$(A)=$10^{6}$，正规方程把它推到 $10^{12}$，误差上界≈2×$10^{-4}$——能用的有效数字只剩三四位；数据矩阵中的噪声列还会被平方进一步放大。这就是"直接作用 A"的算法被称为 square root algorithm 的缘由：QR 先把 A 拆成正交 Q（条件数恰为 1）与上三角 R，病态全部显形于 R 而不再被平方；SVD 同理。正文提到刚度矩阵、电导矩阵与图拉普拉斯形如 $A^{T}CA$ 属例外——那是物理结构天然对称半正定、正定即良态，而非算法选择。
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 条件数记号由 OCR 的 “伊 1 / 0” 重建为 $\sigma_1/\sigma_n$（最大与最小奇异值之比）。
 
 对于真正巨大的矩阵，计算并存储 $A^T A$ 的代价简直不可想象。诚然，力学的 stiffness matrix（刚度矩阵）、电子学的 conductance matrix（电导矩阵）与网络的 graph Laplacian matrix（图拉普拉斯矩阵）都具有 $A^T A$ 或 $A^T C A$ 的形式（物理常数放在 $C$ 中）。但对 data matrices（数据矩阵）来说，我们想要的是能直接作用于基本矩阵 $A$ 的 “square root algorithms（平方根算法）”。
@@ -3277,7 +3198,6 @@ The averages of the $t$'s and $b$'s are $\bar{t} = 2$ and $\bar{b} = 9$. Show th
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）：**</span> 三种基同答一个问题——列空间的基——却构成质量/代价的三角：SVD 的 U 全局最优但最贵；Gram–Schmidt+列主元给出标准正交基、贪心而廉价；直接取自 A 的列 C 零合成代价、最可解释。要读懂这套排序，关键是本页最锋利的观点：为什么 A 的前 r 个独立列不能自动当"好基"。独立（independent）只保证 $\sigma$_min>0，良态要求 $\sigma$_min 不与 $\sigma_{1}$ 差太远——两者之比每差 10 倍，后续计算就约丢一位有效数字（见本页前注）。数据矩阵里原始前 r 列往往高度相关，张成的平行体扁到行列式落入浮点抹平区，计算机里的"独立"形同退化。这正是 Strang 前作消元必须选主元的原因：主元要大而可靠、才不把误差放大。它预告了后面两次升级：列主元 QR 每步取范数最大的列（贪心），与 §II.3 下一页"行列式最大子矩阵"（全局最优），两者是"基质量"执念的两个版本。effective rank 的思想也在伏笔处：r 应取在噪声地板之上，$\sigma$_{r+1} 以下属于噪声、不该进基。
 
 ---
-
 
 ### Three Good Bases（三种好基）
 
@@ -3339,7 +3259,6 @@ A = \text{(column matrix)} \cdot \text{(row matrix)} : \qquad (m \times n) = (m 
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 + 算法/效率视角）：**</span> ID 的四个优点全由一个源头导出：C 是 A 的真实列，不是合成列。SVD 的 $u_{i}$ 是全部 m 列带符号的加权组合，像 PCA 的潜在因子，数学上完美却"从人的角度难以认识"——两奇异向量之差没有工程语义；C 的每一列自带身份：数据矩阵里它对应"第 2 时刻/第 5 个用户/第 k 个传感器"的原始记录。所以优点 2、3 是自动的：稀疏与非负是 A 的性质，取子列不改写任何元素故被继承；微分方程离散化时 C 中列仍是网格上的真实未知量而非混合量。优点 4 更直接命中智能科学日后必遇之争：可解释性 vs 潜在因子。这就是机器学习里"特征选择/稀疏编码（可读）"与"PCA/latent factor（最优但难懂）"之争的线性代数原版。代价上也省：QR 要维持整列正交性、SVD 要迭代求奇异值，而 ID 一旦锁定 r 个好列，只需在 C 上做消元把其余列表示成组合（§II.3 后文），省掉整台正交化与迭代机器——这是"用 r 替换 min(m,n)"的复杂度红利。
 
-
 1. $A = CZ$ 花费更少的计算时间与存储，比 $A = U\Sigma V^T$ 与 $A = QR$ 都少。
 2. 当 $A$ 稀疏（sparse）、非负（nonnegative）或二者兼备时，$C$ 也同样如此——因为 $C$ 直接来自 $A$。
 3. 当 $A$ 来自对微分方程或积分方程（differential or integral equation）的离散化时，$C$ 中的列比 $U$ 与 $Q$ 中的标准正交基更有意义。
@@ -3356,7 +3275,6 @@ A = \text{(column matrix)} \cdot \text{(row matrix)} : \qquad (m \times n) = (m 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）：**</span> "Z 的条目小"值得与后面 §II.3 的定理对读：Z 的每个元素是"非基本列在基本列坐标系下的表示系数"（本页后文的 $z_{j}$ 正是解 $Bz_{j}$=某列）。条目小有两重含义。其一，数值上安全：表示系数不大意味着非基本列是基本列的温和组合，远离"病态外推"——§II.3 将证明只要选行列式最大的 r 列作基，就能保证 |z_ij|≤1。其二，压缩上有利：Z 既然是 r×n 的稠密系数表，若大部分条目接近零，就可以设阈值砍掉小项，近似仍好——这与 Strang 前作 §7 讲 SVD 图像压缩同一逻辑：SVD 靠"小奇异值可弃"，ID 靠"小系数可弃"，都是"稀疏表示"思想在矩阵层面的表现。反过来，若某列在好基下的坐标出现大数，说明该列方向被严重拉伸或近乎共线，正是页面开头警告的 bad choice。这也是 §II.4 随机 CUR 后文里"为什么列由算法精心挑选而非随意取前 r 个"的伏笔。
 
 ---
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> 本页末句括号内的数值示例（OCR "say 爿孓2"）严重损坏、无法可靠确定，译文按"条目很小"的语义作保留处理；此为本页（书页 139）的结尾。
 
@@ -3415,7 +3333,6 @@ A = CZ = YBZ \tag{3}
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 Boyd 凸优化）：**</span> 你正在 Boyd 凸优化附录 §A.5.5 学的 Schur complement 在这里以"零化"形态出现。把秩 r 的 A 分块为 [[B, N],[M, D]]，若左上 r×r 块 B 可逆，则 A=YBZ 给出 D=$MB^{-1}N$——正是 Schur 补 S=D−$MB^{-1}N$=0。可读作：满秩子块一旦坐镇左上角，整个矩阵就被它"内插"锁定，右下块不再有独立自由度。这符合维数直觉：秩 r 的矩阵只含 $r^{2}$ 个独立参数（B 内部），其余一切块都只是 B 经过行、列线性变换的影子。分块标准形同时给出"rank(A)=r ⟺ 右下块恰等于 $MB^{-1}N$"这一可验证判据；例 1 中可直接代入验算：M $B^{-1}N$=[1 3]·[[1,-2],[0,1]]·[[4,2],[2,1]]=[6 3]，恰好等于右下块。它与 Strang 前作的行秩=列秩殊途同归：同一秩同时限制独立列数与独立行数，二者通过可逆子矩阵互相锁定。日后你见到的任何 rank-r 证明（包括低秩矩阵补全、Boyd 里的低秩约束建模）都以此为底层几何。
 
-
 ```math
 A = \begin{bmatrix} B & N \\ M & M B^{-1}N \end{bmatrix}
 = \begin{bmatrix} I_r \\ M B^{-1} \end{bmatrix}
@@ -3434,7 +3351,6 @@ B \begin{bmatrix} I_r & B^{-1}N \end{bmatrix}
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 + 证明策略模板）：**</span> "消元能求出 Y 与 Z"其实复用了 Strang 前作的高斯消元：把 A 化到行阶梯的过程中，每一步记录的是"当前列如何由已选主元列线性表示"，这些记录正是 Z 的行。看例 1：Z 第二行 (0,1,2,1) 直言第 3、4 列分别是主元列的 2 倍与 1 倍——所谓分解，就是把你早已会做的消元"侧记"捡回来。另一侧的命题"任何秩 r 矩阵必在某处有可逆 r×r 子矩阵"是离散数学线性无关知识的精致推论：rank(A)=r ⟹ 存在 r 个独立列；把这些列的同一 r 行拿出来，若该行子块不可逆则其 r 个行向量线性相关，会牵制这 r 列的整体独立性，矛盾。简洁证明可走 SVD：A=U_$r\Sigma$_rV_$r^{T}$，U_r 为 m×r 列正交，其 m 个行张成的空间维数必为 r，故其中存在可逆 r×r 行子块。这个"从秩到可逆子矩阵"的桥，正是 §II.3 后文"找一个好的 B"问题的理论底气，也是 §II.3 例中 $B_{\max}$ 存在性的保证。
 
 ---
-
 
 <span style="color:#2471a3;">**[example]**</span> **Example 1（例 1）.** 这个 $3\times 4$、秩为 2 的矩阵以一个可逆的 $2\times 2$ 矩阵 $B$ 开头：
 
@@ -3474,7 +3390,6 @@ Z = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 2 & 1 \end{bmatrix} \tag{5}
 把 $B$ 取为 $A$ 中行列式（determinant）最大的 $r\times r$ 子矩阵。
 
 > <span style="color:#1e8449;">**[note] 译者注（证明策略模板 + 跨课程连接）：**</span> 这里的证明骨架是你在 6.042 反复用过的极值论证（extremal argument）：想证明"存在良态的 B"，就别显式构造，改证"取行列式最大的那个必然良态"。两个工具你都有：Strang 前作 §5.3 的 Cramer 法则把解写成行列式之比 z_ij = det(B 的第 i 列换成该列)/det(B)；分子恰是 A 的另一个 r×r 子矩阵的行列式。于是"det B 最大"一次性压住所有分子，|z_ij|≤1 不用算任何具体数——只有有限多个候选子矩阵，极值必然取到，这是极值论证不必依赖构造的本钱。同一命题还有几何读法：det=体积（前作 §5.3），det 最大意味着所选 r 列张成的平行体"最胖"——既不短、又尽量互不倾斜，$\sigma$_min 被顶到最大。因此 det 最大子矩阵是"全局最优的列主元"；而 §II.3 后文的列主元 QR 每步只取剩余列中范数最大者，是它降维后的贪心近似。反过来 |z|≤1 防的病态也直观：若某列与基本列近乎共线，其表示系数会趋于爆炸，界 1 就是安全线。
-
 
 于是 $Y$ 与 $Z$ 的所有分量都满足 $|y_{ij}|\le 1$ 与 $|z_{ij}|\le 1$。
 
@@ -3525,7 +3440,6 @@ $B$ 就在 $A$ 的内部某处，但我们完全无从知晓它究竟是哪一�
 > <span style="color:#1e8449;">**[note] 译者注（算法/效率视角 + 跨课程连接）：**</span> "找不到 det 最大的子矩阵，除非量子计算机存在"是修辞，真意是：在 C(n,r) 个子矩阵里找最大行列式是组合困难问题，n=$10^{6}$ 时超指数搜索不可行。注意作者没有放弃良态保证，而是把它降级——从"必然 |y|,|z|≤1"放松到"以极高概率 |y|,|z|≤2"。这是一次范式跳跃：从最坏情形保证转向高概率保证，正是 CLRS 第 5 章随机化算法的思路（随机化快排的期望分析、随机 Hash 对抗最坏输入），收益是把超指数搜索换成近线性随机采样。它成立还有一个先决条件值得玩味：det 最大的 B 与随机 B 之间只差常数因子 2，说明良态基在矩阵里是"富集"的——好子矩阵很多，随机扫几发就能撞上。这正是 §II.4 的核心赌注：把 A 乘上随机矩阵 $A\Omega$，以高概率一次捕获 r 维子空间。对数值型读者这里埋了第二个伏笔：2 的常数裕量意味着即便 B 挑得差些，计算仍有安全余量，故"放手随机"不是赌博而是有界的概率化计算。
 
 ---
-
 
 于是存在非常高的概率（并非必然）使 $|y_{ij}|\le 2$ 与 $|z_{ij}|\le 2$。
 
@@ -3605,7 +3519,6 @@ A=U\Sigma V^T\quad(7)
 
 ---
 
-
 关键性质正是这第 2 条（全部证明见 Sorensen 与 Embree 的论文）。
 
 对 $s=1$，DEIM 算法选取第一个奇异向量 $u_1$ 中的最大分量，于是得到 $P_1$。
@@ -3617,7 +3530,6 @@ A=U\Sigma V^T\quad(7)
 这相当于在普通消元（elimination）中让每个主元（pivot）都取到最大。
 
 > <span style="color:#1e8449;">**[note] 译者注（算法模式 + 跨课程连接）：**</span> DEIM 的选择策略值得从算法设计角度重读：第 s 步不取 u_s 自身最大分量，而取"前一步插值没抓住的残差" u_s−P_{s−1}u_s 的最大分量位置——这是典型的余量驱动（residual-driven）贪心：已插值好的坐标不再重复投资，火力全压在最没表示好的方向。它与消元"每次挑最大主元"同构：主元是当前最"危险"的入口，先吃掉它可以防止后几步拿小除数放大误差（数值稳定第一性原理，呼应 CSAPP 浮点对消的教训）。与 6.006 里多数只能当启发式的贪心不同，(8) 式给了它可证的后验保证：误差 ‖A−C($C^{T}C$)$^{-1}C^{T}A$‖$_{2}$ ≤ q_c·$\sigma$_{r+1}，即精度只受第 r+1 个奇异值控制、系数 q_c 是量级 <100 的常数。这意味着 r 是用户旋钮：谱尾衰减越快（矩阵越接近低秩），DEIM 的误差掉得越快。正文随后说"理论上的快速增长在实践中从未出现"，是把数值线性代数界的经验事实——主元增长因子的最坏上界 vs 平均表现——复述了一遍。
-
 
 在 [Sorensen-Embree] 中有这段算法的简单伪代码（pseudocode）。
 
@@ -3651,11 +3563,7 @@ A=U\Sigma V^T\quad(7)
 
 > <span style="color:#7f8c8d;">运行页眉：3. Bases for the Column Space；本页为书页 143（OCR page 47）。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### 3. Bases for the Column Space（列空间的基）
-
-<span style="color:#2471a3;">**[section]**</span>
 
 #### The Mixing Matrix M（混合矩阵 $M$）
 
@@ -3666,7 +3574,6 @@ A=U\Sigma V^T\quad(7)
 对 $M$ 而言，一个自然的选取（natural choice）是
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 Strang 前作 §4.3 + 第一性原理）：**</span> M=($C^{T}C$)$^{-1}C^{T}$·A·$R^{T}$($RR^{T}$)$^{-1}$ 看着吓人，实为两个最小二乘投影夹着 A 的三明治。Strang 前作 §4.3 讲过：满列秩 C 的左逆 $C^{+}$=($C^{T}C$)$^{-1}C^{T}$ 满足 $C^{+}C$=I，是把向量投影到 C(A) 后取坐标；R 的右逆 $R^{+}$=$R^{T}$($RR^{T}$)$^{-1}$ 满足 $RR^{+}$=I。于是 M=$C^{+}AR^{+}$，而 CMR=C[$C^{+}AR^{+}$]R=($CC^{+}$)A($R^{+}R$)。若秩精确且 C、R 分别张成 A 的列空间与行空间，则 $CC^{+}$ 作用在 A 上不动（每列本就在 C(A) 内），A $R^{+}R$ 亦然，故 CMR=A 精确——左逆右逆各扣住一边，中间 A 负责"翻译"两个坐标系。对近似情形，该 M 正是使 ‖A−CMR‖_F 最小的解：对列方向与行方向各做一次截断式最小二乘，恰好无损于 A 的前 r 个奇异值方向、只损 $\sigma$_{r+1} 起的尾部——这就是 DEIM/CUR 误差界只含 $\sigma$_{r+1} 的深层原因，也是"没有 M 时 CR 不接近 A"的答案：C 与 R 之间的坐标换算缺失了。
-
 
 ```math
 M = (C^TC)^{-1}C^TA\,R^T(RR^T)^{-1} = [\text{left inverse of } C]\,A\,[\text{right inverse of } R]
@@ -3689,8 +3596,6 @@ M = (C^TC)^{-1}C^TA\,R^T(RR^T)^{-1} = [\text{left inverse of } C]\,A\,[\text{rig
 Stewart 的早期分析（Numer. Math. 83（1999）313–323）为（8）式中的误差估计（error estimate）指明了道路。
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：** 期刊名 OCR 仅存「me Math.」碎片，依卷期 83（1999）313–323 复原为 Numerische Mathematik 的缩写 Numer. Math.；「HaIko」→ Halko。</span>
-
-<span style="color:#2471a3;">**[section]**</span>
 
 #### Starting from $A = QR$ with Column Pivoting（从带列主元的 $A = QR$ 出发）
 
@@ -3716,7 +3621,6 @@ Stewart 的早期分析（Numer. Math. 83（1999）313–323）为（8）式中�
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 + 效率视角）：**</span> 列主元 QR 的"主元"应与 Strang 前作消元主元同义理解：剩余列范数最大 ⟺ 该列最难由已选列表示，先拿下它——与 §II.3 前页 DEIM 的余量驱动选择如出一辙，都是"先处理最危险分量"。分块 (10) 的意义是让秩"现场显形"：若 r 取在数值秩处，$R_{11}$ 吞下大奇异值而 $R_{22}$ 范数小（$\sigma$_max($R_{22}$)≈$\sigma$_{r+1}(A)），后面列几乎躺在前 r 列张成的空间里——不需要事后算 SVD 就能在 QR 进行中读出秩，这是 rank-revealing 一词的全部要义。强秩揭示补充的条件 $\sigma$_min($R_{11}$)≈$\sigma$_r(A) 把"选列质量"量化：$R_{11}$ 的最小奇异值越大，被选 r 列越贴近 A 的"前 r 个主方向"。它是 §II.3 上页 det 最大策略的连续版本（对所选列有 det=∏$\sigma_{i}$），而逐列贪心只是它的廉价近似。末尾"求零空间基"的连线是：一旦 $\sigma$_max($R_{22}$) 落入噪声地板，$R_{22}$ 的列本质上就是 A 的近似零空间成员——数值秩与数值零空间在同一个分块里被同时暴露。
 
 ---
-
 
 这便产生一个置换矩阵（permutation matrix）$\Pi$，使得 $A\Pi$（以及 $Q$）的前列恰是那些重要列：
 
@@ -3748,8 +3652,6 @@ A\Pi = QR = \begin{bmatrix} Q_r & Q_{\text{rest}} \end{bmatrix}\begin{bmatrix} R
 
 > <span style="color:#7f8c8d;">运行页眉：Computations with Large Matrices（大矩阵的计算）；本页为书页 144（OCR page 48）。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 #### Low Rank Approximation by a Partial QR（用部分 QR 作低秩近似）
 
 前面几页都假定，矩阵 $A$ 的秩 $r$ 相对较小。
@@ -3757,7 +3659,6 @@ A\Pi = QR = \begin{bmatrix} Q_r & Q_{\text{rest}} \end{bmatrix}\begin{bmatrix} R
 这一假定往往并不严格为真，但在效果上却是成立的（false but effectively true）。
 
 > <span style="color:#1e8449;">**[note] 译者注（第一性原理洞察）：**</span> "false but effectively true"是本小节的方法论宣言，值得单独消化：精确秩在浮点世界几乎不存在——任何矩阵经受 $\epsilon$_mach≈$2^{-52}$ 量级的舍入扰动后大概率满秩。有意义的是奇异值谱的形状：$\sigma_{1}$≥…≥$\sigma$_r 明显高于"噪声地板"（量级 ≈ $\epsilon$_mach·‖A‖），$\sigma$_{r+1} 起落入地板。此时 A=A_r+E 不是定理而是选择：r 取多大，取决于你想保留到多细；E=$\sigma$_{r+1}u_{r+1}v_{r+1}$^{T}$+… 是被你主动丢弃的尾部。作者特意给出"何时停"的可计算答案：带列主元的 QR 每步都在算剩余列范数，当最大剩余范数跌过预设界即可当场停机——秩的探测嵌入算法本身，无需先付 SVD 的昂贵代价。这给你一套通用工作流直觉：先跑廉价的带主元 QR 试探推进、用列范数监控谱尾，再决定是否调昂贵的 SVD 精化。大矩阵低秩近似的常态是"r 由数据地板决定，而非由题目给出"，数值秩是测量结果。
-
 
 我们的意思是
 
@@ -3805,8 +3706,6 @@ $Q_rR_rP^T$ 就是对 $A$ 的好的秩 $r$ 近似。
 
 我们将在 <span style="color:#7f8c8d;">§II.4</span> 以及本书第三部分（Part III）中，再回到低秩近似这一话题。
 
-<span style="color:#2471a3;">**[section]**</span>
-
 #### An Approximate SVD from the Partial QR（由部分 QR 得到的近似 SVD）
 
 为使这一环节形成闭环，我们现在把目标对准 SVD 的一个好的近似。
@@ -3836,7 +3735,6 @@ A = Q_rU_r\Sigma V^T + E = U\Sigma V^T + E
 > <span style="color:#1e8449;">**[note] 译者注（算法/效率视角 + 证明策略模板）：**</span> 两步法是"把难算的大问题拆成便宜的小核 + 无损还原"的范本，可与 6.006 的分治思想互文：昂贵且需迭代的 SVD 被压到只有 r 行的 R_$rP^{T}$ 上完成（r≪m,n），而占体积的 Q_r 只做一次正交矩阵乘法——代价由约 mn·min(m,n) 量级的工作降到"大 QR + 小 SVD"的组合。误差仍为 E 绝非偶然，其关键是正交范数不变性：对任意正交 Q 与任何矩阵 E，‖QE‖=‖E‖（2-范数与 F-范数均成立，因正交变换保长度、保内积）。于是前端乘 Q_r、后端乘 $P^{T}$ 都不放大 E——误差沿流水线原样传递。这反过来照亮 page_147 那句"Q 条件数=1"为何是数值线性代数的王牌：乘以正交阵是唯一一类永不放大的运算，算法设计者于是总把"病态"藏进一个正交因子后面，把"难"留给小核。请把"误差夹在正交因子之间 ⟹ 界原样传递"收进你的证明工具箱：§II.4 随机化算法与本书第三部分会反复用同一条引理。
 
 ---
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）：** 两处「EVT」均为 $\Sigma V^T$ 的噪声变形；「0 qu ick steps」首词破损，按后文 First/Second 两个步骤重建为 Two quick steps。</span>
 
@@ -3929,8 +3827,6 @@ Factor $A = Y B_{\max} Z$ as in equation (6).
 
 > <span style="color:#7f8c8d;">**结构清单：** 本页为 §11.4 Randomized Linear Algebra（随机化线性代数）的开头正文，书眉（running head）为 Computations with Large Matrices（大型矩阵的计算，不译）。全部单元依次为：引言段（局限性与写作动机）、随机向量与列空间采样段、随机化计算的革命段、矩阵乘法复杂度段、随机采样乘积段、列-行外积说明段、范数平方采样段、Michael Mahoney 讲义段，以及一个 math fenced block（Mahoney 随机矩阵乘法公式）；无编号定理/定义/例子。OCR 词内撕裂等纯拼写噪声已静默复原，仅对影响数学内容的修正加注。</span>
 
-<span style="color:#2471a3;">**[section]**</span>
-
 ### 11.4 Randomized Linear Algebra（随机化线性代数）
 
 本节关于随机化（randomization）的论述注定是不完整的，首要原因在于它并非出自专家（expert）之手。
@@ -3955,7 +3851,6 @@ Factor $A = Y B_{\max} Z$ as in equation (6).
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 Bertsekas 概率 + 第一性原理）：**</span> AB=$\Sigma_{k}$ $a_{k}b_{k}$ 的"外积和"写法本身就是第一个算法洞察：矩阵乘法不必逐个算内积，它是 n 个秩一矩阵的叠加。从"求和"跳到"抽样求和"是重要度采样（importance sampling）思想，而"无偏性"只需你在 Bertsekas《概率导论》学过的期望线性即可证明：设第 k 个外积 $X_{k}$=$a_{k}b_{k}$ 被抽中的概率为 $p_{k}$，则 E[$X_{k}$/$p_{k}$]=$\Sigma_{k}p_{k}$·($X_{k}$/$p_{k}$)=AB——所以每抽一项都要按 1/$p_{k}$ 加权，权重不是随意的；正文 OCR 丢失的均匀权重 n/s（$p_{k}$=1/n 时）正是该式的特例。更妙的是方差动机：加权单项 X/p 的方差含二阶矩 $\Sigma_{k}p_{k}$($X_{k}$/$p_{k}$)$^{2}$，当抽中概率 $p_{k}$ 与该乘积"大小"成正比时，$X_{k}$/$p_{k}$ 趋于常数、方差被压到接近零——这就是"给大乘积更高抽中率+补偿"的全部目的：正确期望由补偿公式兜底，低方差由非均匀概率换取。样本数 s 再独立调节精度。概率的语言（期望、方差、样本量）第一次完整地进入线性代数。
 
-
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR 该段下标与比例因子大量缺失，仅残存 `But 5 columns Ok 什 om ... 5 rank one matric e s Okbk ... we can 况 方 纱 叻 e sum by / 5 一 tO e stimate the true AB = sum Of products`；按数学语境重建为"对 $s$ 个采样外积按概率加权以估计 $AB$"（均匀概率时典型权重为 $n/s$，具体加权见下文"范数平方采样"）。
 
 这一思想还有更多值得挖掘之处。随机采样（random sampling）要用到一些基础统计（statistics）知识。较大的乘积 $a_k b_k$ 显然对 $C = AB$ 贡献更大；我们可以、也确实会把均匀概率（uniform probability）改为"范数平方采样"（norm-squared sampling），以提高那些较大样本被抽中的机会。
@@ -3975,7 +3870,6 @@ C = AS, \qquad R = S^T B, \qquad CR = AS\,S^T B \approx AB .
 我们用 $C$ 与 $R$ 相乘，而不是去乘完整且正确的矩阵 $A$ 与 $B$。$SS^T$ 接近单位阵 $I$ 这一点并不为真；但 $SS^T$ 的期望值等于 $I$ 这一点却是成立的。这里正是随机化（randomization）的关键所在。
 
 > <span style="color:#1e8449;">**[note] 译者注（跨课程连接 Chernoff/CLRS/CSAPP + 第一性原理）：**</span> "E[$SS^{T}$]=I"是全节的钥匙，可用期望线性直接验算：构造 s 个独立缩放采样列，S 的第 k 列以概率 $p_{i}$ 落在位置 i 并取 $e_{i}$/√(s·$p_{i}$)，则 E[$S_{k}S_{k}^{T}$]=$\Sigma_{i}p_{i}$·(1/($sp_{i}$))$e_{i}e_{i}^{T}$=(1/s)I，故 E[$SS^{T}$]=$\Sigma_{k}$(1/s)I=I——缩放因子 1/√($sp_{i}$) 正是前文"补偿公式"的矩阵形态，它让每个采样的期望贡献恰为整矩阵的 s 分之一，于是随机采样矩阵在期望意义上"扮演"单位阵。但期望相等只保证平均：单次偏差须靠浓度不等式兜底——6.042 学过的 Chernoff 界告诉你 s 个独立样本的加权和以高概率贴近期望，坏事件概率随 s 指数衰减。文首"r+10 防随机意外"就是这个思维的操作化（oversampling）：多取十余个样本对冲漏采重要列的坏事件，与 CLRS 第 5 章"随机化 + 冗余对冲最坏输入"同一哲学。从 CSAPP 视角补一句：AS 是随机抽取 A 的列，内存随机访问、cache 不友好，但总流量从 O(mn) 量级降到 O(ms)，以少量 cache miss 换量级性的带宽节省——这是"用概率换复杂度"在存储层次上的代价清单。
-
 
 > <span style="color:#1e8449;">**[note] 译者注（OCR 修正）:**</span> OCR `the expected e ofSST I` 已重建为 the expected value of $SS^T$ is $I$；末句原为 `There you the key tO rando mi zation`，按上下文补入 see。
 

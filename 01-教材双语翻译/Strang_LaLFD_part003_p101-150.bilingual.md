@@ -127,7 +127,27 @@ The rescaling by those square roots gives a true matrix norm.
 
 下面是对 $A$ 的几种 factorizations（分解），它们带有新的重要性质：
 
-> <span style="color:#1e8449;">**[note] Note（译者注）:**</span> 这一小节的呈现方式是把"目标 + 约束"浓缩成并列的公式。OCR 中的三行小标题（Nonnegative Matrices、Sparse and Nonnegative、CP Tensor Decomposition）原为并列的三组分解，具体排版无法从 OCR 恢复，译文按"名称 + 优化问题"列表给出。
+> <span style="color:#1e8449;">**[note] Note（译者注）:**</span> 这一小节的呈现方式是把"目标 + 约束"浓缩成并列的公式；OCR 中的三行小标题 Nonnegative Matrices、Sparse and Nonnegative、CP Tensor Decomposition 原为并列的三组分解，具体排版无法从 OCR 恢复，译文按"名称 + 优化问题"列表给出。
+>
+> 这个列表是同一个模板的三次填表：先定 loss（损失函数），再定 feasible set（可行域）或 penalty（惩罚项），然后求两者之和最小的 factor（因子）。三行并列，是因为骨架相同、只换了约束的形状。
+>
+> 先问 SVD（奇异值分解）凭什么给出 perfect factors（完美因子）。依据是 Eckart-Young 定理：rank（秩）不超过 r 的 matrix（矩阵）里，截断的前 r 个 singular triple（奇异三元组）使平方 residual（残差）最小，最小值等于第 r+1 到末尾的 singular value（奇异值）平方和。证明只用一句话：最优点处 residual（残差）与候选集合垂直。而垂直要有意义，集合必须容纳任意方向的扰动，即必须是 linear subspace（线性子空间）。问题恰在这里：rank（秩）不超过 r 的 matrix（矩阵）不构成子空间，两个 rank（秩）为 r 的 matrix（矩阵）相加，rank（秩）可以变成 2r，它只是一张曲面。Eckart-Young 还能成立，是无约束时切空间允许任意符号，垂直条件退化成 eigenvalue equation（特征值方程）。
+>
+> 换成 nonnegative orthant（非负象限）后，要求 $U \ge 0$、$V \ge 0$，允许的扰动少了一半，垂直条件不再是 eigenvalue equation（特征值方程），而变成"residual（残差）与每个可行方向的内积不超过零"，即 projection（投影）到 convex set（凸集）上的判据：最优点通常落在边界上，factor（因子）里出现真正的零。把 feasible set（可行域）换成 $\ell_1$ penalty（惩罚项），就是第二行公式。
+>
+> 精细处在于约束并非每步都咬人。对 $A \ge 0$ 和固定的 $v \ge 0$，无约束 least squares（最小二乘）解 $u = Av/(v^{T}v)$ 自动非负。代入数字：取第一行 $v = (1,1,0,0)^{T}$，得 $Av = (2,1,0,1)^{T}$、$v^{T}v = 2$，于是 $u = (1,0.5,0,0.5)^{T}$，四个分量无需截断。正文说"半迭代很快，因为它实际上是线性的"，含义就在这里：固定一个 factor（因子）后双线性退化为普通 least squares（最小二乘），代价不在单步，而在项数 r 变大后的边界结构。
+>
+> 代价可以算。取 $M$ 四行为 $(1,1,0,0)$、$(0,1,1,0)$、$(0,0,1,1)$、$(1,0,0,1)$：第一行加第三行等于第二行加第四行，rank（秩）为 3；singular value（奇异值）为 $2$、$\sqrt2$、$\sqrt2$、$0$，三项 SVD（奇异值分解）精确复原，平方 residual（残差）为 0。但项数为 3 的 nonnegative（非负）factorization（分解）达不到 0，且不必用优化器证明：nonnegative rank-one term（非负秩一项）$uv^{T}$ 的非零位置是 supp(u) 与 supp(v) 的乘积，即 bipartite graph（二部图）里的一个 rectangle（矩形）；$M$ 的非零位置连成八条边的环，每个顶点度数为 2，任何矩形最多盖 2 条边，盖满 8 条至少要 4 个矩形，四个星形恰好够。故 boolean rank（布尔秩）为 4，而 nonnegative rank（非负秩）不低于它。
+>
+> 数值复核：投影梯度求三项非负逼近，30 组随机初值里最好的一组把平方 residual（残差）压到约 0.586，对应 residual（残差）约 0.765，到不了 0；无约束情形的平方 residual（残差）为 0。这个差额是结构性的，换优化器只省时间，省不掉它。
+>
+> 跨课程连接之一，6.042J 图论：把 support（支撑）看成 bipartite graph（二部图）的边集，全一矩形就是 complete bipartite subgraph（完全二部子图），"最少矩形覆盖"即 biclique cover（完全二部子图覆盖），下界同样靠数边除以块容量。区别是图论只问盖不盖得住，matrix（矩阵）还要问数值逼得多近，所以 boolean rank（布尔秩）只是 nonnegative rank（非负秩）的下界。
+>
+> 连接之二，概率论与凸优化：$\ell_1$ penalty（惩罚项）换成概率语言就是先验，噪声取 Gaussian（高斯）、entry（元素）取 Laplace（拉普拉斯分布）时，负对数后验正好是平方 loss（损失函数）加绝对值之和。不用"数非零个数"，是因为它连 norm（范数）都不是：homogeneity（齐次性）失效，$x$ 只有一个非零分量时 $2x$ 的非零个数仍是 1，不等于 2 倍。$\ell_1$ 是单位球上与它一致的最紧 convex function（凸函数），于是成为可算替身。
+>
+> 连接之三，CSAPP 浮点：支撑论证依赖"恰好为零"，而 floating point（浮点数）里本该为 0 的位置常落在 $10^{-17}$，用 `==` 判零会算错 boolean rank（布尔秩），与比较浮点须写差值小于阈值是同一条纪律；落码前先定 threshold（阈值）。
+>
+> 最后是第三行：三路 tensor（张量）的 CP decomposition（CP 张量分解）把 $A \approx UV$ 换成三张 factor（因子）表相乘，alternating least squares（交替最小二乘）形状不变，但 SVD（奇异值分解）时代的两条保证同时失效：没有精确的低项数分解，tensor rank（张量秩）也不再受尺寸限制，可以超过每个 mode（模态）长度。一句话收束：三组公式的差别不在项数，而在 feasible set（可行域）的形状；集合一旦不是 linear subspace（线性子空间），最优性就从 eigenvalue equation（特征值方程）退化为边界上的 projection（投影）问题。
 
 - **Nonnegative Matrices（非负矩阵）**：在 $U \ge 0$、$V \ge 0$ 的约束下，
 

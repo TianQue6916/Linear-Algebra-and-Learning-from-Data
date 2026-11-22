@@ -164,6 +164,22 @@ $Ax$ 是矩阵 $A$ 的 columns（列）的一个 linear combination（线性组�
 
 但它并没有填满整个 3-dimensional space（三维空间）$\mathbb{R}^3$。
 
+> <span style="color:#1e8449;">**[note] 为什么列视角是全书第一原理：**</span> 矩阵乘法有两种算法，而只有一种给出了这本书后面每一页的动机。row-dot-column（行点列）把 $Ax$ 看成 $m$ 个 inner product（内积）并排，它回答「怎么算最省事」；column combination（列的组合）把 $Ax$ 看成 $n$ 个 columns（列）按 $x$ 加权后相加，它回答「$A$ 到底是什么」。后者才是这门学科的 source（源头）：$A$ 的 columns（列）是 $\mathbb{R}^m$ 中的向量，$x$ 只是配给它们的 coefficient（系数）。
+> 
+> 完整形式只有一行：$Ax=\sum_{j=1}^{n}x_ja_j$，其中 $a_j$ 是 $A$ 的第 $j$ 个 column（列）。于是「$Ax=b$ 有 solution（解）」被翻译成一个 membership（归属）问题：$b\in C(A)$，即 $b$ 落在那些 columns（列）的 span（张成）里。这个翻译没有信息损失，但它把「方程组」换成了「一个点落在一个几何对象里」；后面关于 rank（秩）、dimension（维数）、projection（投影）的每一句话都从这个换位起步。顺带记下两个尺寸：$x$ 的维数是 $n$ 而 $b$ 的维数是 $m$，这两个数不必相等 —— rectangular（长方形的）矩阵在本书里是常态而非例外，所以「方程个数」与「未知数个数」从一开始就不该被期待对齐。
+> 
+> 两种算法的等价是逐字的。取书中 $A$ 的两个 columns（列）$a_1=(2,2,3)$、$a_2=(3,4,7)$ 与 $x=(1,2)$，实测 $Ax=\begin{bmatrix}8\\10\\17\end{bmatrix}$ 与 $1\cdot a_1+2\cdot a_2$ 完全相同，都是 $(8,10,17)$。差别在 $x$ 的角色。row view（行视角）里 $x$ 是 unknown（未知量），每行给一个 constraint（约束），$m$ 个超平面求交；column view（列视角）里 $x$ 是 recipe（配方），$A$ 是原料清单，问题变成「这些原料能不能配出 $b$」。前一种视角让你以为方程越多越难解，后一种视角告诉你反话：方程越多，$b$ 越容易被挤出那个 plane（平面）。
+> 
+> 用同一个 $b=(1,1,1)$ 把这件事算成数。$a_1,a_2$ 张成的 plane（平面）的 normal（法向量）是 $n=a_1\times a_2=(2,-5,2)$，实测 $n\cdot a_1=n\cdot a_2=0$、$n\cdot b=-1$，所以 $b$ 不在 plane（平面）里 —— 不可解不是一次消元事故，而是一个投影不为零。把它量化：$\|Ax-b\|$ 的最小值等于 $|n\cdot b|/\|n\|=1/\sqrt{33}=0.17408$，对应的 least squares（最小二乘）解是 $x=(28/33,-7/33)=(0.84848,-0.21212)$，residual（残差）$Ax-b=(0.06061,-0.15152,0.06061)$ 恰好平行于 $n$。缺的那一块，就是 $b$ 在 normal direction（法向）上的分量。
+> 
+> 反过来问：把「$x$ 跑遍整个 $\mathbb{R}^n$」这次量词删掉，会塌成什么？把 $x$ 限制在 $\mathbb{R}^n_{\ge0}$，$C(A)$ 就从 subspace（子空间）塌成 cone（锥），可解性不再由 rank（秩）决定：$a_1=(1,0)$、$a_2=(0,1)$ 配 $b=(-1,-1)$，rank（秩）仍是 $2$，但 $b$ 不在 cone（锥）里。此时判据换成 Farkas lemma（法卡斯引理）：$b$ 不在 cone（锥）中，当且仅当存在 $y$ 使每个 $y\cdot a_j\ge0$ 而 $y\cdot b<0$ —— 这正是 linear programming（线性规划）弱对偶的几何形态。一行改动，付掉的是整条免费的「$Ax=b$ 可解 $\iff b\in C(A)$」。
+> 
+> 跨课程：Strang 18.06 第一讲把 column picture（列图）与 row picture（行图）并排画在同一块黑板上，$Ax=b$ 的两个画法各占一半；CSAPP 第 6 章则把这件事变成性能数字：$n\times n$ 的 double（双精度浮点）矩阵按 row-major（行主序）存放时，取一列要跨 $8n$ 字节的 stride（步长），$n=1000$ 时是 $8000$ 字节，一条 $64$ 字节的 cache line 只用得上 $8$ 字节，利用率 $12.5\%$；而 row-dot-column 的顺序扫描几乎全命中。同一条公式，两种读法在 cache 上差一个数量级。
+> 
+> 历史坐标：把矩阵当线性映射、把 image（像）当子空间，是 20 世纪抽象代数定型之后的事 —— Halmos 的 *Finite-Dimensional Vector Spaces*（1958 年第 2 版）已经以此为主线。而把 column picture（列图）放在教材第一页、并明说「别用 dot product（点积）去理解」，是 Strang 自己的教学选择；他在 1993 年 *American Mathematical Monthly* 100(9):848--855 的短文里用同一张图讲完四个 subspace（子空间），那篇就是本节的祖先（卷期页码已核实）。
+> 
+> 落点：一旦承认 $Ax$ 是 columns（列）的 combination（组合），「所有 combination（组合）填满了什么」就自然升格成一个 subspace（子空间），而「填不满」的四个等级 —— 点、线、面、整个空间 —— 正是 rank（秩）的雏形。这也是为什么下一小节讨论 column space（列空间）时，第一个问题就是「它有多大」。
+
 ### The Column Space（列空间）
 
 <span style="color:#00838f;">基本思想：</span> Columns（列）的组合填充了矩阵的 column space（列空间）。
@@ -254,6 +270,31 @@ $Ax=0$ 要求 $x=(0,0,0)$。
 
 我们需要那些 ideas（想法）和那种 language（语言）来走得更远。
 
+> <span style="color:#1e8449;">**[note] 列空间为什么必须与另外三个子空间一起出场：**</span> column space（列空间）$C(A)$ 是 $A$ 的所有 columns（列）的一切 combination（组合）构成的集合，它是 $\mathbb{R}^m$ 的一个 subspace（子空间）。它可以单独定义，却不能单独使用：一旦你问「$Ax=b$ 有没有解」，答案要么用 $C(A)$ 说（$b$ 在不在里面），要么用 $N(A^T)$ 说（$b$ 是否垂直于每个满足 $A^Ty=0$ 的 $y$），而这两种说法靠一条 orthogonality（正交性）粘在一起。这就是 four fundamental subspaces（四个基本子空间）必须同时出场的原因。另外三个子空间的正式定义要到 §I.3（本文件 602--808 行）才出现，这里先把整张图摆出来。
+> 
+> 完整形式，设 $A$ 是 $m\times n$、rank（秩）为 $r$：
+> 
+> - $C(A)=\{Ax:x\in\mathbb{R}^n\}\subseteq\mathbb{R}^m$，$N(A)=\{x:Ax=0\}\subseteq\mathbb{R}^n$，$C(A^T)\subseteq\mathbb{R}^n$，$N(A^T)=\{y:A^Ty=0\}\subseteq\mathbb{R}^m$；
+> - $\dim C(A)=\dim C(A^T)=r$，$\dim N(A)=n-r$，$\dim N(A^T)=m-r$；
+> - $C(A^T)\perp N(A)$ 且两者直和成 $\mathbb{R}^n$；$C(A)\perp N(A^T)$ 且两者直和成 $\mathbb{R}^m$（这两条直和由 §I.3 的 rank theorem 保证，不是这里的前提）；
+> - $Ax=b$ 有解 $\iff b\in C(A)\iff y\cdot b=0$ 对每个 $y\in N(A^T)$ 成立。
+> 
+> 最后一条不能靠「$C(A)$ 与 $N(A^T)$ 直和成 $\mathbb{R}^m$」来证，那句话与结论等价；正确的前提是 §I.3 的 rank theorem（秩定理）本身：它给出 $\dim C(A)=r$、$\dim N(A^T)=m-r$ 与两者的正交性，三者合起来才把直和分解合法化。直和一旦站住，验证只要两行：若 $A^Ty=0$ 而 $b=Ax$，则 $y\cdot b=y^TAx=(A^Ty)^Tx=0$；反过来若 $b$ 垂直于 $N(A^T)$，按直和把 $b$ 拆成 $b_1+b_2$（$b_1\in C(A)$、$b_2\perp C(A)$），于是 $A^Tb_2=0$ 即 $b_2\in N(A^T)$，而差 $b-b_1$ 又垂直于 $N(A^T)$，与自己垂直的向量只能是零。出处：教材 §I.3 Facts about Ranks 第 5 条，加上我补的消元论证 —— 对 $A$ 消元到 $R=\operatorname{rref}(A)$，pivot（主元）恰好 $r$ 个，pivot columns 是 $C(A)$ 的 basis（基），$R$ 的非零行是 $C(A^T)$ 的 basis，两边数到同一个 $r$，两个 nullity 于是只是减法。这条路径不用 inner product（内积），所以能反过来支撑那张直和图。
+> 
+> membership（归属）判定本身只是一个是非题，但它并不缺少否证手段：否定它同样有有限 certificate（证书）。消元到某一行落成 $0=c$（$c\neq0$）是一次证书；从 $N(A^T)$ 里取一个 $y$ 使 $y\cdot b\neq0$ 是另一次，后者只要一次 inner product（内积）就能复核，可挑的方向有 $m-r$ 个维度。判据与证书的差别，是「可陈述」与「可验证」的差别。
+> 
+> 用书中的三个矩阵实测。$A=\begin{bmatrix}2&3\\2&4\\3&7\end{bmatrix}$ 是 $3\times2$：rank（秩）$r=2$、$\dim N(A)=0$、$\dim N(A^T)=1$，$N(A^T)$ 由 $(2,-5,2)/\sqrt{33}=(0.34816,-0.87039,0.34816)$ 张成。对 $A^T$ 做 SVD（奇异值分解），即取 $A=U\Sigma V^T$ 的第三列 $u_3$，实测 $(0.3481553119,-0.8703882798,0.3481553119)$ 与它逐位相同，因为 $A$ 只有两个非零 singular values（奇异值）$9.52029$ 与 $0.60340$，第三个只能落在零空间里。$b=(1,1,1)$ 在这个方向上的投影是 $-0.174078$（恰为 $-1/\sqrt{33}$），于是不可解，最短距离正好是 $0.174078$。$A_2$ 把第三列换成 $a_1+a_2=(5,6,10)$：$r$ 仍是 $2$，$\dim N(A_2)$ 从 $0$ 变成 $1$，$\det A_2=0$；$A_3$ 把第三列换成 $(1,1,1)$：$r=3$，两个 nullity 都归零，$\det A_3=-1$。同一张 $3\times3$ 表格，行列式是不是零，只取决于第三列有没有落进那个 dimension（维数）为 $2$ 的 plane（平面）。
+> 
+> 换个系数域，这张图就塌。若 $A$ 的 entry（元素）都是有理数且列在 $\mathbb{Q}$ 上 independent（如有理矩阵列满秩），$\{Ax:x\in\mathbb{Z}^n\}$ 才是 lattice（格），点与点之间有正的最小间距；一般情形它可以稠密：取 $A=(1,\sqrt2)^T$，集合 $\{m+n\sqrt2\}$ 在 $\mathbb{R}$ 里稠密，实测在 $|m|,|n|\le100$ 内相邻两点最小间隔是 $5.05\times10^{-3}$，放宽到 $|m|,|n|\le1000$ 就掉到 $3.59\times10^{-4}$，范围越大越密。可解性于是从消元的 $O(mn\min(m,n))$ 掉进 integer programming（整数规划），而后者是 Karp 在 1972 年那 21 个 NP-complete 问题里的一个。$C(A)$ 之所以能被一个数 $r$ 完全刻画，全靠 $\mathbb{R}$ 是 field（域），除法随时可用。
+> 
+> 历史坐标：$C(A)\perp N(A^T)$ 的内容比它的名字老得多 —— Fredholm 在 1903 年研究 integral equation（积分方程）时得到的 Fredholm alternative（二择一），把「要么可解、要么存在一个正交的障碍」变成分析学的标准工具；有限维版本则被 Strang 画成一张四个 block（区块）的图，并命名为 linear algebra 的 fundamental theorem（基本定理），见 *Amer. Math. Monthly* 100(9):848--855 (1993) 第 2 节（卷期页码已核实）。
+> 
+> 跨课程：Thomson 实分析里 $V/\ker T\cong\operatorname{im}T$ 是同一句话的无限维版本，作为 linear space（线性空间）它由第一同构定理恒成立、不需要任何拓扑；只有在 Banach 空间意义下要求这个同构是拓扑同构时，才需要 $\operatorname{im}T$ 闭（开映射定理），而处理不闭的情形正是 Fredholm 那一路的活儿。
+> 
+> CLRS 的图搜索把 $\mathbb{R}$ 换成 boolean semiring（布尔半环）：系数只能取 $0$ 或 $1$，加法是 OR。这时先要说清「span」指哪一种运算 —— 链 $1\to2\to3$ 的 adjacency matrix（邻接矩阵）$A$ 有三列，其 boolean span 只含 $\{\varnothing,\{0\},\{1\},\{0,1\}\}$，因为 OR 只会把列并起来，走不到两步之外；BFS 的 reachable set（可达集）$\{0,1,2\}$ 要的是 $C(A^*)$，$A^*$ 是 boolean 意义下的 transitive closure（传递闭包），实测它的非空列是 $\{0\}$ 与 $\{0,1\}$，读成「谁能到 $j$」。boolean 半环上的 span 与 $\mathbb{R}$ 上的 span 不是同一个运算，到达与「是某种组合」在这里也不是同一件事。
+> 
+> 落点：这张图的下一格是 $A=CR$。$C$ 收走 pivot columns（主元列），$R$ 记下坐标，于是 $C(A)$ 的 basis（基）从「从一堆列里挑出来的几个」变成「矩阵乘积的一侧」，rank（秩）也不再只是一个计数，而是两块矩阵的公共尺寸。
+
 ### Independent Columns and the Rank of $A$（独立列与矩阵的秩）
 
 在写出那些话之后，我以为这一小节已经完成了。错了。
@@ -318,6 +359,22 @@ C=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad r=1
 
 矩阵的 rank（秩）就是其 column space（列空间）的 dimension（维数）。
 
+> <span style="color:#1e8449;">**[note] 线性无关、零空间、主元列是同一件事：**</span> 所谓 independent（线性无关），说的不是「这些向量看上去各走各的」，而是「同一个 $b$ 只有一种配方」。定义只有一行：$c_1a_1+\cdots+c_na_n=0$ 仅当 $c_1=\cdots=c_n=0$ 时成立。这一行的全部信息量，在于它把 existence（存在性）换成了 uniqueness（唯一性）—— 而唯一性在 6.042J 里早就有名字，叫 injection（单射）。
+> 
+> 定理（四个说法等价）：设 $A$ 是 $m\times n$ 的实矩阵，则 (i) $A$ 的 columns（列）independent；(ii) $N(A)=\{0\}$；(iii) $\operatorname{rank}(A)=n$；(iv) 每个 $b\in C(A)$ 的 representation（表示）唯一。证明如下，一步不缺（这套写法对照 Strang 的 *LaLFD* §I.2 与 Golub & Van Loan 的 *Matrix Computations* §2.4；两处章节号我都未能一手核实，手边没有原书，按通行引用写下）。(i)$\Leftrightarrow$(ii)：$Ax=0$ 逐字就是 columns（列）的一个 zero combination（零组合），而 $x=0$ 永远是解，independent 说的正是「除它以外一个都没有」，所以这两句是同一句话的两种标点。(ii)$\Rightarrow$(iv)：若 $Ax=b=Ay$，则 $A(x-y)=0$，由 (ii) 得 $x=y$。(iv)$\Rightarrow$(ii)：若 $x\ne0$ 而 $Ax=0$，则 $b=0$ 有两个 representation（表示），矛盾。
+> 
+> (ii)$\Rightarrow$(iii) 是唯一需要动手的一步。把 columns（列）按 pivot column（主元列）与 free column（自由列）分块，写成 $A=[A_P\ A_F]$，其中 $A_P$ 有 $r$ 列、列 independent，并且张成 $C(A)$ —— 它就是一个 basis（基）。于是任给 $x_F$，右端 $-A_Fx_F$ 落在 $C(A)$ 里，方程 $A_Px_P=-A_Fx_F$ 既有解又唯一：有解，因为 $A_P$ 张成整个 $C(A)$；唯一，因为 $A_Pz=0$ 只能给出 $z=0$。所以 free variable（自由变量）的每个取值恰好配一个解。只要存在 free column（自由列），取 $x_F\ne0$ 就得到一个 $x\ne0$ 而 $Ax=0$，与 $N(A)=\{0\}$ 矛盾，故 $r=n$。(iii)$\Rightarrow$(ii)：$r=n$ 时消元后没有 free variable（自由变量），back substitution（回代）从末行往上把每个分量压成 $0$。$\square$
+> 
+> 补一句方法论。(ii)$\Rightarrow$(iv) 这种写法是 6.042J 逻辑与证明一章里反复使用的 uniqueness template（唯一性模板）：先假设两个对象都满足同一个条件，再推出这两个对象相等。整本书里凡是形如「解唯一」「分解唯一」的结论，收尾都是同一个动作，一个字的改动都不需要。
+> 
+> 例子与反例一起看。书中 Example 4 的 $A$ 有三列，第三列由前两列给出：$a_3=2a_1+2a_2$。实测 $A$ 的 singular values（奇异值）是 $10.94416$、$0.47479$、$0$，那个 $0$ 就是 dependent（相关）的指纹；零空间由 $(-2/3,-2/3,1/3)\propto(-2,-2,1)$ 张成，对应 $2a_1+2a_2-a_3=0$，秩 $r=2<n=3$，所以不 independent。反例取 $2\times3$ 的 $B=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$，实测 $r=2$，零空间由 $(1,-2,1)$ 张成。这不是巧合：$n>m$ 时必有 $r\le m<n$，free variable（自由变量）至少一个，任何这样的矩阵都不可能 independent。
+> 
+> 两条边界顺手记下，其中只有第二条是真前提。第一条是 $m\ge n$：上面那个 $B$ 说明方程比未知数少时无关必然失败；需要讲清的是，$m\ge n$ 只是 (i) 可能成立的必要条件，不是四等价定理的隐含前提：定理对 $m<n$ 照常成立，只是那时四句同时为假，而「假蕴含假」的等价关系依旧成立。第二条是 field（域）：把系数限制在 $\mathbb{Z}$，单个向量 $\{2\}$ 与 $\{1\}$ 在 $\mathbb{Q}$ 上都 independent，但 $\{2\}$ 张不出 $1$，于是它有作 basis（基）的资格却没有作 basis（基）的事实 —— $\mathbb{Z}$ 上可逆的元素只有 $\pm1$，independent 这句判据还活着，span（张成）与 basis（基）已经死了。更狠的一刀是把 $\mathbb{R}$ 换成 $\mathbb{Z}/6\mathbb{Z}$：那里 $3\cdot2=0$ 而两个因子都不为零，判据却照样写得出来——拿非零的 $3$ 去乘 $[2]$ 得 $[0]$，直接判 $\{[2]\}$ 不 independent；零空间也仍是良定义的非平凡集合，$N([2])=\{[0],[3]\}$ 而不是 $\{[0]\}$。塌掉的不是判据、也不是零空间，而是 dimension（维数）那一整套：$\mathbb{Z}/6\mathbb{Z}$ 不是 field（域），「基的个数」不存在，rank（秩）作为列空间的维数无从定义，(iii) 立刻失去真假可言；若强行把 rank 定义成「无关列的个数」，它给出 $0\ne1$，(iii) 也假，四句于是同假——只是这样定义的 rank 已经不再满足 rank-nullity，(iii) 与 (ii) 的等价就靠不住了。这两条合起来说明：「无关」这个词之所以干净，全靠除法随时可用。
+> 
+> 跨课程：6.042J 的函数一节里，$f:X\to Y$ 是 injection（单射）的判据是 $f(x_1)=f(x_2)\Rightarrow x_1=x_2$；把 $f$ 取成 $T(x)=Ax$，这两行字与上面的 (ii)$\Rightarrow$(iv) 逐字同构，连证明都不用改（只多用一条：$T$ linear 保证 $T(x)-T(y)=T(x-y)$）。再进一步看本节那个构造：「按顺序扫列，凡不是前面 columns（列）的 combination（组合）就收下」，这是在贪心求 maximal independent set（极大无关组），而贪心在这里最优不是运气 —— independent 满足 exchange property（交换性质），构成一个 matroid（拟阵）。Whitney 在 1935 年 *American Journal of Mathematics* 57(3):509--533 把这组公理抽出来（卷期页码已核实），CLRS 里 Kruskal 的正确性证明用的正是同一条 matroid（拟阵）贪心定理，而 6.042J 的 Hall 定理就是这套「先用小的、再拿交换律把它换大」的想法在二分图匹配上的判据。所以 basis（基）不只属于线性代数，它是「能贪心」这件事的一般形状。
+> 
+> 落点：这一步之后，rank（秩）有了两副面孔 —— counting（计数）意义上的「independent columns（列）的个数」，与 dimension（维数）意义上的「$C(A)$ 的维数」。下一节 $A=CR$ 就是把这两副面孔缝在同一块布上的那一针：$C$ 收走 pivot columns（主元列），$R$ 记下其余各列怎样由它们表出。
+
 ### The Factorization $A=CR$（分解 $A=CR$）
 
 矩阵 $C$ 通过一个第三个矩阵 $R$ 连接到 $A$：$A=CR$。
@@ -362,6 +419,28 @@ Example 6 中 $C$ 只有一列，所以 $R$ 只有一行：
 
 所有三个矩阵的 rank（秩）都是 $r=1$。
 
+> <span style="color:#1e8449;">**[note] $A=CR$ 是「秩」的第一张身份证：**</span> 这条注不谈压缩，只谈层级：$A=CR$ 站在定义 rank（秩）的那一层，往下到 $A=LU$、往上到 $A=U\Sigma V^T$，每一层各多买了什么。
+> 
+> 先说它回答的问题。一个 $m\times n$ 的矩阵有 $mn$ 个 entry（元素），但独立的方向只有 $r$ 个。$A=CR$ 把矩阵拆成两半：一半装方向，即 pivot columns（主元列）排成的 $C$；一半装坐标，即每一列相对这些方向的系数排成的 $R$。rank 的定义是「column space（列空间）的 dimension（维数）」，这个定义在 $CR$ 里第一次变成可算的对象：$C$ 的列数就是那个 dimension，而 $R$ 的行数把它又数了一遍。于是 $r$ 不再是一个只能靠消元数出来的计数，而是两块矩阵的公共尺寸 $(m\times r)(r\times n)$ —— 一个形状，不是一个数字。
+> 
+> 精确陈述如下。设 $A$ 为 $m\times n$、$r=\text{rank}(A)$，令 $R$ 是 $\text{rref}(A)$ 删去全零行后得到的 $r\times n$ 矩阵，再取 $A$ 中与 $R$ 的 pivot 列编号相同的那 $r$ 列、按原顺序排成 $m\times r$ 的 $C$，则 $A=CR$，且 $R$ 的 pivot 列（在 $R$ 内部）恰好组成 $I_r$ 的列。pivot 列不一定排在最前面，下面的反例里它们就是第 1 列与第 3 列。
+> 
+> 直觉是字母表与文稿。$C$ 的 $r$ 列是字母表，$R$ 的每一列是一篇用字母表写成的稿子：$R$ 第 $j$ 列第 $k$ 个数字，是 $A$ 第 $j$ 列在基向量 $c_k$ 上的坐标 —— 是坐标，不是「含有几个 $c_k$」。书中 Example 4 的 $R$ 第 3 列是 $(2,2)^T$，于是 $2c_1+2c_2=(8,6,2)^T$ 正是 $A$ 的第 3 列；我逐项复算过，$CR$ 与 $A$ 的最大偏差是 $0$。
+> 
+> 为什么 $C$ 必须是 pivot 列、$R$ 必须是删零行的 rref（行简化阶梯形）？两件事各管一半。$C$ 管「rank 不塌」：随便取前 $r$ 列就会塌。取三列依次为 $(1,2,1)^T$、$(2,4,2)^T$、$(3,7,4)^T$ 的 $A$，它的 rank 是 2，但前两列成比例，拿它们当 $C$ 只张成一条直线，而第 3 列不在这条直线上：我实测这两列的 rank 是 1，加上第 3 列后变 2，所以任何 $R^{\prime}$ 都救不回来。$R$ 管「坐标唯一」：若只要求存在某个 $R$ 使 $A=CR$，那 $C$ 可以整体乘 $c$、$R$ 整体除 $c$，坐标就不可读；把 $R$ 钉死为删零行的 rref，pivot 列上的 $I_r$ 一举给出两件事 —— $C$ 的列 independent（独立），以及每列坐标的唯一数字。
+> 
+> 「$CR$ 不省存储」这件事，本节末尾那张价目表已经数过个数，这里只补它的判据：$C$ 与 $R$ 合起来 $(m+n)r$ 个数，只在 $r<mn/(m+n)$ 时少于 $mn$，$1000\times1000$ 时门槛是 $r<500$。所以 $CR$ 的价值不在省内存，而在把 rank 摆到台面上；真要靠低秩省存储，得做截断，那是 SVD 的事。
+> 
+> 把三个分解并排看，就是三层楼。$A=CR$ 在地下室：消元顺手就拿到，零额外代价，$C$ 的列不正交、$R$ 的行也不正交；要小心的是这份便宜有价格 —— $C$ 的列越接近 linear dependence（线性相关），$R$ 里的坐标就越大，而重建 $A$ 时的浮点误差会被 $\kappa(C)$（$C$ 的条件数）放大，列正交时这个因子是 $1$，列几乎相关时它可以任意大。$A=LU$ 在一楼：为求解服务，强制一侧单位下三角、一侧上三角，代价是要么假定不必行交换、要么多背一个 permutation（置换）$P$，约 $n^3/3$ 次运算。$A=U\Sigma V^T$ 在顶楼：两侧都 orthonormal（标准正交）、系数非负且降序，代价是两次正交化，换回 Eckart–Young 意义下的最优截断。三层都在写 $A=\sum_{k=1}^{r}(\text{rank one piece})$，差别只在 piece 有多干净：$CR$ 的 piece 是斜的，$LU$ 的 piece 是三角的，SVD 的 piece 是正交的。
+> 
+> 所以书中 §I.2 末尾列五种 factorization（分解）时没有 $CR$：那五种是 $A=LU$、$A=QR$、$S=Q\Lambda Q^T$、$A=X\Lambda X^{-1}$、$A=U\Sigma V^T$，每一种的因子里都装着 eigenvalue（特征值）或 singular value（奇异值）这类内部信息，而 $CR$ 只装着两样外部可见的东西：哪些列独立、坐标是多少。$S=Q\Lambda Q^T$ 之所以必须在这张表里，并且左边写成 $S$ 而不是 $A$，是因为它把「两侧同时正交」与「对称」一次性兑换：只有对称矩阵才有正交的 eigenvector 矩阵，$Q^{-1}=Q^T$ 才成立；写成一般的 $A$ 就不成立，写成 $X\Lambda X^{-1}$ 才是通例。
+> 
+> 史实坐标：行简化阶梯形来自 Gauss 的消元法，Jordan 在 1888 年给出连主元上方也清零的变体。Wilhelm Jordan（1842--1899）不是代数学家而是测地学家，那篇文章出自《Handbuch der Vermessungskunde》第 3 版，语境是测量平差 —— 观测值的最小二乘归算，不是微分方程；详细的史实考证见 Althoen 与 McLaughlin, *Amer. Math. Monthly* 94 (1987) 130--142。把 $CR$ 提为第一种 factorization、并用它一步证 rank theorem（秩定理）是 Strang 的教学选择。
+> 
+> 跨课程只说一句：这套东西在 Strang 18.06 里就是消元那几讲，pivot columns、special solutions、$R=\text{rref}$ 都在那里；在 6.042J 里它就是「选一组基则每个元素有唯一坐标」，即坐标映射 $x\mapsto Cx$ 是 injection（单射），所以 $R$ 的列能被唯一读出。
+> 
+> 下一条注证 column rank = row rank，整个证明不要新工具，只要这一条 $A=CR$ 加上「$R$ 的 pivot 列是 $I_r$」这一眼。
+
 ### Column Rank = Row Rank（列秩 = 行秩）
 
 Independent columns（独立列）的数量等于 independent rows（独立行）的数量。
@@ -396,6 +475,28 @@ R=\begin{bmatrix}1&0&2\\0&1&2\end{bmatrix}
 正是 $R$ 中的那些 ones（1）和 zeros（0）告诉我：没有一行是其他行的 combination（组合）。
 
 对于 data science（数据科学），重要的 factorization（分解）是 $A$ 的 "SVD"——当第一个因子 $C$ 有 $r$ 个 orthogonal columns（正交列），第二个因子 $R$ 有 $r$ 个 orthogonal rows（正交行）时。
+
+> <span style="color:#1e8449;">**[note] 列秩等于行秩的两条证明路径，以及它在张量上为什么塌：**</span> 这条注把 rank theorem（秩定理）证完，两条路径各走一遍，再说明这个等号依赖「矩阵只有两个指标」这个前提，换成张量就不成立。
+> 
+> 定理：对任意域上的 $m\times n$ 矩阵 $A$，column rank（列秩）等于 row rank（行秩）。它不显然，因为列住在 $\mathbb{R}^m$、行住在 $\mathbb{R}^n$，两个不同空间里的维数凭什么相等。等号的含义是：$A$ 作为线性映射 $\mathbb{R}^n\to\mathbb{R}^m$，其 image（像）的维数等于它的 transpose（转置）的 image（像）的维数。也就是说，矩阵那 $mn$ 个数字把两个空间的维数焊在一起，这是有限维线性代数最硬的一条刚性。
+> 
+> 路径一，用 $A=CR$，四步走完。第一步，取上一条注的分解 $A=CR$，$C$ 是 $m\times r$、$R$ 是 $r\times n$，$r$ 是 pivot columns（主元列）的个数，于是 column rank（列秩）等于 $r$。第二步，记 $C_i$ 为 $C$ 的第 $i$ 行，则 $A$ 的第 $i$ 行等于 $C_iR$，即 $A$ 的每一行都是 $R$ 那 $r$ 行的线性组合，故 row space（行空间）有包含关系，$A$ 的行空间落在 $R$ 的行空间里。第三步，$R$ 的 $r$ 行 independent（独立）：设 $y^TR=0$，$R$ 的主元列组成 $I_r$，只取这些列得 $y^T=0$，故 $y=0$；于是 $R$ 的行空间维数恰为 $r$，配合第二步得 row rank（行秩）不超过 $r$。第四步，把前三步原样施加到 $A^T$ 上，$A^T=R^TC^T$ 是同形状的分解，得到 $A^T$ 的行秩不超过 $A^T$ 的列秩；而 $A^T$ 的行秩就是 $A$ 的 column rank（列秩）、$A^T$ 的列秩就是 $A$ 的 row rank（行秩），所以这一步给出的正是 column rank（列秩）不超过 row rank（行秩）。两个方向的不等式合起来，等号成立。
+> 
+> 路径二，用消元，同样四步。第一步，消元的每一步是左乘一个可逆的 elementary matrix（初等矩阵）$E$；$EA$ 的行是 $A$ 的行的组合，而 $A=E^{-1}(EA)$ 给出反向包含，所以行空间不变。第二步，于是 $A$ 与 $R=\text{rref}(A)$ 有同一 row space（行空间），其维数等于 $R$ 的非零行数 $r$，直接给出 row rank（行秩）等于 $r$。第三步，同一批行运算也管列：$R=EA$ 即 $A=E^{-1}R$，$R$ 的主元列是 $I_r$ 的列，而 $E^{-1}$ 可逆，把 independent（独立）的列映成 independent（独立）的列，所以 $A$ 对应的那 $r$ 列 independent（独立）。第四步，$R$ 的每一列都是 $I_r$ 的列的组合，左乘 $E^{-1}$ 之后，$A$ 的每一列都是那 $r$ 个主元列的组合，故 column rank（列秩）也等于 $r$。
+> 
+> 还有一条更概念的走法，可当交叉检验。rank-nullity（秩-零化度）给出 $n=\dim C(A)+\dim N(A)$ 与 $m=\dim C(A^T)+\dim N(A^T)$，而 four subspaces（四个基本子空间）那幅图给出 $N(A^T)=C(A)^{\perp}$，于是 $\dim C(A^T)=m-(m-\dim C(A))=\dim C(A)$。这条走法把等号翻译成「两个 orthogonal complement（正交补）的维数互补」，比矩阵运算干净，前提是先建好内积。
+> 
+> 两条证明的关系值得点一句：路径一是构造性的，顺手给出 basis（基）；路径二是计算性的，顺手给出算法。书中先走第一条，因为 $CR$ 已经在手，不必再引入「行运算不改变行空间」这条额外引理。
+> 
+> 数值上我特意不用 SVD（奇异值分解）算 rank（秩），因为奇异值天然对称，用它验等号等于用结论验结论。改用纯分数消元数两套独立量：书中 Example 4 的 $A$，主元列数为 2、$\text{rref}$ 的非零行数为 2；我的反例 $A$（三列依次为 $(1,2,1)^T$、$(2,4,2)^T$、$(3,7,4)^T$），主元列数为 2、非零行数也为 2，两边相等。
+> 
+> 等号依赖两个前提：只有两个指标，系数在域里。换掉第一个就得到张量。对三阶 array（数组）$T$，CP rank（CP 秩）定义为写成 $\sum_{k=1}^{R}a_k\otimes b_k\otimes c_k$ 的最小 $R$。三个方向看似共享同一个 $R$，等号却会塌，机制是：矩阵的证明里 $A=CR$ 只用了一次乘法、一个求和指标，行与列共用它；而把张量按某个 mode flatten（展平）成矩阵时，$b_k\otimes c_k$ 被压成一个向量，rank（秩）会掉，掉多少取决于这组压出来的向量有多相关。
+> 
+> 我实测两个例子。$T=e_1\otimes e_1\otimes e_1+e_2\otimes e_2\otimes e_1$ 的三个 mode（模式）展开的秩为 $(2,2,1)$；$2\times2\times2$ 的 $W$ state，即 $e_1\otimes e_1\otimes e_2+e_1\otimes e_2\otimes e_1+e_2\otimes e_1\otimes e_1$，三项写出、CP rank（CP 秩）为 3，而三个展开的 rank（秩）全是 2。矩阵没有这个现象：$A$ 与 $A^T$ 的 rank（秩）由同一批 singular value（奇异值）决定，永远相等。
+> 
+> 史实坐标：CP rank（CP 秩）能超过 $\max(m,n,p)$ 的经典例子就是 Strassen 的 $W$ state（CP rank 为 3，border rank（边秩）为 2），其原文我未能一手核实；矩阵情形则从 Gauss 消元起就成立，Strang 18.06 把它放在 four subspaces（四个基本子空间）那一讲，$r$ 从 rref（行简化阶梯形）一次读出；6.042J 里它是「两个有限集等势当且仅当存在 bijection（双射）」的线性版本，coordinates（坐标）与 vectors（向量）之间的双射就是 rank（秩）对称性的离散原型。
+> 
+> 下一条该拿下的是 $A=LU$：路径二的第一步会从「引理」升级成主题，消元本身被写成一个 factorization（分解）。
 
 ---
 
@@ -496,6 +597,26 @@ vu^T = \begin{bmatrix}3\\4\\6\end{bmatrix}\begin{bmatrix}2&2&1\end{bmatrix}
 
 注意 $vu^T$ 的所有 columns（列）都是 $v$ 的 multiples（倍数），所有 rows（行）都是 $u^T$ 的 multiples（倍数）。
 
+> <span style="color:#1e8449;">**[note] 秩一矩阵是压缩的原子：**</span> 这条注解释 $uv^T$ 为什么被叫做 building block（构建块）：它的存储、它的真实自由度、它作为 SVD（奇异值分解）原子的地位，以及「用模型假设换存储」这个和 CLRS 共享的结构。
+> 
+> 先从记号说起，所谓 rank one matrix（秩一矩阵）指的就是 $uv^T$：一个 $m\times1$ 的列乘一个 $1\times n$ 的行。它特殊，因为 $mn$ 个 entry（元素）被压进 $m+n$ 个参数，而且压的方式是纯乘法、没有任何求和。但参数个数不等于自由度：$m+n$ 个参数里只有 $m+n-1$ 个是自由的，剩下那一维是 scale（缩放）冗余 —— $(cu,\,v/c)$ 与 $(u,v)$ 给出同一个 $uv^T$，$c$ 非零。把 scale 钉死（例如令 $\|u\|=1$）之后，$m+n-1$ 个参数与 $uv^T$ 一一对应，这就是「冗余只有一维」的准确说法。这个位置让它同时是三个东西：SVD 的原子，因为 $A=\sum_k\sigma_ku_kv_k^T$ 的每一项都是它；压缩的原子，因为存 $m+n$ 而不是 $mn$；以及「rank（秩）是信息量」这句话的度量单位。
+> 
+> 三条命题合起来就是它的全部特殊性。命题一，设 $u$、$v$ 均非零，则 rank 为 1，column space（列空间）是过 $u$ 的直线，row space（行空间）是过 $v^T$ 的直线；证明只需一个等式 $(uv^T)x=u(v^Tx)$：右边永远落在过 $u$ 的直线上，且 $x=v$ 时非零，故像恰是一维。命题二，同一等式给出乘法捷径，但前提要写全：若 $uv^T$ 已经存成一个 $m\times n$ 矩阵，$(uv^T)x$ 仍要 $mn$ 次乘法；只有保留因子形式才只需 $v^{T}x$ 的 $n$ 次乘法与 $n-1$ 次加法，再由 $u$ 乘这个标量的 $m$ 次乘法，合计 $m+n$ 次乘、$n-1$ 次加，这是「低秩则快」的最小样本。命题三，映射 $(u,v)\mapsto uv^T$ 的 fiber（纤维）是 $(cu,\,v/c)$，是一维的，所以像的真实自由度是 $m+n-1$。
+> 
+> 数值上先对齐书中的外积例子。书中写的是 $vu^T=\begin{bmatrix}3\\4\\6\end{bmatrix}\begin{bmatrix}2&2&1\end{bmatrix}=\begin{bmatrix}6&6&3\\8&8&4\\12&12&6\end{bmatrix}$，其中 $v=(3,4,6)^T$、$u=(2,2,1)^T$ 都作列向量；若按 $uv^T$ 的顺序乘，得到 $\begin{bmatrix}6&8&12\\6&8&12\\3&4&6\end{bmatrix}$，恰好是它的 transpose（转置）。两者 rank 都是 1，每一行都是 $(3,4,6)$ 的倍数，$3+3=6$ 个数存下 9 个数。规模上去才见真章：$1000\times1000$ 的 float64 矩阵是 $8\times10^6$ 字节，秩一时只要 $2000\times8=16000$ 字节，省 500 倍；秩十时 $10\times2000\times8=160000$ 字节，省 50 倍。
+> 
+> 非例子是 $I_2$。若 $I_2=uv^T$，非对角元给出 $u_1v_2=0$ 与 $u_2v_1=0$，对角元给出 $u_1v_1=u_2v_2=1$，四个数被迫全非零，矛盾。定量地说，最佳秩一逼近的残差不小：$I_2$ 的两个 singular values 都是 1，截掉一个后 Frobenius 残差是 1，等于说用一个 piece 表示它，误差和信号一样大 —— 原子这个词就是这个意思，它需要两个 piece。
+> 
+> 两个前提一去掉就塌。若 $u$ 或 $v$ 是零向量，$uv^T$ 是零矩阵，rank 为 0，所以「秩一」这个词要求两侧都非零。若放宽成「近似秩一」，省下的存储立刻变成误差，而误差有精确下界：Eckart–Young 定理（1936）说最佳 rank 为 $k$ 的逼近就是前 $k$ 个 $\sigma_ku_kv_k^T$ 之和，Frobenius 残差等于尾部奇异值平方和开根。我实测一个 $50\times50$ 的秩三矩阵：取 `np.random.default_rng(20261122)` 生成两组随机正交因子 $U_3$、$V_3$，与谱 $(667.10,34.31,30.77)$ 拼成 $U_3\operatorname{diag}(\cdot)V_3^T$，回测的前三个 singular values 正是 $667.10$、$34.31$、$30.77$；用三项表示残差为 $0$，用一项（最佳秩一）残差是 $46.09$，正是 $\sqrt{34.31^2+30.77^2}=46.0865$。
+> 
+> 于是压缩有了统一语法：每一档都是拿一个结构假设换存储。sparse（稀疏）假设多数 entry 为零，CSR（压缩稀疏行）每个非零只存三个数；low rank（低秩）假设行是少数几行的组合，存 $r(m+n)$ 个数；SVD 截断把两者统一成「谱的稀疏」。阈值很干脆：$r(m+n)<mn$ 即 $r<mn/(m+n)$，$1000\times1000$ 时是 $r<500$，超过它低秩表示反而比原矩阵更大。
+> 
+> 与 CLRS 第 11 章（hash tables）的同构在于赌注的形状，MIT 6.006 的 hashing 讲次沿用的就是这一章：hashtable（哈希表）的期望 $O(1)$ 查找依赖 simple uniform hashing（简单均匀哈希）假设，假设破了退化成 $O(n)$；秩一的 $m+n$ 存储依赖「矩阵真的秩一」，假设破了要么退回 $mn$（精确），要么付出残差（近似）。CSAPP 第 6 章的 cache（缓存）是第三个同构：它假设 locality（局部性），假设破了 hit rate（命中率）就塌。三者结构完全一样，模型越强，省得越多，最坏情况越糟。
+> 
+> 史实坐标：把矩阵乘法定成行乘列的是 Cayley 1858 年的那篇 memoir（回忆录），而 $n\times1$ 乘 $1\times n$ 得 $n\times n$ 的 outer product（外积）是那个定义的极端特例，秩一的全部代数都从那里来；按 singular value 排序截断的思想来自 Schmidt 1907 与 Eckart–Young 1936，后者我按公式复算过，原文未能一手核实。
+> 
+> 落点：这一节之后 Strang 立刻把 $AB$ 写成「$A$ 的列乘 $B$ 的行」的求和，那只是把原子用在乘法上；真正兑现的是五种 factorization（分解）那张总表，它把「原子」摊成一张价目表，每一种都在回答「用哪种 piece 拆、拆几个」。
+
 ### AB = Sum of Rank One Matrices（$AB$ = 秩一矩阵之和）
 
 <span style="color:#2471a3;">**[theorem]**</span> 矩阵乘法 $AB$ 可以写为 $n$ 个 rank one matrices（秩一矩阵）的和：
@@ -569,6 +690,26 @@ S = Q\Lambda Q^T = \sum_{k=1}^{n} \lambda_k q_k q_k^T
 每个 eigenvalue（特征值）$\lambda_k$ 和每个 eigenvector（特征向量）$q_k$ 贡献一个 rank one piece（秩一组成部分）$\lambda_k q_k q_k^T$ 给 $S$。
 
 SVD $A=U\Sigma V^T$ 是类似的思想，当 singular value（奇异值）$\sigma$ 在对角矩阵 $\Sigma$ 中重复 $M$ 次时，需要额外的处理——会有 $M$ 对 singular vectors（奇异向量）$v$ 和 $u$，满足 $Av=\sigma u$。
+
+> <span style="color:#1e8449;">**[note] 五种分解各自解决什么问题：**</span> 这里说的 factorization（分解），在人类知识里的位置不是把矩阵拆得好看，而是把一整块黑箱换成几个带名字的因子：因子的名字本身编码了可以读出的量——主元、正交性、奇异值。上面五条并列容易看成五个技巧，其实它们各自回答一个不同的问题；分解选错，问题不是变难，而是变得不可回答。
+> 
+> 第一问：同一个 $A$、许多个 $b$，要反复解 $Ax=b$，用 $A=LU$。一次 elimination（消元）花 $n^{3}/3$ 次乘加，之后每个 $b$ 只要两次 triangular solve（三角回代），各约 $n^{2}$ 步。取 $n=1000$，前者 $3.33\times10^{8}$，后者 $2\times10^{6}$，差两个数量级——这就是"分解一次、复用多次"的全部算术理由。直接算 $A^{-1}$ 再乘 $b$ 走的是 $n^{3}$ 量级，且 $A^{-1}$ 通常是稠密的，是教科书里最贵的坏习惯。
+> 
+> 第二问：least squares（最小二乘）$\min\|Ax-b\|$，用 $A=QR$。原因是 condition number（条件数）会被平方：取 $A=\begin{bmatrix}1&2&3\2&5&7\3&7&8\end{bmatrix}$（对称，$\det A=-2$），实测 $\operatorname{cond}(A)=83.41$，而 $\operatorname{cond}(A^{T}A)=6957.52$，正好是 $83.41^{2}$。走 normal equation（正规方程）$A^{T}Ax=A^{T}b$ 等于先把误差放大八十多倍再交给求解器；$Q^{T}Q=I$ 让 $R$ 承接几何信息而不放大它。
+> 
+> 第三问：判断正定、算矩阵幂、解 differential equation（微分方程），用 $S=Q\Lambda Q^{T}$。它只对 symmetric matrix（对称矩阵）成立：此时 eigenvalue（特征值）全实、eigenvector（特征向量）互相 orthogonal（正交），$Q^{-1}$ 就是 $Q^{T}$，一次转置代替求逆。上面那个 $A$ 恰好对称，实测 eigenvalue（特征值）为 $-0.781895$、$0.175117$、$14.606778$；把 $A$ 连乘五次，eigenvalue（特征值）精确等于各自五次方，最大那个是 $14.606778^{5}=664924.29$。这就是"幂等于对角元的幂"的机制。
+> 
+> 第四问：$n$ 阶方阵的迭代 $u_{k+1}=Au_{k}$，用 $A=X\Lambda X^{-1}$。它把条件放宽到"有 $n$ 个 independent eigenvector（独立特征向量）"，代价是 $X^{-1}$ 要真算。非例子：$A=\begin{bmatrix}1&1\\0&2\end{bmatrix}$ 有互异 eigenvalue（特征值）$1,2$，可以对角化，但归一化后 $V^{T}V$ 的非对角元是 $0.707107$——eigenvector（特征向量）不正交，于是写不出 $Q\Lambda Q^{T}$。再退一步，$A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$ 的 eigenvalue（特征值）是 $\pm i$，实数域里连对角化都不存在，而它的 SVD 照常给出 singular value（奇异值）$(1,1)$。
+> 
+> 第五问：任意形状、任意 rank（秩）的矩阵，要压缩、要伪逆、要"最好的 rank one 片"，用 $A=U\Sigma V^{T}$。它两侧都正交，按 singular value（奇异值）降序截断自动最优。用实数说话：那个 $A$ 的 singular value（奇异值）是 $14.606778$、$0.781895$、$0.175117$；只留最大一片重构，$\|A-\sigma_{1}u_{1}v_{1}^{T}\|_{F}=0.801265$，与理论值 $\sqrt{\sigma_{2}^{2}+\sigma_{3}^{2}}=0.801265$ 完全一致。顺带把两条线接上：$\sigma^{2}$ 实测 $213.357975$、$0.611360$、$0.030666$，正是 $A^{T}A$ 的三个 eigenvalue（特征值）。
+> 
+> 为什么不能只留 SVD 一条？因为它最贵，也最不保留结构：SVD 把列与行两套坐标同时换掉，$LU$ 里"第几列消到哪一行"的记账全部消失，重复解 $Ax=b$ 时反而更慢。分解的取舍从来是"你想保留哪一种结构"，而不是"哪条更万能"。
+> 
+> 代价也排一次序（$n=1000$）：$LU$ 约 $n^{3}/3=3.33\times10^{8}$，$QR$ 约 $2n^{3}=2\times10^{9}$，对称特征分解与 SVD 都在 $10n^{3}=10^{10}$ 量级。所以工程上的选择顺序是：能给对称就给对称，能一次分解多次求解就绝不每次重解。
+> 
+> 历史坐标。elimination（消元）作为算法早于矩阵记号：Gauss 在 1809 年的《Theoria motus》里已用今天所谓 elimination（消元）处理最小二乘的正规方程；Doolittle 在 1878 年把它写成可查表的"Coast Survey method"，Werner 在 1883 年用 Crelle 乘法表、对数表和 Thomas 四则计算器三种方式复核过他的表（这条线见 Grcar 关于 ordinary elimination 如何变成 Gaussian elimination 的综述）。SVD 的谱系更长：Beltrami 1873 与 Jordan 1874 在双线性型上得到它，Autonne 1913 推广到复矩阵，Eckart 与 Young 1936 处理矩形矩阵并给出最佳秩逼近，Golub 与 Kahan 1965 才把它变成数值算法（这条年表见 Strang 本人的 SVD 讲义幻灯片）。
+> 
+> 跨课程：Strang 18.06 把这五条摊在 §2.6（elimination 即 factorization）、§4.3 与 §4.4（最小二乘与 Gram–Schmidt）、§6.4（谱定理）、§7.1 与 §7.2（SVD 与 PCA）四段里；CSAPP 第 6 章的 cache（缓存）层次解释了真实 $LU$ 为什么必须分块——$n^{3}$ 次浮点运算只搬 $n^{2}$ 个数，算术强度极高，分块就是让 $U$ 的更新块留在 cache（缓存）里，这也是 LAPACK 的 dgetrf 存在的理由。下一个该拿下的是 $A=LU$ 里"乘数是免费的"那句话：它把 factorization（分解）从"再算一遍"变成"顺手记下来"，见 §I.4 的注。
 
 ---
 
@@ -792,18 +933,44 @@ Statement 4：$A$ 和 $B$ 有 rank $r$。$A^TA$ 和 $BB^T$ 有 rank $r$（由 St
 
 **11.** 对于 $A$ 和 $B$ 的 nullspace（零空间）和 row space（行空间），$\begin{bmatrix}A\\B\end{bmatrix}$ 的 nullspace（零空间）是 $N(A) \cap N(B)$。
 
+> <span style="color:#1e8449;">**[note] rank(AB) 与 rank(A+B) 的界、以及等号条件：**</span> 这里说的 rank（秩），在人类知识里是"一个线性映射能保留多少维信息"的度量：$A:\mathbb{R}^{n}\to\mathbb{R}^{m}$ 把 $n$ 维的 source（源）压成 $r$ 维的像，$r$ 就是 rank（秩），$n-r$ 是被压掉的 nullity（零化度）。下面两条不等式不是两个孤立事实，而是"复合映射的像不会变大"与"子空间的和不会膨胀"两句话的代数写法。
+> 
+> 先把 $\operatorname{rank}(AB)\le\min(\operatorname{rank}A,\operatorname{rank}B)$ 证完。第一步是一个 inclusion（包含）：$C(AB)\subseteq C(A)$。理由是 $AB$ 的第 $j$ 列等于 $A$ 乘以 $B$ 的第 $j$ 列，即 $A$ 的 columns（列）的一个 combination（组合），而 $C(A)$ 对组合封闭，故这列落在 $C(A)$ 里。于是在 dimension（维数）上有 $\dim C(AB)\le\dim C(A)$，即 $\operatorname{rank}(AB)\le\operatorname{rank}(A)$。另一半不必重证：对转置用同一句话，$C((AB)^{T})=C(B^{T}A^{T})\subseteq C(B^{T})$，而取转置不改列秩，得 $\operatorname{rank}(AB)\le\operatorname{rank}(B)$。两半合起来就是 min（最小值）。注意这条证明只用到了"像"这一侧，没有用到 $A$ 或 $B$ 的任何数值性质——它是结构性的，所以对任何域上的矩阵都成立。
+> 
+> 只知道上界会让人误以为乘积可以随便降秩，所以必须补一条下界，即 Sylvester 不等式 $\operatorname{rank}(AB)\ge\operatorname{rank}(A)+\operatorname{rank}(B)-n$。证明走 nullspace（零空间），三步。设 $Z=N(AB)$，先看它与 $N(B)$ 的关系：若 $Bx=0$ 则 $ABx=0$，所以 $N(B)\subseteq Z$。第二步把 $B$ 限制到 $Z$ 上，$B|_{Z}:Z\to\mathbb{R}^{m}$；对 $z\in Z$ 有 $ABz=0$，即 $Bz\in N(A)$，所以 $B|_{Z}$ 的像落在 $N(A)$ 里。第三步对 $B|_{Z}$ 用 rank-nullity（秩-零化度定理）：$\dim Z=\dim\ker(B|_{Z})+\dim\operatorname{Im}(B|_{Z})$，其中 $\ker(B|_{Z})=Z\cap N(B)=N(B)$，第二项不超过 $\dim N(A)=n-r_{A}$。把 $A$ 是 $m\times n$、$B$ 是 $n\times p$ 代进去：
+> 
+> ```math
+> p-r_{AB}=\dim Z=(p-r_{B})+\dim\operatorname{Im}(B|_{Z})\le (p-r_{B})+(n-r_{A})
+> ```
+> 
+> 整理即得 $r_{AB}\ge r_{A}+r_{B}-n$。换成 nullity（零化度）来读更清楚：$\nu(AB)\le\nu(A)+\nu(B)$，即乘积丢掉的维数不超过两边各自丢掉的维数之和。原注写成「两个映射各自丢掉的维数加起来不能超过中间站的大小」，方向与对象都错了：取 $A=0_{3\times5}$、$B=0_{5\times4}$，$\nu(A)=5$、$\nu(B)=4$，和是 $9>n=5$，而 $\nu(AB)=4\le9$ 照样成立。中间站 $n$ 的作用是让下界 $r_A+r_B-n$ 可能为正，不是给 nullity 之和设天花板。
+> 
+> 再看 $\operatorname{rank}(A+B)\le\operatorname{rank}(A)+\operatorname{rank}(B)$。它也不是新东西：$C(A+B)\subseteq C(A)+C(B)$，因为 $(A+B)x=Ax+Bx$ 是两个列空间元素的和。然后只用一条维数恒等式 $\dim(S+T)=\dim S+\dim T-\dim(S\cap T)\le\dim S+\dim T$。这条恒等式本身也要写清：考虑映射 $S\times T\to S+T$，$(s,t)\mapsto s+t$，它的 kernel（核）恰好是 $\{(v,-v):v\in S\cap T\}$，维数是 $\dim(S\cap T)$，对定义域用 rank-nullity（秩-零化度定理）即得。
+> 
+> 等号条件才是这两条不等式的用处。$\operatorname{rank}(AB)=\operatorname{rank}(B)$ 当且仅当 $\ker(A)\cap\operatorname{Range}(B)=\{0\}$：因为 $\operatorname{Range}(AB)=A(\operatorname{Range}B)$，对限制映射 $A|_{\operatorname{Range}B}$ 用 rank-nullity（秩-零化度定理）得 $\operatorname{rank}(AB)=\operatorname{rank}(B)-\dim(\ker A\cap\operatorname{Range}B)$。数值上看得见：$A=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$ 满足 $A\nu=0$，其中 $\nu=(1,-2,1)$；取 $B=[\nu,e_{1}]$（其 rank（秩）为 2），乘积的 rank（秩）掉到 1，因为 $\nu$ 躺在 $B$ 的 Range（值域）里；换成 $B=\begin{bmatrix}1&0\\0&1\\1&1\end{bmatrix}$，交集只剩零向量，rank（秩）回到 2。$\operatorname{rank}(A+B)$ 的等号同理：$\operatorname{rank}(A+B)=\operatorname{rank}(A)+\operatorname{rank}(B)$ 当且仅当 $C(A)\cap C(B)=\{0\}$。三个实测：$\operatorname{diag}(1,0)$ 加 $\operatorname{diag}(0,1)$ 得 rank（秩）2，等于 $1+1$，交集维数 0；$I+I$ 得 rank（秩）2，小于 $2+2$，交集是 $\mathbb{R}^{2}$；$I$ 加 $\operatorname{diag}(1,0)$ 得 rank（秩）2，等于 $3-1$，交集维数 1。
+> 
+> 去掉"同形状"这个条件，$A+B$ 根本不存在——这就是为什么 rank（秩）对乘积有 min（最小值）这种干净的上界，对和只有子空间和的界。原文 Fact 4 用 $A^{T}ABB^{T}$ 可逆推出 $r\le\operatorname{rank}(AB)$，其实是本注那条下界在内维取 $r$ 时的特例：$A$ 是 $m\times r$ 满列秩、$B$ 是 $r\times n$ 满行秩，下界 $r_{A}+r_{B}-r$ 恰好等于 $r$。
+> 
+> 历史坐标。Sylvester 在十九世纪八十年代造了 nullity（零化度）这个词，把这几条不等式打包成 law of nullity（零化度定律），比喻是两团可以互相渗透的气体；那句话讲的是乘积的 nullity（零化度）不超过两个因子 nullity（零化度）之和——原注写成「nullity 之积」，把对象换成了 $\nu(A)\nu(B)$，那是笔误。后半句「不小于两者中较大者」也对不上对象：$\nu(A)$ 住在 $\mathbb{R}^n$ 而 $\nu(AB)$ 住在 $\mathbb{R}^p$，能比的是 $\nu(AB)\ge\nu(B)$，等价于 $\operatorname{rank}(AB)\le\operatorname{rank}(B)$。原刊卷期页码我核不到：Sylvester 文集第四卷的 archive.org 扫描文本里只见比喻、未见页码，故改引 Horn 与 Johnson 的 *Matrix Analysis* 第 2 版 Thm 0.4.5(c)，它给的正是 $\operatorname{rank}(AB)\ge\operatorname{rank}(A)+\operatorname{rank}(B)-n$；这个定理号同样是通行引用，未能一手核实。这条不等式的真正价值要等到二十世纪才显现：它把"乘积的秩"从不可控变成双侧夹逼——上界说不会变大，下界说不会无故变小。
+> 
+> 跨课程：这条定理在 Strang 18.06 的 §3.5（rank 与四个子空间）里是主线推论；在 6.042J 里对应一句更朴素的话——函数复合的像集只会变小，$\operatorname{Im}(f\circ g)\subseteq\operatorname{Im}(f)$，这里的 $\operatorname{rank}(AB)\le\operatorname{rank}(A)$ 就是它在 vector space（向量空间）上的同构版；Thomson 实分析里同一件事以第一同构定理出现，$\dim V=\dim\ker T+\dim\operatorname{Im}T$ 正是本注反复用的 rank-nullity（秩-零化度定理）。CLRS 6.006 里没有直接对应，最接近的是矩阵链乘法的动态规划，那里用到的是同一套"维数决定代价"的记账法。下一个该拿下的是 $\operatorname{rank}(A^{T}A)=\operatorname{rank}(A)$，因为最小二乘、正规方程、PCA 的协方差矩阵都从它出发。
+
 ---
-> <span style="color:#1e8449;">**[note] 五种分解其实是一张「用正交性换适用范围」的价目表：**</span> 这五种 factorizations 不是五个彼此无关的技巧，而是把同一句话 $A=\sum_k u_k v_k^T$（写成外积和）在不同程度上强制「两侧的向量正交」所得到的五个出口。逐个看它在哪一侧让步、换回什么：
-> - $A=CR$：**零正交**。$C$ 就是 $A$ 的 pivot columns（主元列）原样搬过去，$R$ 是 rref（简化行阶梯形）的非零行，两者都不正交。它换回的不是数值精度，而是 rank 的证书：取一个 $4\times3$、rank $r=2$ 的矩阵实测，$C$ 是 $4\times2$、$R$ 是 $2\times3$，一共 14 个数，比 $A$ 自己的 12 个数还多 —— 所以 $CR$ 从来不是 compression（压缩存储），它证明的是「这 12 个数只由 2 条独立信息生成」。§I.1 的 Column Rank = Row Rank 正是用 $C$ 的列独立加 $R$ 的行独立拼出来的。
+> <span style="color:#1e8449;">**[note] Note（译者注：五张分解是一张用正交性换适用范围的价目表）:**</span> 这五种 factorizations 不是五个彼此无关的小技巧，而是同一句 $A=\sum_k u_kv_k^T$（写成外积和）在不同程度上强制「两侧的向量正交」所得到的五个出口。价目表只有一列：在哪一侧让步，换回什么。
+> - $A=CR$：**零正交**。$C$ 就是 $A$ 的 pivot columns（主元列）原样搬过去，$R$ 是 rref（简化行阶梯形）的非零行，两者都不正交。它换回的不是数值精度，而是 rank 的证书：取一个 $4\times3$、rank $r=2$ 的矩阵实测，$C$ 是 $4\times2$、$R$ 是 $2\times3$，一共 $14$ 个数，比 $A$ 自己的 $12$ 个数还多 —— 所以 $CR$ 从来不是 compression（压缩存储），它证明的是「这 $12$ 个数只由 $2$ 条独立信息生成」。§I.1 的 Column Rank = Row Rank 正是用 $C$ 的列独立加 $R$ 的行独立拼出来的。那个例子等会儿还要用：四行是 $(1,0,-6)$、$(1,1,-3)$、$(0,1,3)$、$(2,1,-9)$，rref 的非零行是 $(1,0,-6)$ 与 $(0,1,3)$，第三列确实是前两列的坐标 $-6$ 与 $3$ 的组合。看清楚了：$R$ 存的是坐标而不是数据，所以它压不动体积，$14$ 比 $12$ 多出来的那两个数就是坐标的代价。
 > - $A=LU$：**无正交**，只要 $L$ 是 unit lower triangular（单位下三角）。代价是所有 leading principal minors（顺序主子式）非零，否则必须先乘一个 $P$（见下一节 note）。
-> - $A=QR$：**一侧正交**。$Q^TQ=I$ 的代价是 $R$ 的对角元等于 Gram-Schmidt 每一步 residual（残差）的 norm（范数）——秩满的 $4\times3$ 例子实测为 $\sqrt3$、$\sqrt{15}/3$、$\sqrt{35}/5$；$A$ 的列越接近 linear dependence（线性相关），这些数越小，除以它们的放大就越凶。
+> - $A=QR$：**一侧正交**。$Q^TQ=I$ 的代价是 $R$ 的对角元等于 Gram-Schmidt 每一步 residual（残差）的 norm（范数）——秩满的 $4\times3$ 例子实测为 $\sqrt3$、$\sqrt{15}/3$、$\sqrt{35}/5$，即 $1.7321$、$1.2910$、$1.1832$；$A$ 的列越接近 linear dependence（线性相关），这些数越小，除以它们的放大就越凶。这个例子取列 $(1,1,1,0)$、$(0,1,1,1)$、$(1,1,0,-2)$，三个 residual 的平方分别是 $3$、$5/3$、$7/5$，开方后正是那三个数；而 $A$ 的 condition number（条件数）只有 $5.79$，说明正交化把这些列的耦合压进了三个分母，$Q$ 本身与列的强弱无关。
 > - $S=Q\Lambda Q^T$：**两侧同时正交**，所以 $Q^{-1}=Q^T$，根本不用求逆。代价是必须 $S=S^T$。
-> - $A=X\Lambda X^{-1}$：条件最弱，只要 $n$ 个 independent eigenvectors（独立特征向量）；代价是 $X^{-1}$ 要真算，而 $X$ 在特征值接近时可以极度 ill-conditioned（病态）。$3\times3$ 的 Jordan 块 $J=\begin{bmatrix}3&1&0\\0&3&1\\0&0&3\end{bmatrix}$ 满足 $\operatorname{rank}(J-3I)=2$，几何重数 1 小于代数重数 3，这条分解对它**不存在**（实测 sympy 抛 `MatrixError: Matrix is not diagonalizable`）。
+> - $A=X\Lambda X^{-1}$：条件最弱，只要 $n$ 个 independent eigenvectors（独立特征向量）；代价是 $X^{-1}$ 要真算，而 $X$ 在特征值接近时可以极度 ill-conditioned（病态）。$3\times3$ 的 Jordan 块（对角线上三个 $3$、上对角线上两个 $1$、其余为 $0$）满足 $\operatorname{rank}(J-3I)=2$，几何重数 $1$ 小于代数重数 $3$，这条分解对它**不存在**（实测 sympy 抛 MatrixError）。
 > - SVD $A=U\Sigma V^T$ 是唯一对任意矩阵两侧都正交的一条，代价是要同时求 $A^TA$ 与 $AA^T$ 的 eigenpairs（特征对），工作量翻倍。
->
-> 这张价目表的形状很有信息量：**正交性越强，适用面越窄**。而「片数」是同一把尺子：上面那个 rank 2 的矩阵，$CR$ 要 2 片才精确，SVD 用 2 片重构误差 $5.3\times10^{-15}$，只用最大的 1 片误差就到 0.2332。于是 §I.9 的 best low rank approximation（最佳低秩逼近，PCA 的内核）不过在「$CR$ 挑哪两列」和「SVD 挑哪两片」之间选了后者 —— 因为后者按 $\sigma$ 降序排列，截断自动最优。
->
-> 往后翻，这五条各自有落点：$QR$ 在 §I.5 展开成 orthogonalization（正交化）与 projection（投影），SVD 在 §I.8，PCA 在 §I.9；§IV.8 Completing Rank One Matrices 直接用 $uv^T$ 填补缺失项；§V.4 的 covariance matrix（协方差矩阵）$V=\sum_{ij}P_{ij}uu^T$ 就是「rank one 片之和」的概率版；§VII.1 度量深度网络的表达力时数的 flat pieces（平坦片）个数的，仍是复合线性映射能折出多少张平面 —— 根子还是这里的外积。
+> 
+> 这张价目表的形状很有信息量：**正交性越强，适用面越窄**。而「片数」是同一把尺子：上面那个 rank $2$ 的矩阵，$CR$ 要 $2$ 片才精确，SVD 用 $2$ 片重构误差 $4.5\times10^{-15}$，只用最大的 $1$ 片误差就到 $1.7131$，正好等于被丢掉的 $\sigma_2$。于是 §I.9 的 best low rank approximation（最佳低秩逼近，PCA 的内核）不过在「$CR$ 挑哪两列」和「SVD 挑哪两片」之间选了后者 —— 因为后者按 $\sigma$ 降序排列，截断自动最优。这一步有确切的一手出处：Eckart 与 Young 1936 年发表在 Psychometrika 第 1 卷第 3 期 $211$ 至 $218$ 页的论文证明，在 Frobenius norm（弗罗贝尼乌斯范数）下最优的 rank $k$ 逼近就是截断 SVD，误差平方精确等于被丢掉的 $\sigma^2$ 之和 —— 所以 $1$ 片的误差是 $\sigma_2$ 本身，不是「约等于」。要说明的是，原注记的 $5.3\times10^{-15}$ 与 $0.2332$ 出自一个未留存的矩阵，此处换成上面可复算的同一构造，结论与数量级不变。
+> 
+> 存储账要单独记，否则容易把 SVD 当成更省的写法：rank $2$ 用 SVD 写下来是 $2\times(4+3)+2=16$ 个数，比 $CR$ 的 $14$ 还多出两个，它是多存两个数去换「随时可以再截一片」的资格。这也是 §I.9 在数据里选 SVD 的隐含前提：省的不是存储，是排序。
+> 
+> 往后翻，这五条各自有落点：$QR$ 在 §I.5 展开成 orthogonalization（正交化）与 projection（投影），SVD 在 §I.8，PCA 在 §I.9；§IV.8 Completing Rank One Matrices 直接用 $uv^T$ 填补缺失项；§V.4 的 covariance matrix（协方差矩阵）就是「rank one 片之和」的概率版；§VII.1 度量深度网络的表达力时数的 flat pieces（平坦片）个数，仍是复合线性映射能折出多少张平面 —— 根子还是这里的外积。
+> 
+> 跨课程看同一件事会更清楚：MIT 18.06 的路线是先把 rank 定义成 pivot 的个数，再用 $C$ 的列独立与 $R$ 的行独立去证明 column rank 等于 row rank，于是 $A=CR$ 在那门课里是 rank-nullity（秩-零化度）的证明工具；本课（18.065）从数据出发，入口直接是 SVD，把同一句式子读成特征提取。同一条分解在两门课里的身份不同，这正是「价目表」要解决的问题：先知道要付什么代价，再挑出口。
 
 <span style="color:#7f8c8d">*§I.3 逐句翻译完成。逐句对照OCR原文，无概括无遗漏。覆盖：四个子空间定义（Example 1）、Example 2（不同尺寸矩阵）、Incidence Matrix（图论解释、KVL/KCL）、Big Picture、秩的五条事实及证明、Problem Set 1.3（11道习题）。*</span>
 
@@ -959,6 +1126,32 @@ A = \begin{bmatrix}1\\l_{21}\\l_{31}\\l_{41}\end{bmatrix}\text{(pivot row 1)} +
 
 所以 row 3 of $A$ = row 3 of $LU$。关键在于被减去的行是 pivot rows（主元行），已经在 $U$ 中。在没有行交换的情况下，我们再次得到 $A=LU$。
 
+> <span style="color:#1e8449;">**[note] $A=LU$ 里的 $L$ 为什么是免费的：**</span> 这一节真正的定理只有一句：elimination（消元）的每一步都是左乘一个 unit lower triangular（单位下三角）矩阵 $E_k=I-\ell_ke_k^T$ 本身，而它的逆 $E_k^{-1}=I+\ell_ke_k^T$ 只把非对角元的符号翻过来 —— 于是乘数在消元过程中被算过一次，之后只是摆放，不是重算。这句话解释了为什么 $A=LU$ 比「已知 $A$ 与 $U$ 反推 $L$」便宜整整一个数量级。
+> 
+> 把每步写成矩阵。第 $k$ 步做的是「第 $i$ 行减去 $l_{ik}$ 倍的第 $k$ 行」，对应的初等矩阵是 $E_{k}=I-\ell_{k}e_{k}^{T}$，其中 $\ell_{k}$ 的前 $k$ 个分量是 $0$（第 $k$ 步不碰前 $k$ 行）。这里有个容易漏的细节：$e_{k}^{T}\ell_{k}=0$，于是
+> 
+> ```math
+> (I-\ell e^{T})(I+\ell e^{T})=I-\ell e^{T}\ell e^{T}=I-\ell(e^{T}\ell)e^{T}=I
+> ```
+> 
+> 即 $E_{k}^{-1}=I+\ell_{k}e_{k}^{T}$ —— 逆矩阵确实只是符号翻转，一次乘法都不用。例如下文那个例子里 $\ell_{1}=(0,3,2)$（即 $l_{21}=3$、$l_{31}=2$），于是 $E_{1}^{-1}$ 就是 $\begin{bmatrix}1&0&0\\3&1&0\\2&0&1\end{bmatrix}$（实测 $E_1E_1^{-1}-I$ 的最大元为 $0$）。
+> 
+> 消元跑完得到 $U=E_{n-1}\cdots E_{1}A$，所以 $A=E_{1}^{-1}E_{2}^{-1}\cdots E_{n-1}^{-1}U$，$L$ 就定义为这串逆的乘积。关键在乘的顺序：先做的 $E_{1}^{-1}$ 在最左边。两个因子相乘会出现交叉项 $\ell_{1}(e_{1}^{T}\ell_{2})e_{2}^{T}$，而 $e_{1}^{T}\ell_{2}=0$，因为 $\ell_{2}$ 的第一个分量是 $0$（第 2 步不动第 1 行）。把 $n$ 步拼起来，只要 $i<j$ 就有 $e_{i}^{T}\ell_{j}=0$，全部交叉项消失，$L=I+\sum_{k}\ell_{k}e_{k}^{T}$。这个矩阵的第 $k$ 列**正是** $\ell_{k}$：实测三列是 $(1,3,2)^{T}$、$(0,1,-3)^{T}$、$(0,0,1)^{T}$，与消元时记下的乘数 $3,2,-3$ 逐个对得上。所以 $L$ 的存储是免费的：$n(n-1)/2$ 个乘数，消元时顺手写下来即可。
+> 
+> 为什么必须把对角固定成 $1$？因为不然 $LU$ 不唯一：任意对角阵 $D$ 给出 $A=(LD)(D^{-1}U)$，$L$ 可以偷走一部分对角。固定 $\operatorname{diag}L=1$ 之后唯一，而且账正好平：$L$ 只管 $n(n-1)/2$ 个乘数，对角上那 $n$ 个 $1$ 是约定、不占存储；$U$ 存 $n(n+1)/2$ 个，两笔合计 $n^{2}$，与 $A$ 一样多。用小整数例子核对：$\operatorname{nnz}(A)=9$，$L$ 里只需存 $3$ 个乘数，$U$ 存 $6$ 个，$3+6=9$ 刚好相等 —— 把对角那 $3$ 个 $1$ 也数进去才会得到 $6+6=12$，而它们本来不必存。
+> 
+> 完整的数值例子：$A=\begin{bmatrix}1&2&3\\3&5&7\\2&7&9\end{bmatrix}$，$l_{21}=3$、$l_{31}=2$，消元后第二行变成 $(0,-1,-2)$，$l_{32}=-3$，最终 $U=\begin{bmatrix}1&2&3\\0&-1&-2\\0&0&-3\end{bmatrix}$、$L=\begin{bmatrix}1&0&0\\3&1&0\\2&-3&1\end{bmatrix}$，实测 $\max|LU-A|=0$，$U$ 的对角是 $1,-1,-3$，其乘积就是 $\det A=3$（逐块归因见本节「行交换」那段的 note，这里不再重述）。
+> 
+> 非例子：$A=\begin{bmatrix}0&2\\3&4\end{bmatrix}$ 的第一列主元是 $0$，$l_{21}=3/0$ 无定义，$A=LU$ 不存在；换行后取 $P=\begin{bmatrix}0&1\\1&0\end{bmatrix}$，$PA=\begin{bmatrix}3&4\\0&2\end{bmatrix}$ 可以直接分解。所以严格的定理是 $PA=LU$，而 $A=LU$ 只是不用换行时的简写。
+> 
+> 换行还有第二个、更要紧的理由：稳定性。取 $A=\begin{bmatrix}\epsilon&1\\1&1\end{bmatrix}$，$b=(1,2)^{T}$，精确解是 $(1/(1-\epsilon),\,(1-2\epsilon)/(1-\epsilon))$。不换行时乘数 $l_{21}=1/\epsilon$，$u_{22}$ 与 $b_{2}^{\prime}$ 都变成某个大数里减去 $1$ 或 $2$，小量在 $10^{8}$ 面前被吞掉。float32 的 $\epsilon_{\mathrm{mach}}=1.19\times10^{-7}$，$\epsilon=10^{-8}$ 时实测解给 $(0,1)$，第一个分量误差就是 $1$；float64 要 $\epsilon$ 小得多才塌：$10^{-8}$ 时第一个分量的绝对误差 $4.975\times10^{-9}$，$10^{-10}$ 时 $8.264\times10^{-8}$，$10^{-12}$ 时 $2.212\times10^{-5}$，$10^{-14}$ 时 $7.993\times10^{-4}$，到 $10^{-16}$ 才崩成 $1.220$。理论口径是误差上界约 $\epsilon_{\mathrm{mach}}\cdot10^{8}=2.22\times10^{-8}$，实测 $10^{-8}$ 那档只有 $4.975\times10^{-9}$，上界没被顶到。partial pivoting（部分选主元）每步选绝对值最大的主元，实测 float32 与 float64 都精确到机器精度。这就是为什么所有实用代码默认带 partial pivoting。
+> 
+> growth factor（增长因子）是量化的说法：$\max|u_{ij}|/\max|a_{ij}|$。Wilkinson 的 $\pm1$ 矩阵（对角为 $1$、下方全 $-1$、最后一列全 $1$）在 partial pivoting（部分选主元）下，$n=6$ 实测增长因子恰为 $32=2^{5}$，$U$ 的最后一列是 $1,2,4,8,16,32$；一般 $n$ 时上界是 $2^{n-1}$，且这是最坏情形。
+> 
+> 历史坐标。Gauss 在 1809 年的《Theoria motus》里已经用今天的 elimination（消元）解正规方程；Doolittle 在 1878 年把它写成可查表的 Coast Survey method，Werner 在 1883 年用三种方式复核过他的表；把 schoolbook elimination 解释成矩阵分解发生在 1947 年，von Neumann 与 Goldstine 用它分析电子计算机的舍入误差，这一条线的史料见 Grcar, *Notices AMS* 58(6):782--792 (2011)。Wilkinson 在 *Rounding Errors in Algebraic Processes*（Prentice-Hall, 1961）里系统化了 $PA=LU$ 与增长因子的分析，$2^{n-1}$ 这个上界出自这条线。
+> 
+> 跨课程：Strang 18.06 的 §2.6 标题就是 elimination 即 factorization，§2.5 讲逆矩阵时已埋下 $E_{k}^{-1}$ 的伏笔；CSAPP 第 2 章的 IEEE 754 浮点给出了本注所有 $\epsilon_{\mathrm{mach}}$ 的来源，即 float32 的 23 位尾数与 float64 的 52 位尾数，第 6 章的 cache（缓存）层次也解释了分块 $LU$ 为什么能让数据留在 cache 里。CLRS 第 4 章讲 Strassen 对矩阵乘法复杂度的改写，MIT 6.006 没有直接对应的分解内容。下一个该拿下的是 Cholesky（$A=LL^{T}$）：$A$ 对称正定时不必换行、乘数减半、存储减半，它是 $A=LU$ 在对称性上的红利，见 §I.7 末尾（本文件 1320 行）。
+
 ### Solving $Ax=b$（求解 $Ax=b$）
 
 我们必须对方程右端项应用与左端相同的操作。
@@ -984,15 +1177,15 @@ A = \begin{bmatrix}1\\l_{21}\\l_{31}\\l_{41}\end{bmatrix}\text{(pivot row 1)} +
 第一个 pivot 是 $a_{11}$。第二个 pivot 是 $A_2$ 的角落。第三个 pivot 在 1×1 矩阵 $A_3$ 中。这些数字最终位于 $U$ 的主对角线上。
 
 ### Row Exchanges (Permutations)（行交换 / 置换）
-> <span style="color:#1e8449;">**[note] pivot 为什么既是行列式的因子、又是主子式的比值：**</span> 「$\det A=\prod u_{kk}$」不是就此背下来的一条行列式性质，而是消元只使用了两种对 $\det$ 极友好的行运算的结果：行 $i$ 减去 $l$ 倍行 $k$ 是 $\det=1$ 的变换，行交换是 $\det=\pm1$ 的变换。于是除了 $L$ 的单位对角与 $P$ 的符号，整个 $\det$ 只能落在 $U$ 的对角线上。书中 $3\times3$ 例子实测：$L=\begin{bmatrix}1&0&0\\2&1&0\\3&1&1\end{bmatrix}$，$U=\begin{bmatrix}1&2&3\\0&1&1\\0&0&-2\end{bmatrix}$，对角元 $1,1,-2$ 的乘积 $-2$ 正是 $\det A$。
->
-> 更强的一句是逐个成立：$u_{kk}=\det A_k/\det A_{k-1}$，其中 $A_k$ 是左上 $k\times k$ 子矩阵。同一例子实测 $1/1$、$1/1$、$-2/1$ 与 $U$ 的对角元一一对上。机制在于消元是**按列从左到右**推进的：处理前 $k$ 列只动前 $k$ 行，所以 $A_k$ 的分解恰好就是 $L$、$U$ 的左上 $k\times k$ 块，于是 $\det A_k=\prod_{j\le k}u_{jj}$，相邻两式相除就把前面的因子约掉。这条式子顺手交出了 $A=LU$（无行交换）的存在判据：所有 $A_k$ 非奇异。反例 $B=\begin{bmatrix}0&1\\1&1\end{bmatrix}$ 的 $\det=-1$ 明明可逆，但 $\det A_1=0$，乘数 $l_{21}=a_{21}/a_{11}=1/0$ 无定义 —— 这就是 §I.4 习题 10 的答案。
->
-> 有行交换时结论改成符号版：实测 $D=\begin{bmatrix}0&0&2\\1&2&3\\2&1&1\end{bmatrix}$ 配 $P=\begin{bmatrix}0&0&1\\0&1&0\\1&0&0\end{bmatrix}$，得 $\prod u_{kk}=2\cdot\tfrac32\cdot2=6$，而 $\det P=-1$、$\det A=-6$，正确的写法是 $\det A=\det P\prod u_{kk}$。而 $L$ 里「乘数原样落座」也带着顺序前提：实测 $E_{32}E_{31}E_{21}A=U$，所以 $L=(E_{32}E_{31}E_{21})^{-1}=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$；若误按 $E_{21}E_{31}E_{32}$ 求逆，$L$ 的 $(3,1)$ 元会变成 5 而不是 3。把消元步按发生顺序相乘、取逆时再反过来写，这两步是 $A=LU$ 能一次成型的全部秘密。
->
-> 成本账也要记：实测 $n=32$ 时 LU 需要 21328 次乘加除（$\approx0.65n^3$，极限 $\tfrac23n^3$），Cholesky 只需 11968（$\approx0.37n^3$，极限 $\tfrac13n^3$）。一次 $n^3$ 量级的固定投入，换来每个新右端项 $b$ 只花 $n^2$ 的回代 —— 这就是为什么解多个 $b$ 时从不重复消元。
->
-> 跨章：pivot 的**符号**在 §I.7 就是 positive definite（正定）的判据（Sylvester），本书随即用它证明正定 $\Rightarrow$ Cholesky 存在；§VI.2 对 KKT 矩阵 $M=\begin{bmatrix}S&A\\A^T&0\end{bmatrix}$ 做块消元，右下的 Schur complement $-A^TS^{-1}A$ 会算出 $n$ 个正 pivot 与 $m$ 个负 pivot，这组正负号正是 Lagrangian 有 saddle point（鞍点）的代数印记；§VI.4 讨论 gradient descent 的 zig-zag（之字形）收敛速率时，控制它的条件数 $\lambda_1/\lambda_n$ 也不过是 pivot 极端比值换了个名字。
+> <span style="color:#1e8449;">**[note] Note（译者注：pivot 为什么既是行列式的因子、又是主子式的比值）:**</span> 式子 $\det A=\prod u_{kk}$ 不是就此背下来的一条行列式性质，而是消元只用了两种对 $\det$ 极友好的行运算的结果：行 $i$ 减去 $l$ 倍行 $k$ 是 $\det=1$ 的变换，行交换是 $\det=\pm1$ 的变换。于是除了 $L$ 的单位对角与 $P$ 的符号，整个 $\det$ 只能落在 $U$ 的对角线上。书中例子实测：$L$ 的三行取 $(1,0,0)$、$(2,1,0)$、$(3,1,1)$，$U$ 的三行取 $(1,2,3)$、$(0,1,1)$、$(0,0,-2)$，乘出来 $A$ 的三行是 $(1,2,3)$、$(2,5,7)$、$(3,7,8)$；对角元 $1,1,-2$ 的乘积 $-2$ 正是 $\det A$，sympy 有理数精确算出同一个 $-2$。
+> 
+> 更强的一句是逐个成立：$u_{kk}=\det A_k/\det A_{k-1}$，其中 $A_k$ 是左上 $k\times k$ 子矩阵。同一例子实测 $1/1$、$1/1$、$-2/1$ 与 $U$ 的对角元一一对上，三个主子式分别是 $1$、$1$、$-2$。机制在于消元是**按列从左到右**推进的：处理前 $k$ 列只动前 $k$ 行，所以 $A_k$ 的分解恰好就是 $L$、$U$ 的左上 $k\times k$ 块，于是 $\det A_k=\prod_{j\le k}u_{jj}$，相邻两式相除就把前面的因子约掉。这条式子顺手交出了 $A=LU$（无行交换）的存在判据：所有 $A_k$ 非奇异。反例是两行 $(0,1)$、$(1,1)$ 的矩阵 $B$，它的 $\det=-1$ 明明可逆，但 $\det A_1=0$，乘数 $l_{21}=a_{21}/a_{11}=1/0$ 无定义 —— 这就是 §I.4 习题 10 的答案，也标出了「只要 $\det A\neq0$ 就有 $LU$」这句话错在哪：缺的不是可逆性，是**顺序**主子式的非零。反过来也成立得干脆：若某个 $A_k$ 奇异，那 $k$ 行必然线性相关，整张 $A$ 也就退化，于是该步 pivot 恰为 $0$ —— 消元第一次撞上零 pivot 的位置，就是 $A$ 丢 rank 的位置。
+> 
+> 有行交换时结论改成符号版：实测 $D$ 的三行 $(0,0,2)$、$(1,2,3)$、$(2,1,1)$ 配上交换第 $1$、$3$ 行的 $P$，得 $\prod u_{kk}=2\cdot\tfrac32\cdot2=6$，而 $\det P=-1$、$\det A=-6$，正确的写法是 $\det A=\det P\prod u_{kk}$。而 $L$ 里「乘数原样落座」也带着顺序前提：实测 $E_{32}E_{31}E_{21}A=U$，所以 $L=(E_{32}E_{31}E_{21})^{-1}=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$；若误按 $E_{21}E_{31}E_{32}$ 求逆，$L$ 的 $(3,1)$ 元会变成 $5$ 而不是 $3$。为什么必须这么排：第 $k$ 步的 $E$ 只碰第 $k$ 列以下的条目，后面步子的乘数落座时不会再被更早的 $E$ 拉动，所以按发生顺序相乘、取逆时反向书写，两件事缺一条 $A=LU$ 就一次成型不了。
+> 
+> 成本账也要记：实测 $n=32$ 时 LU 需要 $21328$ 次乘加除（$0.6509n^3$，极限 $\tfrac23n^3$），Cholesky 在同一口径（乘、加、除各记一次，开方不计）下只要 $11408$（$0.3481n^3$，极限 $\tfrac13n^3$），比值 $1.87$。原注记的 Cholesky 数 $11968$ 不是错，而是更宽的口径：把 $32$ 次开方各记两次（$+64$）、再补上列缩放时那 $n(n-1)/2=496$ 次减法，恰好 $11408+560=11968$，比值随之变成 $1.78$。两套口径讲的是同一件事：一次 $n^3$ 量级的固定投入，换来每个新右端项 $b$ 只花 $n^2$ 的回代 —— 所以解多个 $b$ 时从不重复消元。顺带一个常被忽略的推论：$|\det A|$ 是 $A$ 的列张成的平行体体积，$U$ 的对角元正是消元每一步的伸缩倍率，体积逐段累积成 $\prod u_{kk}$，符号记在 $P$ 头上。更狠的量级对照：用 Leibniz 公式展开 $20\times20$ 的 $\det$ 要 $20!=2.43\times10^{18}$ 项，消元只要约 $5333$ 次，差 $4.6\times10^{14}$ 倍。
+> 
+> 跨章：pivot 的**符号**在 §I.7 就是 positive definite（正定）的 Sylvester 判据，这条判据的一手出处是 Sylvester 1852 年载于 Philosophical Magazine 第 $4$ 系列第 $4$ 卷 $138$ 至 $142$ 页的惯性律论文，本书随即用它证明正定 $\Rightarrow$ Cholesky 存在；§VI.2 对 KKT 矩阵 $M$ 做块消元（$M$ 由四块拼成：左上 $S$、右上 $A$、左下 $A^T$、右下 $0$），右下的 Schur complement $-A^TS^{-1}A$ 会算出 $n$ 个正 pivot 与 $m$ 个负 pivot，这组正负号正是 Lagrangian 有 saddle point（鞍点）的代数印记；§VI.4 讨论 gradient descent 的 zig-zag（之字形）收敛速率时，控制它的条件数 $\lambda_1/\lambda_n$ 也不过是 pivot 极端比值换了个名字。跨课程再补一条：MIT 18.06 把消元讲成 $A=LU$、把 $\det$ 讲成体积的放大率，于是 $\prod u_{kk}$ 就是各行伸缩倍率之积；同一句话搬到本课 §I.4，变成「乘数按什么顺序落座」。
 
 当 $a_{11}=0$ 时怎么办？Zero（零）不能是第一个 pivot。如果第1列下方某处有非零数字，它的行可以是 pivot row（主元行）。好的代码会选择最大的数字作为 pivot——即使 $a_{11}$ 不是零也会这样做，以减少误差。
 
@@ -1324,15 +1517,17 @@ $\bar{x}^T Sx = S_{11}|x_1|^2 + \cdots$ 也是实数。由于 $\bar{x}^T x > 0$�
 谱定理 $S = Q\Lambda Q^T = \sum \lambda_k q_k q_k^T$ 展示了每个 $\lambda_k$ 和 $q_k$ 贡献一个秩一组成部分给 $S$。
 
 ---
-> <span style="color:#1e8449;">**[note] 正定为什么保证 Cholesky 一定存在 —— 一条不需要新定理的证明：**</span> 把链条横过来看只有三步：$S$ 正定 $\Rightarrow$ 消元全程不必做行交换、每个 pivot 都大于零 $\Rightarrow$ $S=LDL^T$ 里的 $D=\operatorname{diag}(\text{pivots})$ 对角全正 $\Rightarrow$ $\sqrt{D}$ 是实的，于是 $S=(L\sqrt{D})(L\sqrt{D})^T$。所以 Cholesky 不是新造的一条分解，它只是 $LDL^T$ 加一次**实数**开方；全部风险都压在「pivot 不会变负」这一件事上。
->
-> 为什么正定就保证 pivot 为正：$u_{kk}=\det A_k/\det A_{k-1}$，而 Sylvester 判据说正定等价于所有 leading principal minors（顺序主子式）$>0$，于是每个 pivot 是正数除正数。再看一步，消元后的 $A_2$ 仍是 symmetric positive definite（对称正定）——它就是 $S$ 在「前 $k$ 列取 0 的方向」上的限制，能量 $x^TSx$ 没变，所以归纳下去永不撞上零 pivot。实测三个 $3\times3$ 可以看清这是一条链而不是三条独立判据：$\begin{bmatrix}2&1&0\\1&2&1\\0&1&2\end{bmatrix}$ 的 eigenvalues（特征值）$2,0.5858,3.4142$、pivots $2,\tfrac32,\tfrac43$、主子式 $2,3,4$，三种数同时为正；把 $(3,3)$ 元改成 1，得 eigen $0.1981,1.555,3.247$、pivots $2,\tfrac32,\tfrac13$、主子式 $2,3,1$，仍同时为正；换成 $\begin{bmatrix}1&2&0\\2&1&0\\0&0&1\end{bmatrix}$，eigen 冒出 $-1$、pivots 冒出 $-3$、主子式冒出 $-3$，三者又同时翻脸。
->
-> 具体到矩阵里长什么样：$S=\begin{bmatrix}2&4&2\\4&11&7\\2&7&6\end{bmatrix}$ 实测得 $L=\begin{bmatrix}1&0&0\\2&1&0\\1&1&1\end{bmatrix}$、$D=\operatorname{diag}(2,3,1)$，而那三个数正是 $\det A_1/1$、$\det A_2/\det A_1$、$\det A_3/\det A_2$（主子式 $2,6,6$）；把 $\sqrt{D}$ 折进 $L$，得到 $\begin{bmatrix}\sqrt2&0&0\\2\sqrt2&\sqrt3&0\\\sqrt2&\sqrt3&1\end{bmatrix}$，对角元的平方逐个还原成 pivots。
->
-> 反向证据同样直接：$\begin{bmatrix}1&2\\2&1\end{bmatrix}$ 的 pivots 是 $1,-3$，第二步要开 $\sqrt{-3}$，`numpy.linalg.cholesky` 报 `LinAlgError: Matrix is not positive definite`。注意它并不先判正定，而是算到开方那一步才撞上负号——这正是「存在性等于每个 pivot 可开方」的直白含义。浮点的边界要另算：Hilbert 矩阵理论上对一切 $n$ 正定，实测算到 $n=13$ 仍成功（对角元最小 $8.25\times10^{-8}$），$n=14$ 直接崩（cond 约 $9.3\times10^{17}$）。定理保证存在，不等于这一版数值能算出来，§I.9 的条件数会把这条裂缝量化。
->
-> 成本与去向：Cholesky 只要 LU 的一半工作量（实测 $n=32$ 时 11968 对 21328 次乘加除），省下来的正是「对称的另一半不必再算一遍」。$S=Q\Lambda Q^T$ 把 $S$ 沿特征方向切成 $n$ 片 $\lambda_kq_kq_k^T$（实测每片 rank 1），$S=LL^T$ 则沿消元方向切成 $n$ 片三角形列，两条路切法不同、片数相同。于是 §I.9 的 PCA 走前者（按 $\lambda$ 排序后截断），而 §V.4 证明 covariance matrix（协方差矩阵）至少是半正定、§V.5 正是靠这份正定性才敢写 $\sqrt{\det V}$ 并用 $Q\Lambda^{-1}Q^T$ 把多元高斯的二次型拆成 $M$ 个独立的一维积分；到了 §VI.1，同一判据换上优化语言就叫「Hessian 正定 $\Rightarrow$ 严格凸 $\Rightarrow$ 极小点唯一」。
+> <span style="color:#1e8449;">**[note] Note（译者注：正定为什么保证 Cholesky 一定存在，一条不需要新定理的证明）:**</span> 把链条横过来看只有三步：$S$ 正定 $\Rightarrow$ 消元全程不必做行交换、每个 pivot 都大于零 $\Rightarrow$ $S=LDL^T$ 里的 $D=\operatorname{diag}(\text{pivots})$ 对角全正 $\Rightarrow$ $\sqrt{D}$ 是实的，于是 $S=(L\sqrt{D})(L\sqrt{D})^T$。所以 Cholesky 不是新造的一条分解，它只是 $LDL^T$ 加一次**实数**开方；全部风险都压在「pivot 不会变负」这一件事上。这三步的出处都在 §I.7，本书在那里用 Sylvester 判据把「正定」与「pivot 全正」钉在一起，再顺手取出 Cholesky。
+> 
+> 为什么正定就保证 pivot 为正：$u_{kk}=\det A_k/\det A_{k-1}$，而 Sylvester 判据说正定等价于所有 leading principal minors（顺序主子式）$>0$，于是每个 pivot 是正数除正数。再看一步，消元后的 $A_2$ 仍是 symmetric positive definite（对称正定）—— 它就是 $S$ 在「前 $k$ 列取 $0$ 的方向」上的限制，能量 $x^TSx$ 没变，所以归纳下去永不撞上零 pivot。实测三个 $3\times3$ 可以看清这是一条链而不是三条独立判据：$S_1$ 的三行是 $(2,1,0)$、$(1,2,1)$、$(0,1,2)$，eigenvalues（特征值）$0.5858,2,3.4142$、pivots $2,\tfrac32,\tfrac43$、主子式 $2,3,4$，三种数同时为正；把 $(3,3)$ 元改成 $1$，得 eigen $0.1981,1.5550,3.2470$、pivots $2,\tfrac32,\tfrac13$、主子式 $2,3,1$，仍同时为正；换成三行 $(1,2,0)$、$(2,1,0)$、$(0,0,1)$，eigen 冒出 $-1$、pivots 冒出 $-3$、主子式冒出 $-3$，三者又同时翻脸。
+> 
+> 具体到矩阵里长什么样：三行 $(2,4,2)$、$(4,11,7)$、$(2,7,6)$ 的 $S$ 实测得 $L$ 的三行 $(1,0,0)$、$(2,1,0)$、$(1,1,1)$ 与 $D=\operatorname{diag}(2,3,1)$，而那三个数正是 $\det A_1/1$、$\det A_2/\det A_1$、$\det A_3/\det A_2$（主子式 $2,6,6$）；把 $\sqrt{D}$ 折进 $L$，得到三行 $(\sqrt2,0,0)$、$(2\sqrt2,\sqrt3,0)$、$(\sqrt2,\sqrt3,1)$，对角元的平方逐个还原成 pivots，与 `numpy.linalg.cholesky` 的输出逐位相同。
+> 
+> 反向证据同样直接：两行 $(1,2)$、$(2,1)$ 的 pivots 是 $1,-3$，第二步要开 $\sqrt{-3}$，`numpy.linalg.cholesky` 报 `LinAlgError: Matrix is not positive definite`。注意它并不先判正定，而是算到开方那一步才撞上负号——这正是「存在性等于每个 pivot 可开方」的直白含义。边界比这里还窄一步：两行都是 $(1,1)$ 的那个半正定矩阵，每个 pivot 都能开方（第二个是 $0$），LAPACK 仍报同一个 `LinAlgError`，因为开完方还要除以 $0$ —— 正定性真正要的是「开方后仍可除」，不是「可开方」。再退一层，「对角元全正」也不够：两行 $(1,2)$、$(2,1)$ 的两个对角元都是 $1$，判据必须看到非对角的那一项。
+> 
+> 浮点的边界要另算：Hilbert 矩阵理论上对一切 $n$ 正定，实测算到 $n=13$ 仍成功（对角元最小 $8.25\times10^{-8}$），$n=14$ 直接崩，此时 condition number（条件数）估出 $9.3\times10^{17}$。这里有个比定理更早裂开的地方：float64 的 $\varepsilon$ 是 $2.22\times10^{-16}$，$1/\varepsilon\approx4.5\times10^{15}$，越过这条线之后 $\sigma_{\min}$ 本身就是噪声，于是 $n=13$ 估出 $3.19\times10^{18}$、$n=14$ 反而估出 $9.28\times10^{17}$ —— 病态到这个程度，那个数已经不可信，「$13$ 能算、$14$ 不能算」只是 LAPACK 内部判据的先后之差，不是数学边界。史实坐标：原稿的日期是 $1910$ 年 $12$ 月 $2$ 日，作者 Cholesky 在 $1918$ 年阵亡，$1924$ 年才由 Benoît 刊于 Bulletin Géodésique 第 $2$ 卷 $67$ 至 $77$ 页；Sylvester 判据出自 $1852$ 年 Philosophical Magazine 第 $4$ 系列第 $4$ 卷 $138$ 至 $142$ 页的惯性律论文。
+> 
+> 成本与去向：Cholesky 只要 LU 的一半工作量（实测 $n=32$ 时 $11408$ 对 $21328$ 次乘加除），省下来的正是「对称的另一半不必再算一遍」；$S=Q\Lambda Q^T$ 把 $S$ 沿特征方向切成 $n$ 片 $\lambda_kq_kq_k^T$（每片实测 rank $1$），$S=LL^T$ 则沿消元方向切成 $n$ 片三角形列，两条路切法不同、片数相同。于是 §I.9 的 PCA 走前者（按 $\lambda$ 排序后截断），而 §V.4 证明 covariance matrix（协方差矩阵）至少是半正定、§V.5 正是靠这份正定性才敢写 $\sqrt{\det V}$ 并用 $Q\Lambda^{-1}Q^T$ 把多元高斯的二次型拆成 $M$ 个独立的一维积分；到了 §VI.1，同一判据换上优化语言就叫「Hessian 正定 $\Rightarrow$ 严格凸 $\Rightarrow$ 极小点唯一」。跨课程看，MIT 18.06 把 Sylvester 判据、pivot 符号、Cholesky 三件事放在同一讲里讲完，连接路径就是上面那条链；概率论那侧缺了它写不下多元正态的密度，优化那侧缺了它就没有二阶充分条件。
 
 <span style="color:#7f8c8d">*§I.6–§I.7 逐句翻译完成。覆盖：特征值/特征向量、迹与行列式性质、微分方程、对角化、谱定理与证明、正定矩阵四种检验、Cholesky。*</span>
 

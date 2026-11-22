@@ -1,4 +1,6 @@
 # Part VI　Optimization（最优化）· §VI.1–§VI.5
+> ⚠️ 本文件有 3 处 [[FIGURE]] 槽位缺裁切图（书页 326、327、349），待补
+
 
 ## 书页 320-369 ｜ PDF 页 322-371
 
@@ -41,7 +43,10 @@ F_i(z)\ \le\ pF_i(x)+(1-p)F_i(y)\ \le\ pF(x)+(1-p)F(y). \tag{2}
 
 任意一族凸函数（特别是一族线性函数）的最大值都是凸函数。设想我们取遍所有落在凸函数 $F$ 之下的线性函数，那么这些「低于 $F$ 的线性函数」的最大值恰好等于 $F$ 本身。
 
-[[FIGURE: 书页 325, 图 VI.2：一个凸函数 F 是其全部切线函数（linear F1、linear F2、linear F3）的最大值（上包络）。]]
+![fig_325_p327](assets/fig_325_p327.png)
+> <span style="color:#7f8c8d;">原书 Figure VI.2，书页 325（PDF p.327）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VI.2：一个凸函数 F 是其全部切线函数（linear F1、linear F2、linear F3）的最大值（上包络）。</span>
 
 一个凸集（convex set）$K$ 是所有包含它的半空间（half-space）的交。而任意一族凸集的交仍是凸集；但两个凸集的并（union）却未必是凸集。
 
@@ -642,7 +647,10 @@ Duality（对偶性）：$y^{T}b$ 的最大值等于 $c^{T}x$ 的最小值。
 
 > <span style="color:#7f8c8d;">本页为书页 340，用一张具体的图演示最大流等于最小割（这里 M=14），并引出二分图匹配（König 定理与 Hall 婚姻定理），最后过渡到二人零和博弈；页眉与印页码不译。</span>
 
-[[FIGURE: 书页 340, 一张从 source $s$ 到 sink $t$ 的有向图，每条边标有容量（如 7、21、8、17、6、4、5、3、2、10、14、15 等），虚线示意一个 cut。图的标题为 Figure V1.5，说明最大流 M 被任意割的容量所界定，由对偶性，最小割容量等于最大流：M=14。]]
+![fig_340_p342_1](assets/fig_340_p342_1.png)
+> <span style="color:#7f8c8d;">原书图，书页 340（PDF p.342）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">一张从 source $s$ 到 sink $t$ 的有向图，每条边标有容量（如 7、21、8、17、6、4、5、3、2、10、14、15 等），虚线示意一个 cut。图的标题为 Figure V1.5，说明最大流 M 被任意割的容量所界定，由对偶性，最小割容量等于最大流：M=14。</span>
 
 ```math
 \text{Max flow problem（最大流问题）: Maximize } M \quad \text{with flow } y_j \le M_j
@@ -676,7 +684,12 @@ Duality（对偶性）：$y^{T}b$ 的最大值等于 $c^{T}x$ 的最小值。
 
 为了与线性规划对上，我规定这笔支付从玩家 X 流向 Y。于是 X 想最小化，Y 想最大化。下面是一个很小的 payoff matrix，X 有两行可选，Y 有三列可选。
 
-[[FIGURE: 书页 341, 左侧为 payoff matrix：两行三列，第一行 0、2、4，第二行 -1、4（列 3 处为 2，即第一行的 2 是该列最小、该行最大，构成 saddle point）；下方标注「2 是它所在列的最小值，也是它所在行的最大值」。右侧为新的 payoff matrix 及混合策略的推导图。]]
+![fig_341_p343_1](assets/fig_341_p343_1.png)
+
+![fig_341_p343_2](assets/fig_341_p343_2.png)
+> <span style="color:#7f8c8d;">原书图，书页 341（PDF p.343）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">左侧为 payoff matrix：两行三列，第一行 0、2、4，第二行 -1、4（列 3 处为 2，即第一行的 2 是该列最小、该行最大，构成 saddle point）；下方标注「2 是它所在列的最小值，也是它所在行的最大值」。右侧为新的 payoff matrix 及混合策略的推导图。</span>
 
 Y 喜欢第 3 列里那些大数字。X 看到那一列里最小的数是 $2$（在第 1 行）。双方都没有理由偏离这个简单策略：Y 选第 3 列、X 选第 1 行。这笔 $2$ 的支付从 X 流向 Y：
 
@@ -686,7 +699,10 @@ Y 喜欢第 3 列里那些大数字。X 看到那一列里最小的数是 $2$（
 
 但若第 3 列发生变化，双方就得重新动脑筋了。
 
-[[FIGURE: 书页 341, 新的 payoff matrix 推导：Y 的三列分别为 y1、y2、y3，X 的两行分别为 row1、row2。原始矩阵第二行含 -1、0、4，第一行含 1、3、2（对应左侧另一矩阵）。下方给出混合行：x1(row1)+x2(row2) = [-x1+3x2, 3x1-x2, 4x1+2x2]，并标注 c1、c2 的取值。]]
+![fig_341_p343_3](assets/fig_341_p343_3.png)
+> <span style="color:#7f8c8d;">原书图，书页 341（PDF p.343）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">新的 payoff matrix 推导：Y 的三列分别为 y1、y2、y3，X 的两行分别为 row1、row2。原始矩阵第二行含 -1、0、4，第一行含 1、3、2（对应左侧另一矩阵）。下方给出混合行：x1(row1)+x2(row2) = [-x1+3x2, 3x1-x2, 4x1+2x2]，并标注 c1、c2 的取值。</span>
 
 X 喜欢第 2 列里那些小的、有利的数，但 Y 绝不会选那一列。对 Y 而言第 3 列最好（最大），X 应反制选第 2 行（以免付 $4$）。可这时第 1 列对 Y 反而比第 3 列更好，因为在第 1 列赢 $3$ 比在第 3 列赢 $2$ 强。
 
@@ -727,7 +743,10 @@ y_1 + 4y_3 = 3y_1 - y_2 + 2y_3 \quad\Longrightarrow\quad y_1 + 4(1-y_1) = 3y_1 +
 
 我们找到了这个二人博弈的 saddle point（鞍点）——最优混合策略，其 minimax payoff（X 极小极大支付）$=$ maximin payoff（Y 极大极小支付）$=2.5$。
 
-[[FIGURE: 书页 342, 一张表：行 1、行 2 及混合行 row1+row2，列 1、列 2、列 3 及混合列。混合行各项为 2.5、2、2.5（其中列 2 为 0.75），混合列为 2.5、2.5，与博弈值 2.5 对应。]]
+![fig_342_p344_1](assets/fig_342_p344_1.png)
+> <span style="color:#7f8c8d;">原书图，书页 342（PDF p.344）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">一张表：行 1、行 2 及混合行 row1+row2，列 1、列 2、列 3 及混合列。混合行各项为 2.5、2、2.5（其中列 2 为 0.75），混合列为 2.5、2.5，与博弈值 2.5 对应。</span>
 
 Von Neumann（冯·诺依曼）的 minimax theorem（极小极大定理）为每一个 payoff matrix 都给出了解。它等价于线性规划的 duality theorem：$\min c^{T}x = \max y^{T}b$。
 
@@ -850,7 +869,10 @@ VI.4 Gradient Descent Toward the Minimum（梯度下降走向极小点）
 
 对所有光滑函数，中心差分把误差降到 $(\Delta x)^2$ 量级。这相比非中心差分 $f(x+\Delta x)-f(x)$ 的 $\Delta x$ 量级误差，是一大改进。
 
-[[FIGURE: 书页 345, ReLU 函数（深度学习中的 ramp 坡道函数）图像，展示 forward、backward、centered 三种斜率逼近，$f=x^2$ 的中心斜率为精确值]]
+![fig_345_p347_1](assets/fig_345_p347_1.png)
+> <span style="color:#7f8c8d;">原书图，书页 345（PDF p.347）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">ReLU 函数（深度学习中的 ramp 坡道函数）图像，展示 forward、backward、centered 三种斜率逼近，$f=x^2$ 的中心斜率为精确值</span>
 
 **Figure VI.6:** 深度学习中的 ReLU function（整流线性单元）坡道。$f=x^2$ 的 centered slope（中心斜率）是精确的。
 
@@ -962,7 +984,10 @@ $L(X)=\log(\det X)$ 的偏导数是
 
 这个最陡方向垂直于 level direction（等高方向）。等高方向 $z=\text{常数}$ 即 $ax+by=\text{常数}$。这是安全行走的方向，垂直于 $\nabla f$。$\nabla f$ 在这个平坦方向上的分量是零。**Figure VI.7** 展示了平面 $z=x+2y=f(x,y)$ 上的两个垂直方向（level 等高与 steepest 最陡）。
 
-[[FIGURE: 书页 347, 平面 z=x+2y 上最陡方向与等高方向的垂直关系，负梯度 −∇f 指向最陡下降方向]]
+![fig_347_p349_1](assets/fig_347_p349_1.png)
+> <span style="color:#7f8c8d;">原书图，书页 347（PDF p.349）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">平面 z=x+2y 上最陡方向与等高方向的垂直关系，负梯度 −∇f 指向最陡下降方向</span>
 
 ```math
 \text{plane } z=x+2y
@@ -1005,7 +1030,10 @@ Optimization（最优化）
 
 **最陡方向在你下行时不断改变！梯度并不指向碗底！**
 
-[[FIGURE: 书页 348, 碗形 ax$^{2}$+by$^{2}$=z 上，最陡方向 ∇f 垂直于椭圆等高线却不指向极小点 (0,0)]]
+![fig_348_p350_1](assets/fig_348_p350_1.png)
+> <span style="color:#7f8c8d;">原书图，书页 348（PDF p.350）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">碗形 ax$^{2}$+by$^{2}$=z 上，最陡方向 ∇f 垂直于椭圆等高线却不指向极小点 (0,0)</span>
 
 ```math
 \text{最陡方向 }\nabla f=\begin{pmatrix}2ax\\2by\end{pmatrix}\text{ 在碗 }ax^2+by^2=z\text{ 内上下}
@@ -1439,7 +1467,10 @@ projected gradient（投影梯度）与 proximal gradient（近端梯度）方�
 S(x_i)=\operatorname{sign}(x_i)\cdot\max(|x_i|-c,\ 0)
 ```
 
-[[FIGURE: 书页 357, 软阈值函数 S(x) 的图像，展示小分量被置零]]
+![fig_357_p359](assets/fig_357_p359.png)
+> <span style="color:#7f8c8d;">原书图，书页 357（PDF p.359）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">软阈值函数 S(x) 的图像，展示小分量被置零</span>
 
 我们在 denoising（去噪）与 regularizing（正则化），正如 III.4 节的 $\ell_1$ LASSO 构造。图展示小分量如何被置零——产生零正是 $\ell_1$ 范数相比 $\ell_2$ 已经达成的效果。
 
@@ -1650,7 +1681,10 @@ c^{*}=\frac{\sum_{i} a_i b_i}{\sum_{i} a_i^2}. \tag{1}
 
 用随机梯度下降最小化 $\|Ac-b\|^2$ 所得到的一个典型序列 $c_0,c_1,c_2,\dots$ 画在图 VI.10 中。你看到快启动和振荡收尾。这种行为正是"在振荡开始时考虑早停或平均（第 365 页）"的完美信号。
 
-[[FIGURE: 书页 362, 图 VI.10 随机梯度下降的轨迹与代价函数。左图展示两个未知量时 SGD 的轨迹：早期迭代成功、后期振荡（如插图中所示）；右图为二次代价函数先迅速下降、继而波动而非收敛。四条路径从同一 $c_0$ 出发，对式 (3) 中的 $i$ 做随机选取。40×2 矩阵 $A$ 的条件数仅为 8.6。]]
+![fig_362_p364](assets/fig_362_p364.png)
+> <span style="color:#7f8c8d;">原书图，书页 362（PDF p.364）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VI.10 随机梯度下降的轨迹与代价函数。左图展示两个未知量时 SGD 的轨迹：早期迭代成功、后期振荡（如插图中所示）；右图为二次代价函数先迅速下降、继而波动而非收敛。四条路径从同一 $c_0$ 出发，对式 (3) 中的 $i$ 做随机选取。40×2 矩阵 $A$ 的条件数仅为 8.6。</span>
 
 ---
 
@@ -1714,7 +1748,10 @@ c_{k+1}-c^{*}=\Bigl(I-\frac{a_i a_i^{\mathsf T}}{\|a_i\|^2}\Bigr)(c_k-c^{*}). \t
 
 图中显示那些数值 $1-\cos^2\theta_k$ 非常接近 $1$：收敛缓慢。但第二张图确认收敛确实发生。Strohmer–Vershynin 界 (5) 变成 $\mathbb{E}[\cos^2\theta_k]\ge 1/\kappa^2$。我们的例子矩阵有 $1/\kappa^2\approx 10^{-5}$，常常 $\cos^2\theta_k\approx 10^{-5}$，这印证了该界。
 
-[[FIGURE: 书页 364, 图 VI.11 随机 Kaczmarz 的平方误差收敛。式 (6) 中 $1-\cos^2\theta_k$ 接近 $1-10^{-5}$，造成下图中 $600{,}000$ 次迭代的缓慢收敛；上图为 $1-\cos^2\theta_k$ 随迭代的取值。]]
+![fig_364_p366](assets/fig_364_p366.png)
+> <span style="color:#7f8c8d;">原书图，书页 364（PDF p.366）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VI.11 随机 Kaczmarz 的平方误差收敛。式 (6) 中 $1-\cos^2\theta_k$ 接近 $1-10^{-5}$，造成下图中 $600{,}000$ 次迭代的缓慢收敛；上图为 $1-\cos^2\theta_k$ 随迭代的取值。</span>
 
 ---
 
@@ -1890,7 +1927,10 @@ Kaczmarz 的一个关键性质是它在早期迭代中的快速成功。这在�
 
 3. 若 $A$ 只有两行 $a_1$ 与 $a_2$，则 Kaczmarz 会产生下图中的交替投影。从任一误差向量 $e_0=c_0-c^{*}$ 出发，为什么 $e_k$ 趋于零？多快？
 
-[[FIGURE: 书页 369, 习题 3 图：两条超平面 $a_1^{\mathsf T}c=b_1$ 与 $a_2^{\mathsf T}c=b_2$ 之间的交替投影，误差向量 $e_0,e_1,e_4$ 逐步缩短并逼近交点 $c^{*}$。]]
+![fig_369_p371](assets/fig_369_p371.png)
+> <span style="color:#7f8c8d;">原书图，书页 369（PDF p.371）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">习题 3 图：两条超平面 $a_1^{\mathsf T}c=b_1$ 与 $a_2^{\mathsf T}c=b_2$ 之间的交替投影，误差向量 $e_0,e_1,e_4$ 逐步缩短并逼近交点 $c^{*}$。</span>
 
 4. 设我们要最小化 $F(x,y)=x^2+(y-c)^2$。实际最小值在 $(x^{*},y^{*})=(0,0)$ 处为 $F=0$。求在起点 $(x_0,y_0)=(1,1)$ 处的梯度向量 $\nabla F$。对于步长 $s=1$ 的全梯度下降（非随机），$(x_1,y_1)$ 是多少？
 

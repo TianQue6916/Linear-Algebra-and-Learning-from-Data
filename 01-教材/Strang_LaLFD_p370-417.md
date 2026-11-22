@@ -63,7 +63,10 @@ F_k(v_{k-1}) = \mathrm{ReLU}(A_k v_{k-1} + b_k) \tag{1}
 
 到达 $v_1$ 的最后一步，是把非线性 "activation function"（激活函数）施加到 $A_1 v_0 + b_1$ 的 4 个分量上。历史上，那个非线性函数的图像常由一条光滑的 "S-curve"（S 形曲线）给出。当时和现在的一些具体选择见 Figure VII.1。
 
-[[FIGURE: 书页 376, Figure VII.1：左列为 ReLU 及其导数（阶跃函数），右列为 sigmoid 选项 $\tanh(x/2)$ 及其导数；对比"斜坡"与"光滑 S 曲线"两种非线性。]]
+![fig_376_p378](assets/fig_376_p378.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.1，书页 376（PDF p.378）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.1：左列为 ReLU 及其导数（阶跃函数），右列为 sigmoid 选项 $\tanh(x/2)$ 及其导数；对比"斜坡"与"光滑 S 曲线"两种非线性。</span>
 
 Figure VII.1: The Rectified Linear Unit and a sigmoid option for nonlinearity（整流线性单元与一个 sigmoid 选项）。
 
@@ -93,7 +96,10 @@ v_2 = F(x, v_0) = A_2 v_1 + b_2 = A_2\,\mathrm{ReLU}(A_1 v_0 + b_1) + b_2 \tag{3
 
 优化 $x = (A_1, b_1, A_2, b_2)$ 的目标，是让最后一层的输出值 $v_2$ 能正确捕捉训练数据 $v_0$ 的重要特征。
 
-[[FIGURE: 书页 377, Figure VII.2：一个带 4 个神经元内部层的前馈网络。$v_0$（3 分量）→ 乘 $A_1$、加 $b_1$ 得 $y_1$ → ReLU 得 $v_1$（4 分量）→ 乘 $1\times 4$ 矩阵 $A_2$ 得输出 $v_2 = A_2 v_1$。]]
+![fig_377_p379](assets/fig_377_p379.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.2，书页 377（PDF p.379）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.2：一个带 4 个神经元内部层的前馈网络。$v_0$（3 分量）→ 乘 $A_1$、加 $b_1$ 得 $y_1$ → ReLU 得 $v_1$（4 分量）→ 乘 $1\times 4$ 矩阵 $A_2$ 得输出 $v_2 = A_2 v_1$。</span>
 
 Figure VII.2: A feed-forward neural net with 4 neurons on one internal layer（一个内部层上有 4 个神经元的前馈网络）。
 
@@ -273,7 +279,10 @@ r(N, m) = r(N-1, m) + r(N-1, m-1)
 
 Mike Giles 使这个讲解更清晰，并建议用 Figure VII.3 来展示最后一条超平面 $H$ 的效果：当 $N \ge m$ 时有 $r \sim 2^N$ 个线性块，而当 $N \gg m$（隐藏层有很多神经元）时 $r \sim N^m / m!$ 个块。
 
-[[FIGURE: 书页 382, Figure VII.3：从 2 条平面开始，加入新平面 H；H 上的 r(2,1)=3 块产生 3 个新区域，于是计数变成 r(3,2)=4+3=7 个平坦区域。]]
+![fig_382_p384](assets/fig_382_p384.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.3，书页 382（PDF p.384）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.3：从 2 条平面开始，加入新平面 H；H 上的 r(2,1)=3 块产生 3 个新区域，于是计数变成 r(3,2)=4+3=7 个平坦区域。</span>
 
 Figure VII.3: $H$ 的 $r(2,1)=3$ 块产生 3 个新区域，于是计数变成 $r(3,2) = 4 + 3 = 7$ 个平坦区域，位于连续分段线性曲面 $v_2 = F(v_0)$ 上。第四条 fold 会穿过全部 3 条已有 fold 并产生 4 个新区域，所以 $r(4,2) = 11$。
 
@@ -424,7 +433,10 @@ x^y = \exp(\log x + \log y), \qquad x^{y} = \exp\big(\exp(\log y + \log\log x)\b
 
 在一维情形下，一个带状（banded）平移不变矩阵就是一个 Toeplitz matrix（托普利茨矩阵），也即一个 filter（滤波器）。用该矩阵 $A$ 作乘法即是一次 convolution（卷积） $c * v$。所有层之间的这种连接网络就是一个 Convolutional Neural Net（卷积神经网络，简称 CNN 或 ConvNet）。此处 $E = 3$。
 
-[[FIGURE: 书页 387, 一维卷积示意图：$N+2$ 个输入、$N$ 个输出，每个神经元连接左右邻近神经元，$Y=Av$]]
+![fig_387_p389](assets/fig_387_p389.png)
+> <span style="color:#7f8c8d;">原书图，书页 387（PDF p.389）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">一维卷积示意图：$N+2$ 个输入、$N$ 个输出，每个神经元连接左右邻近神经元，$Y=Av$</span>
 
 把 $A$ 看作三个 shift matrices（平移矩阵）$L, C, R$（Left 左、Center 中、Right 右）的组合是很有价值的：
 
@@ -989,7 +1001,10 @@ Geoffrey Hinton 指出：若把每一层的偏置向量 $b_1,\dots,b_L$ 都置�
 \text{Leaky ReLU: } R(x)=\begin{cases} x & x\ge 0\\ 0.01x & x<0 \end{cases}.
 ```
 
-[[FIGURE: 书页 400, Figure VII.4：ReLU 与 Leaky ReLU 的图像（两种非线性激活选项），ReLU 负半轴斜率为 0、正半轴斜率为 1，Leaky ReLU 负半轴斜率约为 1/100、正半轴斜率为 1。]]
+![fig_400_p402](assets/fig_400_p402.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.4，书页 400（PDF p.402）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.4：ReLU 与 Leaky ReLU 的图像（两种非线性激活选项），ReLU 负半轴斜率为 0、正半轴斜率为 1，Leaky ReLU 负半轴斜率约为 1/100、正半轴斜率为 1。</span>
 
 回到公式 (5)，把产生最后一个隐藏层的矩阵与向量记作 $A=A_{L-1}$、$b=b_{L-1}$；随后 ReLU 与 $A_L$、$b_L$ 产生最终输出 $w=v_L$。我们关心的是 $w$ 关于倒数第二个权重矩阵的依赖 $\partial w/\partial A$：
 
@@ -1099,7 +1114,10 @@ $\partial F/\partial y$ 的计算图没有画出来，但关键点在于：**for
 \frac{\partial s}{\partial y} = 1 .
 ```
 
-[[FIGURE: 书页 403, Figure VII.5：在 $x=2,\,y=3$ 处反向模式对梯度 $\partial F/\partial x$、$\partial F/\partial y$ 的计算图，各边标注导数数值。]]
+![fig_403_p405](assets/fig_403_p405.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.5，书页 403（PDF p.405）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.5：在 $x=2,\,y=3$ 处反向模式对梯度 $\partial F/\partial x$、$\partial F/\partial y$ 的计算图，各边标注导数数值。</span>
 
 **矩阵乘积 $ABC$：按什么顺序乘？**
 
@@ -1354,7 +1372,10 @@ Dropout 由深度学习算法发展中的五位领军人物提出：N. Srivastav
 
 > <span style="color:#7f8c8d;">本页为书页 410，属 VII.4，说明 Dropout 的"稀疏网络"机制、测试时的权重重缩放、其生物学灵感，并转入超参数空间的探索策略；页眉与印页码不译。</span>
 
-[[FIGURE: 书页 410, 图 VII.6：在稀疏化（thinned）网络中，画叉的神经元已被 dropout 移除。]]
+![fig_410_p412](assets/fig_410_p412.png)
+> <span style="color:#7f8c8d;">原书 Figure VII.6，书页 410（PDF p.412）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">图 VII.6：在稀疏化（thinned）网络中，画叉的神经元已被 dropout 移除。</span>
 
 Dropout 提供了一种方式，能一次性用许多不同的神经架构进行计算。在训练中，每个新的 $v_0$（一个输入样本的特征向量）都会导向一个新的稀疏化网络。从 $N$ 个神经元出发，共有 $2^N$ 种可能的稀疏网络。
 
@@ -1453,7 +1474,10 @@ Fully connected nets（全连接网络）和 convolutional nets（卷积网络�
 
 Figure VII.7（图 VII.7）勾勒出该网络架构中这一新步骤的轮廓。
 
-[[FIGURE: 书页 413, 循环网络的计算图：每个时刻 t 都有输入 v(t)、循环状态 h(t)、输出 w 与目标 y，权重 X_in、C_recur、C_out 用于最小化损失 L(y−w)]]
+![fig_413_p415](assets/fig_413_p415.png)
+> <span style="color:#7f8c8d;">原书图，书页 413（PDF p.415）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">循环网络的计算图：每个时刻 t 都有输入 v(t)、循环状态 h(t)、输出 w 与目标 y，权重 X_in、C_recur、C_out 用于最小化损失 L(y−w)</span>
 
 > **图 VII.7 说明**：循环网络的计算图在每个时刻 $t$ 求出使 loss（损失）最小化的输出 $w$。$h(t)$ 的输入是新数据 $v(t)$ 与来自上一时刻的循环数据 $h(t-1)$。乘以数据的权重是 $X_{in}$、$C_{recur}$ 和 $C_{out}$，它们被选来最小化损失 $L(y-w)$。这一网络架构是 **universal（通用）** 的：任何可被 Turing machine（图灵机）计算的公式，它都能计算。
 
@@ -1478,7 +1502,10 @@ Figure VII.7（图 VII.7）勾勒出该网络架构中这一新步骤的轮廓�
 
 从 $m$ 维空间中的 $n$ 个点 $v_1, \dots, v_n$ 出发。每个 $v_i$ 带有一个 classification（分类）标记 $y_i = +1$ 或 $y_i = -1$。Vapnik 提出的目标是：在 $m$ 维空间中找一个 plane（平面）$w\cdot v = b$（如果可能的话），把 plus points（正点，$+$）与 minus points（负点，$-$）分隔开来。那个向量 $w$ 将垂直于该平面。数 $b$ 告诉我们从 $\mathbb{R}^m$ 中的这条 line（直线）、plane（平面）或 hyperplane（超平面）到点 $(0, \dots, 0)$ 的距离是 $|b|/\|w\|$。
 
-[[FIGURE: 书页 414, 分隔直线 w·v=b 使到正点与负点的等距间隔（margin）最大化；若 v4 落在 v1、v2、v3 构成的三角形内部，则线性分隔不可能]]
+![fig_414_p416](assets/fig_414_p416.png)
+> <span style="color:#7f8c8d;">原书图，书页 414（PDF p.416）；裁切自扫描页，图形未改动</span>
+
+> <span style="color:#7f8c8d;">分隔直线 w·v=b 使到正点与负点的等距间隔（margin）最大化；若 v4 落在 v1、v2、v3 构成的三角形内部，则线性分隔不可能</span>
 
 > 这条 separating line（分隔线）$w\cdot v = b$ 使得到 $+$ 点与 $-$ 点的**等距间隔（margin，边际）最大化**。若 $v_4$ 在三角形内部，分隔将是不可能的。
 

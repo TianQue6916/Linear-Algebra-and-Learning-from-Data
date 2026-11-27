@@ -1,14 +1,20 @@
 # Linear Algebra and Learning from Data (MIT 18.065)
 
-> Strang 教材《Linear Algebra and Learning from Data》的中英双语逐句翻译、18.065 习题课详解与视频转录稿，供自学者对照英文原书阅读。
+> Strang 教材《Linear Algebra and Learning from Data》的中英双语逐句翻译、18.065 习题课作业与题解、课程视频字幕，供自学者对照英文原书阅读。
 
-## 教材双语翻译
-- [01-教材双语翻译](01-教材双语翻译): 按册分块的正文双语译本（p001-050、p051-100、p101-150、p151-200、p201-250 及 Part IV-VII），含 .md 与排版 .pdf
-- [_sections](01-教材双语翻译/_sections): 按小节拆分的双语译注（IV.7 Clustering、IV.8 Completing Rank One、V.6 Markov Chains、VI.5 SGD ADAM、VII.3 Backpropagation 等）
+## 教材双语翻译（01-教材/）
+- [01-教材](01-教材): 按册分块的正文双语译本，共 9 个 .md —— `Strang_LaLFD_part001_p001-050` ~ `part005_p201-250`，再加 `p251-264`、`p264-322`、`p322-371`、`p370-417`（页码范围照文件名，覆盖原书 p001-417）
+- 其中 part001 / part002 / part004 另有排版 PDF：`Strang_LaLFD_part00{1,2,4}_*_bilingual_render.pdf`（共 3 个）
 
-## 习题与视频
-- [02-习题课双语详解](02-习题课双语详解): 18.065 Problem Set I 各讲习题详解（Lecture 1-32 对应），每讲 .md + .pdf
-- [03-视频转录稿](03-视频转录稿): 课程视频转录文本
+## 习题与题解（04-题目/）
+- [04-题目/作业](04-题目/作业): 6 个 Problem Set 题目 PDF（`18.065_PS_I.{1,2,5,6,7,8}_Lecture*`）
+- [04-题目/题解](04-题目/题解): 33 篇 .md 题解（`18.065_PS_<分册>_Lecture<N>.md`，讲次落在 Lecture 1-35 范围）
+
+## 术语核查（03-已处理文件/术语核查/）
+- [terms_z01.md](03-已处理文件/术语核查/terms_z01.md): 术语对照核查表
+
+## 视频字幕（视频/）
+- [视频](视频): 38 个 .srt，覆盖 Lec37-Lec58（共 22 讲）；除 Lec47-Lec52 仅有 `.zh.srt` 中文译文字幕外，其余各讲同时提供原始 `.srt` 与 `.zh.srt`
 
 ## 备注
 - 原书英文电子版因版权原因未收录；公式与 LaTeX 环境保持英文原样。

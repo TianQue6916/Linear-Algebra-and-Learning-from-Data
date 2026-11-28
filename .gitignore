@@ -5,3 +5,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 _superseded/
+
+# 逐文件改稿备份（保护用，不入库）
+*.bak-*
